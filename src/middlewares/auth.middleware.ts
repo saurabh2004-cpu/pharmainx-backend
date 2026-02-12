@@ -12,6 +12,8 @@ export const authenticateToken = (req: AuthRequest, res: Response, next: NextFun
     const authHeader = req.cookies.accessToken || req.headers.authorization?.split(' ')[1];
     const token = authHeader;
 
+    console.log("acctoken", token);
+
     if (!token) {
         return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }

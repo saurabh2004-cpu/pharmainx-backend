@@ -94,7 +94,7 @@ export const createJob = async (req: AuthRequest, res: Response) => {
 
         if (!creditsConfig) {
             logger.error('Global CreditsWallet config missing');
-            return res.status(500).json({ success: false, message: 'System configuration error', error: 'Credits config missing' });
+            return res.status(500).json({ success: false, message: 'No Credits Wallet Found', error: 'Credits config missing' });
         }
 
         // 3. Get Institute Balance
@@ -604,7 +604,7 @@ export const getJobByIdInstitute = async (req: Request, res: Response) => {
     const { jobId } = req.params;
     console.log("jobid in get by institute", jobId, typeof jobId)
     try {
-        const job = await prisma.job.findUnique({ 
+        const job = await prisma.job.findUnique({
             where: { id: jobId.toString() },
         });
 
@@ -625,13 +625,19 @@ export const getJobsByInstitution = async (req: Request, res: Response) => {
     const query = req.query as any;
     const page = parseInt((query.page as string) || '1');
     const pageSize = parseInt((query.pageSize as string) || '20');
+    const status = query.status as string | undefined;
     const skip = (page - 1) * pageSize;
     const take = pageSize;
+
+    const where: any = { instituteId };
+    if (status && status !== 'undefined' && status !== 'null') {
+        where.status = status;
+    }
 
     try {
         const [jobs, total] = await Promise.all([
             prisma.job.findMany({
-                where: { instituteId },
+                where,
                 skip,
                 take,
                 orderBy: { created_at: 'desc' },
@@ -642,8 +648,13 @@ export const getJobsByInstitution = async (req: Request, res: Response) => {
             prisma.job.count({ where: { instituteId } }),
         ]);
 
+        const jobsWithApplicationsCount = await Promise.all(jobs.map(async (job) => {
+            const applicationsCount = await prisma.application.count({ where: { jobId: job.id } });
+            return { ...job, applicationsCount };
+        }));
+
         logger.info({ instituteId, page, pageSize, total }, 'Fetched jobs by institution');
-        res.status(200).json({ jobs, page, pageSize, total });
+        res.status(200).json({ jobs: jobsWithApplicationsCount, page, pageSize, total });
     } catch (err) {
         logger.error({ err, instituteId }, 'Database error during getJobsByInstitution');
         res.status(500).json({ error: 'Database error' });

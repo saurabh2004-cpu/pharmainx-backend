@@ -116,13 +116,11 @@ export const signInUser = async (req: AuthRequest, res: Response) => {
 
         logger.info({ email }, 'User signed in successfully');
 
-
-
         res
             // .cookie("accessToken", token, {
             //     httpOnly: true,
             //     secure: true,
-            //     sameSite: 'strict',
+            //     sameSite: 'lax',
             //     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
             // })
             .status(200)

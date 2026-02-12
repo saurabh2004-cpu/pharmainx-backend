@@ -16,7 +16,10 @@ const app: Express = express();
 // Global Middlewares
 app.use(helmet());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: [
+        "http://localhost:3000",
+        "http://88.222.242.191:3000"
+    ],
     credentials: true,
 }));
 app.use(express.json());

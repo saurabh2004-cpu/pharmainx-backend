@@ -9,7 +9,8 @@ import {
     getAllInstitutes,
     getInstituteById,
     loginInstitute,
-    getInstituteJobs
+    getInstituteJobs,
+    getInstituteCredits
 } from '../controllers/institute.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
 import { instituteViewTrackerMiddleware } from '../middlewares/institute-view-tracker.middleware.js';
@@ -29,5 +30,6 @@ router.get('/my-stats', authenticateToken, getInstituteStats);
 router.put('/update-institute/:id', authenticateToken, updateInstitute);
 router.delete('/delete-institute/:id', authenticateToken, deleteInstitute);
 router.get('/institutions/jobs', authenticateToken, getInstituteJobs);
+router.get('/my-wallet', authenticateToken, getInstituteCredits);
 
 export default router;

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
+import { AuthRoles, UserRoles, InstituteRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger('Notification');
 
@@ -10,6 +11,19 @@ interface AuthRequest extends Request {
         role: string;
     };
 }
+
+/**
+ * Helper to map specific roles (DOCTOR, LAB, etc.) to generic notification roles (USER, INSTITUTE)
+ */
+const getNotificationRole = (role: string): string => {
+    if (Object.values(UserRoles).includes(role as any) || role === 'USER') {
+        return 'USER';
+    }
+    if (Object.values(InstituteRoles).includes(role as any) || role === 'INSTITUTE') {
+        return 'INSTITUTE';
+    }
+    return role;
+};
 
 /**
  * Get paginated notifications for the authenticated user/institute
@@ -22,6 +36,8 @@ export const getMyNotifications = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    const notificationRole = getNotificationRole(authRole);
+
     const query = req.query as any;
     const page = parseInt((query.page as string) || '1');
     const pageSize = parseInt((query.pageSize as string) || '20');
@@ -33,7 +49,7 @@ export const getMyNotifications = async (req: AuthRequest, res: Response) => {
             prisma.notification.findMany({
                 where: {
                     receiverId: authId,
-                    receiverRole: authRole
+                    receiverRole: notificationRole
                 },
                 skip,
                 take,
@@ -46,7 +62,7 @@ export const getMyNotifications = async (req: AuthRequest, res: Response) => {
             prisma.notification.count({
                 where: {
                     receiverId: authId,
-                    receiverRole: authRole
+                    receiverRole: notificationRole
                 }
             })
         ]);
@@ -70,11 +86,13 @@ export const getUnreadCount = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    const notificationRole = getNotificationRole(authRole);
+
     try {
         const count = await prisma.notification.count({
             where: {
                 receiverId: authId,
-                receiverRole: authRole,
+                receiverRole: notificationRole,
                 isRead: false
             }
         });
@@ -99,6 +117,8 @@ export const markAsRead = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    const notificationRole = getNotificationRole(authRole);
+
     try {
         // Verify ownership before updating
         const notification = await prisma.notification.findUnique({
@@ -109,7 +129,7 @@ export const markAsRead = async (req: AuthRequest, res: Response) => {
             return res.status(404).json({ error: 'Notification not found' });
         }
 
-        if (notification.receiverId !== authId || notification.receiverRole !== authRole) {
+        if (notification.receiverId !== authId || notification.receiverRole !== notificationRole) {
             return res.status(403).json({ error: 'Forbidden' });
         }
 
@@ -140,11 +160,13 @@ export const markAllAsRead = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    const notificationRole = getNotificationRole(authRole);
+
     try {
         const result = await prisma.notification.updateMany({
             where: {
                 receiverId: authId,
-                receiverRole: authRole,
+                receiverRole: notificationRole,
                 isRead: false
             },
             data: { isRead: true }

@@ -1,3 +1,4 @@
+import { ApplicationStatus } from '../generated/prisma/enums.js';
 import { prisma } from '../lib/prisma.js';
 import { getIO } from '../lib/socket.js';
 import { getServiceLogger } from './logger.js';
@@ -11,6 +12,7 @@ interface SendNotificationParams {
     message: string;
     relatedJobId?: string;
     relatedApplicationId?: string;
+    status: ApplicationStatus;
 }
 
 /**
@@ -43,7 +45,7 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
         // Emit notification via Socket.IO to the receiver
         try {
             const io = getIO();
-            io.to(receiverId).emit('notification', notification);
+            io.to(receiverId).emit('notification', notification, params.status);
             logger.info({ notificationId: notification.id, receiverId }, 'Notification sent via Socket.IO');
         } catch (socketError) {
             // Socket.IO might not be initialized in some contexts (e.g., tests)

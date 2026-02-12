@@ -551,3 +551,30 @@ export const getInstituteJobs = async (req: AuthRequest, res: Response) => {
     }
 };
 
+export const getInstituteCredits = async (req: AuthRequest, res: Response) => {
+    const authId = req.user?.id;
+    const role = req.user?.role;
+
+    if (!authId || !Object.values(InstituteRoles).includes(role as any)) {
+        return res.status(403).json({ error: "Forbidden: only institutes may view credits" });
+    }
+
+    try {
+        const instituteId = authId;
+
+        const credits = await prisma.institute.findUnique({
+            where: { id: instituteId.toString() },
+            select: { instituteCreditsWallets: true },
+        });
+
+        if (!credits) {
+            return res.status(404).json({ error: 'Institute not found' });
+        }
+
+        res.status(200).json({ credits: credits.instituteCreditsWallets });
+    } catch (err) {
+        console.error(err);
+
+        res.status(500).json({ error: 'Database error' });
+    }
+};  

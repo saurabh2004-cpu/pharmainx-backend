@@ -1,34 +1,41 @@
-# Base image
-FROM node:22-slim
+# ---------- BUILD STAGE ----------
+FROM node:20-slim AS builder
 
-# Install OpenSSL and required deps
 RUN apt-get update -y && \
-    apt-get install -y openssl wget && \
-    apt-get clean && \
+    apt-get install -y openssl && \
     rm -rf /var/lib/apt/lists/*
-
-# Install pnpm
-RUN npm install -g pnpm
 
 WORKDIR /app
 
-# Copy dependency files
-COPY package.json pnpm-lock.yaml ./
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Install deps
-RUN pnpm install
+COPY tsconfig.json ./
+COPY prisma ./prisma
+COPY src ./src
 
-# Copy source code
-COPY . .
+ENV DATABASE_URL=${DATABASE_URL}
+ENV JWT_SECRET=${JWT_SECRET}
+RUN npx prisma generate
+RUN npm run build
 
-# Generate Prisma Client and Build
-# Pass a dummy DATABASE_URL to avoid errors during generation if config requires it
-RUN DATABASE_URL="postgresql://dummy:5432/dummy" pnpm run generate && pnpm run build
 
-# Copy init script
-COPY init.sh .
-RUN chmod +x init.sh
+# ---------- PRODUCTION STAGE ----------
+FROM node:20-slim
 
-EXPOSE 3000
+RUN apt-get update -y && \
+    apt-get install -y openssl && \
+    rm -rf /var/lib/apt/lists/*
 
-CMD ["./init.sh"]
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+
+RUN npm ci --omit=dev --ignore-scripts
+
+COPY --from=builder /app/dist ./dist
+COPY prisma ./prisma
+
+EXPOSE 3001
+CMD ["node", "dist/app.js"]

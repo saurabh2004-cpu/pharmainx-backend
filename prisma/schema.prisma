@@ -1,0 +1,338 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+enum ApplicationStatus {
+  APPLIED
+  SHORTLISTED
+  NEXT_ROUND_REQUESTED
+  NEXT_ROUND_ACCEPTED
+  NEXT_ROUND_REJECTED
+  INTERVIEW_SCHEDULED
+  INTERVIEW_ACCEPTED
+  HIRED
+  REJECTED
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AuthRoles {
+  USER
+  INSTITUTE
+}
+
+enum UserRoles {
+  DOCTOR
+  NURSE
+  OTHER
+  STUDENT
+}
+
+enum InstituteRoles {
+  HOSPITAL
+  CLINIC
+  LAB
+  PHARMACY
+}
+
+model Auth {
+  id         Int       @id @default(autoincrement())
+  created_at DateTime  @default(now())
+  email      String    @unique
+  password   String
+  role       AuthRoles @default(USER)
+}
+
+model User {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+
+  firstName      String
+  lastName       String
+  email          String        @unique
+  password       String
+  country        String        @default("India")
+  city           String        @default("")
+  university     String?
+  degree         String?
+  yearOfStudy    String?
+  verified       Boolean       @default(false)
+  gender         String?
+  specialization String?
+  speciality     String?
+  subSpeciality  String?
+  role           UserRoles     @default(STUDENT)
+  experience     Int?
+  JobApplication Application[]
+
+  headline String?
+  about    String?
+
+  savedJobs        SavedJob[]
+  userImages       UserImages[]
+  userExperiences  UserExperiences[]
+  userEducations   UserEducation[]
+  skills           UserSkills[]
+  userSpecialities UserSpecialities[]
+  userLinks        UserLinks[]
+}
+
+model Institute {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+
+  name          String   @unique
+  country       String?
+  city          String?
+  verified      Boolean  @default(false)
+  contactEmail  String   @unique
+  password      String
+  contactNumber String
+  bedsCount     Int
+  staffCount    Int
+  type          String
+  services      String[]
+  telephone     String
+
+  role InstituteRoles @default(HOSPITAL)
+
+  Job Job[]
+
+  affiliatedUniversity    String?
+  yearEstablished         Int?
+  ownership               String?
+  headline                String?
+  about                   String?
+  instituteCreditsWallets InstituteCredits[]
+  instituteViews          InstituteView[]
+  instituteImages         InstituteImages[]
+}
+
+model InstituteCredits {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  credits     Int        @default(0)
+  institute   Institute? @relation(fields: [instituteId], references: [id])
+  instituteId String?
+}
+
+model CreditsWallet {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  newJobCreditsPrice   Int @default(0)
+  renewJobCreditsPrice Int @default(0)
+}
+
+model Job {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  title            String
+  jobType          String
+  role             String
+  skills           String[]
+  workLocation     String
+  city             String?
+  country          String?
+  experienceLevel  String
+  shortDescription String?
+
+  fullDescription String
+  requirements    String
+  additionalInfo  String?
+
+  salaryCurrency      String?   @default("INR")
+  salaryMin           Int
+  salaryMax           Int
+  applicationDeadline DateTime?
+  contactEmail        String?
+  contactPhone        String?
+  contactPerson       String?
+
+  status      String    @default("active")
+  institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  instituteId String
+
+  speciality    String? @default("")
+  subSpeciality String? @default("")
+
+  applications  Application[]
+  JobView       JobView[]
+  savedJobs     SavedJob[]
+  renewedAt     DateTime?
+  notifications Notification[]
+}
+
+model Application {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  status      ApplicationStatus @default(APPLIED)
+  appliedDate DateTime          @default(now())
+  resumeUrl   String
+
+  coverLetter       String?
+  experienceYears   Int?
+  currentPosition   String?
+  currentInstitute  String?
+  additionalDetails Json?
+
+  job           Job            @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId         String
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String
+  notifications Notification[]
+}
+
+model JobView {
+  id       String   @id @default(uuid())
+  jobId    String
+  userId   String?
+  viewedAt DateTime @default(now())
+
+  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
+
+model InstituteView {
+  id          String   @id @default(uuid())
+  instituteId String
+  userId      String?
+  viewedAt    DateTime @default(now())
+
+  institute Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+
+  @@unique([instituteId, userId])
+}
+
+model InstituteImages {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  instituteId  String @default("")
+  coverImage   String @default("")
+  profileImage String @default("")
+
+  institute Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+}
+
+model UserImages {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId       String @default("")
+  coverImage   String @default("")
+  profileImage String @default("")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SavedJob {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  job    Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId  String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  receiverId   String
+  receiverRole String
+  title        String
+  message      String
+  isRead       Boolean @default(false)
+
+  relatedJobId         String?
+  relatedApplicationId String?
+
+  job         Job?         @relation(fields: [relatedJobId], references: [id])
+  application Application? @relation(fields: [relatedApplicationId], references: [id])
+}
+
+model UserExperiences {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId           String   @default("")
+  organizationName String   @default("")
+  role             String   @default("")
+  startDate        DateTime @default(now())
+  endDate          DateTime @default(now())
+  description      String   @default("")
+  locationType     String   @default("")
+  country          String   @default("")
+  city             String   @default("")
+  isCurrentJob     Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserEducation {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId        String   @default("")
+  instituteName String   @default("")
+  degree        String   @default("")
+  startDate     DateTime @default(now())
+  endDate       DateTime @default(now())
+  country       String   @default("")
+  city          String   @default("")
+  isCurrentJob  Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserSkills {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId String   @default("")
+  skills String[] @default([])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserSpecialities {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId       String   @default("")
+  specialities String[] @default([])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserLinks {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId String   @default("")
+  links  String[] @default([])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

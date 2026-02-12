@@ -68,6 +68,51 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
     const authUserId = req.user?.id;
     if (!authUserId) return res.status(401).json({ error: 'Unauthorized' });
 
+    // --- PROFILE COMPLETION VALIDATION START ---
+    try {
+        const educations = await prisma.userEducation.findMany({
+            where: { userId: authUserId }
+        });
+
+        const experiences = await prisma.userExperiences.findMany({
+            where: { userId: authUserId }
+        });
+
+        const skills = await prisma.userSkills.findMany({
+            where: { userId: authUserId }
+        });
+
+        const user = await prisma.user.findUnique({
+            where: { id: authUserId },
+            select: { speciality: true }
+        });
+
+        const isStudent = req.user?.role === 'STUDENT';
+
+        // 1. Common checks for everyone
+        if (
+            educations.length === 0 ||
+            skills.length === 0 ||
+            !user?.speciality
+        ) {
+            return res.status(400).json({
+                error: "Profile incomplete. Please complete your education, skills, and speciality before applying."
+            });
+        }
+
+        // 2. Extra check for non-students (Experience required)
+        if (!isStudent && experiences.length === 0) {
+            return res.status(400).json({
+                error: "Profile incomplete. Please add your experience details before applying."
+            });
+        }
+
+    } catch (validationErr) {
+        logger.error({ validationErr }, "Error validating profile completeness");
+        return res.status(500).json({ error: "Failed to validate profile completeness" });
+    }
+    // --- PROFILE COMPLETION VALIDATION END ---
+
     // Handle file upload stuff from previous controller if needed
     let resumeUrl = req.body.resumeUrl || "";
     if (req.file) {
@@ -114,7 +159,8 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
             title: 'New Job Application',
             message: `User ${application.user.firstName} ${application.user.lastName} applied for ${job.title}`,
             relatedJobId: jobId,
-            relatedApplicationId: application.id
+            relatedApplicationId: application.id,
+            status: 'APPLIED'
         });
 
         res.status(201).json(application);
@@ -151,6 +197,7 @@ export const shortList = async (req: AuthRequest, res: Response) => {
             title: 'Application Shortlisted',
             message: `Your application for ${app.job.title} was shortlisted.`,
             relatedJobId: app.jobId,
+            status: 'SHORTLISTED',
             relatedApplicationId: app.id
         });
 
@@ -191,7 +238,8 @@ export const requestNextRound = async (req: AuthRequest, res: Response) => {
             title: 'Next Round Requested',
             message: `The institute has requested a next round for your application to ${app.job.title}`,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: 'NEXT_ROUND_REQUESTED'
         });
 
         res.status(200).json(updated);
@@ -232,7 +280,8 @@ export const respondNextRound = async (req: AuthRequest, res: Response) => {
             title: `Next Round ${status === 'accept' ? 'Accepted' : 'Rejected'}`,
             message: `User ${app.user.firstName} ${app.user.lastName} has ${status}ed the next round request for ${app.job.title}`,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: newStatus
         });
 
         res.status(200).json(updated);
@@ -247,12 +296,10 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
     const { id } = req.params as any;
     const authId = req.user?.id;
     const role = req.user?.role;
-
-    // Additional details like date/time could be in req.body
-    const { interviewDetails } = req.body;
-    console.log("schedule interviewDetails", interviewDetails);
+    const { interviewType, interviewDate, interviewTime, interviewLink } = req.body;
 
     if (!InstituteRoles.includes(role || '')) return res.status(403).json({ error: "Forbidden" });
+
 
     try {
         const app = await prisma.application.findUnique({
@@ -270,13 +317,19 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
             }
         });
 
+        const notificationMessage = interviewLink
+            ? `Your interview has been scheduled for ${app.job.title} on ${interviewDate} at ${interviewTime}. Join using this link: ${interviewLink}`
+            : `Your interview has been scheduled for ${app.job.title} on ${interviewDate} at ${interviewTime}.`;
+
+
         await sendNotification({
             receiverId: app.userId,
             receiverRole: 'USER',
             title: 'Interview Scheduled',
-            message: `Interview scheduled for ${app.job.title}. Details: ${interviewDetails || 'Check dashboard'}`,
+            message: notificationMessage,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: 'INTERVIEW_SCHEDULED'
         });
 
         res.status(200).json(updated);
@@ -302,6 +355,8 @@ export const interviewDecision = async (req: AuthRequest, res: Response) => {
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
         // if (app.job.userId !== authId) return res.status(403).json({ error: "Forbidden" });
+        const jobId = app.jobId;
+
 
         let newStatus: ApplicationStatus;
         if (decision === 'accept') newStatus = 'INTERVIEW_ACCEPTED';
@@ -314,12 +369,13 @@ export const interviewDecision = async (req: AuthRequest, res: Response) => {
         });
 
         await sendNotification({
-            receiverId: app.userId,
-            receiverRole: 'USER',
-            title: `Interview Outcome: ${decision === 'accept' ? 'Passed' : 'Rejected'}`,
-            message: `Your interview for ${app.job.title} was ${decision}ed.`,
+            receiverId: app.job.instituteId,
+            receiverRole: 'INSTITUTE',
+            title: `Interview Result: ${decision === 'accept' ? 'Accepted' : 'Rejected'}`,
+            message: `User has ${decision}ed the interview for ${app.job.title}.`,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: newStatus
         });
 
         res.status(200).json(updated);
@@ -356,7 +412,8 @@ export const hire = async (req: AuthRequest, res: Response) => {
             title: 'Congratulations! You are Hired',
             message: `You have been hired for ${app.job.title}!`,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: 'HIRED'
         });
 
         res.status(200).json(updated);
@@ -393,7 +450,8 @@ export const reject = async (req: AuthRequest, res: Response) => {
             title: 'Application Rejected',
             message: `Your application for ${app.job.title} was rejected.`,
             relatedJobId: app.jobId,
-            relatedApplicationId: app.id
+            relatedApplicationId: app.id,
+            status: 'REJECTED'
         });
 
         res.status(200).json(updated);
@@ -489,3 +547,5 @@ export const getUserApplicationStats = async (req: AuthRequest, res: Response) =
         res.status(500).json({ error: 'Database error' });
     }
 };
+
+
