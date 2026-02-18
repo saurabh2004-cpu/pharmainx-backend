@@ -61,12 +61,12 @@ export const initializeSocket = (httpServer: HttpServer) => {
                     });
 
                     // Update them to read
-                    await prisma.notification.updateMany({
-                        where: {
-                            id: { in: notifications.map(n => n.id) }
-                        },
-                        data: { isRead: true }
-                    });
+                    // await prisma.notification.updateMany({
+                    //     where: {
+                    //         id: { in: notifications.map(n => n.id) }
+                    //     },
+                    //     // data: {}
+                    // });
                 }
             } catch (error) {
                 console.error("Error fetching offline notifications:", error);

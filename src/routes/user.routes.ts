@@ -25,7 +25,8 @@ import {
     deleteUserSpecialities,
     updateUserLinks,
     getUserLinks,
-    deleteUserLinks
+    deleteUserLinks,
+    checkUserProfileCompletionStatus
 } from '../controllers/user.controller.js';
 import { downloadResume } from '../controllers/resume.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
@@ -72,5 +73,8 @@ router.delete('/delete-specialities', authenticateToken, deleteUserSpecialities)
 router.post('/create-links', authenticateToken, updateUserLinks);
 router.get('/get-links', authenticateToken, getUserLinks);
 router.delete('/delete-links', authenticateToken, deleteUserLinks);
+
+// Profile Completion Routes
+router.get('/check-profile-completion', authenticateToken, checkUserProfileCompletionStatus);
 
 export default router;

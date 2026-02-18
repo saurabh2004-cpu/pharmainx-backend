@@ -401,7 +401,9 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserSkills: 'UserSkills',
   UserSpecialities: 'UserSpecialities',
-  UserLinks: 'UserLinks'
+  UserLinks: 'UserLinks',
+  UserVerifications: 'UserVerifications',
+  InstituteVerifications: 'InstituteVerifications'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "auth" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks"
+    modelProps: "auth" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1753,6 +1755,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserVerifications: {
+      payload: Prisma.$UserVerificationsPayload<ExtArgs>
+      fields: Prisma.UserVerificationsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserVerificationsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserVerificationsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        findFirst: {
+          args: Prisma.UserVerificationsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserVerificationsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        findMany: {
+          args: Prisma.UserVerificationsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>[]
+        }
+        create: {
+          args: Prisma.UserVerificationsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        createMany: {
+          args: Prisma.UserVerificationsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserVerificationsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>[]
+        }
+        delete: {
+          args: Prisma.UserVerificationsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        update: {
+          args: Prisma.UserVerificationsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserVerificationsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserVerificationsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserVerificationsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserVerificationsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationsPayload>
+        }
+        aggregate: {
+          args: Prisma.UserVerificationsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserVerifications>
+        }
+        groupBy: {
+          args: Prisma.UserVerificationsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserVerificationsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserVerificationsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserVerificationsCountAggregateOutputType> | number
+        }
+      }
+    }
+    InstituteVerifications: {
+      payload: Prisma.$InstituteVerificationsPayload<ExtArgs>
+      fields: Prisma.InstituteVerificationsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InstituteVerificationsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InstituteVerificationsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        findFirst: {
+          args: Prisma.InstituteVerificationsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InstituteVerificationsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        findMany: {
+          args: Prisma.InstituteVerificationsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>[]
+        }
+        create: {
+          args: Prisma.InstituteVerificationsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        createMany: {
+          args: Prisma.InstituteVerificationsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InstituteVerificationsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>[]
+        }
+        delete: {
+          args: Prisma.InstituteVerificationsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        update: {
+          args: Prisma.InstituteVerificationsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        deleteMany: {
+          args: Prisma.InstituteVerificationsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InstituteVerificationsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InstituteVerificationsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>[]
+        }
+        upsert: {
+          args: Prisma.InstituteVerificationsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationsPayload>
+        }
+        aggregate: {
+          args: Prisma.InstituteVerificationsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInstituteVerifications>
+        }
+        groupBy: {
+          args: Prisma.InstituteVerificationsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVerificationsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InstituteVerificationsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVerificationsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1993,7 +2143,8 @@ export const NotificationScalarFieldEnum = {
   message: 'message',
   isRead: 'isRead',
   relatedJobId: 'relatedJobId',
-  relatedApplicationId: 'relatedApplicationId'
+  relatedApplicationId: 'relatedApplicationId',
+  status: 'status'
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -2066,6 +2217,60 @@ export const UserLinksScalarFieldEnum = {
 } as const
 
 export type UserLinksScalarFieldEnum = (typeof UserLinksScalarFieldEnum)[keyof typeof UserLinksScalarFieldEnum]
+
+
+export const UserVerificationsScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  userId: 'userId',
+  userRole: 'userRole',
+  status: 'status',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  dob: 'dob',
+  governMentId: 'governMentId',
+  authorizeToVerify: 'authorizeToVerify',
+  email: 'email',
+  phone: 'phone',
+  country: 'country',
+  city: 'city',
+  professionalTitle: 'professionalTitle',
+  primarySpecialty: 'primarySpecialty',
+  licenseNumber: 'licenseNumber',
+  licenseExpiryDate: 'licenseExpiryDate',
+  degree: 'degree',
+  university: 'university',
+  yearOfGraduation: 'yearOfGraduation',
+  degreeCertificate: 'degreeCertificate',
+  postGraduateDegree: 'postGraduateDegree',
+  postGraduateUniversity: 'postGraduateUniversity',
+  postGraduateDegreeCertificate: 'postGraduateDegreeCertificate',
+  currentEmployer: 'currentEmployer',
+  currentRole: 'currentRole',
+  practiceCountry: 'practiceCountry',
+  practiceCity: 'practiceCity',
+  isLicenceSuspended: 'isLicenceSuspended',
+  licenceSuspensionReason: 'licenceSuspensionReason'
+} as const
+
+export type UserVerificationsScalarFieldEnum = (typeof UserVerificationsScalarFieldEnum)[keyof typeof UserVerificationsScalarFieldEnum]
+
+
+export const InstituteVerificationsScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  instituteId: 'instituteId',
+  status: 'status',
+  telephone: 'telephone',
+  email: 'email',
+  adminName: 'adminName',
+  adminPhone: 'adminPhone',
+  registrationCertificate: 'registrationCertificate'
+} as const
+
+export type InstituteVerificationsScalarFieldEnum = (typeof InstituteVerificationsScalarFieldEnum)[keyof typeof InstituteVerificationsScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2235,6 +2440,20 @@ export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
 
 
 /**
+ * Reference to a field of type 'VerificationStatus'
+ */
+export type EnumVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VerificationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'VerificationStatus[]'
+ */
+export type ListEnumVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VerificationStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2360,6 +2579,8 @@ export type GlobalOmitConfig = {
   userSkills?: Prisma.UserSkillsOmit
   userSpecialities?: Prisma.UserSpecialitiesOmit
   userLinks?: Prisma.UserLinksOmit
+  userVerifications?: Prisma.UserVerificationsOmit
+  instituteVerifications?: Prisma.InstituteVerificationsOmit
 }
 
 /* Types for Logging */

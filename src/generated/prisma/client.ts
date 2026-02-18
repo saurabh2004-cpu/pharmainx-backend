@@ -129,3 +129,13 @@ export type UserSpecialities = Prisma.UserSpecialitiesModel
  * 
  */
 export type UserLinks = Prisma.UserLinksModel
+/**
+ * Model UserVerifications
+ * 
+ */
+export type UserVerifications = Prisma.UserVerificationsModel
+/**
+ * Model InstituteVerifications
+ * 
+ */
+export type InstituteVerifications = Prisma.InstituteVerificationsModel

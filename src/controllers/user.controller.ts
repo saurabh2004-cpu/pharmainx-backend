@@ -841,3 +841,74 @@ export const deleteUserLinks = async (req: AuthRequest, res: Response) => {
         res.status(500).json({ error: 'Database error' });
     }
 };
+
+
+export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Response) => {
+    const authId = req.user?.id;
+
+    if (!authId) return res.status(401).json({ error: 'Unauthorized' });
+
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: String(authId) },
+            include: {
+                userSpecialities: true,
+                userExperiences: true,
+                skills: true,
+                userEducations: true,
+                userVerifications: true
+            }
+        });
+
+        if (!user) {
+            logger.error({ authId }, 'User not found');
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const isStudent = user.role === 'STUDENT';
+        const isVerified = user.userVerifications.status === 'VERIFIED';
+
+        console.log("is user verified", isVerified);
+
+        if (!isVerified) {
+            return res.status(400).json({
+                isComplete: false,
+                error: "Not Verified. Please verify your profile before applying."
+            });
+        }
+
+        if (isStudent) {
+            // Students: Education, Skills, and Specialities required
+            if (
+                user.userEducations.length === 0 ||
+                user.skills.length === 0 ||
+                user.userSpecialities.length === 0
+            ) {
+                return res.status(400).json({
+                    isComplete: false,
+                    error: "Profile incomplete. Please complete your education, skills, and speciality before applying."
+                });
+            }
+        } else {
+            // Non-students: Education, Experience, Skills, and Specialities required
+            if (
+                user.userEducations.length === 0 ||
+                user.userExperiences.length === 0 ||
+                user.skills.length === 0 ||
+                user.userSpecialities.length === 0
+            ) {
+                return res.status(400).json({
+                    isComplete: false,
+                    error: "Profile incomplete. Please add your experience, education, skills, and speciality details before applying."
+                });
+            }
+        }
+
+        return res.status(200).json({
+            isComplete: true
+        });
+    } catch (err: any) {
+        logger.error({ err, authId }, 'Error checking user profile completion status');
+        res.status(500).json({ error: 'Database error' });
+    }
+};

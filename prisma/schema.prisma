@@ -41,6 +41,12 @@ enum InstituteRoles {
   PHARMACY
 }
 
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Auth {
   id         Int       @id @default(autoincrement())
   created_at DateTime  @default(now())
@@ -74,13 +80,14 @@ model User {
   headline String?
   about    String?
 
-  savedJobs        SavedJob[]
-  userImages       UserImages[]
-  userExperiences  UserExperiences[]
-  userEducations   UserEducation[]
-  skills           UserSkills[]
-  userSpecialities UserSpecialities[]
-  userLinks        UserLinks[]
+  savedJobs         SavedJob[]
+  userImages        UserImages[]
+  userExperiences   UserExperiences[]
+  userEducations    UserEducation[]
+  skills            UserSkills[]
+  userSpecialities  UserSpecialities[]
+  userLinks         UserLinks[]
+  userVerifications UserVerifications[]
 }
 
 model Institute {
@@ -112,6 +119,7 @@ model Institute {
   instituteCreditsWallets InstituteCredits[]
   instituteViews          InstituteView[]
   instituteImages         InstituteImages[]
+  instituteVerifications  InstituteVerifications[]
 }
 
 model InstituteCredits {
@@ -263,6 +271,7 @@ model Notification {
 
   relatedJobId         String?
   relatedApplicationId String?
+  status               ApplicationStatus?
 
   job         Job?         @relation(fields: [relatedJobId], references: [id])
   application Application? @relation(fields: [relatedApplicationId], references: [id])
@@ -335,4 +344,63 @@ model UserLinks {
   links  String[] @default([])
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserVerifications {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id])
+  userId   String
+  userRole UserRoles
+
+  status VerificationStatus @default(PENDING)
+
+  firstName         String
+  lastName          String
+  dob               DateTime
+  governMentId      String
+  authorizeToVerify Boolean
+  email             String
+  phone             String
+  country           String
+  city              String
+
+  professionalTitle             String
+  primarySpecialty              String
+  licenseNumber                 String
+  licenseExpiryDate             DateTime
+  degree                        String
+  university                    String
+  yearOfGraduation              DateTime
+  degreeCertificate             String
+  postGraduateDegree            String?
+  postGraduateUniversity        String?
+  postGraduateDegreeCertificate String?
+
+  currentEmployer String?
+  currentRole     String?
+  practiceCountry String?
+  practiceCity    String?
+
+  isLicenceSuspended      Boolean @default(false)
+  licenceSuspensionReason String?
+}
+
+model InstituteVerifications {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  institute   Institute @relation(fields: [instituteId], references: [id])
+  instituteId String    @unique
+
+  status VerificationStatus @default(PENDING)
+
+  telephone               String
+  email                   String
+  adminName               String
+  adminPhone              String
+  registrationCertificate String
 }

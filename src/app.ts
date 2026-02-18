@@ -45,6 +45,8 @@ import institutesCreditsRoutes from './routes/institutesCredits.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import userImagesRoutes from './routes/userImages.routes.js';
 import instituteImagesRoutes from './routes/instituteImages.routes.js';
+import userVerificationsRoutes from './routes/userVerifications.routes.js';
+import instituteVerificationsRoutes from './routes/institutesVerification.routes.js';
 
 
 app.use('/api/v1/user', userRoutes);
@@ -60,6 +62,8 @@ app.use('/api/v1/notifications', notificationRoutes);
 // Image Routes
 app.use('/api/v1/user-images', userImagesRoutes);
 app.use('/api/v1/institute-images', instituteImagesRoutes);
+app.use('/api/v1/user-verifications', userVerificationsRoutes);
+app.use('/api/v1/institute-verifications', instituteVerificationsRoutes);
 
 // Static Uploads removed - Served via CloudFront
 

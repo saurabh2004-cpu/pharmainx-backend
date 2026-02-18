@@ -68,32 +68,33 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
     const authUserId = req.user?.id;
     if (!authUserId) return res.status(401).json({ error: 'Unauthorized' });
 
-    // --- PROFILE COMPLETION VALIDATION START ---
     try {
-        const educations = await prisma.userEducation.findMany({
-            where: { userId: authUserId }
-        });
-
-        const experiences = await prisma.userExperiences.findMany({
-            where: { userId: authUserId }
-        });
-
-        const skills = await prisma.userSkills.findMany({
-            where: { userId: authUserId }
-        });
 
         const user = await prisma.user.findUnique({
             where: { id: authUserId },
-            select: { speciality: true }
+            include: {
+                userEducations: true,
+                userExperiences: true,
+                skills: true,
+                userSpecialities: true,
+            }
         });
+
+        console.log("userverifications", user);
+
+        const educations = user?.userEducations;
+        const experiences = user?.userExperiences;
+        const skills = user?.skills;
+        const specialities = user?.userSpecialities;
+
+
 
         const isStudent = req.user?.role === 'STUDENT';
 
-        // 1. Common checks for everyone
         if (
-            educations.length === 0 ||
-            skills.length === 0 ||
-            !user?.speciality
+            educations?.length === 0 ||
+            skills?.length === 0 ||
+            specialities?.length === 0
         ) {
             return res.status(400).json({
                 error: "Profile incomplete. Please complete your education, skills, and speciality before applying."
@@ -101,7 +102,7 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
         }
 
         // 2. Extra check for non-students (Experience required)
-        if (!isStudent && experiences.length === 0) {
+        if (!isStudent && experiences?.length === 0) {
             return res.status(400).json({
                 error: "Profile incomplete. Please add your experience details before applying."
             });
@@ -111,7 +112,6 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
         logger.error({ validationErr }, "Error validating profile completeness");
         return res.status(500).json({ error: "Failed to validate profile completeness" });
     }
-    // --- PROFILE COMPLETION VALIDATION END ---
 
     // Handle file upload stuff from previous controller if needed
     let resumeUrl = req.body.resumeUrl || "";
@@ -547,5 +547,6 @@ export const getUserApplicationStats = async (req: AuthRequest, res: Response) =
         res.status(500).json({ error: 'Database error' });
     }
 };
+
 
 

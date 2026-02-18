@@ -153,6 +153,8 @@ export const markAsRead = async (req: AuthRequest, res: Response) => {
  * Mark all notifications as read for the authenticated user/institute
  */
 export const markAllAsRead = async (req: AuthRequest, res: Response) => {
+
+    console.log("mark all as read request received")
     const authId = req.user?.id;
     const authRole = req.user?.role;
 
@@ -176,6 +178,40 @@ export const markAllAsRead = async (req: AuthRequest, res: Response) => {
         res.status(200).json({ success: true, count: result.count });
     } catch (err) {
         logger.error({ err, userId: authId }, 'Error marking all notifications as read');
+        res.status(500).json({ error: 'Database error' });
+    }
+};
+
+export const getAllMyUnreadNotifications = async (req: AuthRequest, res: Response) => {
+    const authId = req.user?.id;
+    const authRole = req.user?.role;
+
+    if (!authId || !authRole) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const notificationRole = getNotificationRole(authRole);
+
+    try {
+        const notifications = await prisma.notification.findMany({
+            where: {
+                receiverId: authId,
+                receiverRole: notificationRole,
+                isRead: false
+            },
+            orderBy: { createdAt: 'desc' },
+            include: {
+                job: true,
+                application: true
+            }
+        });
+
+        console.log("unread notifications", notifications);
+
+        logger.info({ userId: authId, count: notifications.length }, 'Fetched unread notifications');
+        res.status(200).json({ notifications });
+    } catch (err) {
+        logger.error({ err, userId: authId }, 'Error fetching unread notifications');
         res.status(500).json({ error: 'Database error' });
     }
 };

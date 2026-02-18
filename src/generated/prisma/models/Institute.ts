@@ -344,6 +344,7 @@ export type InstituteWhereInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
   instituteViews?: Prisma.InstituteViewListRelationFilter
   instituteImages?: Prisma.InstituteImagesListRelationFilter
+  instituteVerifications?: Prisma.InstituteVerificationsListRelationFilter
 }
 
 export type InstituteOrderByWithRelationInput = {
@@ -371,6 +372,7 @@ export type InstituteOrderByWithRelationInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsOrderByRelationAggregateInput
   instituteViews?: Prisma.InstituteViewOrderByRelationAggregateInput
   instituteImages?: Prisma.InstituteImagesOrderByRelationAggregateInput
+  instituteVerifications?: Prisma.InstituteVerificationsOrderByRelationAggregateInput
 }
 
 export type InstituteWhereUniqueInput = Prisma.AtLeast<{
@@ -401,6 +403,7 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
   instituteViews?: Prisma.InstituteViewListRelationFilter
   instituteImages?: Prisma.InstituteImagesListRelationFilter
+  instituteVerifications?: Prisma.InstituteVerificationsListRelationFilter
 }, "id" | "name" | "contactEmail">
 
 export type InstituteOrderByWithAggregationInput = {
@@ -482,6 +485,7 @@ export type InstituteCreateInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateInput = {
@@ -509,6 +513,7 @@ export type InstituteUncheckedCreateInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUpdateInput = {
@@ -536,6 +541,7 @@ export type InstituteUpdateInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateInput = {
@@ -563,6 +569,7 @@ export type InstituteUncheckedUpdateInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateManyInput = {
@@ -802,6 +809,20 @@ export type InstituteUpdateOneRequiredWithoutInstituteImagesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutInstituteImagesInput, Prisma.InstituteUpdateWithoutInstituteImagesInput>, Prisma.InstituteUncheckedUpdateWithoutInstituteImagesInput>
 }
 
+export type InstituteCreateNestedOneWithoutInstituteVerificationsInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedCreateWithoutInstituteVerificationsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutInstituteVerificationsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+}
+
+export type InstituteUpdateOneRequiredWithoutInstituteVerificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedCreateWithoutInstituteVerificationsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutInstituteVerificationsInput
+  upsert?: Prisma.InstituteUpsertWithoutInstituteVerificationsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutInstituteVerificationsInput, Prisma.InstituteUpdateWithoutInstituteVerificationsInput>, Prisma.InstituteUncheckedUpdateWithoutInstituteVerificationsInput>
+}
+
 export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   id?: string
   created_at?: Date | string
@@ -826,6 +847,7 @@ export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
@@ -852,6 +874,7 @@ export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteCreditsWalletsInput = {
@@ -894,6 +917,7 @@ export type InstituteUpdateWithoutInstituteCreditsWalletsInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
@@ -920,6 +944,7 @@ export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutJobInput = {
@@ -946,6 +971,7 @@ export type InstituteCreateWithoutJobInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutJobInput = {
@@ -972,6 +998,7 @@ export type InstituteUncheckedCreateWithoutJobInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutJobInput = {
@@ -1014,6 +1041,7 @@ export type InstituteUpdateWithoutJobInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutJobInput = {
@@ -1040,6 +1068,7 @@ export type InstituteUncheckedUpdateWithoutJobInput = {
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteViewsInput = {
@@ -1066,6 +1095,7 @@ export type InstituteCreateWithoutInstituteViewsInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
@@ -1092,6 +1122,7 @@ export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteViewsInput = {
@@ -1134,6 +1165,7 @@ export type InstituteUpdateWithoutInstituteViewsInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
@@ -1160,6 +1192,7 @@ export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteImagesInput = {
@@ -1186,6 +1219,7 @@ export type InstituteCreateWithoutInstituteImagesInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
@@ -1212,6 +1246,7 @@ export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteImagesInput = {
@@ -1254,6 +1289,7 @@ export type InstituteUpdateWithoutInstituteImagesInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
@@ -1280,6 +1316,131 @@ export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteCreateWithoutInstituteVerificationsInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  country?: string | null
+  city?: string | null
+  verified?: boolean
+  contactEmail: string
+  password: string
+  contactNumber: string
+  bedsCount: number
+  staffCount: number
+  type: string
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  telephone: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteUncheckedCreateWithoutInstituteVerificationsInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  country?: string | null
+  city?: string | null
+  verified?: boolean
+  contactEmail: string
+  password: string
+  contactNumber: string
+  bedsCount: number
+  staffCount: number
+  type: string
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  telephone: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteCreateOrConnectWithoutInstituteVerificationsInput = {
+  where: Prisma.InstituteWhereUniqueInput
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedCreateWithoutInstituteVerificationsInput>
+}
+
+export type InstituteUpsertWithoutInstituteVerificationsInput = {
+  update: Prisma.XOR<Prisma.InstituteUpdateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedUpdateWithoutInstituteVerificationsInput>
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedCreateWithoutInstituteVerificationsInput>
+  where?: Prisma.InstituteWhereInput
+}
+
+export type InstituteUpdateToOneWithWhereWithoutInstituteVerificationsInput = {
+  where?: Prisma.InstituteWhereInput
+  data: Prisma.XOR<Prisma.InstituteUpdateWithoutInstituteVerificationsInput, Prisma.InstituteUncheckedUpdateWithoutInstituteVerificationsInput>
+}
+
+export type InstituteUpdateWithoutInstituteVerificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteUncheckedUpdateWithoutInstituteVerificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 
@@ -1292,6 +1453,7 @@ export type InstituteCountOutputType = {
   instituteCreditsWallets: number
   instituteViews: number
   instituteImages: number
+  instituteVerifications: number
 }
 
 export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1299,6 +1461,7 @@ export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   instituteCreditsWallets?: boolean | InstituteCountOutputTypeCountInstituteCreditsWalletsArgs
   instituteViews?: boolean | InstituteCountOutputTypeCountInstituteViewsArgs
   instituteImages?: boolean | InstituteCountOutputTypeCountInstituteImagesArgs
+  instituteVerifications?: boolean | InstituteCountOutputTypeCountInstituteVerificationsArgs
 }
 
 /**
@@ -1339,6 +1502,13 @@ export type InstituteCountOutputTypeCountInstituteImagesArgs<ExtArgs extends run
   where?: Prisma.InstituteImagesWhereInput
 }
 
+/**
+ * InstituteCountOutputType without action
+ */
+export type InstituteCountOutputTypeCountInstituteVerificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InstituteVerificationsWhereInput
+}
+
 
 export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1365,6 +1535,7 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
   instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
+  instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["institute"]>
 
@@ -1443,6 +1614,7 @@ export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
   instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
+  instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type InstituteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1455,6 +1627,7 @@ export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     instituteCreditsWallets: Prisma.$InstituteCreditsPayload<ExtArgs>[]
     instituteViews: Prisma.$InstituteViewPayload<ExtArgs>[]
     instituteImages: Prisma.$InstituteImagesPayload<ExtArgs>[]
+    instituteVerifications: Prisma.$InstituteVerificationsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1875,6 +2048,7 @@ export interface Prisma__InstituteClient<T, Null = never, ExtArgs extends runtim
   instituteCreditsWallets<T extends Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteCreditsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteViews<T extends Prisma.Institute$instituteViewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteViewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteImages<T extends Prisma.Institute$instituteImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  instituteVerifications<T extends Prisma.Institute$instituteVerificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteVerificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2405,6 +2579,30 @@ export type Institute$instituteImagesArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.InstituteImagesScalarFieldEnum | Prisma.InstituteImagesScalarFieldEnum[]
+}
+
+/**
+ * Institute.instituteVerifications
+ */
+export type Institute$instituteVerificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InstituteVerifications
+   */
+  select?: Prisma.InstituteVerificationsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InstituteVerifications
+   */
+  omit?: Prisma.InstituteVerificationsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InstituteVerificationsInclude<ExtArgs> | null
+  where?: Prisma.InstituteVerificationsWhereInput
+  orderBy?: Prisma.InstituteVerificationsOrderByWithRelationInput | Prisma.InstituteVerificationsOrderByWithRelationInput[]
+  cursor?: Prisma.InstituteVerificationsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InstituteVerificationsScalarFieldEnum | Prisma.InstituteVerificationsScalarFieldEnum[]
 }
 
 /**

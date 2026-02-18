@@ -26,8 +26,10 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
         title,
         message,
         relatedJobId,
-        relatedApplicationId
+        relatedApplicationId,
     } = params;
+
+    console.log("notification params", params);
 
     try {
         // Create notification in database
@@ -38,7 +40,9 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
                 title,
                 message,
                 relatedJobId: relatedJobId || null,
-                relatedApplicationId: relatedApplicationId || null
+                relatedApplicationId: relatedApplicationId || null,
+                isRead: false,
+                status: params.status
             }
         });
 

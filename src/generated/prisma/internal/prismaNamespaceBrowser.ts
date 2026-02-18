@@ -68,7 +68,9 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserSkills: 'UserSkills',
   UserSpecialities: 'UserSpecialities',
-  UserLinks: 'UserLinks'
+  UserLinks: 'UserLinks',
+  UserVerifications: 'UserVerifications',
+  InstituteVerifications: 'InstituteVerifications'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -288,7 +290,8 @@ export const NotificationScalarFieldEnum = {
   message: 'message',
   isRead: 'isRead',
   relatedJobId: 'relatedJobId',
-  relatedApplicationId: 'relatedApplicationId'
+  relatedApplicationId: 'relatedApplicationId',
+  status: 'status'
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -361,6 +364,60 @@ export const UserLinksScalarFieldEnum = {
 } as const
 
 export type UserLinksScalarFieldEnum = (typeof UserLinksScalarFieldEnum)[keyof typeof UserLinksScalarFieldEnum]
+
+
+export const UserVerificationsScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  userId: 'userId',
+  userRole: 'userRole',
+  status: 'status',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  dob: 'dob',
+  governMentId: 'governMentId',
+  authorizeToVerify: 'authorizeToVerify',
+  email: 'email',
+  phone: 'phone',
+  country: 'country',
+  city: 'city',
+  professionalTitle: 'professionalTitle',
+  primarySpecialty: 'primarySpecialty',
+  licenseNumber: 'licenseNumber',
+  licenseExpiryDate: 'licenseExpiryDate',
+  degree: 'degree',
+  university: 'university',
+  yearOfGraduation: 'yearOfGraduation',
+  degreeCertificate: 'degreeCertificate',
+  postGraduateDegree: 'postGraduateDegree',
+  postGraduateUniversity: 'postGraduateUniversity',
+  postGraduateDegreeCertificate: 'postGraduateDegreeCertificate',
+  currentEmployer: 'currentEmployer',
+  currentRole: 'currentRole',
+  practiceCountry: 'practiceCountry',
+  practiceCity: 'practiceCity',
+  isLicenceSuspended: 'isLicenceSuspended',
+  licenceSuspensionReason: 'licenceSuspensionReason'
+} as const
+
+export type UserVerificationsScalarFieldEnum = (typeof UserVerificationsScalarFieldEnum)[keyof typeof UserVerificationsScalarFieldEnum]
+
+
+export const InstituteVerificationsScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  instituteId: 'instituteId',
+  status: 'status',
+  telephone: 'telephone',
+  email: 'email',
+  adminName: 'adminName',
+  adminPhone: 'adminPhone',
+  registrationCertificate: 'registrationCertificate'
+} as const
+
+export type InstituteVerificationsScalarFieldEnum = (typeof InstituteVerificationsScalarFieldEnum)[keyof typeof InstituteVerificationsScalarFieldEnum]
 
 
 export const SortOrder = {

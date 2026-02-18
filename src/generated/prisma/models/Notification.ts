@@ -34,6 +34,7 @@ export type NotificationMinAggregateOutputType = {
   isRead: boolean | null
   relatedJobId: string | null
   relatedApplicationId: string | null
+  status: $Enums.ApplicationStatus | null
 }
 
 export type NotificationMaxAggregateOutputType = {
@@ -46,6 +47,7 @@ export type NotificationMaxAggregateOutputType = {
   isRead: boolean | null
   relatedJobId: string | null
   relatedApplicationId: string | null
+  status: $Enums.ApplicationStatus | null
 }
 
 export type NotificationCountAggregateOutputType = {
@@ -58,6 +60,7 @@ export type NotificationCountAggregateOutputType = {
   isRead: number
   relatedJobId: number
   relatedApplicationId: number
+  status: number
   _all: number
 }
 
@@ -72,6 +75,7 @@ export type NotificationMinAggregateInputType = {
   isRead?: true
   relatedJobId?: true
   relatedApplicationId?: true
+  status?: true
 }
 
 export type NotificationMaxAggregateInputType = {
@@ -84,6 +88,7 @@ export type NotificationMaxAggregateInputType = {
   isRead?: true
   relatedJobId?: true
   relatedApplicationId?: true
+  status?: true
 }
 
 export type NotificationCountAggregateInputType = {
@@ -96,6 +101,7 @@ export type NotificationCountAggregateInputType = {
   isRead?: true
   relatedJobId?: true
   relatedApplicationId?: true
+  status?: true
   _all?: true
 }
 
@@ -181,6 +187,7 @@ export type NotificationGroupByOutputType = {
   isRead: boolean
   relatedJobId: string | null
   relatedApplicationId: string | null
+  status: $Enums.ApplicationStatus | null
   _count: NotificationCountAggregateOutputType | null
   _min: NotificationMinAggregateOutputType | null
   _max: NotificationMaxAggregateOutputType | null
@@ -214,6 +221,7 @@ export type NotificationWhereInput = {
   isRead?: Prisma.BoolFilter<"Notification"> | boolean
   relatedJobId?: Prisma.StringNullableFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableFilter<"Notification"> | string | null
+  status?: Prisma.EnumApplicationStatusNullableFilter<"Notification"> | $Enums.ApplicationStatus | null
   job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
   application?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.ApplicationWhereInput> | null
 }
@@ -228,6 +236,7 @@ export type NotificationOrderByWithRelationInput = {
   isRead?: Prisma.SortOrder
   relatedJobId?: Prisma.SortOrderInput | Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrderInput | Prisma.SortOrder
   job?: Prisma.JobOrderByWithRelationInput
   application?: Prisma.ApplicationOrderByWithRelationInput
 }
@@ -245,6 +254,7 @@ export type NotificationWhereUniqueInput = Prisma.AtLeast<{
   isRead?: Prisma.BoolFilter<"Notification"> | boolean
   relatedJobId?: Prisma.StringNullableFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableFilter<"Notification"> | string | null
+  status?: Prisma.EnumApplicationStatusNullableFilter<"Notification"> | $Enums.ApplicationStatus | null
   job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
   application?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.ApplicationWhereInput> | null
 }, "id">
@@ -259,6 +269,7 @@ export type NotificationOrderByWithAggregationInput = {
   isRead?: Prisma.SortOrder
   relatedJobId?: Prisma.SortOrderInput | Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.NotificationCountOrderByAggregateInput
   _max?: Prisma.NotificationMaxOrderByAggregateInput
   _min?: Prisma.NotificationMinOrderByAggregateInput
@@ -277,6 +288,7 @@ export type NotificationScalarWhereWithAggregatesInput = {
   isRead?: Prisma.BoolWithAggregatesFilter<"Notification"> | boolean
   relatedJobId?: Prisma.StringNullableWithAggregatesFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableWithAggregatesFilter<"Notification"> | string | null
+  status?: Prisma.EnumApplicationStatusNullableWithAggregatesFilter<"Notification"> | $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateInput = {
@@ -287,6 +299,7 @@ export type NotificationCreateInput = {
   title: string
   message: string
   isRead?: boolean
+  status?: $Enums.ApplicationStatus | null
   job?: Prisma.JobCreateNestedOneWithoutNotificationsInput
   application?: Prisma.ApplicationCreateNestedOneWithoutNotificationsInput
 }
@@ -301,6 +314,7 @@ export type NotificationUncheckedCreateInput = {
   isRead?: boolean
   relatedJobId?: string | null
   relatedApplicationId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationUpdateInput = {
@@ -311,6 +325,7 @@ export type NotificationUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
   job?: Prisma.JobUpdateOneWithoutNotificationsNestedInput
   application?: Prisma.ApplicationUpdateOneWithoutNotificationsNestedInput
 }
@@ -325,6 +340,7 @@ export type NotificationUncheckedUpdateInput = {
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedJobId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   relatedApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateManyInput = {
@@ -337,6 +353,7 @@ export type NotificationCreateManyInput = {
   isRead?: boolean
   relatedJobId?: string | null
   relatedApplicationId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationUpdateManyMutationInput = {
@@ -347,6 +364,7 @@ export type NotificationUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationUncheckedUpdateManyInput = {
@@ -359,6 +377,7 @@ export type NotificationUncheckedUpdateManyInput = {
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedJobId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   relatedApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationListRelationFilter = {
@@ -381,6 +400,7 @@ export type NotificationCountOrderByAggregateInput = {
   isRead?: Prisma.SortOrder
   relatedJobId?: Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type NotificationMaxOrderByAggregateInput = {
@@ -393,6 +413,7 @@ export type NotificationMaxOrderByAggregateInput = {
   isRead?: Prisma.SortOrder
   relatedJobId?: Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type NotificationMinOrderByAggregateInput = {
@@ -405,6 +426,7 @@ export type NotificationMinOrderByAggregateInput = {
   isRead?: Prisma.SortOrder
   relatedJobId?: Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type NotificationCreateNestedManyWithoutJobInput = {
@@ -491,6 +513,10 @@ export type NotificationUncheckedUpdateManyWithoutApplicationNestedInput = {
   deleteMany?: Prisma.NotificationScalarWhereInput | Prisma.NotificationScalarWhereInput[]
 }
 
+export type NullableEnumApplicationStatusFieldUpdateOperationsInput = {
+  set?: $Enums.ApplicationStatus | null
+}
+
 export type NotificationCreateWithoutJobInput = {
   id?: string
   createdAt?: Date | string
@@ -499,6 +525,7 @@ export type NotificationCreateWithoutJobInput = {
   title: string
   message: string
   isRead?: boolean
+  status?: $Enums.ApplicationStatus | null
   application?: Prisma.ApplicationCreateNestedOneWithoutNotificationsInput
 }
 
@@ -511,6 +538,7 @@ export type NotificationUncheckedCreateWithoutJobInput = {
   message: string
   isRead?: boolean
   relatedApplicationId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateOrConnectWithoutJobInput = {
@@ -552,6 +580,7 @@ export type NotificationScalarWhereInput = {
   isRead?: Prisma.BoolFilter<"Notification"> | boolean
   relatedJobId?: Prisma.StringNullableFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableFilter<"Notification"> | string | null
+  status?: Prisma.EnumApplicationStatusNullableFilter<"Notification"> | $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateWithoutApplicationInput = {
@@ -562,6 +591,7 @@ export type NotificationCreateWithoutApplicationInput = {
   title: string
   message: string
   isRead?: boolean
+  status?: $Enums.ApplicationStatus | null
   job?: Prisma.JobCreateNestedOneWithoutNotificationsInput
 }
 
@@ -574,6 +604,7 @@ export type NotificationUncheckedCreateWithoutApplicationInput = {
   message: string
   isRead?: boolean
   relatedJobId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateOrConnectWithoutApplicationInput = {
@@ -611,6 +642,7 @@ export type NotificationCreateManyJobInput = {
   message: string
   isRead?: boolean
   relatedApplicationId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationUpdateWithoutJobInput = {
@@ -621,6 +653,7 @@ export type NotificationUpdateWithoutJobInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
   application?: Prisma.ApplicationUpdateOneWithoutNotificationsNestedInput
 }
 
@@ -633,6 +666,7 @@ export type NotificationUncheckedUpdateWithoutJobInput = {
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationUncheckedUpdateManyWithoutJobInput = {
@@ -644,6 +678,7 @@ export type NotificationUncheckedUpdateManyWithoutJobInput = {
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationCreateManyApplicationInput = {
@@ -655,6 +690,7 @@ export type NotificationCreateManyApplicationInput = {
   message: string
   isRead?: boolean
   relatedJobId?: string | null
+  status?: $Enums.ApplicationStatus | null
 }
 
 export type NotificationUpdateWithoutApplicationInput = {
@@ -665,6 +701,7 @@ export type NotificationUpdateWithoutApplicationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
   job?: Prisma.JobUpdateOneWithoutNotificationsNestedInput
 }
 
@@ -677,6 +714,7 @@ export type NotificationUncheckedUpdateWithoutApplicationInput = {
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedJobId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 export type NotificationUncheckedUpdateManyWithoutApplicationInput = {
@@ -688,6 +726,7 @@ export type NotificationUncheckedUpdateManyWithoutApplicationInput = {
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   relatedJobId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
 }
 
 
@@ -702,6 +741,7 @@ export type NotificationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   isRead?: boolean
   relatedJobId?: boolean
   relatedApplicationId?: boolean
+  status?: boolean
   job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
@@ -716,6 +756,7 @@ export type NotificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   isRead?: boolean
   relatedJobId?: boolean
   relatedApplicationId?: boolean
+  status?: boolean
   job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
@@ -730,6 +771,7 @@ export type NotificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   isRead?: boolean
   relatedJobId?: boolean
   relatedApplicationId?: boolean
+  status?: boolean
   job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
@@ -744,9 +786,10 @@ export type NotificationSelectScalar = {
   isRead?: boolean
   relatedJobId?: boolean
   relatedApplicationId?: boolean
+  status?: boolean
 }
 
-export type NotificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "receiverId" | "receiverRole" | "title" | "message" | "isRead" | "relatedJobId" | "relatedApplicationId", ExtArgs["result"]["notification"]>
+export type NotificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "receiverId" | "receiverRole" | "title" | "message" | "isRead" | "relatedJobId" | "relatedApplicationId" | "status", ExtArgs["result"]["notification"]>
 export type NotificationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
@@ -776,6 +819,7 @@ export type $NotificationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     isRead: boolean
     relatedJobId: string | null
     relatedApplicationId: string | null
+    status: $Enums.ApplicationStatus | null
   }, ExtArgs["result"]["notification"]>
   composites: {}
 }
@@ -1210,6 +1254,7 @@ export interface NotificationFieldRefs {
   readonly isRead: Prisma.FieldRef<"Notification", 'Boolean'>
   readonly relatedJobId: Prisma.FieldRef<"Notification", 'String'>
   readonly relatedApplicationId: Prisma.FieldRef<"Notification", 'String'>
+  readonly status: Prisma.FieldRef<"Notification", 'ApplicationStatus'>
 }
     
 
