@@ -88,6 +88,7 @@ model User {
   userSpecialities  UserSpecialities[]
   userLinks         UserLinks[]
   userVerifications UserVerifications[]
+  conversations     Conversation[]
 }
 
 model Institute {
@@ -120,6 +121,7 @@ model Institute {
   instituteViews          InstituteView[]
   instituteImages         InstituteImages[]
   instituteVerifications  InstituteVerifications[]
+  conversations           Conversation[]
 }
 
 model InstituteCredits {
@@ -403,4 +405,61 @@ model InstituteVerifications {
   adminName               String
   adminPhone              String
   registrationCertificate String
+}
+
+enum SenderType {
+  USER
+  INSTITUTE
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  PDF
+}
+
+model Conversation {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  institute   Institute @relation(fields: [instituteId], references: [id])
+  instituteId String
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+
+  lastMessage   Message? @relation("LastMessage", fields: [lastMessageId], references: [id])
+  lastMessageId String?  @unique
+
+  instituteUnreadCount Int @default(0)
+  userUnreadCount      Int @default(0)
+
+  messages Message[] @relation("ConversationMessages")
+
+  @@unique([instituteId, userId])
+  @@index([instituteId])
+  @@index([userId])
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  conversation   Conversation @relation("ConversationMessages", fields: [conversationId], references: [id], onDelete: Cascade)
+  conversationId String
+
+  senderType SenderType
+  senderId   String
+
+  content   String?
+  mediaUrl  String?
+  mediaType MediaType?
+
+  isRead Boolean @default(false)
+
+  lastInConversation Conversation? @relation("LastMessage")
+
+  @@index([conversationId])
+  @@index([isRead])
 }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
-import { AuthRoles, Prisma } from '../generated/prisma/client.ts';
+import { AuthRoles, Prisma, VerificationStatus } from '../generated/prisma/client.ts';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -866,9 +866,9 @@ export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Re
         }
 
         const isStudent = user.role === 'STUDENT';
-        const isVerified = user.userVerifications.status === 'VERIFIED';
+        const isVerified = user.userVerifications.some((v: any) => v.status === 'APPROVED');
 
-        console.log("is user verified", isVerified);
+        // console.log("is user verified", user.userVerifications, isVerified);
 
         if (!isVerified) {
             return res.status(400).json({

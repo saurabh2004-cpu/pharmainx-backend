@@ -15,7 +15,10 @@ let io: SocketIOServer;
 export const initializeSocket = (httpServer: HttpServer) => {
     io = new SocketIOServer(httpServer, {
         cors: {
-            origin: "http://localhost:3000",
+            origin: [
+                "http://localhost:3000",
+                "http://88.222.242.191:3000"
+            ],
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true
         }
@@ -45,6 +48,25 @@ export const initializeSocket = (httpServer: HttpServer) => {
             console.log(`User connected: ${userId} (${role})`);
             socket.join(userId); // Join room based on ID (works for both User and Institute)
 
+            // Conversation Events
+            socket.on('join_conversation', (conversationId: string) => {
+                socket.join(conversationId);
+                console.log(`User ${userId} joined conversation ${conversationId}`);
+            });
+
+            socket.on('leave_conversation', (conversationId: string) => {
+                socket.leave(conversationId);
+                console.log(`User ${userId} left conversation ${conversationId}`);
+            });
+
+            socket.on('typing_start', (conversationId: string) => {
+                socket.to(conversationId).emit('typing_start', { conversationId, userId });
+            });
+
+            socket.on('typing_stop', (conversationId: string) => {
+                socket.to(conversationId).emit('typing_stop', { conversationId, userId });
+            });
+
             // Fetch pending notifications
             try {
                 const notifications = await prisma.notification.findMany({
@@ -59,14 +81,6 @@ export const initializeSocket = (httpServer: HttpServer) => {
                     notifications.forEach((notification) => {
                         socket.emit('notification', notification);
                     });
-
-                    // Update them to read
-                    // await prisma.notification.updateMany({
-                    //     where: {
-                    //         id: { in: notifications.map(n => n.id) }
-                    //     },
-                    //     // data: {}
-                    // });
                 }
             } catch (error) {
                 console.error("Error fetching offline notifications:", error);

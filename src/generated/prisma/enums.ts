@@ -59,3 +59,20 @@ export const VerificationStatus = {
 } as const
 
 export type VerificationStatus = (typeof VerificationStatus)[keyof typeof VerificationStatus]
+
+
+export const SenderType = {
+  USER: 'USER',
+  INSTITUTE: 'INSTITUTE'
+} as const
+
+export type SenderType = (typeof SenderType)[keyof typeof SenderType]
+
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  PDF: 'PDF'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]

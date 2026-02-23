@@ -70,7 +70,9 @@ export const ModelName = {
   UserSpecialities: 'UserSpecialities',
   UserLinks: 'UserLinks',
   UserVerifications: 'UserVerifications',
-  InstituteVerifications: 'InstituteVerifications'
+  InstituteVerifications: 'InstituteVerifications',
+  Conversation: 'Conversation',
+  Message: 'Message'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -418,6 +420,36 @@ export const InstituteVerificationsScalarFieldEnum = {
 } as const
 
 export type InstituteVerificationsScalarFieldEnum = (typeof InstituteVerificationsScalarFieldEnum)[keyof typeof InstituteVerificationsScalarFieldEnum]
+
+
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  instituteId: 'instituteId',
+  userId: 'userId',
+  lastMessageId: 'lastMessageId',
+  instituteUnreadCount: 'instituteUnreadCount',
+  userUnreadCount: 'userUnreadCount'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  conversationId: 'conversationId',
+  senderType: 'senderType',
+  senderId: 'senderId',
+  content: 'content',
+  mediaUrl: 'mediaUrl',
+  mediaType: 'mediaType',
+  isRead: 'isRead'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const SortOrder = {

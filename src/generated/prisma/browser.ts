@@ -117,3 +117,13 @@ export type UserVerifications = Prisma.UserVerificationsModel
  * 
  */
 export type InstituteVerifications = Prisma.InstituteVerificationsModel
+/**
+ * Model Conversation
+ * 
+ */
+export type Conversation = Prisma.ConversationModel
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel
