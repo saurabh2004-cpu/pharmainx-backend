@@ -72,7 +72,8 @@ export type SenderType = (typeof SenderType)[keyof typeof SenderType]
 export const MediaType = {
   IMAGE: 'IMAGE',
   VIDEO: 'VIDEO',
-  PDF: 'PDF'
+  PDF: 'PDF',
+  VOICE: 'VOICE'
 } as const
 
 export type MediaType = (typeof MediaType)[keyof typeof MediaType]

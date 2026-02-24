@@ -416,6 +416,7 @@ enum MediaType {
   IMAGE
   VIDEO
   PDF
+  VOICE
 }
 
 model Conversation {

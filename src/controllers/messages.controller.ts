@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getIO } from '../lib/socket.js';
+import { uploadToS3, getCloudFrontUrl } from '../services/aws.service.js';
+import path from 'path';
+import crypto from 'crypto';
 
 const getRoleType = (role: string) => {
     const instituteRoles = ['HOSPITAL', 'CLINIC', 'LAB', 'PHARMACY', 'INSTITUTE'];
@@ -19,8 +22,15 @@ export const sendMessage = async (req: Request, res: Response): Promise<void> =>
 
         let mediaUrl = null;
         if (mediaFile) {
-            // Generate full URL
-            mediaUrl = `${process.env.BACKEND_URL || 'http://localhost:3001'}/uploads/messages/${mediaFile.filename}`;
+            const fileExt = path.extname(mediaFile.originalname);
+            const uniqueName = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
+            const s3Key = `conversation-media/${uniqueName}${fileExt}`;
+
+            // Upload to S3
+            await uploadToS3(mediaFile.buffer, s3Key, mediaFile.mimetype);
+
+            // Get CloudFront URL
+            mediaUrl = getCloudFrontUrl(s3Key);
         }
 
         // Verify participant
@@ -89,8 +99,8 @@ export const sendMessage = async (req: Request, res: Response): Promise<void> =>
 // Get Messages
 export const getMessages = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { conversationId } = req.params;
-        const { page = 1, limit = 20 } = req.query;
+        const { conversationId } = req.params as { conversationId: string };
+        const { page = 1, limit = 20 } = req.query as any;
         // @ts-ignore
         const userId = req.user.id;
         // @ts-ignore
@@ -134,7 +144,7 @@ export const getMessages = async (req: Request, res: Response): Promise<void> =>
 // Mark as Read
 export const markAsRead = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { conversationId } = req.params;
+        const { conversationId } = req.params as { conversationId: string };
         // @ts-ignore
         const userId = req.user.id;
         // @ts-ignore
@@ -190,6 +200,97 @@ export const markAsRead = async (req: Request, res: Response): Promise<void> => 
 
     } catch (error) {
         console.error('Error marking read:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+// Send Voice Message
+export const sendVoiceMessage = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { conversationId } = req.body;
+        // @ts-ignore
+        const senderId = req.user.id;
+        // @ts-ignore
+        const senderRole = getRoleType(req.user.role);
+        const audioFile = req.file;
+
+        if (!audioFile) {
+            res.status(400).json({ error: 'Audio file is required' });
+            return;
+        }
+
+        // Validate file size (10MB)
+        if (audioFile.size > 10 * 1024 * 1024) {
+            res.status(400).json({ error: 'Audio file size exceeds 10MB limit' });
+            return;
+        }
+
+        const fileExt = path.extname(audioFile.originalname) || '.webm';
+        const uniqueName = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
+        const s3Key = `conversation-media/voice-${uniqueName}${fileExt}`;
+
+        // Upload to S3
+        await uploadToS3(audioFile.buffer, s3Key, audioFile.mimetype);
+
+        // Get CloudFront URL
+        const mediaUrl = getCloudFrontUrl(s3Key);
+
+        // Verify participant
+        const conversation = await prisma.conversation.findUnique({
+            where: { id: conversationId }
+        });
+
+        if (!conversation) {
+            res.status(404).json({ error: 'Conversation not found' });
+            return;
+        }
+
+        if (senderRole === 'USER' && conversation.userId !== senderId) {
+            res.status(403).json({ error: 'Unauthorized' });
+            return;
+        }
+
+        if (senderRole === 'INSTITUTE' && conversation.instituteId !== senderId) {
+            res.status(403).json({ error: 'Unauthorized' });
+            return;
+        }
+
+        // Create Message
+        const message = await prisma.message.create({
+            data: {
+                conversationId,
+                senderType: senderRole,
+                senderId,
+                content: '',
+                mediaUrl: mediaUrl,
+                mediaType: 'VOICE',
+                isRead: false
+            }
+        });
+
+        // Update Conversation (Last Message & Unread Count)
+        let updateData: any = { lastMessageId: message.id };
+        if (senderRole === 'USER') {
+            updateData.instituteUnreadCount = { increment: 1 };
+        } else {
+            updateData.userUnreadCount = { increment: 1 };
+        }
+
+        await prisma.conversation.update({
+            where: { id: conversationId },
+            data: updateData
+        });
+
+        // Emit Socket Event
+        const io = getIO();
+        const receiverId = senderRole === 'USER' ? conversation.instituteId : conversation.userId;
+
+        io.to(receiverId).emit('new_message', message);
+
+        res.status(201).json(message);
+
+    } catch (error) {
+        console.error('Error sending voice message:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };

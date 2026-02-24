@@ -5,7 +5,8 @@ import { ApplicationCreateUpdateSchema } from '../types/application.js';
 import { Prisma, ApplicationStatus } from '../generated/prisma/client.js';
 import { sendNotification } from '../utils/notification.service.js';
 import { InstituteRoles } from './job.controller.js';
-import { getCloudFrontUrl } from '../services/aws.service.js';
+import { getCloudFrontUrl, uploadToS3 } from '../services/aws.service.js';
+import path from 'path';
 
 const logger = getServiceLogger("Application");
 
@@ -136,7 +137,19 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
     // Handle file upload stuff from previous controller if needed
     let resumeUrl = req.body.resumeUrl || "";
     if (req.file) {
-        resumeUrl = req.file.path.replace(/\\/g, '/');
+        try {
+            const fileExt = path.extname(req.file.originalname);
+            const s3Key = `resumes/${authUserId}${fileExt}`;
+
+            // Upload to S3
+            await uploadToS3(req.file.buffer, s3Key, req.file.mimetype);
+
+            // Get CloudFront URL
+            resumeUrl = getCloudFrontUrl(s3Key);
+        } catch (error: any) {
+            logger.error({ err: error, userId: authUserId }, "Error uploading resume to S3");
+            return res.status(500).json({ error: "Failed to upload resume to S3" });
+        }
     }
 
     const { jobId, coverLetter, experienceYears, currentPosition, currentInstitute, additionalDetails } = req.body;

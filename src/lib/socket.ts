@@ -15,9 +15,8 @@ let io: SocketIOServer;
 export const initializeSocket = (httpServer: HttpServer) => {
     io = new SocketIOServer(httpServer, {
         cors: {
-            origin: [
-                "http://localhost:3000",
-                "http://88.222.242.191:3000"
+            origin: [ 
+                process.env.SOCKET_ALLOWED_ORIGIN || "http://localhost:3000",
             ],
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true

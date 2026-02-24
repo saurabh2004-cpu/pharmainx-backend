@@ -6,6 +6,8 @@ import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs/promises';
 
+import { uploadToS3, getCloudFrontUrl } from '../services/aws.service.js';
+
 const logger = getServiceLogger("UserVerifications");
 
 interface AuthRequest extends Request {
@@ -71,23 +73,20 @@ export const createVerification = async (req: AuthRequest, res: Response) => {
 
         const files = req.files as { [fieldname: string]: Express.Multer.File[] };
 
-        // Helper to handle local file uploads
+        // Helper to handle S3 file uploads
         const handleFileUpload = async (fieldname: string, subFolder: string) => {
             if (files && files[fieldname] && files[fieldname][0]) {
                 const file = files[fieldname][0];
                 const fileExt = path.extname(file.originalname);
                 const uniqueName = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
 
-                const relativePath = path.join('uploads', 'user-verifications', userId!, subFolder, `${uniqueName}${fileExt}`);
-                const fullPath = path.resolve(process.cwd(), relativePath);
+                const s3Key = `verification-documents/${userId}/${subFolder}/${uniqueName}${fileExt}`;
 
-                // Ensure directory exists
-                await fs.mkdir(path.dirname(fullPath), { recursive: true });
+                // Upload to S3
+                await uploadToS3(file.buffer, s3Key, file.mimetype);
 
-                // Write file to local storage
-                await fs.writeFile(fullPath, file.buffer);
-
-                return relativePath.replace(/\\/g, '/'); // Return posix-style path for DB
+                // Return CloudFront URL
+                return getCloudFrontUrl(s3Key);
             }
             return null;
         };
