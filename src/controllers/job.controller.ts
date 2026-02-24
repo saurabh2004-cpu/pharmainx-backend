@@ -3,8 +3,17 @@ import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { JobCreateUpdateSchema } from '../types/job.js';
 import { Prisma } from '../generated/prisma/client.ts';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 const logger = getServiceLogger("Job");
+
+const mapJobInstituteImage = (job: any) => {
+    if (!job?.institute) return job;
+    const images = job.institute.instituteImages;
+    const img = Array.isArray(images) && images.length > 0 ? images[0] : null;
+    job.institute.profile_picture = img?.profileImage ? getCloudFrontUrl(img.profileImage) : null;
+    return job;
+};
 
 
 export const InstituteRoles = ["HOSPITAL", "CLINIC", "LAB", "PHARMACY"];
@@ -457,13 +466,13 @@ export const getAllJobs = async (req: Request, res: Response) => {
                 const jobsWithRelations = await prisma.job.findMany({
                     where: { id: { in: jobIds } },
                     include: {
-                        institute: true,
+                        institute: { include: { instituteImages: true } },
                     }
                 });
 
 
                 const jobMap = new Map(jobsWithRelations.map(j => [j.id, j]));
-                jobs = jobIds.map((id: string) => jobMap.get(id)).filter(Boolean); // Restore order
+                jobs = jobIds.map((id: string) => jobMap.get(id)).filter(Boolean).map(mapJobInstituteImage); // Restore order
 
                 // Get total for pagination
                 total = await prisma.job.count({ where });
@@ -476,11 +485,11 @@ export const getAllJobs = async (req: Request, res: Response) => {
                         skip,
                         take,
                         orderBy: { created_at: 'desc' },
-                        include: { institute: true },
+                        include: { institute: { include: { instituteImages: true } } },
                     }),
                     prisma.job.count({ where }),
                 ]);
-                jobs = stdJobs;
+                jobs = stdJobs.map(mapJobInstituteImage);
                 total = stdTotal;
             }
         } else {
@@ -492,12 +501,12 @@ export const getAllJobs = async (req: Request, res: Response) => {
                     take,
                     orderBy: { created_at: 'desc' },
                     include: {
-                        institute: true
+                        institute: { include: { instituteImages: true } }
                     },
                 }),
                 prisma.job.count({ where }),
             ]);
-            jobs = stdJobs;
+            jobs = stdJobs.map(mapJobInstituteImage);
             total = stdTotal;
         }
 
@@ -539,7 +548,7 @@ export const getJobById = async (req: Request, res: Response) => {
         const job = await prisma.job.findUnique({
             where: { id },
             include: {
-                institute: true,
+                institute: { include: { instituteImages: true } },
             },
         });
 
@@ -588,9 +597,12 @@ export const getJobById = async (req: Request, res: Response) => {
 
         logger.info({ id, matchingScore }, 'Fetched job by ID with matching score');
 
+        // Map institute profile_picture
+        const mappedJob = mapJobInstituteImage({ ...job });
+
         // Return strictly formatted response: { job: { ... }, matchingScore }
         res.status(200).json({
-            job,
+            job: mappedJob,
             matchingScore
         });
 
@@ -697,14 +709,15 @@ export const searchJobs = async (req: Request, res: Response) => {
                 take,
                 orderBy: { created_at: 'desc' },
                 include: {
-                    institute: true,
+                    institute: { include: { instituteImages: true } },
                 },
             }),
             prisma.job.count({ where }),
         ]);
 
+        const mappedJobs = jobs.map(mapJobInstituteImage);
         logger.info({ query, page, pageSize, total }, 'Fetched job search results');
-        res.status(200).json({ jobs, page, pageSize, total });
+        res.status(200).json({ jobs: mappedJobs, page, pageSize, total });
     } catch (err) {
         logger.error({ err, query }, 'Database error during searchJobs');
         res.status(500).json({ error: 'Database error' });

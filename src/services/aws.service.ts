@@ -114,12 +114,16 @@ export const invalidateCloudFront = async (key: string): Promise<void> => {
  */
 export const getCloudFrontUrl = (key: string): string => {
     if (!key) return '';
-    // If key already has http, assume it's external or legacy? No, DB stores relative paths.
-    // Ensure no double slash if key starts with /
+    // If key is already a full URL, return as-is
+    if (key.startsWith('http://') || key.startsWith('https://')) return key;
+
     const cleanKey = key.startsWith('/') ? key.substring(1) : key;
 
-    // Ensure base url doesn't end with slash
-    const cleanBase = CLOUDFRONT_BASE_URL.endsWith('/') ? CLOUDFRONT_BASE_URL.slice(0, -1) : CLOUDFRONT_BASE_URL;
+    // Normalize base URL — ensure it has https://
+    let cleanBase = CLOUDFRONT_BASE_URL.endsWith('/') ? CLOUDFRONT_BASE_URL.slice(0, -1) : CLOUDFRONT_BASE_URL;
+    if (!cleanBase.startsWith('http://') && !cleanBase.startsWith('https://')) {
+        cleanBase = `https://${cleanBase}`;
+    }
 
     return `${cleanBase}/${cleanKey}`;
 };

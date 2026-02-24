@@ -5,6 +5,7 @@ import { ApplicationCreateUpdateSchema } from '../types/application.js';
 import { Prisma, ApplicationStatus } from '../generated/prisma/client.js';
 import { sendNotification } from '../utils/notification.service.js';
 import { InstituteRoles } from './job.controller.js';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 const logger = getServiceLogger("Application");
 
@@ -39,9 +40,28 @@ export const getApplicationsByUserId = async (req: AuthRequest, res: Response) =
     try {
         const applications = await prisma.application.findMany({
             where: { userId },
-            include: { job: true },
+            include: {
+                job: {
+                    include: {
+                        institute: {
+                            include: { instituteImages: true }
+                        }
+                    }
+                }
+            },
         });
-        res.status(200).json(applications);
+
+        // Map profile_picture onto each institute
+        const mapped = applications.map((app: any) => {
+            if (app.job?.institute) {
+                const imgs = app.job.institute.instituteImages;
+                const img = Array.isArray(imgs) && imgs.length > 0 ? imgs[0] : null;
+                app.job.institute.profile_picture = img?.profileImage ? getCloudFrontUrl(img.profileImage) : null;
+            }
+            return app;
+        });
+
+        res.status(200).json(mapped);
     } catch (err) {
         res.status(500).json({ error: 'Database error' });
     }

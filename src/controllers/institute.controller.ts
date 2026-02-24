@@ -4,6 +4,7 @@ import { getServiceLogger } from '../utils/logger.js';
 import { InstituteRoles, AuthRoles, Prisma, ApplicationStatus } from '../generated/prisma/client.ts'; // Import defaults from generated client
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 const logger = getServiceLogger("Institute");
 
@@ -298,15 +299,21 @@ export const getMyInstitute = async (req: AuthRequest, res: Response) => {
     try {
         const institute = await prisma.institute.findUnique({
             where: { id: authId as string },
+            include: { instituteImages: true }
         });
 
         if (!institute) {
             return res.status(404).json({ error: 'Institute not found' });
         }
 
-        console.log("Institute found:");
+        const images = (institute as any).instituteImages && (institute as any).instituteImages.length > 0 ? (institute as any).instituteImages[0] : null;
+        const mappedInstitute = {
+            ...institute,
+            profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+            banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+        };
 
-        res.status(200).json(institute);
+        res.status(200).json(mappedInstitute);
     } catch (err) {
         logger.error({ err, authId }, 'Database error during getMyInstitute');
         res.status(500).json({ error: 'Database error' });
@@ -444,13 +451,22 @@ export const searchInstitutes = async (req: Request, res: Response) => {
                 skip,
                 take,
                 orderBy: { created_at: 'desc' },
-
+                include: { instituteImages: true }
             }),
             prisma.institute.count({ where }),
         ]);
 
+        const mappedInstitutes = institutes.map(inst => {
+            const images = (inst as any).instituteImages && (inst as any).instituteImages.length > 0 ? (inst as any).instituteImages[0] : null;
+            return {
+                ...inst,
+                profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+                banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+            };
+        });
+
         logger.info({ query, page, pageSize, total }, 'Fetched institutes search results');
-        res.status(200).json({ institutes, page, pageSize, total });
+        res.status(200).json({ institutes: mappedInstitutes, page, pageSize, total });
     } catch (err) {
         logger.error({ err, query }, 'Database error during searchInstitutes');
         res.status(500).json({ error: 'Database error' });
@@ -469,6 +485,7 @@ export const getInstituteById = async (req: Request, res: Response) => {
     try {
         const institute = await prisma.institute.findUnique({
             where: { id },
+            include: { instituteImages: true }
         });
 
         if (!institute) {
@@ -476,8 +493,15 @@ export const getInstituteById = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Institute not found' });
         }
 
+        const images = (institute as any).instituteImages && (institute as any).instituteImages.length > 0 ? (institute as any).instituteImages[0] : null;
+        const mappedInstitute = {
+            ...institute,
+            profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+            banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+        };
+
         logger.info({ id }, 'Fetched institute by id');
-        res.status(200).json(institute);
+        res.status(200).json(mappedInstitute);
     } catch (err) {
         logger.error({ err, id }, 'Database error during getInstituteById');
         res.status(500).json({ error: 'Database error' });

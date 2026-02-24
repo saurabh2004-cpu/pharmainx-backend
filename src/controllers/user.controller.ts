@@ -4,6 +4,7 @@ import { getServiceLogger } from '../utils/logger.js';
 import { AuthRoles, Prisma, VerificationStatus } from '../generated/prisma/client.ts';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 const logger = getServiceLogger("User");
 
@@ -215,7 +216,15 @@ export const getMyUser = async (req: AuthRequest, res: Response) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-        res.status(200).json(user);
+
+        const images = user.userImages && user.userImages.length > 0 ? user.userImages[0] : null;
+        const mappedUser = {
+            ...user,
+            profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+            banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+        };
+
+        res.status(200).json(mappedUser);
     } catch (err) {
         logger.error({ err, authId }, 'Database error during getMyUser');
         res.status(500).json({ error: 'Database error' });
@@ -258,12 +267,22 @@ export const searchUsers = async (req: Request, res: Response) => {
                 skip,
                 take,
                 orderBy: { created_at: 'desc' },
+                include: { userImages: true }
             }),
             prisma.user.count({ where }),
         ]);
 
+        const mappedUsers = users.map(user => {
+            const images = user.userImages && user.userImages.length > 0 ? (user as any).userImages[0] : null;
+            return {
+                ...user,
+                profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+                banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+            };
+        });
+
         logger.info({ query, page, pageSize, total }, 'Fetched users search results');
-        res.status(200).json({ users, page, pageSize, total });
+        res.status(200).json({ users: mappedUsers, page, pageSize, total });
     } catch (err) {
         logger.error({ err, query }, 'Database error during searchUsers');
         res.status(500).json({ error: 'Database error' });
@@ -281,7 +300,7 @@ export const getUserById = async (req: Request, res: Response) => {
     try {
         const user = await prisma.user.findUnique({
             where: { id },
-
+            include: { userImages: true }
         });
 
         if (!user) {
@@ -289,8 +308,15 @@ export const getUserById = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
+        const images = (user as any).userImages && (user as any).userImages.length > 0 ? (user as any).userImages[0] : null;
+        const mappedUser = {
+            ...user,
+            profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
+            banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+        };
+
         logger.info({ id }, 'Fetched user by id');
-        res.status(200).json(user);
+        res.status(200).json(mappedUser);
     } catch (err) {
         logger.error({ err, id }, 'Database error during getUserById');
         res.status(500).json({ error: 'Database error' });

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 const logger = getServiceLogger("SavedJobs");
 
@@ -111,19 +112,35 @@ export const removeFromSavedJobs = async (req: AuthRequest, res: Response) => {
 
 export const getSavedJobsByUserId = async (req: AuthRequest, res: Response) => {
     const authId = req.user?.id as string;
-    
+
     try {
         const savedJobs = await prisma.savedJob.findMany({
             where: {
                 userId: authId
             },
             include: {
-                job: true
+                job: {
+                    include: {
+                        institute: {
+                            include: { instituteImages: true }
+                        }
+                    }
+                }
             }
         });
 
+        // Map profile_picture onto each institute
+        const mapped = savedJobs.map((s: any) => {
+            if (s.job?.institute) {
+                const imgs = s.job.institute.instituteImages;
+                const img = Array.isArray(imgs) && imgs.length > 0 ? imgs[0] : null;
+                s.job.institute.profile_picture = img?.profileImage ? getCloudFrontUrl(img.profileImage) : null;
+            }
+            return s;
+        });
+
         logger.info({ userId: authId }, 'Saved jobs fetched successfully');
-        res.status(200).json(savedJobs);
+        res.status(200).json(mapped);
     } catch (err) {
         logger.error({ err, userId: authId }, 'Database error during get saved jobs');
         res.status(500).json({ error: 'Database error' });

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getIO } from '../lib/socket.js';
 import { InstituteRoles, UserRoles } from '../generated/prisma/client.ts';
+import { getCloudFrontUrl } from '../services/aws.service.js';
 
 // Initiate Conversation (Institute Only)
 export const initiateConversation = async (req: Request, res: Response): Promise<void> => {
@@ -103,15 +104,14 @@ export const getConversations = async (req: Request, res: Response): Promise<voi
                         id: true,
                         firstName: true,
                         lastName: true,
-
-                        // Add other fields as needed for display
+                        userImages: true,
                     }
                 },
                 institute: {
                     select: {
                         id: true,
                         name: true,
-                        // Add other fields
+                        instituteImages: true,
                     }
                 },
                 lastMessage: true
@@ -120,9 +120,16 @@ export const getConversations = async (req: Request, res: Response): Promise<voi
         });
 
         const formattedConversations = conversations.map(conv => {
+            const participant: any = isInstituteUser ? conv.user : conv.institute;
+            // Map images
+            if (participant) {
+                const images = isInstituteUser ? participant.userImages?.[0] : participant.instituteImages?.[0];
+                participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+            }
+
             return {
                 id: conv.id,
-                participant: isInstituteUser ? conv.user : conv.institute,
+                participant,
                 lastMessage: conv.lastMessage,
                 unreadCount: isInstituteUser ? conv.instituteUnreadCount : conv.userUnreadCount,
                 updatedAt: conv.updatedAt
