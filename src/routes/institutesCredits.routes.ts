@@ -3,7 +3,8 @@ import {
     createInstituteCredits,
     updateInstituteCredits,
     getInstituteCredits,
-    getAllInstituteCredits
+    getAllInstituteCredits,
+    deleteInstituteCredits
 } from '../controllers/institutesCredits.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
 
@@ -20,5 +21,8 @@ router.get('/get/:id', getInstituteCredits);
 
 // Get all credits records (paginated)
 router.get('/get-all', getAllInstituteCredits);
+
+// Delete specific credits record
+router.delete('/delete/:id', deleteInstituteCredits);
 
 export default router;

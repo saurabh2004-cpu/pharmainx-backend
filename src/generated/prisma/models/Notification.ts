@@ -222,8 +222,8 @@ export type NotificationWhereInput = {
   relatedJobId?: Prisma.StringNullableFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableFilter<"Notification"> | string | null
   status?: Prisma.EnumApplicationStatusNullableFilter<"Notification"> | $Enums.ApplicationStatus | null
-  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
   application?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.ApplicationWhereInput> | null
+  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
 }
 
 export type NotificationOrderByWithRelationInput = {
@@ -237,8 +237,8 @@ export type NotificationOrderByWithRelationInput = {
   relatedJobId?: Prisma.SortOrderInput | Prisma.SortOrder
   relatedApplicationId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrderInput | Prisma.SortOrder
-  job?: Prisma.JobOrderByWithRelationInput
   application?: Prisma.ApplicationOrderByWithRelationInput
+  job?: Prisma.JobOrderByWithRelationInput
 }
 
 export type NotificationWhereUniqueInput = Prisma.AtLeast<{
@@ -255,8 +255,8 @@ export type NotificationWhereUniqueInput = Prisma.AtLeast<{
   relatedJobId?: Prisma.StringNullableFilter<"Notification"> | string | null
   relatedApplicationId?: Prisma.StringNullableFilter<"Notification"> | string | null
   status?: Prisma.EnumApplicationStatusNullableFilter<"Notification"> | $Enums.ApplicationStatus | null
-  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
   application?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.ApplicationWhereInput> | null
+  job?: Prisma.XOR<Prisma.JobNullableScalarRelationFilter, Prisma.JobWhereInput> | null
 }, "id">
 
 export type NotificationOrderByWithAggregationInput = {
@@ -300,8 +300,8 @@ export type NotificationCreateInput = {
   message: string
   isRead?: boolean
   status?: $Enums.ApplicationStatus | null
-  job?: Prisma.JobCreateNestedOneWithoutNotificationsInput
   application?: Prisma.ApplicationCreateNestedOneWithoutNotificationsInput
+  job?: Prisma.JobCreateNestedOneWithoutNotificationsInput
 }
 
 export type NotificationUncheckedCreateInput = {
@@ -326,8 +326,8 @@ export type NotificationUpdateInput = {
   message?: Prisma.StringFieldUpdateOperationsInput | string
   isRead?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.NullableEnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus | null
-  job?: Prisma.JobUpdateOneWithoutNotificationsNestedInput
   application?: Prisma.ApplicationUpdateOneWithoutNotificationsNestedInput
+  job?: Prisma.JobUpdateOneWithoutNotificationsNestedInput
 }
 
 export type NotificationUncheckedUpdateInput = {
@@ -742,8 +742,8 @@ export type NotificationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   relatedJobId?: boolean
   relatedApplicationId?: boolean
   status?: boolean
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
 
 export type NotificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -757,8 +757,8 @@ export type NotificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   relatedJobId?: boolean
   relatedApplicationId?: boolean
   status?: boolean
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
 
 export type NotificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -772,8 +772,8 @@ export type NotificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   relatedJobId?: boolean
   relatedApplicationId?: boolean
   status?: boolean
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }, ExtArgs["result"]["notification"]>
 
 export type NotificationSelectScalar = {
@@ -791,23 +791,23 @@ export type NotificationSelectScalar = {
 
 export type NotificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "receiverId" | "receiverRole" | "title" | "message" | "isRead" | "relatedJobId" | "relatedApplicationId" | "status", ExtArgs["result"]["notification"]>
 export type NotificationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }
 export type NotificationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }
 export type NotificationIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
   application?: boolean | Prisma.Notification$applicationArgs<ExtArgs>
+  job?: boolean | Prisma.Notification$jobArgs<ExtArgs>
 }
 
 export type $NotificationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Notification"
   objects: {
-    job: Prisma.$JobPayload<ExtArgs> | null
     application: Prisma.$ApplicationPayload<ExtArgs> | null
+    job: Prisma.$JobPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1214,8 +1214,8 @@ readonly fields: NotificationFieldRefs;
  */
 export interface Prisma__NotificationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  job<T extends Prisma.Notification$jobArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notification$jobArgs<ExtArgs>>): Prisma.Prisma__JobClient<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   application<T extends Prisma.Notification$applicationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notification$applicationArgs<ExtArgs>>): Prisma.Prisma__ApplicationClient<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  job<T extends Prisma.Notification$jobArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notification$jobArgs<ExtArgs>>): Prisma.Prisma__JobClient<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1651,25 +1651,6 @@ export type NotificationDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
- * Notification.job
- */
-export type Notification$jobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Job
-   */
-  select?: Prisma.JobSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Job
-   */
-  omit?: Prisma.JobOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.JobInclude<ExtArgs> | null
-  where?: Prisma.JobWhereInput
-}
-
-/**
  * Notification.application
  */
 export type Notification$applicationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1686,6 +1667,25 @@ export type Notification$applicationArgs<ExtArgs extends runtime.Types.Extension
    */
   include?: Prisma.ApplicationInclude<ExtArgs> | null
   where?: Prisma.ApplicationWhereInput
+}
+
+/**
+ * Notification.job
+ */
+export type Notification$jobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Job
+   */
+  select?: Prisma.JobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Job
+   */
+  omit?: Prisma.JobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobInclude<ExtArgs> | null
+  where?: Prisma.JobWhereInput
 }
 
 /**

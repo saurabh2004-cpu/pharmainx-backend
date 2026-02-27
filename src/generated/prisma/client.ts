@@ -29,8 +29,8 @@ export * from "./enums.ts"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Auths
- * const auths = await prisma.auth.findMany()
+ * // Fetch zero or more Admins
+ * const admins = await prisma.admin.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,10 +40,10 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Auth
+ * Model Admin
  * 
  */
-export type Auth = Prisma.AuthModel
+export type Admin = Prisma.AdminModel
 /**
  * Model User
  * 
@@ -64,6 +64,11 @@ export type InstituteCredits = Prisma.InstituteCreditsModel
  * 
  */
 export type CreditsWallet = Prisma.CreditsWalletModel
+/**
+ * Model CreditsHistory
+ * 
+ */
+export type CreditsHistory = Prisma.CreditsHistoryModel
 /**
  * Model Job
  * 

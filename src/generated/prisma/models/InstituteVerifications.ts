@@ -378,14 +378,9 @@ export type InstituteVerificationsUncheckedUpdateManyInput = {
   registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type InstituteVerificationsListRelationFilter = {
-  every?: Prisma.InstituteVerificationsWhereInput
-  some?: Prisma.InstituteVerificationsWhereInput
-  none?: Prisma.InstituteVerificationsWhereInput
-}
-
-export type InstituteVerificationsOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type InstituteVerificationsNullableScalarRelationFilter = {
+  is?: Prisma.InstituteVerificationsWhereInput | null
+  isNot?: Prisma.InstituteVerificationsWhereInput | null
 }
 
 export type InstituteVerificationsCountOrderByAggregateInput = {
@@ -427,46 +422,36 @@ export type InstituteVerificationsMinOrderByAggregateInput = {
   registrationCertificate?: Prisma.SortOrder
 }
 
-export type InstituteVerificationsCreateNestedManyWithoutInstituteInput = {
-  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput> | Prisma.InstituteVerificationsCreateWithoutInstituteInput[] | Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput[]
-  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput | Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput[]
-  createMany?: Prisma.InstituteVerificationsCreateManyInstituteInputEnvelope
-  connect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
+export type InstituteVerificationsCreateNestedOneWithoutInstituteInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
 }
 
-export type InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput = {
-  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput> | Prisma.InstituteVerificationsCreateWithoutInstituteInput[] | Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput[]
-  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput | Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput[]
-  createMany?: Prisma.InstituteVerificationsCreateManyInstituteInputEnvelope
-  connect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
+export type InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
 }
 
-export type InstituteVerificationsUpdateManyWithoutInstituteNestedInput = {
-  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput> | Prisma.InstituteVerificationsCreateWithoutInstituteInput[] | Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput[]
-  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput | Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput[]
-  upsert?: Prisma.InstituteVerificationsUpsertWithWhereUniqueWithoutInstituteInput | Prisma.InstituteVerificationsUpsertWithWhereUniqueWithoutInstituteInput[]
-  createMany?: Prisma.InstituteVerificationsCreateManyInstituteInputEnvelope
-  set?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  disconnect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  delete?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  connect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  update?: Prisma.InstituteVerificationsUpdateWithWhereUniqueWithoutInstituteInput | Prisma.InstituteVerificationsUpdateWithWhereUniqueWithoutInstituteInput[]
-  updateMany?: Prisma.InstituteVerificationsUpdateManyWithWhereWithoutInstituteInput | Prisma.InstituteVerificationsUpdateManyWithWhereWithoutInstituteInput[]
-  deleteMany?: Prisma.InstituteVerificationsScalarWhereInput | Prisma.InstituteVerificationsScalarWhereInput[]
+export type InstituteVerificationsUpdateOneWithoutInstituteNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput
+  upsert?: Prisma.InstituteVerificationsUpsertWithoutInstituteInput
+  disconnect?: Prisma.InstituteVerificationsWhereInput | boolean
+  delete?: Prisma.InstituteVerificationsWhereInput | boolean
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteVerificationsUpdateToOneWithWhereWithoutInstituteInput, Prisma.InstituteVerificationsUpdateWithoutInstituteInput>, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteInput>
 }
 
-export type InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput = {
-  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput> | Prisma.InstituteVerificationsCreateWithoutInstituteInput[] | Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput[]
-  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput | Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput[]
-  upsert?: Prisma.InstituteVerificationsUpsertWithWhereUniqueWithoutInstituteInput | Prisma.InstituteVerificationsUpsertWithWhereUniqueWithoutInstituteInput[]
-  createMany?: Prisma.InstituteVerificationsCreateManyInstituteInputEnvelope
-  set?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  disconnect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  delete?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  connect?: Prisma.InstituteVerificationsWhereUniqueInput | Prisma.InstituteVerificationsWhereUniqueInput[]
-  update?: Prisma.InstituteVerificationsUpdateWithWhereUniqueWithoutInstituteInput | Prisma.InstituteVerificationsUpdateWithWhereUniqueWithoutInstituteInput[]
-  updateMany?: Prisma.InstituteVerificationsUpdateManyWithWhereWithoutInstituteInput | Prisma.InstituteVerificationsUpdateManyWithWhereWithoutInstituteInput[]
-  deleteMany?: Prisma.InstituteVerificationsScalarWhereInput | Prisma.InstituteVerificationsScalarWhereInput[]
+export type InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteInput
+  upsert?: Prisma.InstituteVerificationsUpsertWithoutInstituteInput
+  disconnect?: Prisma.InstituteVerificationsWhereInput | boolean
+  delete?: Prisma.InstituteVerificationsWhereInput | boolean
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteVerificationsUpdateToOneWithWhereWithoutInstituteInput, Prisma.InstituteVerificationsUpdateWithoutInstituteInput>, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteInput>
 }
 
 export type InstituteVerificationsCreateWithoutInstituteInput = {
@@ -498,53 +483,15 @@ export type InstituteVerificationsCreateOrConnectWithoutInstituteInput = {
   create: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
 }
 
-export type InstituteVerificationsCreateManyInstituteInputEnvelope = {
-  data: Prisma.InstituteVerificationsCreateManyInstituteInput | Prisma.InstituteVerificationsCreateManyInstituteInput[]
-  skipDuplicates?: boolean
-}
-
-export type InstituteVerificationsUpsertWithWhereUniqueWithoutInstituteInput = {
-  where: Prisma.InstituteVerificationsWhereUniqueInput
+export type InstituteVerificationsUpsertWithoutInstituteInput = {
   update: Prisma.XOR<Prisma.InstituteVerificationsUpdateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteInput>
   create: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteInput>
+  where?: Prisma.InstituteVerificationsWhereInput
 }
 
-export type InstituteVerificationsUpdateWithWhereUniqueWithoutInstituteInput = {
-  where: Prisma.InstituteVerificationsWhereUniqueInput
+export type InstituteVerificationsUpdateToOneWithWhereWithoutInstituteInput = {
+  where?: Prisma.InstituteVerificationsWhereInput
   data: Prisma.XOR<Prisma.InstituteVerificationsUpdateWithoutInstituteInput, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteInput>
-}
-
-export type InstituteVerificationsUpdateManyWithWhereWithoutInstituteInput = {
-  where: Prisma.InstituteVerificationsScalarWhereInput
-  data: Prisma.XOR<Prisma.InstituteVerificationsUpdateManyMutationInput, Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteInput>
-}
-
-export type InstituteVerificationsScalarWhereInput = {
-  AND?: Prisma.InstituteVerificationsScalarWhereInput | Prisma.InstituteVerificationsScalarWhereInput[]
-  OR?: Prisma.InstituteVerificationsScalarWhereInput[]
-  NOT?: Prisma.InstituteVerificationsScalarWhereInput | Prisma.InstituteVerificationsScalarWhereInput[]
-  id?: Prisma.StringFilter<"InstituteVerifications"> | string
-  created_at?: Prisma.DateTimeFilter<"InstituteVerifications"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"InstituteVerifications"> | Date | string
-  instituteId?: Prisma.StringFilter<"InstituteVerifications"> | string
-  status?: Prisma.EnumVerificationStatusFilter<"InstituteVerifications"> | $Enums.VerificationStatus
-  telephone?: Prisma.StringFilter<"InstituteVerifications"> | string
-  email?: Prisma.StringFilter<"InstituteVerifications"> | string
-  adminName?: Prisma.StringFilter<"InstituteVerifications"> | string
-  adminPhone?: Prisma.StringFilter<"InstituteVerifications"> | string
-  registrationCertificate?: Prisma.StringFilter<"InstituteVerifications"> | string
-}
-
-export type InstituteVerificationsCreateManyInstituteInput = {
-  id?: string
-  created_at?: Date | string
-  updated_at?: Date | string
-  status?: $Enums.VerificationStatus
-  telephone: string
-  email: string
-  adminName: string
-  adminPhone: string
-  registrationCertificate: string
 }
 
 export type InstituteVerificationsUpdateWithoutInstituteInput = {
@@ -560,18 +507,6 @@ export type InstituteVerificationsUpdateWithoutInstituteInput = {
 }
 
 export type InstituteVerificationsUncheckedUpdateWithoutInstituteInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  adminName?: Prisma.StringFieldUpdateOperationsInput | string
-  adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
-  registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type InstituteVerificationsUncheckedUpdateManyWithoutInstituteInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string

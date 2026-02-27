@@ -51,11 +51,12 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Auth: 'Auth',
+  Admin: 'Admin',
   User: 'User',
   Institute: 'Institute',
   InstituteCredits: 'InstituteCredits',
   CreditsWallet: 'CreditsWallet',
+  CreditsHistory: 'CreditsHistory',
   Job: 'Job',
   Application: 'Application',
   JobView: 'JobView',
@@ -91,38 +92,37 @@ export const TransactionIsolationLevel = {
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const AuthScalarFieldEnum = {
+export const AdminScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   email: 'email',
-  password: 'password',
-  role: 'role'
+  password: 'password'
 } as const
 
-export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
+export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  email: 'email',
-  password: 'password',
-  country: 'country',
-  city: 'city',
-  university: 'university',
-  degree: 'degree',
-  yearOfStudy: 'yearOfStudy',
   verified: 'verified',
   gender: 'gender',
+  role: 'role',
+  headline: 'headline',
+  about: 'about',
+  degree: 'degree',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  password: 'password',
+  university: 'university',
+  yearOfStudy: 'yearOfStudy',
   specialization: 'specialization',
+  experience: 'experience',
   speciality: 'speciality',
   subSpeciality: 'subSpeciality',
-  role: 'role',
-  experience: 'experience',
-  headline: 'headline',
-  about: 'about'
+  city: 'city',
+  country: 'country'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -132,23 +132,23 @@ export const InstituteScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   name: 'name',
-  country: 'country',
-  city: 'city',
   verified: 'verified',
   contactEmail: 'contactEmail',
-  password: 'password',
   contactNumber: 'contactNumber',
-  bedsCount: 'bedsCount',
-  staffCount: 'staffCount',
-  type: 'type',
-  services: 'services',
-  telephone: 'telephone',
   role: 'role',
   affiliatedUniversity: 'affiliatedUniversity',
   yearEstablished: 'yearEstablished',
   ownership: 'ownership',
   headline: 'headline',
-  about: 'about'
+  about: 'about',
+  password: 'password',
+  bedsCount: 'bedsCount',
+  services: 'services',
+  staffCount: 'staffCount',
+  telephone: 'telephone',
+  type: 'type',
+  city: 'city',
+  country: 'country'
 } as const
 
 export type InstituteScalarFieldEnum = (typeof InstituteScalarFieldEnum)[keyof typeof InstituteScalarFieldEnum]
@@ -176,34 +176,50 @@ export const CreditsWalletScalarFieldEnum = {
 export type CreditsWalletScalarFieldEnum = (typeof CreditsWalletScalarFieldEnum)[keyof typeof CreditsWalletScalarFieldEnum]
 
 
+export const CreditsHistoryScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  type: 'type',
+  action: 'action',
+  cost: 'cost',
+  purchasedCredits: 'purchasedCredits',
+  currentCredits: 'currentCredits',
+  jobId: 'jobId',
+  instituteId: 'instituteId'
+} as const
+
+export type CreditsHistoryScalarFieldEnum = (typeof CreditsHistoryScalarFieldEnum)[keyof typeof CreditsHistoryScalarFieldEnum]
+
+
 export const JobScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
   title: 'title',
   jobType: 'jobType',
-  role: 'role',
-  skills: 'skills',
   workLocation: 'workLocation',
-  city: 'city',
-  country: 'country',
   experienceLevel: 'experienceLevel',
-  shortDescription: 'shortDescription',
-  fullDescription: 'fullDescription',
   requirements: 'requirements',
-  additionalInfo: 'additionalInfo',
-  salaryCurrency: 'salaryCurrency',
   salaryMin: 'salaryMin',
   salaryMax: 'salaryMax',
+  status: 'status',
+  shortDescription: 'shortDescription',
+  salaryCurrency: 'salaryCurrency',
   applicationDeadline: 'applicationDeadline',
   contactEmail: 'contactEmail',
   contactPhone: 'contactPhone',
   contactPerson: 'contactPerson',
-  status: 'status',
+  additionalInfo: 'additionalInfo',
   instituteId: 'instituteId',
+  city: 'city',
+  fullDescription: 'fullDescription',
+  role: 'role',
+  skills: 'skills',
+  country: 'country',
+  renewedAt: 'renewedAt',
   speciality: 'speciality',
-  subSpeciality: 'subSpeciality',
-  renewedAt: 'renewedAt'
+  subSpeciality: 'subSpeciality'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
@@ -213,7 +229,6 @@ export const ApplicationScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  status: 'status',
   appliedDate: 'appliedDate',
   resumeUrl: 'resumeUrl',
   coverLetter: 'coverLetter',
@@ -222,7 +237,8 @@ export const ApplicationScalarFieldEnum = {
   currentInstitute: 'currentInstitute',
   additionalDetails: 'additionalDetails',
   jobId: 'jobId',
-  userId: 'userId'
+  userId: 'userId',
+  status: 'status'
 } as const
 
 export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]

@@ -12,6 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-cloudfront": "^3.984.0",
     "@aws-sdk/client-s3": "^3.984.0",
+    "@aws-sdk/s3-request-presigner": "^3.999.0",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "bcryptjs": "^3.0.3",

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { z } from 'zod';
+import { CreditHistoryAction, CreditHistoryType } from '../generated/prisma/enums.js';
 
 const logger = getServiceLogger("InstituteCredits");
 
@@ -42,6 +43,8 @@ export const createInstituteCredits = async (req: AuthRequest, res: Response) =>
             return res.status(404).json({ error: 'Institute not found' });
         }
 
+
+
         // Validation: Only one credits record per institute
         const existingCredits = await prisma.instituteCredits.findFirst({
             where: { instituteId: instituteId }
@@ -51,25 +54,39 @@ export const createInstituteCredits = async (req: AuthRequest, res: Response) =>
             return res.status(400).json({ error: 'Credits record already exists for this institute' });
         }
 
-        // Create record
-        const newCredits = await prisma.instituteCredits.create({
-            data: {
-                instituteId,
-                credits
-            },
-            include: {
-                institute: {
-                    select: {
-                        id: true,
-                        name: true,
-                        role: true
+        const result = await prisma.$transaction(async (tx) => {
+
+            const newCredits = await tx.instituteCredits.create({
+                data: {
+                    instituteId,
+                    credits
+                },
+                include: {
+                    institute: {
+                        select: {
+                            id: true,
+                            name: true,
+                            role: true
+                        }
                     }
                 }
-            }
+            });
+
+            await tx.creditsHistory.create({
+                data: {
+                    instituteId,
+                    currentCredits: credits,
+                    purchasedCredits: credits,
+                    action: CreditHistoryAction.CREDITS_PURCHASED,
+                    type: CreditHistoryType.CREDIT
+                }
+            })
+
+            logger.info({ instituteId, creditsId: newCredits.id }, 'Institute credits record created');
+            return newCredits;
         });
 
-        logger.info({ instituteId, creditsId: newCredits.id }, 'Institute credits record created');
-        res.status(201).json(newCredits);
+        res.status(201).json(result);
 
     } catch (err: any) {
         logger.error({ err, message: err.message, instituteId }, 'Database error during createInstituteCredits');
@@ -109,21 +126,36 @@ export const updateInstituteCredits = async (req: AuthRequest, res: Response) =>
             return res.status(404).json({ error: 'Institute credits record not found' });
         }
 
-        const updatedRecord = await prisma.instituteCredits.update({
-            where: { id: targetRecord.id },
-            data: { credits },
-            include: {
-                institute: {
-                    select: {
-                        id: true,
-                        name: true
+        const result = await prisma.$transaction(async (tx) => {
+            const updatedRecord = await tx.instituteCredits.update({
+                where: { id: targetRecord.id },
+                data: { credits },
+                include: {
+                    institute: {
+                        select: {
+                            id: true,
+                            name: true
+                        }
                     }
                 }
-            }
+            });
+
+            await tx.creditsHistory.create({
+                data: {
+                    instituteId: targetRecord.instituteId,
+                    currentCredits: credits,
+                    action: CreditHistoryAction.CREDITS_PURCHASED,
+                    type: CreditHistoryType.CREDIT,
+                    purchasedCredits: credits - targetRecord.credits
+                }
+            })
+
+            logger.info({ creditsId: updatedRecord.id, newCredits: credits }, 'Institute credits updated');
+            return updatedRecord;
         });
 
-        logger.info({ creditsId: updatedRecord.id, newCredits: credits }, 'Institute credits updated');
-        res.status(200).json(updatedRecord);
+        res.status(200).json(result);
+
 
     } catch (err: any) {
         logger.error({ err, message: err.message, queryId: id }, 'Database error during updateInstituteCredits');
@@ -181,9 +213,10 @@ export const getInstituteCredits = async (req: Request, res: Response) => {
 export const getAllInstituteCredits = async (req: Request, res: Response) => {
     const query = req.query as any;
     const page = parseInt((query.page as string) || '1');
-    const pageSize = parseInt((query.pageSize as string) || '20');
-    const skip = (page - 1) * pageSize;
-    const take = pageSize;
+    const limitParams = query.limit || query.pageSize;
+    const limit = parseInt((limitParams as string) || '10');
+    const skip = (page - 1) * limit;
+    const take = limit;
 
     try {
         const [records, total] = await Promise.all([
@@ -206,19 +239,38 @@ export const getAllInstituteCredits = async (req: Request, res: Response) => {
             prisma.instituteCredits.count(),
         ]);
 
-        logger.info({ page, pageSize, total }, 'Fetched all institute credits records');
+        logger.info({ page, limit, total }, 'Fetched all institute credits records');
         res.status(200).json({
             data: records,
-            meta: {
-                page,
-                pageSize,
-                total,
-                totalPages: Math.ceil(total / pageSize)
-            }
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
         });
 
     } catch (err: any) {
         logger.error({ err, query }, 'Database error during getAllInstituteCredits');
         res.status(500).json({ error: 'Database error' });
+    }
+};
+
+// 5. Delete InstituteCredits record
+export const deleteInstituteCredits = async (req: AuthRequest, res: Response) => {
+    const { id } = req.params;
+    const idStr = id as string;
+
+    try {
+        const existingRecord = await prisma.instituteCredits.findUnique({ where: { id: idStr } });
+        if (!existingRecord) {
+            return res.status(404).json({ error: 'Institute credits record not found' });
+        }
+
+        await prisma.instituteCredits.delete({ where: { id: idStr } });
+
+        logger.info({ creditsId: idStr }, 'Institute credits record deleted');
+        res.status(200).json({ message: 'Institute credits deleted successfully' });
+    } catch (err: any) {
+        logger.error({ err, id: idStr }, 'Database error during deleteInstituteCredits');
+        res.status(500).json({ error: 'Database error', message: err.message });
     }
 };

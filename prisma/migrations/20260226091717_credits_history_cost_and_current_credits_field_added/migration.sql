@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "CreditsHistory" ADD COLUMN     "cost" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "currentCredits" INTEGER NOT NULL DEFAULT 0;

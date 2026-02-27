@@ -27,163 +27,163 @@ export type AggregateInstitute = {
 }
 
 export type InstituteAvgAggregateOutputType = {
+  yearEstablished: number | null
   bedsCount: number | null
   staffCount: number | null
-  yearEstablished: number | null
 }
 
 export type InstituteSumAggregateOutputType = {
+  yearEstablished: number | null
   bedsCount: number | null
   staffCount: number | null
-  yearEstablished: number | null
 }
 
 export type InstituteMinAggregateOutputType = {
   id: string | null
   created_at: Date | null
   name: string | null
-  country: string | null
-  city: string | null
   verified: boolean | null
   contactEmail: string | null
-  password: string | null
   contactNumber: string | null
-  bedsCount: number | null
-  staffCount: number | null
-  type: string | null
-  telephone: string | null
   role: $Enums.InstituteRoles | null
   affiliatedUniversity: string | null
   yearEstablished: number | null
   ownership: string | null
   headline: string | null
   about: string | null
+  password: string | null
+  bedsCount: number | null
+  staffCount: number | null
+  telephone: string | null
+  type: string | null
+  city: string | null
+  country: string | null
 }
 
 export type InstituteMaxAggregateOutputType = {
   id: string | null
   created_at: Date | null
   name: string | null
-  country: string | null
-  city: string | null
   verified: boolean | null
   contactEmail: string | null
-  password: string | null
   contactNumber: string | null
-  bedsCount: number | null
-  staffCount: number | null
-  type: string | null
-  telephone: string | null
   role: $Enums.InstituteRoles | null
   affiliatedUniversity: string | null
   yearEstablished: number | null
   ownership: string | null
   headline: string | null
   about: string | null
+  password: string | null
+  bedsCount: number | null
+  staffCount: number | null
+  telephone: string | null
+  type: string | null
+  city: string | null
+  country: string | null
 }
 
 export type InstituteCountAggregateOutputType = {
   id: number
   created_at: number
   name: number
-  country: number
-  city: number
   verified: number
   contactEmail: number
-  password: number
   contactNumber: number
-  bedsCount: number
-  staffCount: number
-  type: number
-  services: number
-  telephone: number
   role: number
   affiliatedUniversity: number
   yearEstablished: number
   ownership: number
   headline: number
   about: number
+  password: number
+  bedsCount: number
+  services: number
+  staffCount: number
+  telephone: number
+  type: number
+  city: number
+  country: number
   _all: number
 }
 
 
 export type InstituteAvgAggregateInputType = {
+  yearEstablished?: true
   bedsCount?: true
   staffCount?: true
-  yearEstablished?: true
 }
 
 export type InstituteSumAggregateInputType = {
+  yearEstablished?: true
   bedsCount?: true
   staffCount?: true
-  yearEstablished?: true
 }
 
 export type InstituteMinAggregateInputType = {
   id?: true
   created_at?: true
   name?: true
-  country?: true
-  city?: true
   verified?: true
   contactEmail?: true
-  password?: true
   contactNumber?: true
-  bedsCount?: true
-  staffCount?: true
-  type?: true
-  telephone?: true
   role?: true
   affiliatedUniversity?: true
   yearEstablished?: true
   ownership?: true
   headline?: true
   about?: true
+  password?: true
+  bedsCount?: true
+  staffCount?: true
+  telephone?: true
+  type?: true
+  city?: true
+  country?: true
 }
 
 export type InstituteMaxAggregateInputType = {
   id?: true
   created_at?: true
   name?: true
-  country?: true
-  city?: true
   verified?: true
   contactEmail?: true
-  password?: true
   contactNumber?: true
-  bedsCount?: true
-  staffCount?: true
-  type?: true
-  telephone?: true
   role?: true
   affiliatedUniversity?: true
   yearEstablished?: true
   ownership?: true
   headline?: true
   about?: true
+  password?: true
+  bedsCount?: true
+  staffCount?: true
+  telephone?: true
+  type?: true
+  city?: true
+  country?: true
 }
 
 export type InstituteCountAggregateInputType = {
   id?: true
   created_at?: true
   name?: true
-  country?: true
-  city?: true
   verified?: true
   contactEmail?: true
-  password?: true
   contactNumber?: true
-  bedsCount?: true
-  staffCount?: true
-  type?: true
-  services?: true
-  telephone?: true
   role?: true
   affiliatedUniversity?: true
   yearEstablished?: true
   ownership?: true
   headline?: true
   about?: true
+  password?: true
+  bedsCount?: true
+  services?: true
+  staffCount?: true
+  telephone?: true
+  type?: true
+  city?: true
+  country?: true
   _all?: true
 }
 
@@ -277,23 +277,23 @@ export type InstituteGroupByOutputType = {
   id: string
   created_at: Date
   name: string
-  country: string | null
-  city: string | null
   verified: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services: string[]
-  telephone: string
   role: $Enums.InstituteRoles
   affiliatedUniversity: string | null
   yearEstablished: number | null
   ownership: string | null
   headline: string | null
   about: string | null
+  password: string
+  bedsCount: number
+  services: string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city: string | null
+  country: string | null
   _count: InstituteCountAggregateOutputType | null
   _avg: InstituteAvgAggregateOutputType | null
   _sum: InstituteSumAggregateOutputType | null
@@ -323,58 +323,60 @@ export type InstituteWhereInput = {
   id?: Prisma.StringFilter<"Institute"> | string
   created_at?: Prisma.DateTimeFilter<"Institute"> | Date | string
   name?: Prisma.StringFilter<"Institute"> | string
-  country?: Prisma.StringNullableFilter<"Institute"> | string | null
-  city?: Prisma.StringNullableFilter<"Institute"> | string | null
   verified?: Prisma.BoolFilter<"Institute"> | boolean
   contactEmail?: Prisma.StringFilter<"Institute"> | string
-  password?: Prisma.StringFilter<"Institute"> | string
   contactNumber?: Prisma.StringFilter<"Institute"> | string
-  bedsCount?: Prisma.IntFilter<"Institute"> | number
-  staffCount?: Prisma.IntFilter<"Institute"> | number
-  type?: Prisma.StringFilter<"Institute"> | string
-  services?: Prisma.StringNullableListFilter<"Institute">
-  telephone?: Prisma.StringFilter<"Institute"> | string
   role?: Prisma.EnumInstituteRolesFilter<"Institute"> | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.StringNullableFilter<"Institute"> | string | null
   yearEstablished?: Prisma.IntNullableFilter<"Institute"> | number | null
   ownership?: Prisma.StringNullableFilter<"Institute"> | string | null
   headline?: Prisma.StringNullableFilter<"Institute"> | string | null
   about?: Prisma.StringNullableFilter<"Institute"> | string | null
-  Job?: Prisma.JobListRelationFilter
-  instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
-  instituteViews?: Prisma.InstituteViewListRelationFilter
-  instituteImages?: Prisma.InstituteImagesListRelationFilter
-  instituteVerifications?: Prisma.InstituteVerificationsListRelationFilter
+  password?: Prisma.StringFilter<"Institute"> | string
+  bedsCount?: Prisma.IntFilter<"Institute"> | number
+  services?: Prisma.StringNullableListFilter<"Institute">
+  staffCount?: Prisma.IntFilter<"Institute"> | number
+  telephone?: Prisma.StringFilter<"Institute"> | string
+  type?: Prisma.StringFilter<"Institute"> | string
+  city?: Prisma.StringNullableFilter<"Institute"> | string | null
+  country?: Prisma.StringNullableFilter<"Institute"> | string | null
   conversations?: Prisma.ConversationListRelationFilter
+  instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
+  instituteImages?: Prisma.InstituteImagesListRelationFilter
+  instituteVerifications?: Prisma.XOR<Prisma.InstituteVerificationsNullableScalarRelationFilter, Prisma.InstituteVerificationsWhereInput> | null
+  instituteViews?: Prisma.InstituteViewListRelationFilter
+  Job?: Prisma.JobListRelationFilter
+  creditsHistories?: Prisma.CreditsHistoryListRelationFilter
 }
 
 export type InstituteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
   verified?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
-  bedsCount?: Prisma.SortOrder
-  staffCount?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  services?: Prisma.SortOrder
-  telephone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   affiliatedUniversity?: Prisma.SortOrderInput | Prisma.SortOrder
   yearEstablished?: Prisma.SortOrderInput | Prisma.SortOrder
   ownership?: Prisma.SortOrderInput | Prisma.SortOrder
   headline?: Prisma.SortOrderInput | Prisma.SortOrder
   about?: Prisma.SortOrderInput | Prisma.SortOrder
-  Job?: Prisma.JobOrderByRelationAggregateInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsOrderByRelationAggregateInput
-  instituteViews?: Prisma.InstituteViewOrderByRelationAggregateInput
-  instituteImages?: Prisma.InstituteImagesOrderByRelationAggregateInput
-  instituteVerifications?: Prisma.InstituteVerificationsOrderByRelationAggregateInput
+  password?: Prisma.SortOrder
+  bedsCount?: Prisma.SortOrder
+  services?: Prisma.SortOrder
+  staffCount?: Prisma.SortOrder
+  telephone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
   conversations?: Prisma.ConversationOrderByRelationAggregateInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsOrderByRelationAggregateInput
+  instituteImages?: Prisma.InstituteImagesOrderByRelationAggregateInput
+  instituteVerifications?: Prisma.InstituteVerificationsOrderByWithRelationInput
+  instituteViews?: Prisma.InstituteViewOrderByRelationAggregateInput
+  Job?: Prisma.JobOrderByRelationAggregateInput
+  creditsHistories?: Prisma.CreditsHistoryOrderByRelationAggregateInput
 }
 
 export type InstituteWhereUniqueInput = Prisma.AtLeast<{
@@ -385,51 +387,52 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.InstituteWhereInput[]
   NOT?: Prisma.InstituteWhereInput | Prisma.InstituteWhereInput[]
   created_at?: Prisma.DateTimeFilter<"Institute"> | Date | string
-  country?: Prisma.StringNullableFilter<"Institute"> | string | null
-  city?: Prisma.StringNullableFilter<"Institute"> | string | null
   verified?: Prisma.BoolFilter<"Institute"> | boolean
-  password?: Prisma.StringFilter<"Institute"> | string
   contactNumber?: Prisma.StringFilter<"Institute"> | string
-  bedsCount?: Prisma.IntFilter<"Institute"> | number
-  staffCount?: Prisma.IntFilter<"Institute"> | number
-  type?: Prisma.StringFilter<"Institute"> | string
-  services?: Prisma.StringNullableListFilter<"Institute">
-  telephone?: Prisma.StringFilter<"Institute"> | string
   role?: Prisma.EnumInstituteRolesFilter<"Institute"> | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.StringNullableFilter<"Institute"> | string | null
   yearEstablished?: Prisma.IntNullableFilter<"Institute"> | number | null
   ownership?: Prisma.StringNullableFilter<"Institute"> | string | null
   headline?: Prisma.StringNullableFilter<"Institute"> | string | null
   about?: Prisma.StringNullableFilter<"Institute"> | string | null
-  Job?: Prisma.JobListRelationFilter
-  instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
-  instituteViews?: Prisma.InstituteViewListRelationFilter
-  instituteImages?: Prisma.InstituteImagesListRelationFilter
-  instituteVerifications?: Prisma.InstituteVerificationsListRelationFilter
+  password?: Prisma.StringFilter<"Institute"> | string
+  bedsCount?: Prisma.IntFilter<"Institute"> | number
+  services?: Prisma.StringNullableListFilter<"Institute">
+  staffCount?: Prisma.IntFilter<"Institute"> | number
+  telephone?: Prisma.StringFilter<"Institute"> | string
+  type?: Prisma.StringFilter<"Institute"> | string
+  city?: Prisma.StringNullableFilter<"Institute"> | string | null
+  country?: Prisma.StringNullableFilter<"Institute"> | string | null
   conversations?: Prisma.ConversationListRelationFilter
+  instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
+  instituteImages?: Prisma.InstituteImagesListRelationFilter
+  instituteVerifications?: Prisma.XOR<Prisma.InstituteVerificationsNullableScalarRelationFilter, Prisma.InstituteVerificationsWhereInput> | null
+  instituteViews?: Prisma.InstituteViewListRelationFilter
+  Job?: Prisma.JobListRelationFilter
+  creditsHistories?: Prisma.CreditsHistoryListRelationFilter
 }, "id" | "name" | "contactEmail">
 
 export type InstituteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
   verified?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
-  bedsCount?: Prisma.SortOrder
-  staffCount?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  services?: Prisma.SortOrder
-  telephone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   affiliatedUniversity?: Prisma.SortOrderInput | Prisma.SortOrder
   yearEstablished?: Prisma.SortOrderInput | Prisma.SortOrder
   ownership?: Prisma.SortOrderInput | Prisma.SortOrder
   headline?: Prisma.SortOrderInput | Prisma.SortOrder
   about?: Prisma.SortOrderInput | Prisma.SortOrder
+  password?: Prisma.SortOrder
+  bedsCount?: Prisma.SortOrder
+  services?: Prisma.SortOrder
+  staffCount?: Prisma.SortOrder
+  telephone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.InstituteCountOrderByAggregateInput
   _avg?: Prisma.InstituteAvgOrderByAggregateInput
   _max?: Prisma.InstituteMaxOrderByAggregateInput
@@ -444,208 +447,212 @@ export type InstituteScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Institute"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Institute"> | Date | string
   name?: Prisma.StringWithAggregatesFilter<"Institute"> | string
-  country?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
-  city?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   verified?: Prisma.BoolWithAggregatesFilter<"Institute"> | boolean
   contactEmail?: Prisma.StringWithAggregatesFilter<"Institute"> | string
-  password?: Prisma.StringWithAggregatesFilter<"Institute"> | string
   contactNumber?: Prisma.StringWithAggregatesFilter<"Institute"> | string
-  bedsCount?: Prisma.IntWithAggregatesFilter<"Institute"> | number
-  staffCount?: Prisma.IntWithAggregatesFilter<"Institute"> | number
-  type?: Prisma.StringWithAggregatesFilter<"Institute"> | string
-  services?: Prisma.StringNullableListFilter<"Institute">
-  telephone?: Prisma.StringWithAggregatesFilter<"Institute"> | string
   role?: Prisma.EnumInstituteRolesWithAggregatesFilter<"Institute"> | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   yearEstablished?: Prisma.IntNullableWithAggregatesFilter<"Institute"> | number | null
   ownership?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   headline?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   about?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
+  password?: Prisma.StringWithAggregatesFilter<"Institute"> | string
+  bedsCount?: Prisma.IntWithAggregatesFilter<"Institute"> | number
+  services?: Prisma.StringNullableListFilter<"Institute">
+  staffCount?: Prisma.IntWithAggregatesFilter<"Institute"> | number
+  telephone?: Prisma.StringWithAggregatesFilter<"Institute"> | string
+  type?: Prisma.StringWithAggregatesFilter<"Institute"> | string
+  city?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
+  country?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
 }
 
 export type InstituteCreateInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateManyInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
 }
 
 export type InstituteUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type InstituteUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -660,79 +667,79 @@ export type InstituteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
-  bedsCount?: Prisma.SortOrder
-  staffCount?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  services?: Prisma.SortOrder
-  telephone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   affiliatedUniversity?: Prisma.SortOrder
   yearEstablished?: Prisma.SortOrder
   ownership?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  bedsCount?: Prisma.SortOrder
+  services?: Prisma.SortOrder
+  staffCount?: Prisma.SortOrder
+  telephone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type InstituteAvgOrderByAggregateInput = {
+  yearEstablished?: Prisma.SortOrder
   bedsCount?: Prisma.SortOrder
   staffCount?: Prisma.SortOrder
-  yearEstablished?: Prisma.SortOrder
 }
 
 export type InstituteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
-  bedsCount?: Prisma.SortOrder
-  staffCount?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  telephone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   affiliatedUniversity?: Prisma.SortOrder
   yearEstablished?: Prisma.SortOrder
   ownership?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  bedsCount?: Prisma.SortOrder
+  staffCount?: Prisma.SortOrder
+  telephone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type InstituteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
-  bedsCount?: Prisma.SortOrder
-  staffCount?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  telephone?: Prisma.SortOrder
   role?: Prisma.SortOrder
   affiliatedUniversity?: Prisma.SortOrder
   yearEstablished?: Prisma.SortOrder
   ownership?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  bedsCount?: Prisma.SortOrder
+  staffCount?: Prisma.SortOrder
+  telephone?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type InstituteSumOrderByAggregateInput = {
+  yearEstablished?: Prisma.SortOrder
   bedsCount?: Prisma.SortOrder
   staffCount?: Prisma.SortOrder
-  yearEstablished?: Prisma.SortOrder
 }
 
 export type InstituteNullableScalarRelationFilter = {
@@ -749,13 +756,13 @@ export type InstituteCreateservicesInput = {
   set: string[]
 }
 
+export type EnumInstituteRolesFieldUpdateOperationsInput = {
+  set?: $Enums.InstituteRoles
+}
+
 export type InstituteUpdateservicesInput = {
   set?: string[]
   push?: string | string[]
-}
-
-export type EnumInstituteRolesFieldUpdateOperationsInput = {
-  set?: $Enums.InstituteRoles
 }
 
 export type InstituteCreateNestedOneWithoutInstituteCreditsWalletsInput = {
@@ -772,6 +779,22 @@ export type InstituteUpdateOneWithoutInstituteCreditsWalletsNestedInput = {
   delete?: Prisma.InstituteWhereInput | boolean
   connect?: Prisma.InstituteWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutInstituteCreditsWalletsInput, Prisma.InstituteUpdateWithoutInstituteCreditsWalletsInput>, Prisma.InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput>
+}
+
+export type InstituteCreateNestedOneWithoutCreditsHistoriesInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedCreateWithoutCreditsHistoriesInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutCreditsHistoriesInput
+  connect?: Prisma.InstituteWhereUniqueInput
+}
+
+export type InstituteUpdateOneWithoutCreditsHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedCreateWithoutCreditsHistoriesInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutCreditsHistoriesInput
+  upsert?: Prisma.InstituteUpsertWithoutCreditsHistoriesInput
+  disconnect?: Prisma.InstituteWhereInput | boolean
+  delete?: Prisma.InstituteWhereInput | boolean
+  connect?: Prisma.InstituteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutCreditsHistoriesInput, Prisma.InstituteUpdateWithoutCreditsHistoriesInput>, Prisma.InstituteUncheckedUpdateWithoutCreditsHistoriesInput>
 }
 
 export type InstituteCreateNestedOneWithoutJobInput = {
@@ -848,56 +871,58 @@ export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteCreditsWalletsInput = {
@@ -920,112 +945,248 @@ export type InstituteUpdateWithoutInstituteCreditsWalletsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteCreateWithoutCreditsHistoriesInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  verified?: boolean
+  contactEmail: string
+  contactNumber: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteUncheckedCreateWithoutCreditsHistoriesInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  verified?: boolean
+  contactEmail: string
+  contactNumber: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteCreateOrConnectWithoutCreditsHistoriesInput = {
+  where: Prisma.InstituteWhereUniqueInput
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedCreateWithoutCreditsHistoriesInput>
+}
+
+export type InstituteUpsertWithoutCreditsHistoriesInput = {
+  update: Prisma.XOR<Prisma.InstituteUpdateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedUpdateWithoutCreditsHistoriesInput>
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedCreateWithoutCreditsHistoriesInput>
+  where?: Prisma.InstituteWhereInput
+}
+
+export type InstituteUpdateToOneWithWhereWithoutCreditsHistoriesInput = {
+  where?: Prisma.InstituteWhereInput
+  data: Prisma.XOR<Prisma.InstituteUpdateWithoutCreditsHistoriesInput, Prisma.InstituteUncheckedUpdateWithoutCreditsHistoriesInput>
+}
+
+export type InstituteUpdateWithoutCreditsHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteUncheckedUpdateWithoutCreditsHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutJobInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutJobInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutJobInput = {
@@ -1048,112 +1209,116 @@ export type InstituteUpdateWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteViewsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteViewsInput = {
@@ -1176,112 +1341,116 @@ export type InstituteUpdateWithoutInstituteViewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteImagesInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteImagesInput = {
@@ -1304,112 +1473,116 @@ export type InstituteUpdateWithoutInstituteImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteVerificationsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteVerificationsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteVerificationsInput = {
@@ -1432,112 +1605,116 @@ export type InstituteUpdateWithoutInstituteVerificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteVerificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutConversationsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutConversationsInput = {
   id?: string
   created_at?: Date | string
   name: string
-  country?: string | null
-  city?: string | null
   verified?: boolean
   contactEmail: string
-  password: string
   contactNumber: string
-  bedsCount: number
-  staffCount: number
-  type: string
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  telephone: string
   role?: $Enums.InstituteRoles
   affiliatedUniversity?: string | null
   yearEstablished?: number | null
   ownership?: string | null
   headline?: string | null
   about?: string | null
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutConversationsInput = {
@@ -1560,56 +1737,58 @@ export type InstituteUpdateWithoutConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
   affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 
@@ -1618,21 +1797,21 @@ export type InstituteUncheckedUpdateWithoutConversationsInput = {
  */
 
 export type InstituteCountOutputType = {
-  Job: number
-  instituteCreditsWallets: number
-  instituteViews: number
-  instituteImages: number
-  instituteVerifications: number
   conversations: number
+  instituteCreditsWallets: number
+  instituteImages: number
+  instituteViews: number
+  Job: number
+  creditsHistories: number
 }
 
 export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Job?: boolean | InstituteCountOutputTypeCountJobArgs
-  instituteCreditsWallets?: boolean | InstituteCountOutputTypeCountInstituteCreditsWalletsArgs
-  instituteViews?: boolean | InstituteCountOutputTypeCountInstituteViewsArgs
-  instituteImages?: boolean | InstituteCountOutputTypeCountInstituteImagesArgs
-  instituteVerifications?: boolean | InstituteCountOutputTypeCountInstituteVerificationsArgs
   conversations?: boolean | InstituteCountOutputTypeCountConversationsArgs
+  instituteCreditsWallets?: boolean | InstituteCountOutputTypeCountInstituteCreditsWalletsArgs
+  instituteImages?: boolean | InstituteCountOutputTypeCountInstituteImagesArgs
+  instituteViews?: boolean | InstituteCountOutputTypeCountInstituteViewsArgs
+  Job?: boolean | InstituteCountOutputTypeCountJobArgs
+  creditsHistories?: boolean | InstituteCountOutputTypeCountCreditsHistoriesArgs
 }
 
 /**
@@ -1648,8 +1827,8 @@ export type InstituteCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * InstituteCountOutputType without action
  */
-export type InstituteCountOutputTypeCountJobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.JobWhereInput
+export type InstituteCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConversationWhereInput
 }
 
 /**
@@ -1662,13 +1841,6 @@ export type InstituteCountOutputTypeCountInstituteCreditsWalletsArgs<ExtArgs ext
 /**
  * InstituteCountOutputType without action
  */
-export type InstituteCountOutputTypeCountInstituteViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.InstituteViewWhereInput
-}
-
-/**
- * InstituteCountOutputType without action
- */
 export type InstituteCountOutputTypeCountInstituteImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.InstituteImagesWhereInput
 }
@@ -1676,15 +1848,22 @@ export type InstituteCountOutputTypeCountInstituteImagesArgs<ExtArgs extends run
 /**
  * InstituteCountOutputType without action
  */
-export type InstituteCountOutputTypeCountInstituteVerificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.InstituteVerificationsWhereInput
+export type InstituteCountOutputTypeCountInstituteViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InstituteViewWhereInput
 }
 
 /**
  * InstituteCountOutputType without action
  */
-export type InstituteCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ConversationWhereInput
+export type InstituteCountOutputTypeCountJobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JobWhereInput
+}
+
+/**
+ * InstituteCountOutputType without action
+ */
+export type InstituteCountOutputTypeCountCreditsHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CreditsHistoryWhereInput
 }
 
 
@@ -1692,29 +1871,30 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   created_at?: boolean
   name?: boolean
-  country?: boolean
-  city?: boolean
   verified?: boolean
   contactEmail?: boolean
-  password?: boolean
   contactNumber?: boolean
-  bedsCount?: boolean
-  staffCount?: boolean
-  type?: boolean
-  services?: boolean
-  telephone?: boolean
   role?: boolean
   affiliatedUniversity?: boolean
   yearEstablished?: boolean
   ownership?: boolean
   headline?: boolean
   about?: boolean
-  Job?: boolean | Prisma.Institute$JobArgs<ExtArgs>
+  password?: boolean
+  bedsCount?: boolean
+  services?: boolean
+  staffCount?: boolean
+  telephone?: boolean
+  type?: boolean
+  city?: boolean
+  country?: boolean
+  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
-  instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
   instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
-  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
+  instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
+  Job?: boolean | Prisma.Institute$JobArgs<ExtArgs>
+  creditsHistories?: boolean | Prisma.Institute$creditsHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["institute"]>
 
@@ -1722,79 +1902,80 @@ export type InstituteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   created_at?: boolean
   name?: boolean
-  country?: boolean
-  city?: boolean
   verified?: boolean
   contactEmail?: boolean
-  password?: boolean
   contactNumber?: boolean
-  bedsCount?: boolean
-  staffCount?: boolean
-  type?: boolean
-  services?: boolean
-  telephone?: boolean
   role?: boolean
   affiliatedUniversity?: boolean
   yearEstablished?: boolean
   ownership?: boolean
   headline?: boolean
   about?: boolean
+  password?: boolean
+  bedsCount?: boolean
+  services?: boolean
+  staffCount?: boolean
+  telephone?: boolean
+  type?: boolean
+  city?: boolean
+  country?: boolean
 }, ExtArgs["result"]["institute"]>
 
 export type InstituteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   created_at?: boolean
   name?: boolean
-  country?: boolean
-  city?: boolean
   verified?: boolean
   contactEmail?: boolean
-  password?: boolean
   contactNumber?: boolean
-  bedsCount?: boolean
-  staffCount?: boolean
-  type?: boolean
-  services?: boolean
-  telephone?: boolean
   role?: boolean
   affiliatedUniversity?: boolean
   yearEstablished?: boolean
   ownership?: boolean
   headline?: boolean
   about?: boolean
+  password?: boolean
+  bedsCount?: boolean
+  services?: boolean
+  staffCount?: boolean
+  telephone?: boolean
+  type?: boolean
+  city?: boolean
+  country?: boolean
 }, ExtArgs["result"]["institute"]>
 
 export type InstituteSelectScalar = {
   id?: boolean
   created_at?: boolean
   name?: boolean
-  country?: boolean
-  city?: boolean
   verified?: boolean
   contactEmail?: boolean
-  password?: boolean
   contactNumber?: boolean
-  bedsCount?: boolean
-  staffCount?: boolean
-  type?: boolean
-  services?: boolean
-  telephone?: boolean
   role?: boolean
   affiliatedUniversity?: boolean
   yearEstablished?: boolean
   ownership?: boolean
   headline?: boolean
   about?: boolean
+  password?: boolean
+  bedsCount?: boolean
+  services?: boolean
+  staffCount?: boolean
+  telephone?: boolean
+  type?: boolean
+  city?: boolean
+  country?: boolean
 }
 
-export type InstituteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "name" | "country" | "city" | "verified" | "contactEmail" | "password" | "contactNumber" | "bedsCount" | "staffCount" | "type" | "services" | "telephone" | "role" | "affiliatedUniversity" | "yearEstablished" | "ownership" | "headline" | "about", ExtArgs["result"]["institute"]>
+export type InstituteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "name" | "verified" | "contactEmail" | "contactNumber" | "role" | "affiliatedUniversity" | "yearEstablished" | "ownership" | "headline" | "about" | "password" | "bedsCount" | "services" | "staffCount" | "telephone" | "type" | "city" | "country", ExtArgs["result"]["institute"]>
 export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Job?: boolean | Prisma.Institute$JobArgs<ExtArgs>
+  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
-  instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
   instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
-  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
+  instituteViews?: boolean | Prisma.Institute$instituteViewsArgs<ExtArgs>
+  Job?: boolean | Prisma.Institute$JobArgs<ExtArgs>
+  creditsHistories?: boolean | Prisma.Institute$creditsHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type InstituteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1803,34 +1984,35 @@ export type InstituteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Institute"
   objects: {
-    Job: Prisma.$JobPayload<ExtArgs>[]
-    instituteCreditsWallets: Prisma.$InstituteCreditsPayload<ExtArgs>[]
-    instituteViews: Prisma.$InstituteViewPayload<ExtArgs>[]
-    instituteImages: Prisma.$InstituteImagesPayload<ExtArgs>[]
-    instituteVerifications: Prisma.$InstituteVerificationsPayload<ExtArgs>[]
     conversations: Prisma.$ConversationPayload<ExtArgs>[]
+    instituteCreditsWallets: Prisma.$InstituteCreditsPayload<ExtArgs>[]
+    instituteImages: Prisma.$InstituteImagesPayload<ExtArgs>[]
+    instituteVerifications: Prisma.$InstituteVerificationsPayload<ExtArgs> | null
+    instituteViews: Prisma.$InstituteViewPayload<ExtArgs>[]
+    Job: Prisma.$JobPayload<ExtArgs>[]
+    creditsHistories: Prisma.$CreditsHistoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     created_at: Date
     name: string
-    country: string | null
-    city: string | null
     verified: boolean
     contactEmail: string
-    password: string
     contactNumber: string
-    bedsCount: number
-    staffCount: number
-    type: string
-    services: string[]
-    telephone: string
     role: $Enums.InstituteRoles
     affiliatedUniversity: string | null
     yearEstablished: number | null
     ownership: string | null
     headline: string | null
     about: string | null
+    password: string
+    bedsCount: number
+    services: string[]
+    staffCount: number
+    telephone: string
+    type: string
+    city: string | null
+    country: string | null
   }, ExtArgs["result"]["institute"]>
   composites: {}
 }
@@ -2225,12 +2407,13 @@ readonly fields: InstituteFieldRefs;
  */
 export interface Prisma__InstituteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Job<T extends Prisma.Institute$JobArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$JobArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  instituteCreditsWallets<T extends Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteCreditsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  instituteViews<T extends Prisma.Institute$instituteViewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteViewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  instituteImages<T extends Prisma.Institute$instituteImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  instituteVerifications<T extends Prisma.Institute$instituteVerificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteVerificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   conversations<T extends Prisma.Institute$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  instituteCreditsWallets<T extends Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteCreditsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  instituteImages<T extends Prisma.Institute$instituteImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  instituteVerifications<T extends Prisma.Institute$instituteVerificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteVerificationsArgs<ExtArgs>>): Prisma.Prisma__InstituteVerificationsClient<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  instituteViews<T extends Prisma.Institute$instituteViewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteViewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Job<T extends Prisma.Institute$JobArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$JobArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  creditsHistories<T extends Prisma.Institute$creditsHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$creditsHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditsHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2263,23 +2446,23 @@ export interface InstituteFieldRefs {
   readonly id: Prisma.FieldRef<"Institute", 'String'>
   readonly created_at: Prisma.FieldRef<"Institute", 'DateTime'>
   readonly name: Prisma.FieldRef<"Institute", 'String'>
-  readonly country: Prisma.FieldRef<"Institute", 'String'>
-  readonly city: Prisma.FieldRef<"Institute", 'String'>
   readonly verified: Prisma.FieldRef<"Institute", 'Boolean'>
   readonly contactEmail: Prisma.FieldRef<"Institute", 'String'>
-  readonly password: Prisma.FieldRef<"Institute", 'String'>
   readonly contactNumber: Prisma.FieldRef<"Institute", 'String'>
-  readonly bedsCount: Prisma.FieldRef<"Institute", 'Int'>
-  readonly staffCount: Prisma.FieldRef<"Institute", 'Int'>
-  readonly type: Prisma.FieldRef<"Institute", 'String'>
-  readonly services: Prisma.FieldRef<"Institute", 'String[]'>
-  readonly telephone: Prisma.FieldRef<"Institute", 'String'>
   readonly role: Prisma.FieldRef<"Institute", 'InstituteRoles'>
   readonly affiliatedUniversity: Prisma.FieldRef<"Institute", 'String'>
   readonly yearEstablished: Prisma.FieldRef<"Institute", 'Int'>
   readonly ownership: Prisma.FieldRef<"Institute", 'String'>
   readonly headline: Prisma.FieldRef<"Institute", 'String'>
   readonly about: Prisma.FieldRef<"Institute", 'String'>
+  readonly password: Prisma.FieldRef<"Institute", 'String'>
+  readonly bedsCount: Prisma.FieldRef<"Institute", 'Int'>
+  readonly services: Prisma.FieldRef<"Institute", 'String[]'>
+  readonly staffCount: Prisma.FieldRef<"Institute", 'Int'>
+  readonly telephone: Prisma.FieldRef<"Institute", 'String'>
+  readonly type: Prisma.FieldRef<"Institute", 'String'>
+  readonly city: Prisma.FieldRef<"Institute", 'String'>
+  readonly country: Prisma.FieldRef<"Institute", 'String'>
 }
     
 
@@ -2668,27 +2851,27 @@ export type InstituteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Institute.Job
+ * Institute.conversations
  */
-export type Institute$JobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Institute$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Job
+   * Select specific fields to fetch from the Conversation
    */
-  select?: Prisma.JobSelect<ExtArgs> | null
+  select?: Prisma.ConversationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Job
+   * Omit specific fields from the Conversation
    */
-  omit?: Prisma.JobOmit<ExtArgs> | null
+  omit?: Prisma.ConversationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.JobInclude<ExtArgs> | null
-  where?: Prisma.JobWhereInput
-  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[]
-  cursor?: Prisma.JobWhereUniqueInput
+  include?: Prisma.ConversationInclude<ExtArgs> | null
+  where?: Prisma.ConversationWhereInput
+  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
+  cursor?: Prisma.ConversationWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.JobScalarFieldEnum | Prisma.JobScalarFieldEnum[]
+  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
 }
 
 /**
@@ -2713,30 +2896,6 @@ export type Institute$instituteCreditsWalletsArgs<ExtArgs extends runtime.Types.
   take?: number
   skip?: number
   distinct?: Prisma.InstituteCreditsScalarFieldEnum | Prisma.InstituteCreditsScalarFieldEnum[]
-}
-
-/**
- * Institute.instituteViews
- */
-export type Institute$instituteViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the InstituteView
-   */
-  select?: Prisma.InstituteViewSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the InstituteView
-   */
-  omit?: Prisma.InstituteViewOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InstituteViewInclude<ExtArgs> | null
-  where?: Prisma.InstituteViewWhereInput
-  orderBy?: Prisma.InstituteViewOrderByWithRelationInput | Prisma.InstituteViewOrderByWithRelationInput[]
-  cursor?: Prisma.InstituteViewWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.InstituteViewScalarFieldEnum | Prisma.InstituteViewScalarFieldEnum[]
 }
 
 /**
@@ -2780,35 +2939,78 @@ export type Institute$instituteVerificationsArgs<ExtArgs extends runtime.Types.E
    */
   include?: Prisma.InstituteVerificationsInclude<ExtArgs> | null
   where?: Prisma.InstituteVerificationsWhereInput
-  orderBy?: Prisma.InstituteVerificationsOrderByWithRelationInput | Prisma.InstituteVerificationsOrderByWithRelationInput[]
-  cursor?: Prisma.InstituteVerificationsWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.InstituteVerificationsScalarFieldEnum | Prisma.InstituteVerificationsScalarFieldEnum[]
 }
 
 /**
- * Institute.conversations
+ * Institute.instituteViews
  */
-export type Institute$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Institute$instituteViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Conversation
+   * Select specific fields to fetch from the InstituteView
    */
-  select?: Prisma.ConversationSelect<ExtArgs> | null
+  select?: Prisma.InstituteViewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Conversation
+   * Omit specific fields from the InstituteView
    */
-  omit?: Prisma.ConversationOmit<ExtArgs> | null
+  omit?: Prisma.InstituteViewOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ConversationInclude<ExtArgs> | null
-  where?: Prisma.ConversationWhereInput
-  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
-  cursor?: Prisma.ConversationWhereUniqueInput
+  include?: Prisma.InstituteViewInclude<ExtArgs> | null
+  where?: Prisma.InstituteViewWhereInput
+  orderBy?: Prisma.InstituteViewOrderByWithRelationInput | Prisma.InstituteViewOrderByWithRelationInput[]
+  cursor?: Prisma.InstituteViewWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
+  distinct?: Prisma.InstituteViewScalarFieldEnum | Prisma.InstituteViewScalarFieldEnum[]
+}
+
+/**
+ * Institute.Job
+ */
+export type Institute$JobArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Job
+   */
+  select?: Prisma.JobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Job
+   */
+  omit?: Prisma.JobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobInclude<ExtArgs> | null
+  where?: Prisma.JobWhereInput
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[]
+  cursor?: Prisma.JobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobScalarFieldEnum | Prisma.JobScalarFieldEnum[]
+}
+
+/**
+ * Institute.creditsHistories
+ */
+export type Institute$creditsHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CreditsHistory
+   */
+  select?: Prisma.CreditsHistorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CreditsHistory
+   */
+  omit?: Prisma.CreditsHistoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CreditsHistoryInclude<ExtArgs> | null
+  where?: Prisma.CreditsHistoryWhereInput
+  orderBy?: Prisma.CreditsHistoryOrderByWithRelationInput | Prisma.CreditsHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.CreditsHistoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CreditsHistoryScalarFieldEnum | Prisma.CreditsHistoryScalarFieldEnum[]
 }
 
 /**

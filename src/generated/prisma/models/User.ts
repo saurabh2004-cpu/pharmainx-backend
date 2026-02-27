@@ -37,70 +37,70 @@ export type UserSumAggregateOutputType = {
 export type UserMinAggregateOutputType = {
   id: string | null
   created_at: Date | null
-  firstName: string | null
-  lastName: string | null
-  email: string | null
-  password: string | null
-  country: string | null
-  city: string | null
-  university: string | null
-  degree: string | null
-  yearOfStudy: string | null
   verified: boolean | null
   gender: string | null
-  specialization: string | null
-  speciality: string | null
-  subSpeciality: string | null
   role: $Enums.UserRoles | null
-  experience: number | null
   headline: string | null
   about: string | null
+  degree: string | null
+  email: string | null
+  firstName: string | null
+  lastName: string | null
+  password: string | null
+  university: string | null
+  yearOfStudy: string | null
+  specialization: string | null
+  experience: number | null
+  speciality: string | null
+  subSpeciality: string | null
+  city: string | null
+  country: string | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
   created_at: Date | null
-  firstName: string | null
-  lastName: string | null
-  email: string | null
-  password: string | null
-  country: string | null
-  city: string | null
-  university: string | null
-  degree: string | null
-  yearOfStudy: string | null
   verified: boolean | null
   gender: string | null
-  specialization: string | null
-  speciality: string | null
-  subSpeciality: string | null
   role: $Enums.UserRoles | null
-  experience: number | null
   headline: string | null
   about: string | null
+  degree: string | null
+  email: string | null
+  firstName: string | null
+  lastName: string | null
+  password: string | null
+  university: string | null
+  yearOfStudy: string | null
+  specialization: string | null
+  experience: number | null
+  speciality: string | null
+  subSpeciality: string | null
+  city: string | null
+  country: string | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
   created_at: number
-  firstName: number
-  lastName: number
-  email: number
-  password: number
-  country: number
-  city: number
-  university: number
-  degree: number
-  yearOfStudy: number
   verified: number
   gender: number
-  specialization: number
-  speciality: number
-  subSpeciality: number
   role: number
-  experience: number
   headline: number
   about: number
+  degree: number
+  email: number
+  firstName: number
+  lastName: number
+  password: number
+  university: number
+  yearOfStudy: number
+  specialization: number
+  experience: number
+  speciality: number
+  subSpeciality: number
+  city: number
+  country: number
   _all: number
 }
 
@@ -116,70 +116,70 @@ export type UserSumAggregateInputType = {
 export type UserMinAggregateInputType = {
   id?: true
   created_at?: true
-  firstName?: true
-  lastName?: true
-  email?: true
-  password?: true
-  country?: true
-  city?: true
-  university?: true
-  degree?: true
-  yearOfStudy?: true
   verified?: true
   gender?: true
-  specialization?: true
-  speciality?: true
-  subSpeciality?: true
   role?: true
-  experience?: true
   headline?: true
   about?: true
+  degree?: true
+  email?: true
+  firstName?: true
+  lastName?: true
+  password?: true
+  university?: true
+  yearOfStudy?: true
+  specialization?: true
+  experience?: true
+  speciality?: true
+  subSpeciality?: true
+  city?: true
+  country?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
   created_at?: true
-  firstName?: true
-  lastName?: true
-  email?: true
-  password?: true
-  country?: true
-  city?: true
-  university?: true
-  degree?: true
-  yearOfStudy?: true
   verified?: true
   gender?: true
-  specialization?: true
-  speciality?: true
-  subSpeciality?: true
   role?: true
-  experience?: true
   headline?: true
   about?: true
+  degree?: true
+  email?: true
+  firstName?: true
+  lastName?: true
+  password?: true
+  university?: true
+  yearOfStudy?: true
+  specialization?: true
+  experience?: true
+  speciality?: true
+  subSpeciality?: true
+  city?: true
+  country?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
   created_at?: true
-  firstName?: true
-  lastName?: true
-  email?: true
-  password?: true
-  country?: true
-  city?: true
-  university?: true
-  degree?: true
-  yearOfStudy?: true
   verified?: true
   gender?: true
-  specialization?: true
-  speciality?: true
-  subSpeciality?: true
   role?: true
-  experience?: true
   headline?: true
   about?: true
+  degree?: true
+  email?: true
+  firstName?: true
+  lastName?: true
+  password?: true
+  university?: true
+  yearOfStudy?: true
+  specialization?: true
+  experience?: true
+  speciality?: true
+  subSpeciality?: true
+  city?: true
+  country?: true
   _all?: true
 }
 
@@ -272,24 +272,24 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type UserGroupByOutputType = {
   id: string
   created_at: Date
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country: string
-  city: string
-  university: string | null
-  degree: string | null
-  yearOfStudy: string | null
   verified: boolean
   gender: string | null
-  specialization: string | null
-  speciality: string | null
-  subSpeciality: string | null
   role: $Enums.UserRoles
-  experience: number | null
   headline: string | null
   about: string | null
+  degree: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university: string | null
+  yearOfStudy: string | null
+  specialization: string | null
+  experience: number | null
+  speciality: string | null
+  subSpeciality: string | null
+  city: string
+  country: string
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -318,67 +318,67 @@ export type UserWhereInput = {
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  firstName?: Prisma.StringFilter<"User"> | string
-  lastName?: Prisma.StringFilter<"User"> | string
-  email?: Prisma.StringFilter<"User"> | string
-  password?: Prisma.StringFilter<"User"> | string
-  country?: Prisma.StringFilter<"User"> | string
-  city?: Prisma.StringFilter<"User"> | string
-  university?: Prisma.StringNullableFilter<"User"> | string | null
-  degree?: Prisma.StringNullableFilter<"User"> | string | null
-  yearOfStudy?: Prisma.StringNullableFilter<"User"> | string | null
   verified?: Prisma.BoolFilter<"User"> | boolean
   gender?: Prisma.StringNullableFilter<"User"> | string | null
-  specialization?: Prisma.StringNullableFilter<"User"> | string | null
-  speciality?: Prisma.StringNullableFilter<"User"> | string | null
-  subSpeciality?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumUserRolesFilter<"User"> | $Enums.UserRoles
-  experience?: Prisma.IntNullableFilter<"User"> | number | null
   headline?: Prisma.StringNullableFilter<"User"> | string | null
   about?: Prisma.StringNullableFilter<"User"> | string | null
+  degree?: Prisma.StringNullableFilter<"User"> | string | null
+  email?: Prisma.StringFilter<"User"> | string
+  firstName?: Prisma.StringFilter<"User"> | string
+  lastName?: Prisma.StringFilter<"User"> | string
+  password?: Prisma.StringFilter<"User"> | string
+  university?: Prisma.StringNullableFilter<"User"> | string | null
+  yearOfStudy?: Prisma.StringNullableFilter<"User"> | string | null
+  specialization?: Prisma.StringNullableFilter<"User"> | string | null
+  experience?: Prisma.IntNullableFilter<"User"> | number | null
+  speciality?: Prisma.StringNullableFilter<"User"> | string | null
+  subSpeciality?: Prisma.StringNullableFilter<"User"> | string | null
+  city?: Prisma.StringFilter<"User"> | string
+  country?: Prisma.StringFilter<"User"> | string
   JobApplication?: Prisma.ApplicationListRelationFilter
+  conversations?: Prisma.ConversationListRelationFilter
   savedJobs?: Prisma.SavedJobListRelationFilter
-  userImages?: Prisma.UserImagesListRelationFilter
-  userExperiences?: Prisma.UserExperiencesListRelationFilter
   userEducations?: Prisma.UserEducationListRelationFilter
+  userExperiences?: Prisma.UserExperiencesListRelationFilter
+  userImages?: Prisma.UserImagesListRelationFilter
+  userLinks?: Prisma.UserLinksListRelationFilter
   skills?: Prisma.UserSkillsListRelationFilter
   userSpecialities?: Prisma.UserSpecialitiesListRelationFilter
-  userLinks?: Prisma.UserLinksListRelationFilter
   userVerifications?: Prisma.UserVerificationsListRelationFilter
-  conversations?: Prisma.ConversationListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  firstName?: Prisma.SortOrder
-  lastName?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  password?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  university?: Prisma.SortOrderInput | Prisma.SortOrder
-  degree?: Prisma.SortOrderInput | Prisma.SortOrder
-  yearOfStudy?: Prisma.SortOrderInput | Prisma.SortOrder
   verified?: Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
-  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
-  speciality?: Prisma.SortOrderInput | Prisma.SortOrder
-  subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
-  experience?: Prisma.SortOrderInput | Prisma.SortOrder
   headline?: Prisma.SortOrderInput | Prisma.SortOrder
   about?: Prisma.SortOrderInput | Prisma.SortOrder
+  degree?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  university?: Prisma.SortOrderInput | Prisma.SortOrder
+  yearOfStudy?: Prisma.SortOrderInput | Prisma.SortOrder
+  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
+  experience?: Prisma.SortOrderInput | Prisma.SortOrder
+  speciality?: Prisma.SortOrderInput | Prisma.SortOrder
+  subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
   JobApplication?: Prisma.ApplicationOrderByRelationAggregateInput
+  conversations?: Prisma.ConversationOrderByRelationAggregateInput
   savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput
-  userImages?: Prisma.UserImagesOrderByRelationAggregateInput
-  userExperiences?: Prisma.UserExperiencesOrderByRelationAggregateInput
   userEducations?: Prisma.UserEducationOrderByRelationAggregateInput
+  userExperiences?: Prisma.UserExperiencesOrderByRelationAggregateInput
+  userImages?: Prisma.UserImagesOrderByRelationAggregateInput
+  userLinks?: Prisma.UserLinksOrderByRelationAggregateInput
   skills?: Prisma.UserSkillsOrderByRelationAggregateInput
   userSpecialities?: Prisma.UserSpecialitiesOrderByRelationAggregateInput
-  userLinks?: Prisma.UserLinksOrderByRelationAggregateInput
   userVerifications?: Prisma.UserVerificationsOrderByRelationAggregateInput
-  conversations?: Prisma.ConversationOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -388,56 +388,56 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
+  verified?: Prisma.BoolFilter<"User"> | boolean
+  gender?: Prisma.StringNullableFilter<"User"> | string | null
+  role?: Prisma.EnumUserRolesFilter<"User"> | $Enums.UserRoles
+  headline?: Prisma.StringNullableFilter<"User"> | string | null
+  about?: Prisma.StringNullableFilter<"User"> | string | null
+  degree?: Prisma.StringNullableFilter<"User"> | string | null
   firstName?: Prisma.StringFilter<"User"> | string
   lastName?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
-  country?: Prisma.StringFilter<"User"> | string
-  city?: Prisma.StringFilter<"User"> | string
   university?: Prisma.StringNullableFilter<"User"> | string | null
-  degree?: Prisma.StringNullableFilter<"User"> | string | null
   yearOfStudy?: Prisma.StringNullableFilter<"User"> | string | null
-  verified?: Prisma.BoolFilter<"User"> | boolean
-  gender?: Prisma.StringNullableFilter<"User"> | string | null
   specialization?: Prisma.StringNullableFilter<"User"> | string | null
+  experience?: Prisma.IntNullableFilter<"User"> | number | null
   speciality?: Prisma.StringNullableFilter<"User"> | string | null
   subSpeciality?: Prisma.StringNullableFilter<"User"> | string | null
-  role?: Prisma.EnumUserRolesFilter<"User"> | $Enums.UserRoles
-  experience?: Prisma.IntNullableFilter<"User"> | number | null
-  headline?: Prisma.StringNullableFilter<"User"> | string | null
-  about?: Prisma.StringNullableFilter<"User"> | string | null
+  city?: Prisma.StringFilter<"User"> | string
+  country?: Prisma.StringFilter<"User"> | string
   JobApplication?: Prisma.ApplicationListRelationFilter
+  conversations?: Prisma.ConversationListRelationFilter
   savedJobs?: Prisma.SavedJobListRelationFilter
-  userImages?: Prisma.UserImagesListRelationFilter
-  userExperiences?: Prisma.UserExperiencesListRelationFilter
   userEducations?: Prisma.UserEducationListRelationFilter
+  userExperiences?: Prisma.UserExperiencesListRelationFilter
+  userImages?: Prisma.UserImagesListRelationFilter
+  userLinks?: Prisma.UserLinksListRelationFilter
   skills?: Prisma.UserSkillsListRelationFilter
   userSpecialities?: Prisma.UserSpecialitiesListRelationFilter
-  userLinks?: Prisma.UserLinksListRelationFilter
   userVerifications?: Prisma.UserVerificationsListRelationFilter
-  conversations?: Prisma.ConversationListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  firstName?: Prisma.SortOrder
-  lastName?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  password?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  university?: Prisma.SortOrderInput | Prisma.SortOrder
-  degree?: Prisma.SortOrderInput | Prisma.SortOrder
-  yearOfStudy?: Prisma.SortOrderInput | Prisma.SortOrder
   verified?: Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
-  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
-  speciality?: Prisma.SortOrderInput | Prisma.SortOrder
-  subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
-  experience?: Prisma.SortOrderInput | Prisma.SortOrder
   headline?: Prisma.SortOrderInput | Prisma.SortOrder
   about?: Prisma.SortOrderInput | Prisma.SortOrder
+  degree?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  university?: Prisma.SortOrderInput | Prisma.SortOrder
+  yearOfStudy?: Prisma.SortOrderInput | Prisma.SortOrder
+  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
+  experience?: Prisma.SortOrderInput | Prisma.SortOrder
+  speciality?: Prisma.SortOrderInput | Prisma.SortOrder
+  subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -451,248 +451,248 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  firstName?: Prisma.StringWithAggregatesFilter<"User"> | string
-  lastName?: Prisma.StringWithAggregatesFilter<"User"> | string
-  email?: Prisma.StringWithAggregatesFilter<"User"> | string
-  password?: Prisma.StringWithAggregatesFilter<"User"> | string
-  country?: Prisma.StringWithAggregatesFilter<"User"> | string
-  city?: Prisma.StringWithAggregatesFilter<"User"> | string
-  university?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  degree?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  yearOfStudy?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   verified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   gender?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  specialization?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  speciality?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  subSpeciality?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumUserRolesWithAggregatesFilter<"User"> | $Enums.UserRoles
-  experience?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
   headline?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   about?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  degree?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  firstName?: Prisma.StringWithAggregatesFilter<"User"> | string
+  lastName?: Prisma.StringWithAggregatesFilter<"User"> | string
+  password?: Prisma.StringWithAggregatesFilter<"User"> | string
+  university?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  yearOfStudy?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  specialization?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  experience?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
+  speciality?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  subSpeciality?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  city?: Prisma.StringWithAggregatesFilter<"User"> | string
+  country?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  firstName?: Prisma.SortOrder
-  lastName?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  password?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  university?: Prisma.SortOrder
-  degree?: Prisma.SortOrder
-  yearOfStudy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   gender?: Prisma.SortOrder
-  specialization?: Prisma.SortOrder
-  speciality?: Prisma.SortOrder
-  subSpeciality?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  experience?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  university?: Prisma.SortOrder
+  yearOfStudy?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  experience?: Prisma.SortOrder
+  speciality?: Prisma.SortOrder
+  subSpeciality?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -702,47 +702,47 @@ export type UserAvgOrderByAggregateInput = {
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  firstName?: Prisma.SortOrder
-  lastName?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  password?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  university?: Prisma.SortOrder
-  degree?: Prisma.SortOrder
-  yearOfStudy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   gender?: Prisma.SortOrder
-  specialization?: Prisma.SortOrder
-  speciality?: Prisma.SortOrder
-  subSpeciality?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  experience?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  university?: Prisma.SortOrder
+  yearOfStudy?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  experience?: Prisma.SortOrder
+  speciality?: Prisma.SortOrder
+  subSpeciality?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-  firstName?: Prisma.SortOrder
-  lastName?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  password?: Prisma.SortOrder
-  country?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  university?: Prisma.SortOrder
-  degree?: Prisma.SortOrder
-  yearOfStudy?: Prisma.SortOrder
   verified?: Prisma.SortOrder
   gender?: Prisma.SortOrder
-  specialization?: Prisma.SortOrder
-  speciality?: Prisma.SortOrder
-  subSpeciality?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  experience?: Prisma.SortOrder
   headline?: Prisma.SortOrder
   about?: Prisma.SortOrder
+  degree?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  university?: Prisma.SortOrder
+  yearOfStudy?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  experience?: Prisma.SortOrder
+  speciality?: Prisma.SortOrder
+  subSpeciality?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  country?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -754,12 +754,12 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type EnumUserRolesFieldUpdateOperationsInput = {
@@ -917,65 +917,65 @@ export type UserUpdateOneRequiredWithoutConversationsNestedInput = {
 export type UserCreateWithoutJobApplicationInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutJobApplicationInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutJobApplicationInput = {
@@ -997,129 +997,129 @@ export type UserUpdateToOneWithWhereWithoutJobApplicationInput = {
 export type UserUpdateWithoutJobApplicationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutJobApplicationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserImagesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserImagesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserImagesInput = {
@@ -1141,129 +1141,129 @@ export type UserUpdateToOneWithWhereWithoutUserImagesInput = {
 export type UserUpdateWithoutUserImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavedJobsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavedJobsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavedJobsInput = {
@@ -1285,129 +1285,129 @@ export type UserUpdateToOneWithWhereWithoutSavedJobsInput = {
 export type UserUpdateWithoutSavedJobsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavedJobsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserExperiencesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserExperiencesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserExperiencesInput = {
@@ -1429,129 +1429,129 @@ export type UserUpdateToOneWithWhereWithoutUserExperiencesInput = {
 export type UserUpdateWithoutUserExperiencesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserExperiencesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserEducationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
   userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserEducationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
   userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserEducationsInput = {
@@ -1573,129 +1573,129 @@ export type UserUpdateToOneWithWhereWithoutUserEducationsInput = {
 export type UserUpdateWithoutUserEducationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
   userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserEducationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
   userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSkillsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
-  userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
-  userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
-  userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
+  userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSkillsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
-  userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
-  userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
-  userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
+  userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSkillsInput = {
@@ -1717,129 +1717,129 @@ export type UserUpdateToOneWithWhereWithoutSkillsInput = {
 export type UserUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
-  userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
-  userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
-  userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
+  userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
-  userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
-  userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
-  userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
+  userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserSpecialitiesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
-  userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
-  skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
-  userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserSpecialitiesInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
-  userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
-  skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
-  userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserSpecialitiesInput = {
@@ -1861,129 +1861,129 @@ export type UserUpdateToOneWithWhereWithoutUserSpecialitiesInput = {
 export type UserUpdateWithoutUserSpecialitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
-  userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
-  skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
-  userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserSpecialitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
-  userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
-  skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
-  userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserLinksInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserLinksInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserLinksInput = {
@@ -2005,129 +2005,129 @@ export type UserUpdateToOneWithWhereWithoutUserLinksInput = {
 export type UserUpdateWithoutUserLinksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserLinksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserVerificationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserVerificationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserVerificationsInput = {
@@ -2149,128 +2149,128 @@ export type UserUpdateToOneWithWhereWithoutUserVerificationsInput = {
 export type UserUpdateWithoutUserVerificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserVerificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationsInput = {
   id?: string
   created_at?: Date | string
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  country?: string
-  city?: string
-  university?: string | null
-  degree?: string | null
-  yearOfStudy?: string | null
   verified?: boolean
   gender?: string | null
-  specialization?: string | null
-  speciality?: string | null
-  subSpeciality?: string | null
   role?: $Enums.UserRoles
-  experience?: number | null
   headline?: string | null
   about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
   JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
-  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
-  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
   userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
-  userLinks?: Prisma.UserLinksUncheckedCreateNestedManyWithoutUserInput
   userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -2293,64 +2293,64 @@ export type UserUpdateToOneWithWhereWithoutConversationsInput = {
 export type UserUpdateWithoutConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
   JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
-  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
-  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
   userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
   userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
-  userLinks?: Prisma.UserLinksUncheckedUpdateManyWithoutUserNestedInput
   userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -2361,28 +2361,28 @@ export type UserUncheckedUpdateWithoutConversationsInput = {
 
 export type UserCountOutputType = {
   JobApplication: number
+  conversations: number
   savedJobs: number
-  userImages: number
-  userExperiences: number
   userEducations: number
+  userExperiences: number
+  userImages: number
+  userLinks: number
   skills: number
   userSpecialities: number
-  userLinks: number
   userVerifications: number
-  conversations: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   JobApplication?: boolean | UserCountOutputTypeCountJobApplicationArgs
+  conversations?: boolean | UserCountOutputTypeCountConversationsArgs
   savedJobs?: boolean | UserCountOutputTypeCountSavedJobsArgs
-  userImages?: boolean | UserCountOutputTypeCountUserImagesArgs
-  userExperiences?: boolean | UserCountOutputTypeCountUserExperiencesArgs
   userEducations?: boolean | UserCountOutputTypeCountUserEducationsArgs
+  userExperiences?: boolean | UserCountOutputTypeCountUserExperiencesArgs
+  userImages?: boolean | UserCountOutputTypeCountUserImagesArgs
+  userLinks?: boolean | UserCountOutputTypeCountUserLinksArgs
   skills?: boolean | UserCountOutputTypeCountSkillsArgs
   userSpecialities?: boolean | UserCountOutputTypeCountUserSpecialitiesArgs
-  userLinks?: boolean | UserCountOutputTypeCountUserLinksArgs
   userVerifications?: boolean | UserCountOutputTypeCountUserVerificationsArgs
-  conversations?: boolean | UserCountOutputTypeCountConversationsArgs
 }
 
 /**
@@ -2405,6 +2405,13 @@ export type UserCountOutputTypeCountJobApplicationArgs<ExtArgs extends runtime.T
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConversationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountSavedJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SavedJobWhereInput
 }
@@ -2412,8 +2419,8 @@ export type UserCountOutputTypeCountSavedJobsArgs<ExtArgs extends runtime.Types.
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountUserImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserImagesWhereInput
+export type UserCountOutputTypeCountUserEducationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserEducationWhereInput
 }
 
 /**
@@ -2426,8 +2433,15 @@ export type UserCountOutputTypeCountUserExperiencesArgs<ExtArgs extends runtime.
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountUserEducationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserEducationWhereInput
+export type UserCountOutputTypeCountUserImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserImagesWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserLinksWhereInput
 }
 
 /**
@@ -2447,140 +2461,126 @@ export type UserCountOutputTypeCountUserSpecialitiesArgs<ExtArgs extends runtime
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountUserLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserLinksWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
 export type UserCountOutputTypeCountUserVerificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserVerificationsWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ConversationWhereInput
 }
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   created_at?: boolean
-  firstName?: boolean
-  lastName?: boolean
-  email?: boolean
-  password?: boolean
-  country?: boolean
-  city?: boolean
-  university?: boolean
-  degree?: boolean
-  yearOfStudy?: boolean
   verified?: boolean
   gender?: boolean
-  specialization?: boolean
-  speciality?: boolean
-  subSpeciality?: boolean
   role?: boolean
-  experience?: boolean
   headline?: boolean
   about?: boolean
+  degree?: boolean
+  email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  password?: boolean
+  university?: boolean
+  yearOfStudy?: boolean
+  specialization?: boolean
+  experience?: boolean
+  speciality?: boolean
+  subSpeciality?: boolean
+  city?: boolean
+  country?: boolean
   JobApplication?: boolean | Prisma.User$JobApplicationArgs<ExtArgs>
+  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>
-  userImages?: boolean | Prisma.User$userImagesArgs<ExtArgs>
-  userExperiences?: boolean | Prisma.User$userExperiencesArgs<ExtArgs>
   userEducations?: boolean | Prisma.User$userEducationsArgs<ExtArgs>
+  userExperiences?: boolean | Prisma.User$userExperiencesArgs<ExtArgs>
+  userImages?: boolean | Prisma.User$userImagesArgs<ExtArgs>
+  userLinks?: boolean | Prisma.User$userLinksArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
   userSpecialities?: boolean | Prisma.User$userSpecialitiesArgs<ExtArgs>
-  userLinks?: boolean | Prisma.User$userLinksArgs<ExtArgs>
   userVerifications?: boolean | Prisma.User$userVerificationsArgs<ExtArgs>
-  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   created_at?: boolean
-  firstName?: boolean
-  lastName?: boolean
-  email?: boolean
-  password?: boolean
-  country?: boolean
-  city?: boolean
-  university?: boolean
-  degree?: boolean
-  yearOfStudy?: boolean
   verified?: boolean
   gender?: boolean
-  specialization?: boolean
-  speciality?: boolean
-  subSpeciality?: boolean
   role?: boolean
-  experience?: boolean
   headline?: boolean
   about?: boolean
+  degree?: boolean
+  email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  password?: boolean
+  university?: boolean
+  yearOfStudy?: boolean
+  specialization?: boolean
+  experience?: boolean
+  speciality?: boolean
+  subSpeciality?: boolean
+  city?: boolean
+  country?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   created_at?: boolean
-  firstName?: boolean
-  lastName?: boolean
-  email?: boolean
-  password?: boolean
-  country?: boolean
-  city?: boolean
-  university?: boolean
-  degree?: boolean
-  yearOfStudy?: boolean
   verified?: boolean
   gender?: boolean
-  specialization?: boolean
-  speciality?: boolean
-  subSpeciality?: boolean
   role?: boolean
-  experience?: boolean
   headline?: boolean
   about?: boolean
+  degree?: boolean
+  email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  password?: boolean
+  university?: boolean
+  yearOfStudy?: boolean
+  specialization?: boolean
+  experience?: boolean
+  speciality?: boolean
+  subSpeciality?: boolean
+  city?: boolean
+  country?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
   created_at?: boolean
-  firstName?: boolean
-  lastName?: boolean
-  email?: boolean
-  password?: boolean
-  country?: boolean
-  city?: boolean
-  university?: boolean
-  degree?: boolean
-  yearOfStudy?: boolean
   verified?: boolean
   gender?: boolean
-  specialization?: boolean
-  speciality?: boolean
-  subSpeciality?: boolean
   role?: boolean
-  experience?: boolean
   headline?: boolean
   about?: boolean
+  degree?: boolean
+  email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  password?: boolean
+  university?: boolean
+  yearOfStudy?: boolean
+  specialization?: boolean
+  experience?: boolean
+  speciality?: boolean
+  subSpeciality?: boolean
+  city?: boolean
+  country?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "firstName" | "lastName" | "email" | "password" | "country" | "city" | "university" | "degree" | "yearOfStudy" | "verified" | "gender" | "specialization" | "speciality" | "subSpeciality" | "role" | "experience" | "headline" | "about", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "verified" | "gender" | "role" | "headline" | "about" | "degree" | "email" | "firstName" | "lastName" | "password" | "university" | "yearOfStudy" | "specialization" | "experience" | "speciality" | "subSpeciality" | "city" | "country", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   JobApplication?: boolean | Prisma.User$JobApplicationArgs<ExtArgs>
+  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   savedJobs?: boolean | Prisma.User$savedJobsArgs<ExtArgs>
-  userImages?: boolean | Prisma.User$userImagesArgs<ExtArgs>
-  userExperiences?: boolean | Prisma.User$userExperiencesArgs<ExtArgs>
   userEducations?: boolean | Prisma.User$userEducationsArgs<ExtArgs>
+  userExperiences?: boolean | Prisma.User$userExperiencesArgs<ExtArgs>
+  userImages?: boolean | Prisma.User$userImagesArgs<ExtArgs>
+  userLinks?: boolean | Prisma.User$userLinksArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
   userSpecialities?: boolean | Prisma.User$userSpecialitiesArgs<ExtArgs>
-  userLinks?: boolean | Prisma.User$userLinksArgs<ExtArgs>
   userVerifications?: boolean | Prisma.User$userVerificationsArgs<ExtArgs>
-  conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2590,37 +2590,37 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     JobApplication: Prisma.$ApplicationPayload<ExtArgs>[]
+    conversations: Prisma.$ConversationPayload<ExtArgs>[]
     savedJobs: Prisma.$SavedJobPayload<ExtArgs>[]
-    userImages: Prisma.$UserImagesPayload<ExtArgs>[]
-    userExperiences: Prisma.$UserExperiencesPayload<ExtArgs>[]
     userEducations: Prisma.$UserEducationPayload<ExtArgs>[]
+    userExperiences: Prisma.$UserExperiencesPayload<ExtArgs>[]
+    userImages: Prisma.$UserImagesPayload<ExtArgs>[]
+    userLinks: Prisma.$UserLinksPayload<ExtArgs>[]
     skills: Prisma.$UserSkillsPayload<ExtArgs>[]
     userSpecialities: Prisma.$UserSpecialitiesPayload<ExtArgs>[]
-    userLinks: Prisma.$UserLinksPayload<ExtArgs>[]
     userVerifications: Prisma.$UserVerificationsPayload<ExtArgs>[]
-    conversations: Prisma.$ConversationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     created_at: Date
-    firstName: string
-    lastName: string
-    email: string
-    password: string
-    country: string
-    city: string
-    university: string | null
-    degree: string | null
-    yearOfStudy: string | null
     verified: boolean
     gender: string | null
-    specialization: string | null
-    speciality: string | null
-    subSpeciality: string | null
     role: $Enums.UserRoles
-    experience: number | null
     headline: string | null
     about: string | null
+    degree: string | null
+    email: string
+    firstName: string
+    lastName: string
+    password: string
+    university: string | null
+    yearOfStudy: string | null
+    specialization: string | null
+    experience: number | null
+    speciality: string | null
+    subSpeciality: string | null
+    city: string
+    country: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -3016,15 +3016,15 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   JobApplication<T extends Prisma.User$JobApplicationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$JobApplicationArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  conversations<T extends Prisma.User$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   savedJobs<T extends Prisma.User$savedJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  userImages<T extends Prisma.User$userImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  userExperiences<T extends Prisma.User$userExperiencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userExperiencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserExperiencesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userEducations<T extends Prisma.User$userEducationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userEducationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserEducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userExperiences<T extends Prisma.User$userExperiencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userExperiencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserExperiencesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userImages<T extends Prisma.User$userImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userLinks<T extends Prisma.User$userLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserLinksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   skills<T extends Prisma.User$skillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSkillsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userSpecialities<T extends Prisma.User$userSpecialitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userSpecialitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSpecialitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  userLinks<T extends Prisma.User$userLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserLinksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userVerifications<T extends Prisma.User$userVerificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userVerificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserVerificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  conversations<T extends Prisma.User$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3056,24 +3056,24 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly created_at: Prisma.FieldRef<"User", 'DateTime'>
-  readonly firstName: Prisma.FieldRef<"User", 'String'>
-  readonly lastName: Prisma.FieldRef<"User", 'String'>
-  readonly email: Prisma.FieldRef<"User", 'String'>
-  readonly password: Prisma.FieldRef<"User", 'String'>
-  readonly country: Prisma.FieldRef<"User", 'String'>
-  readonly city: Prisma.FieldRef<"User", 'String'>
-  readonly university: Prisma.FieldRef<"User", 'String'>
-  readonly degree: Prisma.FieldRef<"User", 'String'>
-  readonly yearOfStudy: Prisma.FieldRef<"User", 'String'>
   readonly verified: Prisma.FieldRef<"User", 'Boolean'>
   readonly gender: Prisma.FieldRef<"User", 'String'>
-  readonly specialization: Prisma.FieldRef<"User", 'String'>
-  readonly speciality: Prisma.FieldRef<"User", 'String'>
-  readonly subSpeciality: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'UserRoles'>
-  readonly experience: Prisma.FieldRef<"User", 'Int'>
   readonly headline: Prisma.FieldRef<"User", 'String'>
   readonly about: Prisma.FieldRef<"User", 'String'>
+  readonly degree: Prisma.FieldRef<"User", 'String'>
+  readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly firstName: Prisma.FieldRef<"User", 'String'>
+  readonly lastName: Prisma.FieldRef<"User", 'String'>
+  readonly password: Prisma.FieldRef<"User", 'String'>
+  readonly university: Prisma.FieldRef<"User", 'String'>
+  readonly yearOfStudy: Prisma.FieldRef<"User", 'String'>
+  readonly specialization: Prisma.FieldRef<"User", 'String'>
+  readonly experience: Prisma.FieldRef<"User", 'Int'>
+  readonly speciality: Prisma.FieldRef<"User", 'String'>
+  readonly subSpeciality: Prisma.FieldRef<"User", 'String'>
+  readonly city: Prisma.FieldRef<"User", 'String'>
+  readonly country: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -3486,6 +3486,30 @@ export type User$JobApplicationArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
+ * User.conversations
+ */
+export type User$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Conversation
+   */
+  select?: Prisma.ConversationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Conversation
+   */
+  omit?: Prisma.ConversationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConversationInclude<ExtArgs> | null
+  where?: Prisma.ConversationWhereInput
+  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
+  cursor?: Prisma.ConversationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
+}
+
+/**
  * User.savedJobs
  */
 export type User$savedJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3510,27 +3534,27 @@ export type User$savedJobsArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.userImages
+ * User.userEducations
  */
-export type User$userImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$userEducationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the UserImages
+   * Select specific fields to fetch from the UserEducation
    */
-  select?: Prisma.UserImagesSelect<ExtArgs> | null
+  select?: Prisma.UserEducationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the UserImages
+   * Omit specific fields from the UserEducation
    */
-  omit?: Prisma.UserImagesOmit<ExtArgs> | null
+  omit?: Prisma.UserEducationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserImagesInclude<ExtArgs> | null
-  where?: Prisma.UserImagesWhereInput
-  orderBy?: Prisma.UserImagesOrderByWithRelationInput | Prisma.UserImagesOrderByWithRelationInput[]
-  cursor?: Prisma.UserImagesWhereUniqueInput
+  include?: Prisma.UserEducationInclude<ExtArgs> | null
+  where?: Prisma.UserEducationWhereInput
+  orderBy?: Prisma.UserEducationOrderByWithRelationInput | Prisma.UserEducationOrderByWithRelationInput[]
+  cursor?: Prisma.UserEducationWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.UserImagesScalarFieldEnum | Prisma.UserImagesScalarFieldEnum[]
+  distinct?: Prisma.UserEducationScalarFieldEnum | Prisma.UserEducationScalarFieldEnum[]
 }
 
 /**
@@ -3558,27 +3582,51 @@ export type User$userExperiencesArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * User.userEducations
+ * User.userImages
  */
-export type User$userEducationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$userImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the UserEducation
+   * Select specific fields to fetch from the UserImages
    */
-  select?: Prisma.UserEducationSelect<ExtArgs> | null
+  select?: Prisma.UserImagesSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the UserEducation
+   * Omit specific fields from the UserImages
    */
-  omit?: Prisma.UserEducationOmit<ExtArgs> | null
+  omit?: Prisma.UserImagesOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserEducationInclude<ExtArgs> | null
-  where?: Prisma.UserEducationWhereInput
-  orderBy?: Prisma.UserEducationOrderByWithRelationInput | Prisma.UserEducationOrderByWithRelationInput[]
-  cursor?: Prisma.UserEducationWhereUniqueInput
+  include?: Prisma.UserImagesInclude<ExtArgs> | null
+  where?: Prisma.UserImagesWhereInput
+  orderBy?: Prisma.UserImagesOrderByWithRelationInput | Prisma.UserImagesOrderByWithRelationInput[]
+  cursor?: Prisma.UserImagesWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.UserEducationScalarFieldEnum | Prisma.UserEducationScalarFieldEnum[]
+  distinct?: Prisma.UserImagesScalarFieldEnum | Prisma.UserImagesScalarFieldEnum[]
+}
+
+/**
+ * User.userLinks
+ */
+export type User$userLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserLinks
+   */
+  select?: Prisma.UserLinksSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserLinks
+   */
+  omit?: Prisma.UserLinksOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserLinksInclude<ExtArgs> | null
+  where?: Prisma.UserLinksWhereInput
+  orderBy?: Prisma.UserLinksOrderByWithRelationInput | Prisma.UserLinksOrderByWithRelationInput[]
+  cursor?: Prisma.UserLinksWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserLinksScalarFieldEnum | Prisma.UserLinksScalarFieldEnum[]
 }
 
 /**
@@ -3630,30 +3678,6 @@ export type User$userSpecialitiesArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
- * User.userLinks
- */
-export type User$userLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserLinks
-   */
-  select?: Prisma.UserLinksSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserLinks
-   */
-  omit?: Prisma.UserLinksOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserLinksInclude<ExtArgs> | null
-  where?: Prisma.UserLinksWhereInput
-  orderBy?: Prisma.UserLinksOrderByWithRelationInput | Prisma.UserLinksOrderByWithRelationInput[]
-  cursor?: Prisma.UserLinksWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.UserLinksScalarFieldEnum | Prisma.UserLinksScalarFieldEnum[]
-}
-
-/**
  * User.userVerifications
  */
 export type User$userVerificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3675,30 +3699,6 @@ export type User$userVerificationsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.UserVerificationsScalarFieldEnum | Prisma.UserVerificationsScalarFieldEnum[]
-}
-
-/**
- * User.conversations
- */
-export type User$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Conversation
-   */
-  select?: Prisma.ConversationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Conversation
-   */
-  omit?: Prisma.ConversationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ConversationInclude<ExtArgs> | null
-  where?: Prisma.ConversationWhereInput
-  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
-  cursor?: Prisma.ConversationWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
 }
 
 /**

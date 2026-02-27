@@ -38,7 +38,6 @@ export type ApplicationMinAggregateOutputType = {
   id: string | null
   created_at: Date | null
   updated_at: Date | null
-  status: $Enums.ApplicationStatus | null
   appliedDate: Date | null
   resumeUrl: string | null
   coverLetter: string | null
@@ -47,13 +46,13 @@ export type ApplicationMinAggregateOutputType = {
   currentInstitute: string | null
   jobId: string | null
   userId: string | null
+  status: $Enums.ApplicationStatus | null
 }
 
 export type ApplicationMaxAggregateOutputType = {
   id: string | null
   created_at: Date | null
   updated_at: Date | null
-  status: $Enums.ApplicationStatus | null
   appliedDate: Date | null
   resumeUrl: string | null
   coverLetter: string | null
@@ -62,13 +61,13 @@ export type ApplicationMaxAggregateOutputType = {
   currentInstitute: string | null
   jobId: string | null
   userId: string | null
+  status: $Enums.ApplicationStatus | null
 }
 
 export type ApplicationCountAggregateOutputType = {
   id: number
   created_at: number
   updated_at: number
-  status: number
   appliedDate: number
   resumeUrl: number
   coverLetter: number
@@ -78,6 +77,7 @@ export type ApplicationCountAggregateOutputType = {
   additionalDetails: number
   jobId: number
   userId: number
+  status: number
   _all: number
 }
 
@@ -94,7 +94,6 @@ export type ApplicationMinAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  status?: true
   appliedDate?: true
   resumeUrl?: true
   coverLetter?: true
@@ -103,13 +102,13 @@ export type ApplicationMinAggregateInputType = {
   currentInstitute?: true
   jobId?: true
   userId?: true
+  status?: true
 }
 
 export type ApplicationMaxAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  status?: true
   appliedDate?: true
   resumeUrl?: true
   coverLetter?: true
@@ -118,13 +117,13 @@ export type ApplicationMaxAggregateInputType = {
   currentInstitute?: true
   jobId?: true
   userId?: true
+  status?: true
 }
 
 export type ApplicationCountAggregateInputType = {
   id?: true
   created_at?: true
   updated_at?: true
-  status?: true
   appliedDate?: true
   resumeUrl?: true
   coverLetter?: true
@@ -134,6 +133,7 @@ export type ApplicationCountAggregateInputType = {
   additionalDetails?: true
   jobId?: true
   userId?: true
+  status?: true
   _all?: true
 }
 
@@ -227,7 +227,6 @@ export type ApplicationGroupByOutputType = {
   id: string
   created_at: Date
   updated_at: Date
-  status: $Enums.ApplicationStatus
   appliedDate: Date
   resumeUrl: string
   coverLetter: string | null
@@ -237,6 +236,7 @@ export type ApplicationGroupByOutputType = {
   additionalDetails: runtime.JsonValue | null
   jobId: string
   userId: string
+  status: $Enums.ApplicationStatus
   _count: ApplicationCountAggregateOutputType | null
   _avg: ApplicationAvgAggregateOutputType | null
   _sum: ApplicationSumAggregateOutputType | null
@@ -266,7 +266,6 @@ export type ApplicationWhereInput = {
   id?: Prisma.StringFilter<"Application"> | string
   created_at?: Prisma.DateTimeFilter<"Application"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Application"> | Date | string
-  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFilter<"Application"> | Date | string
   resumeUrl?: Prisma.StringFilter<"Application"> | string
   coverLetter?: Prisma.StringNullableFilter<"Application"> | string | null
@@ -276,6 +275,7 @@ export type ApplicationWhereInput = {
   additionalDetails?: Prisma.JsonNullableFilter<"Application">
   jobId?: Prisma.StringFilter<"Application"> | string
   userId?: Prisma.StringFilter<"Application"> | string
+  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   job?: Prisma.XOR<Prisma.JobScalarRelationFilter, Prisma.JobWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   notifications?: Prisma.NotificationListRelationFilter
@@ -285,7 +285,6 @@ export type ApplicationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   appliedDate?: Prisma.SortOrder
   resumeUrl?: Prisma.SortOrder
   coverLetter?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -295,6 +294,7 @@ export type ApplicationOrderByWithRelationInput = {
   additionalDetails?: Prisma.SortOrderInput | Prisma.SortOrder
   jobId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   job?: Prisma.JobOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
@@ -307,7 +307,6 @@ export type ApplicationWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ApplicationWhereInput | Prisma.ApplicationWhereInput[]
   created_at?: Prisma.DateTimeFilter<"Application"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Application"> | Date | string
-  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFilter<"Application"> | Date | string
   resumeUrl?: Prisma.StringFilter<"Application"> | string
   coverLetter?: Prisma.StringNullableFilter<"Application"> | string | null
@@ -317,6 +316,7 @@ export type ApplicationWhereUniqueInput = Prisma.AtLeast<{
   additionalDetails?: Prisma.JsonNullableFilter<"Application">
   jobId?: Prisma.StringFilter<"Application"> | string
   userId?: Prisma.StringFilter<"Application"> | string
+  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   job?: Prisma.XOR<Prisma.JobScalarRelationFilter, Prisma.JobWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   notifications?: Prisma.NotificationListRelationFilter
@@ -326,7 +326,6 @@ export type ApplicationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   appliedDate?: Prisma.SortOrder
   resumeUrl?: Prisma.SortOrder
   coverLetter?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -336,6 +335,7 @@ export type ApplicationOrderByWithAggregationInput = {
   additionalDetails?: Prisma.SortOrderInput | Prisma.SortOrder
   jobId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   _count?: Prisma.ApplicationCountOrderByAggregateInput
   _avg?: Prisma.ApplicationAvgOrderByAggregateInput
   _max?: Prisma.ApplicationMaxOrderByAggregateInput
@@ -350,7 +350,6 @@ export type ApplicationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Application"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Application"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Application"> | Date | string
-  status?: Prisma.EnumApplicationStatusWithAggregatesFilter<"Application"> | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeWithAggregatesFilter<"Application"> | Date | string
   resumeUrl?: Prisma.StringWithAggregatesFilter<"Application"> | string
   coverLetter?: Prisma.StringNullableWithAggregatesFilter<"Application"> | string | null
@@ -360,13 +359,13 @@ export type ApplicationScalarWhereWithAggregatesInput = {
   additionalDetails?: Prisma.JsonNullableWithAggregatesFilter<"Application">
   jobId?: Prisma.StringWithAggregatesFilter<"Application"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Application"> | string
+  status?: Prisma.EnumApplicationStatusWithAggregatesFilter<"Application"> | $Enums.ApplicationStatus
 }
 
 export type ApplicationCreateInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -374,6 +373,7 @@ export type ApplicationCreateInput = {
   currentPosition?: string | null
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ApplicationStatus
   job: Prisma.JobCreateNestedOneWithoutApplicationsInput
   user: Prisma.UserCreateNestedOneWithoutJobApplicationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutApplicationInput
@@ -383,7 +383,6 @@ export type ApplicationUncheckedCreateInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -393,6 +392,7 @@ export type ApplicationUncheckedCreateInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId: string
   userId: string
+  status?: $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutApplicationInput
 }
 
@@ -400,7 +400,6 @@ export type ApplicationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -408,6 +407,7 @@ export type ApplicationUpdateInput = {
   currentPosition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutJobApplicationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutApplicationNestedInput
@@ -417,7 +417,6 @@ export type ApplicationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -427,6 +426,7 @@ export type ApplicationUncheckedUpdateInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
@@ -434,7 +434,6 @@ export type ApplicationCreateManyInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -444,13 +443,13 @@ export type ApplicationCreateManyInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId: string
   userId: string
+  status?: $Enums.ApplicationStatus
 }
 
 export type ApplicationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -458,13 +457,13 @@ export type ApplicationUpdateManyMutationInput = {
   currentPosition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
 }
 
 export type ApplicationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -474,6 +473,7 @@ export type ApplicationUncheckedUpdateManyInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
 }
 
 export type ApplicationListRelationFilter = {
@@ -490,7 +490,6 @@ export type ApplicationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   appliedDate?: Prisma.SortOrder
   resumeUrl?: Prisma.SortOrder
   coverLetter?: Prisma.SortOrder
@@ -500,6 +499,7 @@ export type ApplicationCountOrderByAggregateInput = {
   additionalDetails?: Prisma.SortOrder
   jobId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type ApplicationAvgOrderByAggregateInput = {
@@ -510,7 +510,6 @@ export type ApplicationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   appliedDate?: Prisma.SortOrder
   resumeUrl?: Prisma.SortOrder
   coverLetter?: Prisma.SortOrder
@@ -519,13 +518,13 @@ export type ApplicationMaxOrderByAggregateInput = {
   currentInstitute?: Prisma.SortOrder
   jobId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type ApplicationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   appliedDate?: Prisma.SortOrder
   resumeUrl?: Prisma.SortOrder
   coverLetter?: Prisma.SortOrder
@@ -534,6 +533,7 @@ export type ApplicationMinOrderByAggregateInput = {
   currentInstitute?: Prisma.SortOrder
   jobId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
 }
 
 export type ApplicationSumOrderByAggregateInput = {
@@ -653,7 +653,6 @@ export type ApplicationCreateWithoutUserInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -661,6 +660,7 @@ export type ApplicationCreateWithoutUserInput = {
   currentPosition?: string | null
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ApplicationStatus
   job: Prisma.JobCreateNestedOneWithoutApplicationsInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutApplicationInput
 }
@@ -669,7 +669,6 @@ export type ApplicationUncheckedCreateWithoutUserInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -678,6 +677,7 @@ export type ApplicationUncheckedCreateWithoutUserInput = {
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId: string
+  status?: $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutApplicationInput
 }
 
@@ -714,7 +714,6 @@ export type ApplicationScalarWhereInput = {
   id?: Prisma.StringFilter<"Application"> | string
   created_at?: Prisma.DateTimeFilter<"Application"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Application"> | Date | string
-  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFilter<"Application"> | Date | string
   resumeUrl?: Prisma.StringFilter<"Application"> | string
   coverLetter?: Prisma.StringNullableFilter<"Application"> | string | null
@@ -724,13 +723,13 @@ export type ApplicationScalarWhereInput = {
   additionalDetails?: Prisma.JsonNullableFilter<"Application">
   jobId?: Prisma.StringFilter<"Application"> | string
   userId?: Prisma.StringFilter<"Application"> | string
+  status?: Prisma.EnumApplicationStatusFilter<"Application"> | $Enums.ApplicationStatus
 }
 
 export type ApplicationCreateWithoutJobInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -738,6 +737,7 @@ export type ApplicationCreateWithoutJobInput = {
   currentPosition?: string | null
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ApplicationStatus
   user: Prisma.UserCreateNestedOneWithoutJobApplicationInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutApplicationInput
 }
@@ -746,7 +746,6 @@ export type ApplicationUncheckedCreateWithoutJobInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -755,6 +754,7 @@ export type ApplicationUncheckedCreateWithoutJobInput = {
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userId: string
+  status?: $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutApplicationInput
 }
 
@@ -788,7 +788,6 @@ export type ApplicationCreateWithoutNotificationsInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -796,6 +795,7 @@ export type ApplicationCreateWithoutNotificationsInput = {
   currentPosition?: string | null
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.ApplicationStatus
   job: Prisma.JobCreateNestedOneWithoutApplicationsInput
   user: Prisma.UserCreateNestedOneWithoutJobApplicationInput
 }
@@ -804,7 +804,6 @@ export type ApplicationUncheckedCreateWithoutNotificationsInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -814,6 +813,7 @@ export type ApplicationUncheckedCreateWithoutNotificationsInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId: string
   userId: string
+  status?: $Enums.ApplicationStatus
 }
 
 export type ApplicationCreateOrConnectWithoutNotificationsInput = {
@@ -836,7 +836,6 @@ export type ApplicationUpdateWithoutNotificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -844,6 +843,7 @@ export type ApplicationUpdateWithoutNotificationsInput = {
   currentPosition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutJobApplicationNestedInput
 }
@@ -852,7 +852,6 @@ export type ApplicationUncheckedUpdateWithoutNotificationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -862,13 +861,13 @@ export type ApplicationUncheckedUpdateWithoutNotificationsInput = {
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
 }
 
 export type ApplicationCreateManyUserInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -877,13 +876,13 @@ export type ApplicationCreateManyUserInput = {
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId: string
+  status?: $Enums.ApplicationStatus
 }
 
 export type ApplicationUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -891,6 +890,7 @@ export type ApplicationUpdateWithoutUserInput = {
   currentPosition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   job?: Prisma.JobUpdateOneRequiredWithoutApplicationsNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutApplicationNestedInput
 }
@@ -899,7 +899,6 @@ export type ApplicationUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -908,6 +907,7 @@ export type ApplicationUncheckedUpdateWithoutUserInput = {
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
@@ -915,7 +915,6 @@ export type ApplicationUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -924,13 +923,13 @@ export type ApplicationUncheckedUpdateManyWithoutUserInput = {
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   jobId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
 }
 
 export type ApplicationCreateManyJobInput = {
   id?: string
   created_at?: Date | string
   updated_at?: Date | string
-  status?: $Enums.ApplicationStatus
   appliedDate?: Date | string
   resumeUrl: string
   coverLetter?: string | null
@@ -939,13 +938,13 @@ export type ApplicationCreateManyJobInput = {
   currentInstitute?: string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userId: string
+  status?: $Enums.ApplicationStatus
 }
 
 export type ApplicationUpdateWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -953,6 +952,7 @@ export type ApplicationUpdateWithoutJobInput = {
   currentPosition?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   user?: Prisma.UserUpdateOneRequiredWithoutJobApplicationNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutApplicationNestedInput
 }
@@ -961,7 +961,6 @@ export type ApplicationUncheckedUpdateWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -970,6 +969,7 @@ export type ApplicationUncheckedUpdateWithoutJobInput = {
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
@@ -977,7 +977,6 @@ export type ApplicationUncheckedUpdateManyWithoutJobInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
   appliedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -986,6 +985,7 @@ export type ApplicationUncheckedUpdateManyWithoutJobInput = {
   currentInstitute?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   additionalDetails?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
 }
 
 
@@ -1023,7 +1023,6 @@ export type ApplicationSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  status?: boolean
   appliedDate?: boolean
   resumeUrl?: boolean
   coverLetter?: boolean
@@ -1033,6 +1032,7 @@ export type ApplicationSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   additionalDetails?: boolean
   jobId?: boolean
   userId?: boolean
+  status?: boolean
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   notifications?: boolean | Prisma.Application$notificationsArgs<ExtArgs>
@@ -1043,7 +1043,6 @@ export type ApplicationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  status?: boolean
   appliedDate?: boolean
   resumeUrl?: boolean
   coverLetter?: boolean
@@ -1053,6 +1052,7 @@ export type ApplicationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   additionalDetails?: boolean
   jobId?: boolean
   userId?: boolean
+  status?: boolean
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["application"]>
@@ -1061,7 +1061,6 @@ export type ApplicationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  status?: boolean
   appliedDate?: boolean
   resumeUrl?: boolean
   coverLetter?: boolean
@@ -1071,6 +1070,7 @@ export type ApplicationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   additionalDetails?: boolean
   jobId?: boolean
   userId?: boolean
+  status?: boolean
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["application"]>
@@ -1079,7 +1079,6 @@ export type ApplicationSelectScalar = {
   id?: boolean
   created_at?: boolean
   updated_at?: boolean
-  status?: boolean
   appliedDate?: boolean
   resumeUrl?: boolean
   coverLetter?: boolean
@@ -1089,9 +1088,10 @@ export type ApplicationSelectScalar = {
   additionalDetails?: boolean
   jobId?: boolean
   userId?: boolean
+  status?: boolean
 }
 
-export type ApplicationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "status" | "appliedDate" | "resumeUrl" | "coverLetter" | "experienceYears" | "currentPosition" | "currentInstitute" | "additionalDetails" | "jobId" | "userId", ExtArgs["result"]["application"]>
+export type ApplicationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "appliedDate" | "resumeUrl" | "coverLetter" | "experienceYears" | "currentPosition" | "currentInstitute" | "additionalDetails" | "jobId" | "userId" | "status", ExtArgs["result"]["application"]>
 export type ApplicationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   job?: boolean | Prisma.JobDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1118,7 +1118,6 @@ export type $ApplicationPayload<ExtArgs extends runtime.Types.Extensions.Interna
     id: string
     created_at: Date
     updated_at: Date
-    status: $Enums.ApplicationStatus
     appliedDate: Date
     resumeUrl: string
     coverLetter: string | null
@@ -1128,6 +1127,7 @@ export type $ApplicationPayload<ExtArgs extends runtime.Types.Extensions.Interna
     additionalDetails: runtime.JsonValue | null
     jobId: string
     userId: string
+    status: $Enums.ApplicationStatus
   }, ExtArgs["result"]["application"]>
   composites: {}
 }
@@ -1557,7 +1557,6 @@ export interface ApplicationFieldRefs {
   readonly id: Prisma.FieldRef<"Application", 'String'>
   readonly created_at: Prisma.FieldRef<"Application", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Application", 'DateTime'>
-  readonly status: Prisma.FieldRef<"Application", 'ApplicationStatus'>
   readonly appliedDate: Prisma.FieldRef<"Application", 'DateTime'>
   readonly resumeUrl: Prisma.FieldRef<"Application", 'String'>
   readonly coverLetter: Prisma.FieldRef<"Application", 'String'>
@@ -1567,6 +1566,7 @@ export interface ApplicationFieldRefs {
   readonly additionalDetails: Prisma.FieldRef<"Application", 'Json'>
   readonly jobId: Prisma.FieldRef<"Application", 'String'>
   readonly userId: Prisma.FieldRef<"Application", 'String'>
+  readonly status: Prisma.FieldRef<"Application", 'ApplicationStatus'>
 }
     
 

@@ -23,14 +23,36 @@ interface AuthRequest extends Request {
 export const getApplicationsByJobId = async (req: AuthRequest, res: Response) => {
     // ... existing logic ...
     const { jobId } = req.params as any;
-    try {
-        const applications = await prisma.application.findMany({
-            where: { jobId },
-            include: { user: true, job: true },
-        });
+    const { page, limit, status } = req.query as any;
 
-        console.log("applications", applications[0]);
-        res.status(200).json(applications);
+    const pageNum = parseInt(page || '1', 10);
+    const limitNum = parseInt(limit || '10', 10);
+    const skip = (pageNum - 1) * limitNum;
+
+    const where: any = { jobId };
+    if (status && status !== 'undefined' && status !== 'null') {
+        where.status = status;
+    }
+
+    try {
+        const [applications, total] = await Promise.all([
+            prisma.application.findMany({
+                where,
+                skip,
+                take: limitNum,
+                include: { user: true, job: true },
+                orderBy: { created_at: 'desc' }
+            }),
+            prisma.application.count({ where })
+        ]);
+
+        res.status(200).json({
+            data: applications,
+            total,
+            page: pageNum,
+            limit: limitNum,
+            totalPages: Math.ceil(total / limitNum)
+        });
     } catch (err) {
         res.status(500).json({ error: 'Database error' });
     }

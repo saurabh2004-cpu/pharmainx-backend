@@ -9,7 +9,7 @@ export interface AuthRequest extends Request {
 }
 
 export const authenticateToken = (req: AuthRequest, res: Response, next: NextFunction) => {
-    const authHeader = req.cookies.accessToken || req.headers.authorization?.split(' ')[1];
+    const authHeader = req.cookies.accessToken || req.cookies.adminAccessToken || req.headers.authorization?.split(' ')[1];
     const token = authHeader;
 
     console.log("acctoken", token);
@@ -28,8 +28,6 @@ export const authenticateToken = (req: AuthRequest, res: Response, next: NextFun
         if (err) {
             return res.status(403).json({ error: 'Forbidden: Invalid token' });
         }
-        // user comes from jwt payload. If we signed with number, it is number.
-        // Explicitly casting for TS safety if needed, though runtime it's already number.
         req.user = user;
         next();
     });

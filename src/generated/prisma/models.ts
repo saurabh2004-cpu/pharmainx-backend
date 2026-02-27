@@ -8,11 +8,12 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Auth.ts'
+export type * from './models/Admin.ts'
 export type * from './models/User.ts'
 export type * from './models/Institute.ts'
 export type * from './models/InstituteCredits.ts'
 export type * from './models/CreditsWallet.ts'
+export type * from './models/CreditsHistory.ts'
 export type * from './models/Job.ts'
 export type * from './models/Application.ts'
 export type * from './models/JobView.ts'

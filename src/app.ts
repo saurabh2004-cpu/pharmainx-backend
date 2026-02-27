@@ -18,7 +18,8 @@ app.use(helmet());
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "http://88.222.242.191:3000"
+        "http://88.222.242.191:3000",
+        "http://localhost:5173"
     ],
     credentials: true,
 }));
@@ -33,7 +34,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Routes
-
+import adminRoutes from './routes/admin.routes.js';
 import userRoutes from './routes/user.routes.js';
 import instituteRoutes from './routes/institute.routes.js';
 import jobRoutes from './routes/job.routes.js';
@@ -49,8 +50,9 @@ import userVerificationsRoutes from './routes/userVerifications.routes.js';
 import instituteVerificationsRoutes from './routes/institutesVerification.routes.js';
 import conversationRoutes from './routes/conversations.routes.ts';
 import messageRoutes from './routes/messages.routes.ts';
+import creditsHistoryRoutes from './routes/creditsHistoryRoutes.ts';
 
-
+app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/institute', instituteRoutes);
 app.use('/api/v1/job', jobRoutes);
@@ -68,7 +70,7 @@ app.use('/api/v1/user-verifications', userVerificationsRoutes);
 app.use('/api/v1/institute-verifications', instituteVerificationsRoutes);
 app.use('/api/v1/conversations', conversationRoutes);
 app.use('/api/v1/messages', messageRoutes);
-
+app.use('/api/v1/credits-history', creditsHistoryRoutes);
 // Static Uploads removed - Served via CloudFront
 
 // Global Error Handler

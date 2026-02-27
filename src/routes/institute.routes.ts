@@ -14,6 +14,7 @@ import {
 } from '../controllers/institute.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
 import { instituteViewTrackerMiddleware } from '../middlewares/institute-view-tracker.middleware.js';
+import { checkInstituteVerificationStatus } from '../controllers/instituteVerification.controller.js';
 
 const router = Router();
 
@@ -31,5 +32,6 @@ router.put('/update-institute/:id', authenticateToken, updateInstitute);
 router.delete('/delete-institute/:id', authenticateToken, deleteInstitute);
 router.get('/institutions/jobs', authenticateToken, getInstituteJobs);
 router.get('/my-wallet', authenticateToken, getInstituteCredits);
+router.get('/verification-status', authenticateToken, checkInstituteVerificationStatus);
 
 export default router;

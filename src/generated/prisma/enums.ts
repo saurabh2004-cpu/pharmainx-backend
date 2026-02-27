@@ -17,8 +17,8 @@ export const ApplicationStatus = {
   NEXT_ROUND_REJECTED: 'NEXT_ROUND_REJECTED',
   INTERVIEW_SCHEDULED: 'INTERVIEW_SCHEDULED',
   INTERVIEW_ACCEPTED: 'INTERVIEW_ACCEPTED',
-  HIRED: 'HIRED',
-  REJECTED: 'REJECTED'
+  REJECTED: 'REJECTED',
+  HIRED: 'HIRED'
 } as const
 
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
@@ -35,8 +35,8 @@ export type AuthRoles = (typeof AuthRoles)[keyof typeof AuthRoles]
 export const UserRoles = {
   DOCTOR: 'DOCTOR',
   NURSE: 'NURSE',
-  OTHER: 'OTHER',
-  STUDENT: 'STUDENT'
+  STUDENT: 'STUDENT',
+  OTHER: 'OTHER'
 } as const
 
 export type UserRoles = (typeof UserRoles)[keyof typeof UserRoles]
@@ -77,3 +77,22 @@ export const MediaType = {
 } as const
 
 export type MediaType = (typeof MediaType)[keyof typeof MediaType]
+
+
+export const CreditHistoryType = {
+  DEBIT: 'DEBIT',
+  CREDIT: 'CREDIT'
+} as const
+
+export type CreditHistoryType = (typeof CreditHistoryType)[keyof typeof CreditHistoryType]
+
+
+export const CreditHistoryAction = {
+  JOB_POSTED: 'JOB_POSTED',
+  JOB_RENEWED: 'JOB_RENEWED',
+  JOB_DELETED: 'JOB_DELETED',
+  JOB_EDITED: 'JOB_EDITED',
+  CREDITS_PURCHASED: 'CREDITS_PURCHASED'
+} as const
+
+export type CreditHistoryAction = (typeof CreditHistoryAction)[keyof typeof CreditHistoryAction]

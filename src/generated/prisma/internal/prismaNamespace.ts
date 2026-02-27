@@ -384,11 +384,12 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Auth: 'Auth',
+  Admin: 'Admin',
   User: 'User',
   Institute: 'Institute',
   InstituteCredits: 'InstituteCredits',
   CreditsWallet: 'CreditsWallet',
+  CreditsHistory: 'CreditsHistory',
   Job: 'Job',
   Application: 'Application',
   JobView: 'JobView',
@@ -421,81 +422,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "auth" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Auth: {
-      payload: Prisma.$AuthPayload<ExtArgs>
-      fields: Prisma.AuthFieldRefs
+    Admin: {
+      payload: Prisma.$AdminPayload<ExtArgs>
+      fields: Prisma.AdminFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.AuthFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload> | null
+          args: Prisma.AdminFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.AuthFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         findFirst: {
-          args: Prisma.AuthFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload> | null
+          args: Prisma.AdminFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.AuthFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         findMany: {
-          args: Prisma.AuthFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>[]
+          args: Prisma.AdminFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>[]
         }
         create: {
-          args: Prisma.AuthCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         createMany: {
-          args: Prisma.AuthCreateManyArgs<ExtArgs>
+          args: Prisma.AdminCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.AuthCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>[]
+          args: Prisma.AdminCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>[]
         }
         delete: {
-          args: Prisma.AuthDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         update: {
-          args: Prisma.AuthUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         deleteMany: {
-          args: Prisma.AuthDeleteManyArgs<ExtArgs>
+          args: Prisma.AdminDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.AuthUpdateManyArgs<ExtArgs>
+          args: Prisma.AdminUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.AuthUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>[]
+          args: Prisma.AdminUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>[]
         }
         upsert: {
-          args: Prisma.AuthUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+          args: Prisma.AdminUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPayload>
         }
         aggregate: {
-          args: Prisma.AuthAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAuth>
+          args: Prisma.AdminAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdmin>
         }
         groupBy: {
-          args: Prisma.AuthGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AuthGroupByOutputType>[]
+          args: Prisma.AdminGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminGroupByOutputType>[]
         }
         count: {
-          args: Prisma.AuthCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AuthCountAggregateOutputType> | number
+          args: Prisma.AdminCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminCountAggregateOutputType> | number
         }
       }
     }
@@ -792,6 +793,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CreditsWalletCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CreditsWalletCountAggregateOutputType> | number
+        }
+      }
+    }
+    CreditsHistory: {
+      payload: Prisma.$CreditsHistoryPayload<ExtArgs>
+      fields: Prisma.CreditsHistoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreditsHistoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreditsHistoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        findFirst: {
+          args: Prisma.CreditsHistoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreditsHistoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        findMany: {
+          args: Prisma.CreditsHistoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>[]
+        }
+        create: {
+          args: Prisma.CreditsHistoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        createMany: {
+          args: Prisma.CreditsHistoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreditsHistoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>[]
+        }
+        delete: {
+          args: Prisma.CreditsHistoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        update: {
+          args: Prisma.CreditsHistoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreditsHistoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreditsHistoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreditsHistoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreditsHistoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditsHistoryPayload>
+        }
+        aggregate: {
+          args: Prisma.CreditsHistoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditsHistory>
+        }
+        groupBy: {
+          args: Prisma.CreditsHistoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditsHistoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreditsHistoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditsHistoryCountAggregateOutputType> | number
         }
       }
     }
@@ -2092,38 +2167,37 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const AuthScalarFieldEnum = {
+export const AdminScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   email: 'email',
-  password: 'password',
-  role: 'role'
+  password: 'password'
 } as const
 
-export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
+export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  email: 'email',
-  password: 'password',
-  country: 'country',
-  city: 'city',
-  university: 'university',
-  degree: 'degree',
-  yearOfStudy: 'yearOfStudy',
   verified: 'verified',
   gender: 'gender',
+  role: 'role',
+  headline: 'headline',
+  about: 'about',
+  degree: 'degree',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  password: 'password',
+  university: 'university',
+  yearOfStudy: 'yearOfStudy',
   specialization: 'specialization',
+  experience: 'experience',
   speciality: 'speciality',
   subSpeciality: 'subSpeciality',
-  role: 'role',
-  experience: 'experience',
-  headline: 'headline',
-  about: 'about'
+  city: 'city',
+  country: 'country'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2133,23 +2207,23 @@ export const InstituteScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   name: 'name',
-  country: 'country',
-  city: 'city',
   verified: 'verified',
   contactEmail: 'contactEmail',
-  password: 'password',
   contactNumber: 'contactNumber',
-  bedsCount: 'bedsCount',
-  staffCount: 'staffCount',
-  type: 'type',
-  services: 'services',
-  telephone: 'telephone',
   role: 'role',
   affiliatedUniversity: 'affiliatedUniversity',
   yearEstablished: 'yearEstablished',
   ownership: 'ownership',
   headline: 'headline',
-  about: 'about'
+  about: 'about',
+  password: 'password',
+  bedsCount: 'bedsCount',
+  services: 'services',
+  staffCount: 'staffCount',
+  telephone: 'telephone',
+  type: 'type',
+  city: 'city',
+  country: 'country'
 } as const
 
 export type InstituteScalarFieldEnum = (typeof InstituteScalarFieldEnum)[keyof typeof InstituteScalarFieldEnum]
@@ -2177,34 +2251,50 @@ export const CreditsWalletScalarFieldEnum = {
 export type CreditsWalletScalarFieldEnum = (typeof CreditsWalletScalarFieldEnum)[keyof typeof CreditsWalletScalarFieldEnum]
 
 
+export const CreditsHistoryScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  type: 'type',
+  action: 'action',
+  cost: 'cost',
+  purchasedCredits: 'purchasedCredits',
+  currentCredits: 'currentCredits',
+  jobId: 'jobId',
+  instituteId: 'instituteId'
+} as const
+
+export type CreditsHistoryScalarFieldEnum = (typeof CreditsHistoryScalarFieldEnum)[keyof typeof CreditsHistoryScalarFieldEnum]
+
+
 export const JobScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
   title: 'title',
   jobType: 'jobType',
-  role: 'role',
-  skills: 'skills',
   workLocation: 'workLocation',
-  city: 'city',
-  country: 'country',
   experienceLevel: 'experienceLevel',
-  shortDescription: 'shortDescription',
-  fullDescription: 'fullDescription',
   requirements: 'requirements',
-  additionalInfo: 'additionalInfo',
-  salaryCurrency: 'salaryCurrency',
   salaryMin: 'salaryMin',
   salaryMax: 'salaryMax',
+  status: 'status',
+  shortDescription: 'shortDescription',
+  salaryCurrency: 'salaryCurrency',
   applicationDeadline: 'applicationDeadline',
   contactEmail: 'contactEmail',
   contactPhone: 'contactPhone',
   contactPerson: 'contactPerson',
-  status: 'status',
+  additionalInfo: 'additionalInfo',
   instituteId: 'instituteId',
+  city: 'city',
+  fullDescription: 'fullDescription',
+  role: 'role',
+  skills: 'skills',
+  country: 'country',
+  renewedAt: 'renewedAt',
   speciality: 'speciality',
-  subSpeciality: 'subSpeciality',
-  renewedAt: 'renewedAt'
+  subSpeciality: 'subSpeciality'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
@@ -2214,7 +2304,6 @@ export const ApplicationScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  status: 'status',
   appliedDate: 'appliedDate',
   resumeUrl: 'resumeUrl',
   coverLetter: 'coverLetter',
@@ -2223,7 +2312,8 @@ export const ApplicationScalarFieldEnum = {
   currentInstitute: 'currentInstitute',
   additionalDetails: 'additionalDetails',
   jobId: 'jobId',
-  userId: 'userId'
+  userId: 'userId',
+  status: 'status'
 } as const
 
 export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
@@ -2543,20 +2633,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'AuthRoles'
- */
-export type EnumAuthRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuthRoles'>
-    
-
-
-/**
- * Reference to a field of type 'AuthRoles[]'
- */
-export type ListEnumAuthRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuthRoles[]'>
-    
-
-
-/**
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -2592,16 +2668,30 @@ export type ListEnumInstituteRolesFieldRefInput<$PrismaModel> = FieldRefInputTyp
 
 
 /**
- * Reference to a field of type 'ApplicationStatus'
+ * Reference to a field of type 'CreditHistoryType'
  */
-export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
+export type EnumCreditHistoryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditHistoryType'>
     
 
 
 /**
- * Reference to a field of type 'ApplicationStatus[]'
+ * Reference to a field of type 'CreditHistoryType[]'
  */
-export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
+export type ListEnumCreditHistoryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditHistoryType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CreditHistoryAction'
+ */
+export type EnumCreditHistoryActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditHistoryAction'>
+    
+
+
+/**
+ * Reference to a field of type 'CreditHistoryAction[]'
+ */
+export type ListEnumCreditHistoryActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditHistoryAction[]'>
     
 
 
@@ -2616,6 +2706,20 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'ApplicationStatus'
+ */
+export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ApplicationStatus[]'
+ */
+export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
     
 
 
@@ -2769,11 +2873,12 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  auth?: Prisma.AuthOmit
+  admin?: Prisma.AdminOmit
   user?: Prisma.UserOmit
   institute?: Prisma.InstituteOmit
   instituteCredits?: Prisma.InstituteCreditsOmit
   creditsWallet?: Prisma.CreditsWalletOmit
+  creditsHistory?: Prisma.CreditsHistoryOmit
   job?: Prisma.JobOmit
   application?: Prisma.ApplicationOmit
   jobView?: Prisma.JobViewOmit

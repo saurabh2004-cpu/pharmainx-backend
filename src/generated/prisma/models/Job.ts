@@ -42,27 +42,27 @@ export type JobMinAggregateOutputType = {
   updated_at: Date | null
   title: string | null
   jobType: string | null
-  role: string | null
   workLocation: string | null
-  city: string | null
-  country: string | null
   experienceLevel: string | null
-  shortDescription: string | null
-  fullDescription: string | null
   requirements: string | null
-  additionalInfo: string | null
-  salaryCurrency: string | null
   salaryMin: number | null
   salaryMax: number | null
+  status: string | null
+  shortDescription: string | null
+  salaryCurrency: string | null
   applicationDeadline: Date | null
   contactEmail: string | null
   contactPhone: string | null
   contactPerson: string | null
-  status: string | null
+  additionalInfo: string | null
   instituteId: string | null
+  city: string | null
+  fullDescription: string | null
+  role: string | null
+  country: string | null
+  renewedAt: Date | null
   speciality: string | null
   subSpeciality: string | null
-  renewedAt: Date | null
 }
 
 export type JobMaxAggregateOutputType = {
@@ -71,27 +71,27 @@ export type JobMaxAggregateOutputType = {
   updated_at: Date | null
   title: string | null
   jobType: string | null
-  role: string | null
   workLocation: string | null
-  city: string | null
-  country: string | null
   experienceLevel: string | null
-  shortDescription: string | null
-  fullDescription: string | null
   requirements: string | null
-  additionalInfo: string | null
-  salaryCurrency: string | null
   salaryMin: number | null
   salaryMax: number | null
+  status: string | null
+  shortDescription: string | null
+  salaryCurrency: string | null
   applicationDeadline: Date | null
   contactEmail: string | null
   contactPhone: string | null
   contactPerson: string | null
-  status: string | null
+  additionalInfo: string | null
   instituteId: string | null
+  city: string | null
+  fullDescription: string | null
+  role: string | null
+  country: string | null
+  renewedAt: Date | null
   speciality: string | null
   subSpeciality: string | null
-  renewedAt: Date | null
 }
 
 export type JobCountAggregateOutputType = {
@@ -100,28 +100,28 @@ export type JobCountAggregateOutputType = {
   updated_at: number
   title: number
   jobType: number
-  role: number
-  skills: number
   workLocation: number
-  city: number
-  country: number
   experienceLevel: number
-  shortDescription: number
-  fullDescription: number
   requirements: number
-  additionalInfo: number
-  salaryCurrency: number
   salaryMin: number
   salaryMax: number
+  status: number
+  shortDescription: number
+  salaryCurrency: number
   applicationDeadline: number
   contactEmail: number
   contactPhone: number
   contactPerson: number
-  status: number
+  additionalInfo: number
   instituteId: number
+  city: number
+  fullDescription: number
+  role: number
+  skills: number
+  country: number
+  renewedAt: number
   speciality: number
   subSpeciality: number
-  renewedAt: number
   _all: number
 }
 
@@ -142,27 +142,27 @@ export type JobMinAggregateInputType = {
   updated_at?: true
   title?: true
   jobType?: true
-  role?: true
   workLocation?: true
-  city?: true
-  country?: true
   experienceLevel?: true
-  shortDescription?: true
-  fullDescription?: true
   requirements?: true
-  additionalInfo?: true
-  salaryCurrency?: true
   salaryMin?: true
   salaryMax?: true
+  status?: true
+  shortDescription?: true
+  salaryCurrency?: true
   applicationDeadline?: true
   contactEmail?: true
   contactPhone?: true
   contactPerson?: true
-  status?: true
+  additionalInfo?: true
   instituteId?: true
+  city?: true
+  fullDescription?: true
+  role?: true
+  country?: true
+  renewedAt?: true
   speciality?: true
   subSpeciality?: true
-  renewedAt?: true
 }
 
 export type JobMaxAggregateInputType = {
@@ -171,27 +171,27 @@ export type JobMaxAggregateInputType = {
   updated_at?: true
   title?: true
   jobType?: true
-  role?: true
   workLocation?: true
-  city?: true
-  country?: true
   experienceLevel?: true
-  shortDescription?: true
-  fullDescription?: true
   requirements?: true
-  additionalInfo?: true
-  salaryCurrency?: true
   salaryMin?: true
   salaryMax?: true
+  status?: true
+  shortDescription?: true
+  salaryCurrency?: true
   applicationDeadline?: true
   contactEmail?: true
   contactPhone?: true
   contactPerson?: true
-  status?: true
+  additionalInfo?: true
   instituteId?: true
+  city?: true
+  fullDescription?: true
+  role?: true
+  country?: true
+  renewedAt?: true
   speciality?: true
   subSpeciality?: true
-  renewedAt?: true
 }
 
 export type JobCountAggregateInputType = {
@@ -200,28 +200,28 @@ export type JobCountAggregateInputType = {
   updated_at?: true
   title?: true
   jobType?: true
-  role?: true
-  skills?: true
   workLocation?: true
-  city?: true
-  country?: true
   experienceLevel?: true
-  shortDescription?: true
-  fullDescription?: true
   requirements?: true
-  additionalInfo?: true
-  salaryCurrency?: true
   salaryMin?: true
   salaryMax?: true
+  status?: true
+  shortDescription?: true
+  salaryCurrency?: true
   applicationDeadline?: true
   contactEmail?: true
   contactPhone?: true
   contactPerson?: true
-  status?: true
+  additionalInfo?: true
   instituteId?: true
+  city?: true
+  fullDescription?: true
+  role?: true
+  skills?: true
+  country?: true
+  renewedAt?: true
   speciality?: true
   subSpeciality?: true
-  renewedAt?: true
   _all?: true
 }
 
@@ -317,28 +317,28 @@ export type JobGroupByOutputType = {
   updated_at: Date
   title: string
   jobType: string
-  role: string
-  skills: string[]
   workLocation: string
-  city: string | null
-  country: string | null
   experienceLevel: string
-  shortDescription: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo: string | null
-  salaryCurrency: string | null
   salaryMin: number
   salaryMax: number
+  status: string
+  shortDescription: string | null
+  salaryCurrency: string | null
   applicationDeadline: Date | null
   contactEmail: string | null
   contactPhone: string | null
   contactPerson: string | null
-  status: string
+  additionalInfo: string | null
   instituteId: string
+  city: string | null
+  fullDescription: string
+  role: string
+  skills: string[]
+  country: string | null
+  renewedAt: Date | null
   speciality: string | null
   subSpeciality: string | null
-  renewedAt: Date | null
   _count: JobCountAggregateOutputType | null
   _avg: JobAvgAggregateOutputType | null
   _sum: JobSumAggregateOutputType | null
@@ -370,33 +370,34 @@ export type JobWhereInput = {
   updated_at?: Prisma.DateTimeFilter<"Job"> | Date | string
   title?: Prisma.StringFilter<"Job"> | string
   jobType?: Prisma.StringFilter<"Job"> | string
-  role?: Prisma.StringFilter<"Job"> | string
-  skills?: Prisma.StringNullableListFilter<"Job">
   workLocation?: Prisma.StringFilter<"Job"> | string
-  city?: Prisma.StringNullableFilter<"Job"> | string | null
-  country?: Prisma.StringNullableFilter<"Job"> | string | null
   experienceLevel?: Prisma.StringFilter<"Job"> | string
-  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
-  fullDescription?: Prisma.StringFilter<"Job"> | string
   requirements?: Prisma.StringFilter<"Job"> | string
-  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
-  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   salaryMin?: Prisma.IntFilter<"Job"> | number
   salaryMax?: Prisma.IntFilter<"Job"> | number
+  status?: Prisma.StringFilter<"Job"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
+  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   applicationDeadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   contactEmail?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPhone?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Job"> | string | null
-  status?: Prisma.StringFilter<"Job"> | string
+  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
   instituteId?: Prisma.StringFilter<"Job"> | string
+  city?: Prisma.StringNullableFilter<"Job"> | string | null
+  fullDescription?: Prisma.StringFilter<"Job"> | string
+  role?: Prisma.StringFilter<"Job"> | string
+  skills?: Prisma.StringNullableListFilter<"Job">
+  country?: Prisma.StringNullableFilter<"Job"> | string | null
+  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   speciality?: Prisma.StringNullableFilter<"Job"> | string | null
   subSpeciality?: Prisma.StringNullableFilter<"Job"> | string | null
-  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
-  institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   applications?: Prisma.ApplicationListRelationFilter
+  institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   JobView?: Prisma.JobViewListRelationFilter
-  savedJobs?: Prisma.SavedJobListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  savedJobs?: Prisma.SavedJobListRelationFilter
+  creditsHistories?: Prisma.CreditsHistoryListRelationFilter
 }
 
 export type JobOrderByWithRelationInput = {
@@ -405,33 +406,34 @@ export type JobOrderByWithRelationInput = {
   updated_at?: Prisma.SortOrder
   title?: Prisma.SortOrder
   jobType?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  skills?: Prisma.SortOrder
   workLocation?: Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
   experienceLevel?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
-  fullDescription?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
-  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder
-  salaryCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   salaryMin?: Prisma.SortOrder
   salaryMax?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  salaryCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   applicationDeadline?: Prisma.SortOrderInput | Prisma.SortOrder
   contactEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPhone?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPerson?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
+  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder
   instituteId?: Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  renewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   speciality?: Prisma.SortOrderInput | Prisma.SortOrder
   subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
-  renewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  institute?: Prisma.InstituteOrderByWithRelationInput
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
+  institute?: Prisma.InstituteOrderByWithRelationInput
   JobView?: Prisma.JobViewOrderByRelationAggregateInput
-  savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput
+  creditsHistories?: Prisma.CreditsHistoryOrderByRelationAggregateInput
 }
 
 export type JobWhereUniqueInput = Prisma.AtLeast<{
@@ -443,33 +445,34 @@ export type JobWhereUniqueInput = Prisma.AtLeast<{
   updated_at?: Prisma.DateTimeFilter<"Job"> | Date | string
   title?: Prisma.StringFilter<"Job"> | string
   jobType?: Prisma.StringFilter<"Job"> | string
-  role?: Prisma.StringFilter<"Job"> | string
-  skills?: Prisma.StringNullableListFilter<"Job">
   workLocation?: Prisma.StringFilter<"Job"> | string
-  city?: Prisma.StringNullableFilter<"Job"> | string | null
-  country?: Prisma.StringNullableFilter<"Job"> | string | null
   experienceLevel?: Prisma.StringFilter<"Job"> | string
-  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
-  fullDescription?: Prisma.StringFilter<"Job"> | string
   requirements?: Prisma.StringFilter<"Job"> | string
-  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
-  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   salaryMin?: Prisma.IntFilter<"Job"> | number
   salaryMax?: Prisma.IntFilter<"Job"> | number
+  status?: Prisma.StringFilter<"Job"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
+  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   applicationDeadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   contactEmail?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPhone?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Job"> | string | null
-  status?: Prisma.StringFilter<"Job"> | string
+  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
   instituteId?: Prisma.StringFilter<"Job"> | string
+  city?: Prisma.StringNullableFilter<"Job"> | string | null
+  fullDescription?: Prisma.StringFilter<"Job"> | string
+  role?: Prisma.StringFilter<"Job"> | string
+  skills?: Prisma.StringNullableListFilter<"Job">
+  country?: Prisma.StringNullableFilter<"Job"> | string | null
+  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   speciality?: Prisma.StringNullableFilter<"Job"> | string | null
   subSpeciality?: Prisma.StringNullableFilter<"Job"> | string | null
-  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
-  institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   applications?: Prisma.ApplicationListRelationFilter
+  institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   JobView?: Prisma.JobViewListRelationFilter
-  savedJobs?: Prisma.SavedJobListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  savedJobs?: Prisma.SavedJobListRelationFilter
+  creditsHistories?: Prisma.CreditsHistoryListRelationFilter
 }, "id">
 
 export type JobOrderByWithAggregationInput = {
@@ -478,28 +481,28 @@ export type JobOrderByWithAggregationInput = {
   updated_at?: Prisma.SortOrder
   title?: Prisma.SortOrder
   jobType?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  skills?: Prisma.SortOrder
   workLocation?: Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
   experienceLevel?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
-  fullDescription?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
-  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder
-  salaryCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   salaryMin?: Prisma.SortOrder
   salaryMax?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  salaryCurrency?: Prisma.SortOrderInput | Prisma.SortOrder
   applicationDeadline?: Prisma.SortOrderInput | Prisma.SortOrder
   contactEmail?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPhone?: Prisma.SortOrderInput | Prisma.SortOrder
   contactPerson?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
+  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder
   instituteId?: Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  country?: Prisma.SortOrderInput | Prisma.SortOrder
+  renewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   speciality?: Prisma.SortOrderInput | Prisma.SortOrder
   subSpeciality?: Prisma.SortOrderInput | Prisma.SortOrder
-  renewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.JobCountOrderByAggregateInput
   _avg?: Prisma.JobAvgOrderByAggregateInput
   _max?: Prisma.JobMaxOrderByAggregateInput
@@ -516,28 +519,28 @@ export type JobScalarWhereWithAggregatesInput = {
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Job"> | Date | string
   title?: Prisma.StringWithAggregatesFilter<"Job"> | string
   jobType?: Prisma.StringWithAggregatesFilter<"Job"> | string
-  role?: Prisma.StringWithAggregatesFilter<"Job"> | string
-  skills?: Prisma.StringNullableListFilter<"Job">
   workLocation?: Prisma.StringWithAggregatesFilter<"Job"> | string
-  city?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
-  country?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   experienceLevel?: Prisma.StringWithAggregatesFilter<"Job"> | string
-  shortDescription?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
-  fullDescription?: Prisma.StringWithAggregatesFilter<"Job"> | string
   requirements?: Prisma.StringWithAggregatesFilter<"Job"> | string
-  additionalInfo?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
-  salaryCurrency?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   salaryMin?: Prisma.IntWithAggregatesFilter<"Job"> | number
   salaryMax?: Prisma.IntWithAggregatesFilter<"Job"> | number
+  status?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  shortDescription?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
+  salaryCurrency?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   applicationDeadline?: Prisma.DateTimeNullableWithAggregatesFilter<"Job"> | Date | string | null
   contactEmail?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   contactPhone?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   contactPerson?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
-  status?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  additionalInfo?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   instituteId?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  city?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
+  fullDescription?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  role?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  skills?: Prisma.StringNullableListFilter<"Job">
+  country?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
+  renewedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Job"> | Date | string | null
   speciality?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
   subSpeciality?: Prisma.StringNullableWithAggregatesFilter<"Job"> | string | null
-  renewedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Job"> | Date | string | null
 }
 
 export type JobCreateInput = {
@@ -546,32 +549,33 @@ export type JobCreateInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
-  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateInput = {
@@ -580,32 +584,33 @@ export type JobUncheckedCreateInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobUpdateInput = {
@@ -614,32 +619,33 @@ export type JobUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateInput = {
@@ -648,32 +654,33 @@ export type JobUncheckedUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateManyInput = {
@@ -682,28 +689,28 @@ export type JobCreateManyInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
 }
 
 export type JobUpdateManyMutationInput = {
@@ -712,27 +719,27 @@ export type JobUpdateManyMutationInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type JobUncheckedUpdateManyInput = {
@@ -741,28 +748,28 @@ export type JobUncheckedUpdateManyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type JobListRelationFilter = {
@@ -775,34 +782,39 @@ export type JobOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type JobNullableScalarRelationFilter = {
+  is?: Prisma.JobWhereInput | null
+  isNot?: Prisma.JobWhereInput | null
+}
+
 export type JobCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   title?: Prisma.SortOrder
   jobType?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  skills?: Prisma.SortOrder
   workLocation?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
   experienceLevel?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrder
-  fullDescription?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
-  additionalInfo?: Prisma.SortOrder
-  salaryCurrency?: Prisma.SortOrder
   salaryMin?: Prisma.SortOrder
   salaryMax?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrder
+  salaryCurrency?: Prisma.SortOrder
   applicationDeadline?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
   contactPhone?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  additionalInfo?: Prisma.SortOrder
   instituteId?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  renewedAt?: Prisma.SortOrder
   speciality?: Prisma.SortOrder
   subSpeciality?: Prisma.SortOrder
-  renewedAt?: Prisma.SortOrder
 }
 
 export type JobAvgOrderByAggregateInput = {
@@ -816,27 +828,27 @@ export type JobMaxOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
   title?: Prisma.SortOrder
   jobType?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   workLocation?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
   experienceLevel?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrder
-  fullDescription?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
-  additionalInfo?: Prisma.SortOrder
-  salaryCurrency?: Prisma.SortOrder
   salaryMin?: Prisma.SortOrder
   salaryMax?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrder
+  salaryCurrency?: Prisma.SortOrder
   applicationDeadline?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
   contactPhone?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  additionalInfo?: Prisma.SortOrder
   instituteId?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  renewedAt?: Prisma.SortOrder
   speciality?: Prisma.SortOrder
   subSpeciality?: Prisma.SortOrder
-  renewedAt?: Prisma.SortOrder
 }
 
 export type JobMinOrderByAggregateInput = {
@@ -845,27 +857,27 @@ export type JobMinOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
   title?: Prisma.SortOrder
   jobType?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   workLocation?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
   experienceLevel?: Prisma.SortOrder
-  shortDescription?: Prisma.SortOrder
-  fullDescription?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
-  additionalInfo?: Prisma.SortOrder
-  salaryCurrency?: Prisma.SortOrder
   salaryMin?: Prisma.SortOrder
   salaryMax?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  shortDescription?: Prisma.SortOrder
+  salaryCurrency?: Prisma.SortOrder
   applicationDeadline?: Prisma.SortOrder
   contactEmail?: Prisma.SortOrder
   contactPhone?: Prisma.SortOrder
   contactPerson?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  additionalInfo?: Prisma.SortOrder
   instituteId?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  fullDescription?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  country?: Prisma.SortOrder
+  renewedAt?: Prisma.SortOrder
   speciality?: Prisma.SortOrder
   subSpeciality?: Prisma.SortOrder
-  renewedAt?: Prisma.SortOrder
 }
 
 export type JobSumOrderByAggregateInput = {
@@ -876,11 +888,6 @@ export type JobSumOrderByAggregateInput = {
 export type JobScalarRelationFilter = {
   is?: Prisma.JobWhereInput
   isNot?: Prisma.JobWhereInput
-}
-
-export type JobNullableScalarRelationFilter = {
-  is?: Prisma.JobWhereInput | null
-  isNot?: Prisma.JobWhereInput | null
 }
 
 export type JobCreateNestedManyWithoutInstituteInput = {
@@ -925,17 +932,33 @@ export type JobUncheckedUpdateManyWithoutInstituteNestedInput = {
   deleteMany?: Prisma.JobScalarWhereInput | Prisma.JobScalarWhereInput[]
 }
 
+export type JobCreateNestedOneWithoutCreditsHistoriesInput = {
+  create?: Prisma.XOR<Prisma.JobCreateWithoutCreditsHistoriesInput, Prisma.JobUncheckedCreateWithoutCreditsHistoriesInput>
+  connectOrCreate?: Prisma.JobCreateOrConnectWithoutCreditsHistoriesInput
+  connect?: Prisma.JobWhereUniqueInput
+}
+
+export type JobUpdateOneWithoutCreditsHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.JobCreateWithoutCreditsHistoriesInput, Prisma.JobUncheckedCreateWithoutCreditsHistoriesInput>
+  connectOrCreate?: Prisma.JobCreateOrConnectWithoutCreditsHistoriesInput
+  upsert?: Prisma.JobUpsertWithoutCreditsHistoriesInput
+  disconnect?: Prisma.JobWhereInput | boolean
+  delete?: Prisma.JobWhereInput | boolean
+  connect?: Prisma.JobWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.JobUpdateToOneWithWhereWithoutCreditsHistoriesInput, Prisma.JobUpdateWithoutCreditsHistoriesInput>, Prisma.JobUncheckedUpdateWithoutCreditsHistoriesInput>
+}
+
 export type JobCreateskillsInput = {
   set: string[]
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type JobUpdateskillsInput = {
   set?: string[]
   push?: string | string[]
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
 }
 
 export type JobCreateNestedOneWithoutApplicationsInput = {
@@ -1002,31 +1025,32 @@ export type JobCreateWithoutInstituteInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutInstituteInput = {
@@ -1035,31 +1059,32 @@ export type JobUncheckedCreateWithoutInstituteInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutInstituteInput = {
@@ -1097,28 +1122,180 @@ export type JobScalarWhereInput = {
   updated_at?: Prisma.DateTimeFilter<"Job"> | Date | string
   title?: Prisma.StringFilter<"Job"> | string
   jobType?: Prisma.StringFilter<"Job"> | string
-  role?: Prisma.StringFilter<"Job"> | string
-  skills?: Prisma.StringNullableListFilter<"Job">
   workLocation?: Prisma.StringFilter<"Job"> | string
-  city?: Prisma.StringNullableFilter<"Job"> | string | null
-  country?: Prisma.StringNullableFilter<"Job"> | string | null
   experienceLevel?: Prisma.StringFilter<"Job"> | string
-  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
-  fullDescription?: Prisma.StringFilter<"Job"> | string
   requirements?: Prisma.StringFilter<"Job"> | string
-  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
-  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   salaryMin?: Prisma.IntFilter<"Job"> | number
   salaryMax?: Prisma.IntFilter<"Job"> | number
+  status?: Prisma.StringFilter<"Job"> | string
+  shortDescription?: Prisma.StringNullableFilter<"Job"> | string | null
+  salaryCurrency?: Prisma.StringNullableFilter<"Job"> | string | null
   applicationDeadline?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   contactEmail?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPhone?: Prisma.StringNullableFilter<"Job"> | string | null
   contactPerson?: Prisma.StringNullableFilter<"Job"> | string | null
-  status?: Prisma.StringFilter<"Job"> | string
+  additionalInfo?: Prisma.StringNullableFilter<"Job"> | string | null
   instituteId?: Prisma.StringFilter<"Job"> | string
+  city?: Prisma.StringNullableFilter<"Job"> | string | null
+  fullDescription?: Prisma.StringFilter<"Job"> | string
+  role?: Prisma.StringFilter<"Job"> | string
+  skills?: Prisma.StringNullableListFilter<"Job">
+  country?: Prisma.StringNullableFilter<"Job"> | string | null
+  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
   speciality?: Prisma.StringNullableFilter<"Job"> | string | null
   subSpeciality?: Prisma.StringNullableFilter<"Job"> | string | null
-  renewedAt?: Prisma.DateTimeNullableFilter<"Job"> | Date | string | null
+}
+
+export type JobCreateWithoutCreditsHistoriesInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  title: string
+  jobType: string
+  workLocation: string
+  experienceLevel: string
+  requirements: string
+  salaryMin: number
+  salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
+  applicationDeadline?: Date | string | null
+  contactEmail?: string | null
+  contactPhone?: string | null
+  contactPerson?: string | null
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
+  JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+}
+
+export type JobUncheckedCreateWithoutCreditsHistoriesInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  title: string
+  jobType: string
+  workLocation: string
+  experienceLevel: string
+  requirements: string
+  salaryMin: number
+  salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
+  applicationDeadline?: Date | string | null
+  contactEmail?: string | null
+  contactPhone?: string | null
+  contactPerson?: string | null
+  additionalInfo?: string | null
+  instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
+  JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+}
+
+export type JobCreateOrConnectWithoutCreditsHistoriesInput = {
+  where: Prisma.JobWhereUniqueInput
+  create: Prisma.XOR<Prisma.JobCreateWithoutCreditsHistoriesInput, Prisma.JobUncheckedCreateWithoutCreditsHistoriesInput>
+}
+
+export type JobUpsertWithoutCreditsHistoriesInput = {
+  update: Prisma.XOR<Prisma.JobUpdateWithoutCreditsHistoriesInput, Prisma.JobUncheckedUpdateWithoutCreditsHistoriesInput>
+  create: Prisma.XOR<Prisma.JobCreateWithoutCreditsHistoriesInput, Prisma.JobUncheckedCreateWithoutCreditsHistoriesInput>
+  where?: Prisma.JobWhereInput
+}
+
+export type JobUpdateToOneWithWhereWithoutCreditsHistoriesInput = {
+  where?: Prisma.JobWhereInput
+  data: Prisma.XOR<Prisma.JobUpdateWithoutCreditsHistoriesInput, Prisma.JobUncheckedUpdateWithoutCreditsHistoriesInput>
+}
+
+export type JobUpdateWithoutCreditsHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  jobType?: Prisma.StringFieldUpdateOperationsInput | string
+  workLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.StringFieldUpdateOperationsInput | string
+  salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
+  salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
+  JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+}
+
+export type JobUncheckedUpdateWithoutCreditsHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  jobType?: Prisma.StringFieldUpdateOperationsInput | string
+  workLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.StringFieldUpdateOperationsInput | string
+  salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
+  salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
+  JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutApplicationsInput = {
@@ -1127,31 +1304,32 @@ export type JobCreateWithoutApplicationsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutApplicationsInput = {
@@ -1160,31 +1338,32 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutApplicationsInput = {
@@ -1209,31 +1388,32 @@ export type JobUpdateWithoutApplicationsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutApplicationsInput = {
@@ -1242,31 +1422,32 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutJobViewInput = {
@@ -1275,31 +1456,32 @@ export type JobCreateWithoutJobViewInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
-  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutJobViewInput = {
@@ -1308,31 +1490,32 @@ export type JobUncheckedCreateWithoutJobViewInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
-  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutJobViewInput = {
@@ -1357,31 +1540,32 @@ export type JobUpdateWithoutJobViewInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutJobViewInput = {
@@ -1390,31 +1574,32 @@ export type JobUncheckedUpdateWithoutJobViewInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutSavedJobsInput = {
@@ -1423,31 +1608,32 @@ export type JobCreateWithoutSavedJobsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
-  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutSavedJobsInput = {
@@ -1456,31 +1642,32 @@ export type JobUncheckedCreateWithoutSavedJobsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutSavedJobsInput = {
@@ -1505,31 +1692,32 @@ export type JobUpdateWithoutSavedJobsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutSavedJobsInput = {
@@ -1538,31 +1726,32 @@ export type JobUncheckedUpdateWithoutSavedJobsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutNotificationsInput = {
@@ -1571,31 +1760,32 @@ export type JobCreateWithoutNotificationsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
-  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutNotificationsInput = {
@@ -1604,31 +1794,32 @@ export type JobUncheckedCreateWithoutNotificationsInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
   instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutNotificationsInput = {
@@ -1653,31 +1844,32 @@ export type JobUpdateWithoutNotificationsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutNotificationsInput = {
@@ -1686,31 +1878,32 @@ export type JobUncheckedUpdateWithoutNotificationsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateManyInstituteInput = {
@@ -1719,27 +1912,27 @@ export type JobCreateManyInstituteInput = {
   updated_at?: Date | string
   title: string
   jobType: string
-  role: string
-  skills?: Prisma.JobCreateskillsInput | string[]
   workLocation: string
-  city?: string | null
-  country?: string | null
   experienceLevel: string
-  shortDescription?: string | null
-  fullDescription: string
   requirements: string
-  additionalInfo?: string | null
-  salaryCurrency?: string | null
   salaryMin: number
   salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
   applicationDeadline?: Date | string | null
   contactEmail?: string | null
   contactPhone?: string | null
   contactPerson?: string | null
-  status?: string
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
   speciality?: string | null
   subSpeciality?: string | null
-  renewedAt?: Date | string | null
 }
 
 export type JobUpdateWithoutInstituteInput = {
@@ -1748,31 +1941,32 @@ export type JobUpdateWithoutInstituteInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutInstituteInput = {
@@ -1781,31 +1975,32 @@ export type JobUncheckedUpdateWithoutInstituteInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
-  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateManyWithoutInstituteInput = {
@@ -1814,27 +2009,27 @@ export type JobUncheckedUpdateManyWithoutInstituteInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   jobType?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  skills?: Prisma.JobUpdateskillsInput | string[]
   workLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
-  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.StringFieldUpdateOperationsInput | string
-  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
   salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1845,15 +2040,17 @@ export type JobUncheckedUpdateManyWithoutInstituteInput = {
 export type JobCountOutputType = {
   applications: number
   JobView: number
-  savedJobs: number
   notifications: number
+  savedJobs: number
+  creditsHistories: number
 }
 
 export type JobCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   applications?: boolean | JobCountOutputTypeCountApplicationsArgs
   JobView?: boolean | JobCountOutputTypeCountJobViewArgs
-  savedJobs?: boolean | JobCountOutputTypeCountSavedJobsArgs
   notifications?: boolean | JobCountOutputTypeCountNotificationsArgs
+  savedJobs?: boolean | JobCountOutputTypeCountSavedJobsArgs
+  creditsHistories?: boolean | JobCountOutputTypeCountCreditsHistoriesArgs
 }
 
 /**
@@ -1883,6 +2080,13 @@ export type JobCountOutputTypeCountJobViewArgs<ExtArgs extends runtime.Types.Ext
 /**
  * JobCountOutputType without action
  */
+export type JobCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * JobCountOutputType without action
+ */
 export type JobCountOutputTypeCountSavedJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SavedJobWhereInput
 }
@@ -1890,8 +2094,8 @@ export type JobCountOutputTypeCountSavedJobsArgs<ExtArgs extends runtime.Types.E
 /**
  * JobCountOutputType without action
  */
-export type JobCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.NotificationWhereInput
+export type JobCountOutputTypeCountCreditsHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CreditsHistoryWhereInput
 }
 
 
@@ -1901,33 +2105,34 @@ export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   updated_at?: boolean
   title?: boolean
   jobType?: boolean
-  role?: boolean
-  skills?: boolean
   workLocation?: boolean
-  city?: boolean
-  country?: boolean
   experienceLevel?: boolean
-  shortDescription?: boolean
-  fullDescription?: boolean
   requirements?: boolean
-  additionalInfo?: boolean
-  salaryCurrency?: boolean
   salaryMin?: boolean
   salaryMax?: boolean
+  status?: boolean
+  shortDescription?: boolean
+  salaryCurrency?: boolean
   applicationDeadline?: boolean
   contactEmail?: boolean
   contactPhone?: boolean
   contactPerson?: boolean
-  status?: boolean
+  additionalInfo?: boolean
   instituteId?: boolean
+  city?: boolean
+  fullDescription?: boolean
+  role?: boolean
+  skills?: boolean
+  country?: boolean
+  renewedAt?: boolean
   speciality?: boolean
   subSpeciality?: boolean
-  renewedAt?: boolean
-  institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   applications?: boolean | Prisma.Job$applicationsArgs<ExtArgs>
+  institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   JobView?: boolean | Prisma.Job$JobViewArgs<ExtArgs>
-  savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
   notifications?: boolean | Prisma.Job$notificationsArgs<ExtArgs>
+  savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
+  creditsHistories?: boolean | Prisma.Job$creditsHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.JobCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["job"]>
 
@@ -1937,28 +2142,28 @@ export type JobSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   updated_at?: boolean
   title?: boolean
   jobType?: boolean
-  role?: boolean
-  skills?: boolean
   workLocation?: boolean
-  city?: boolean
-  country?: boolean
   experienceLevel?: boolean
-  shortDescription?: boolean
-  fullDescription?: boolean
   requirements?: boolean
-  additionalInfo?: boolean
-  salaryCurrency?: boolean
   salaryMin?: boolean
   salaryMax?: boolean
+  status?: boolean
+  shortDescription?: boolean
+  salaryCurrency?: boolean
   applicationDeadline?: boolean
   contactEmail?: boolean
   contactPhone?: boolean
   contactPerson?: boolean
-  status?: boolean
+  additionalInfo?: boolean
   instituteId?: boolean
+  city?: boolean
+  fullDescription?: boolean
+  role?: boolean
+  skills?: boolean
+  country?: boolean
+  renewedAt?: boolean
   speciality?: boolean
   subSpeciality?: boolean
-  renewedAt?: boolean
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["job"]>
 
@@ -1968,28 +2173,28 @@ export type JobSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   updated_at?: boolean
   title?: boolean
   jobType?: boolean
-  role?: boolean
-  skills?: boolean
   workLocation?: boolean
-  city?: boolean
-  country?: boolean
   experienceLevel?: boolean
-  shortDescription?: boolean
-  fullDescription?: boolean
   requirements?: boolean
-  additionalInfo?: boolean
-  salaryCurrency?: boolean
   salaryMin?: boolean
   salaryMax?: boolean
+  status?: boolean
+  shortDescription?: boolean
+  salaryCurrency?: boolean
   applicationDeadline?: boolean
   contactEmail?: boolean
   contactPhone?: boolean
   contactPerson?: boolean
-  status?: boolean
+  additionalInfo?: boolean
   instituteId?: boolean
+  city?: boolean
+  fullDescription?: boolean
+  role?: boolean
+  skills?: boolean
+  country?: boolean
+  renewedAt?: boolean
   speciality?: boolean
   subSpeciality?: boolean
-  renewedAt?: boolean
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["job"]>
 
@@ -1999,37 +2204,38 @@ export type JobSelectScalar = {
   updated_at?: boolean
   title?: boolean
   jobType?: boolean
-  role?: boolean
-  skills?: boolean
   workLocation?: boolean
-  city?: boolean
-  country?: boolean
   experienceLevel?: boolean
-  shortDescription?: boolean
-  fullDescription?: boolean
   requirements?: boolean
-  additionalInfo?: boolean
-  salaryCurrency?: boolean
   salaryMin?: boolean
   salaryMax?: boolean
+  status?: boolean
+  shortDescription?: boolean
+  salaryCurrency?: boolean
   applicationDeadline?: boolean
   contactEmail?: boolean
   contactPhone?: boolean
   contactPerson?: boolean
-  status?: boolean
+  additionalInfo?: boolean
   instituteId?: boolean
+  city?: boolean
+  fullDescription?: boolean
+  role?: boolean
+  skills?: boolean
+  country?: boolean
+  renewedAt?: boolean
   speciality?: boolean
   subSpeciality?: boolean
-  renewedAt?: boolean
 }
 
-export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "title" | "jobType" | "role" | "skills" | "workLocation" | "city" | "country" | "experienceLevel" | "shortDescription" | "fullDescription" | "requirements" | "additionalInfo" | "salaryCurrency" | "salaryMin" | "salaryMax" | "applicationDeadline" | "contactEmail" | "contactPhone" | "contactPerson" | "status" | "instituteId" | "speciality" | "subSpeciality" | "renewedAt", ExtArgs["result"]["job"]>
+export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "title" | "jobType" | "workLocation" | "experienceLevel" | "requirements" | "salaryMin" | "salaryMax" | "status" | "shortDescription" | "salaryCurrency" | "applicationDeadline" | "contactEmail" | "contactPhone" | "contactPerson" | "additionalInfo" | "instituteId" | "city" | "fullDescription" | "role" | "skills" | "country" | "renewedAt" | "speciality" | "subSpeciality", ExtArgs["result"]["job"]>
 export type JobInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   applications?: boolean | Prisma.Job$applicationsArgs<ExtArgs>
+  institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   JobView?: boolean | Prisma.Job$JobViewArgs<ExtArgs>
-  savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
   notifications?: boolean | Prisma.Job$notificationsArgs<ExtArgs>
+  savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
+  creditsHistories?: boolean | Prisma.Job$creditsHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.JobCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type JobIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2042,11 +2248,12 @@ export type JobIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type $JobPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Job"
   objects: {
-    institute: Prisma.$InstitutePayload<ExtArgs>
     applications: Prisma.$ApplicationPayload<ExtArgs>[]
+    institute: Prisma.$InstitutePayload<ExtArgs>
     JobView: Prisma.$JobViewPayload<ExtArgs>[]
-    savedJobs: Prisma.$SavedJobPayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    savedJobs: Prisma.$SavedJobPayload<ExtArgs>[]
+    creditsHistories: Prisma.$CreditsHistoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2054,28 +2261,28 @@ export type $JobPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     updated_at: Date
     title: string
     jobType: string
-    role: string
-    skills: string[]
     workLocation: string
-    city: string | null
-    country: string | null
     experienceLevel: string
-    shortDescription: string | null
-    fullDescription: string
     requirements: string
-    additionalInfo: string | null
-    salaryCurrency: string | null
     salaryMin: number
     salaryMax: number
+    status: string
+    shortDescription: string | null
+    salaryCurrency: string | null
     applicationDeadline: Date | null
     contactEmail: string | null
     contactPhone: string | null
     contactPerson: string | null
-    status: string
+    additionalInfo: string | null
     instituteId: string
+    city: string | null
+    fullDescription: string
+    role: string
+    skills: string[]
+    country: string | null
+    renewedAt: Date | null
     speciality: string | null
     subSpeciality: string | null
-    renewedAt: Date | null
   }, ExtArgs["result"]["job"]>
   composites: {}
 }
@@ -2470,11 +2677,12 @@ readonly fields: JobFieldRefs;
  */
 export interface Prisma__JobClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  institute<T extends Prisma.InstituteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstituteDefaultArgs<ExtArgs>>): Prisma.Prisma__InstituteClient<runtime.Types.Result.GetResult<Prisma.$InstitutePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   applications<T extends Prisma.Job$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  institute<T extends Prisma.InstituteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstituteDefaultArgs<ExtArgs>>): Prisma.Prisma__InstituteClient<runtime.Types.Result.GetResult<Prisma.$InstitutePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   JobView<T extends Prisma.Job$JobViewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$JobViewArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  savedJobs<T extends Prisma.Job$savedJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$savedJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.Job$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedJobs<T extends Prisma.Job$savedJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$savedJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  creditsHistories<T extends Prisma.Job$creditsHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$creditsHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditsHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2509,28 +2717,28 @@ export interface JobFieldRefs {
   readonly updated_at: Prisma.FieldRef<"Job", 'DateTime'>
   readonly title: Prisma.FieldRef<"Job", 'String'>
   readonly jobType: Prisma.FieldRef<"Job", 'String'>
-  readonly role: Prisma.FieldRef<"Job", 'String'>
-  readonly skills: Prisma.FieldRef<"Job", 'String[]'>
   readonly workLocation: Prisma.FieldRef<"Job", 'String'>
-  readonly city: Prisma.FieldRef<"Job", 'String'>
-  readonly country: Prisma.FieldRef<"Job", 'String'>
   readonly experienceLevel: Prisma.FieldRef<"Job", 'String'>
-  readonly shortDescription: Prisma.FieldRef<"Job", 'String'>
-  readonly fullDescription: Prisma.FieldRef<"Job", 'String'>
   readonly requirements: Prisma.FieldRef<"Job", 'String'>
-  readonly additionalInfo: Prisma.FieldRef<"Job", 'String'>
-  readonly salaryCurrency: Prisma.FieldRef<"Job", 'String'>
   readonly salaryMin: Prisma.FieldRef<"Job", 'Int'>
   readonly salaryMax: Prisma.FieldRef<"Job", 'Int'>
+  readonly status: Prisma.FieldRef<"Job", 'String'>
+  readonly shortDescription: Prisma.FieldRef<"Job", 'String'>
+  readonly salaryCurrency: Prisma.FieldRef<"Job", 'String'>
   readonly applicationDeadline: Prisma.FieldRef<"Job", 'DateTime'>
   readonly contactEmail: Prisma.FieldRef<"Job", 'String'>
   readonly contactPhone: Prisma.FieldRef<"Job", 'String'>
   readonly contactPerson: Prisma.FieldRef<"Job", 'String'>
-  readonly status: Prisma.FieldRef<"Job", 'String'>
+  readonly additionalInfo: Prisma.FieldRef<"Job", 'String'>
   readonly instituteId: Prisma.FieldRef<"Job", 'String'>
+  readonly city: Prisma.FieldRef<"Job", 'String'>
+  readonly fullDescription: Prisma.FieldRef<"Job", 'String'>
+  readonly role: Prisma.FieldRef<"Job", 'String'>
+  readonly skills: Prisma.FieldRef<"Job", 'String[]'>
+  readonly country: Prisma.FieldRef<"Job", 'String'>
+  readonly renewedAt: Prisma.FieldRef<"Job", 'DateTime'>
   readonly speciality: Prisma.FieldRef<"Job", 'String'>
   readonly subSpeciality: Prisma.FieldRef<"Job", 'String'>
-  readonly renewedAt: Prisma.FieldRef<"Job", 'DateTime'>
 }
     
 
@@ -2975,6 +3183,30 @@ export type Job$JobViewArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 /**
+ * Job.notifications
+ */
+export type Job$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
  * Job.savedJobs
  */
 export type Job$savedJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2999,27 +3231,27 @@ export type Job$savedJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * Job.notifications
+ * Job.creditsHistories
  */
-export type Job$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Job$creditsHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Notification
+   * Select specific fields to fetch from the CreditsHistory
    */
-  select?: Prisma.NotificationSelect<ExtArgs> | null
+  select?: Prisma.CreditsHistorySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Notification
+   * Omit specific fields from the CreditsHistory
    */
-  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  omit?: Prisma.CreditsHistoryOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.NotificationInclude<ExtArgs> | null
-  where?: Prisma.NotificationWhereInput
-  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
-  cursor?: Prisma.NotificationWhereUniqueInput
+  include?: Prisma.CreditsHistoryInclude<ExtArgs> | null
+  where?: Prisma.CreditsHistoryWhereInput
+  orderBy?: Prisma.CreditsHistoryOrderByWithRelationInput | Prisma.CreditsHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.CreditsHistoryWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+  distinct?: Prisma.CreditsHistoryScalarFieldEnum | Prisma.CreditsHistoryScalarFieldEnum[]
 }
 
 /**

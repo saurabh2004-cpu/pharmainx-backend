@@ -18,10 +18,10 @@ export { Prisma }
 export * as $Enums from './enums.ts'
 export * from './enums.ts';
 /**
- * Model Auth
+ * Model Admin
  * 
  */
-export type Auth = Prisma.AuthModel
+export type Admin = Prisma.AdminModel
 /**
  * Model User
  * 
@@ -42,6 +42,11 @@ export type InstituteCredits = Prisma.InstituteCreditsModel
  * 
  */
 export type CreditsWallet = Prisma.CreditsWalletModel
+/**
+ * Model CreditsHistory
+ * 
+ */
+export type CreditsHistory = Prisma.CreditsHistoryModel
 /**
  * Model Job
  * 

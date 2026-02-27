@@ -127,10 +127,47 @@ const getAllInstituteVerifications = async (req: AuthRequest, res: Response) => 
             return res.status(404).json({ error: "Institute verifications not found" });
         }
 
+
         res.json(instituteVerifications);
     } catch (error: any) {
         console.error(error);
         res.status(500).json({ error: "Failed to get institute verifications", message: error.message });
+    }
+};
+
+const checkInstituteVerificationStatus = async (req: AuthRequest, res: Response) => {
+    const instituteId = req.user?.id?.toString();
+
+    if (!instituteId) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    try {
+        const verification = await prisma.instituteVerifications.findUnique({
+            where: { instituteId: instituteId },
+        });
+
+        if (!verification) {
+            return res.status(200).json({
+                success: true,
+                verified: false,
+                status: "NOT_FOUND"
+            });
+        }
+
+        await prisma.instituteVerifications.update({
+            where: { instituteId: instituteId },
+            data: { status: VerificationStatus.APPROVED }
+        });
+
+        return res.status(200).json({
+            success: true,
+            verified: verification.status === VerificationStatus.APPROVED,
+            status: verification.status
+        });
+    } catch (error: any) {
+        console.error(error);
+        res.status(500).json({ error: "Database error", message: error.message });
     }
 };
 
@@ -139,5 +176,6 @@ export {
     getInstituteVerification,
     approveInstituteVerification,
     rejectInstituteVerification,
-    getAllInstituteVerifications
+    getAllInstituteVerifications,
+    checkInstituteVerificationStatus
 };

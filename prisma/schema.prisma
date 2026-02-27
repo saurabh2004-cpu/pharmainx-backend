@@ -1,5 +1,380 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id         Int      @id @default(autoincrement())
+  created_at DateTime @default(now())
+  email      String   @unique
+  password   String
+}
+
+model User {
+  id                String              @id @default(uuid())
+  created_at        DateTime            @default(now())
+  verified          Boolean             @default(false)
+  gender            String?
+  role              UserRoles           @default(STUDENT)
+  headline          String?
+  about             String?
+  degree            String?
+  email             String              @unique
+  firstName         String
+  lastName          String
+  password          String
+  university        String?
+  yearOfStudy       String?
+  specialization    String?
+  experience        Int?
+  speciality        String?
+  subSpeciality     String?
+  city              String              @default("")
+  country           String              @default("India")
+  JobApplication    Application[]
+  conversations     Conversation[]
+  savedJobs         SavedJob[]
+  userEducations    UserEducation[]
+  userExperiences   UserExperiences[]
+  userImages        UserImages[]
+  userLinks         UserLinks[]
+  skills            UserSkills[]
+  userSpecialities  UserSpecialities[]
+  userVerifications UserVerifications[]
+}
+
+model Institute {
+  id                      String                  @id @default(uuid())
+  created_at              DateTime                @default(now())
+  name                    String                  @unique
+  verified                Boolean                 @default(false)
+  contactEmail            String                  @unique
+  contactNumber           String
+  role                    InstituteRoles          @default(HOSPITAL)
+  affiliatedUniversity    String?
+  yearEstablished         Int?
+  ownership               String?
+  headline                String?
+  about                   String?
+  password                String
+  bedsCount               Int
+  services                String[]
+  staffCount              Int
+  telephone               String
+  type                    String
+  city                    String?
+  country                 String?
+  conversations           Conversation[]
+  instituteCreditsWallets InstituteCredits[]
+  instituteImages         InstituteImages[]
+  instituteVerifications  InstituteVerifications?
+  instituteViews          InstituteView[]
+  Job                     Job[]
+  creditsHistories        CreditsHistory[]
+}
+
+model InstituteCredits {
+  id          String     @id @default(uuid())
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  credits     Int        @default(0)
+  instituteId String?
+  institute   Institute? @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model CreditsWallet {
+  id                   String   @id @default(uuid())
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+  newJobCreditsPrice   Int      @default(0)
+  renewJobCreditsPrice Int      @default(0)
+}
+
+model CreditsHistory {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  type   CreditHistoryType   @default(DEBIT)
+  action CreditHistoryAction @default(JOB_POSTED)
+
+  cost             Int? @default(0)
+  purchasedCredits Int? @default(0)
+  currentCredits   Int  @default(0)
+
+  jobId       String?
+  job         Job?       @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  instituteId String?
+  institute   Institute? @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Job {
+  id                  String           @id @default(uuid())
+  created_at          DateTime         @default(now())
+  updated_at          DateTime         @updatedAt
+  title               String
+  jobType             String
+  workLocation        String
+  experienceLevel     String
+  requirements        String
+  salaryMin           Int
+  salaryMax           Int
+  status              String           @default("active")
+  shortDescription    String?
+  salaryCurrency      String?          @default("INR")
+  applicationDeadline DateTime?
+  contactEmail        String?
+  contactPhone        String?
+  contactPerson       String?
+  additionalInfo      String?
+  instituteId         String
+  city                String?
+  fullDescription     String
+  role                String
+  skills              String[]
+  country             String?
+  renewedAt           DateTime?
+  speciality          String?          @default("")
+  subSpeciality       String?          @default("")
+  applications        Application[]
+  institute           Institute        @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  JobView             JobView[]
+  notifications       Notification[]
+  savedJobs           SavedJob[]
+  creditsHistories    CreditsHistory[]
+}
+
+model Application {
+  id                String            @id @default(uuid())
+  created_at        DateTime          @default(now())
+  updated_at        DateTime          @updatedAt
+  appliedDate       DateTime          @default(now())
+  resumeUrl         String
+  coverLetter       String?
+  experienceYears   Int?
+  currentPosition   String?
+  currentInstitute  String?
+  additionalDetails Json?
+  jobId             String
+  userId            String
+  status            ApplicationStatus @default(APPLIED)
+  job               Job               @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  notifications     Notification[]
+}
+
+model JobView {
+  id       String   @id @default(uuid())
+  jobId    String
+  userId   String?
+  viewedAt DateTime @default(now())
+  job      Job      @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model InstituteView {
+  id          String    @id @default(uuid())
+  instituteId String
+  userId      String?
+  viewedAt    DateTime  @default(now())
+  institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([instituteId, userId])
+}
+
+model InstituteImages {
+  id           String    @id @default(uuid())
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  instituteId  String    @default("")
+  coverImage   String    @default("")
+  profileImage String    @default("")
+  institute    Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model UserImages {
+  id           String   @id @default(uuid())
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  userId       String   @default("")
+  coverImage   String   @default("")
+  profileImage String   @default("")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SavedJob {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  jobId      String
+  userId     String
+  job        Job      @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Notification {
+  id                   String             @id @default(uuid())
+  createdAt            DateTime           @default(now())
+  receiverId           String
+  receiverRole         String
+  title                String
+  message              String
+  isRead               Boolean            @default(false)
+  relatedJobId         String?
+  relatedApplicationId String?
+  status               ApplicationStatus?
+  application          Application?       @relation(fields: [relatedApplicationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  job                  Job?               @relation(fields: [relatedJobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model UserExperiences {
+  id               String   @id @default(uuid())
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  userId           String   @default("")
+  organizationName String   @default("")
+  role             String   @default("")
+  startDate        DateTime @default(now())
+  endDate          DateTime @default(now())
+  description      String   @default("")
+  locationType     String   @default("")
+  country          String   @default("")
+  city             String   @default("")
+  isCurrentJob     Boolean  @default(false)
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model UserEducation {
+  id            String   @id @default(uuid())
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  userId        String   @default("")
+  instituteName String   @default("")
+  degree        String   @default("")
+  startDate     DateTime @default(now())
+  endDate       DateTime @default(now())
+  country       String   @default("")
+  city          String   @default("")
+  isCurrentJob  Boolean  @default(false)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model UserSkills {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  userId     String   @default("")
+  skills     String[] @default([])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserSpecialities {
+  id           String   @id @default(uuid())
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  userId       String   @default("")
+  specialities String[] @default([])
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserLinks {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  userId     String   @default("")
+  links      String[] @default([])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserVerifications {
+  id                            String             @id @default(uuid())
+  created_at                    DateTime           @default(now())
+  updated_at                    DateTime           @updatedAt
+  userId                        String
+  userRole                      UserRoles
+  status                        VerificationStatus @default(PENDING)
+  firstName                     String
+  lastName                      String
+  dob                           DateTime
+  governMentId                  String
+  authorizeToVerify             Boolean
+  email                         String
+  phone                         String
+  country                       String
+  city                          String
+  professionalTitle             String
+  primarySpecialty              String
+  licenseNumber                 String
+  licenseExpiryDate             DateTime
+  degree                        String
+  university                    String
+  yearOfGraduation              DateTime
+  degreeCertificate             String
+  postGraduateDegree            String?
+  postGraduateUniversity        String?
+  postGraduateDegreeCertificate String?
+  currentEmployer               String?
+  currentRole                   String?
+  practiceCountry               String?
+  practiceCity                  String?
+  isLicenceSuspended            Boolean            @default(false)
+  licenceSuspensionReason       String?
+  user                          User               @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model InstituteVerifications {
+  id                      String             @id @default(uuid())
+  created_at              DateTime           @default(now())
+  updated_at              DateTime           @updatedAt
+  instituteId             String             @unique
+  status                  VerificationStatus @default(PENDING)
+  telephone               String
+  email                   String
+  adminName               String
+  adminPhone              String
+  registrationCertificate String
+  institute               Institute          @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Conversation {
+  id                   String    @id @default(uuid())
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  instituteId          String
+  userId               String
+  lastMessageId        String?   @unique
+  instituteUnreadCount Int       @default(0)
+  userUnreadCount      Int       @default(0)
+  institute            Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  lastMessage          Message?  @relation("LastMessage", fields: [lastMessageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  messages             Message[] @relation("ConversationMessages")
+
+  @@unique([instituteId, userId])
+  @@index([instituteId])
+  @@index([userId])
+}
+
+model Message {
+  id                 String        @id @default(uuid())
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  conversationId     String
+  senderType         SenderType
+  senderId           String
+  content            String?
+  mediaUrl           String?
+  mediaType          MediaType?
+  isRead             Boolean       @default(false)
+  lastInConversation Conversation? @relation("LastMessage")
+  conversation       Conversation  @relation("ConversationMessages", fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([isRead])
+}
 
 enum ApplicationStatus {
   APPLIED
@@ -9,17 +384,8 @@ enum ApplicationStatus {
   NEXT_ROUND_REJECTED
   INTERVIEW_SCHEDULED
   INTERVIEW_ACCEPTED
-  HIRED
   REJECTED
-}
-
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
+  HIRED
 }
 
 enum AuthRoles {
@@ -30,8 +396,8 @@ enum AuthRoles {
 enum UserRoles {
   DOCTOR
   NURSE
-  OTHER
   STUDENT
+  OTHER
 }
 
 enum InstituteRoles {
@@ -47,366 +413,6 @@ enum VerificationStatus {
   REJECTED
 }
 
-model Auth {
-  id         Int       @id @default(autoincrement())
-  created_at DateTime  @default(now())
-  email      String    @unique
-  password   String
-  role       AuthRoles @default(USER)
-}
-
-model User {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-
-  firstName      String
-  lastName       String
-  email          String        @unique
-  password       String
-  country        String        @default("India")
-  city           String        @default("")
-  university     String?
-  degree         String?
-  yearOfStudy    String?
-  verified       Boolean       @default(false)
-  gender         String?
-  specialization String?
-  speciality     String?
-  subSpeciality  String?
-  role           UserRoles     @default(STUDENT)
-  experience     Int?
-  JobApplication Application[]
-
-  headline String?
-  about    String?
-
-  savedJobs         SavedJob[]
-  userImages        UserImages[]
-  userExperiences   UserExperiences[]
-  userEducations    UserEducation[]
-  skills            UserSkills[]
-  userSpecialities  UserSpecialities[]
-  userLinks         UserLinks[]
-  userVerifications UserVerifications[]
-  conversations     Conversation[]
-}
-
-model Institute {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-
-  name          String   @unique
-  country       String?
-  city          String?
-  verified      Boolean  @default(false)
-  contactEmail  String   @unique
-  password      String
-  contactNumber String
-  bedsCount     Int
-  staffCount    Int
-  type          String
-  services      String[]
-  telephone     String
-
-  role InstituteRoles @default(HOSPITAL)
-
-  Job Job[]
-
-  affiliatedUniversity    String?
-  yearEstablished         Int?
-  ownership               String?
-  headline                String?
-  about                   String?
-  instituteCreditsWallets InstituteCredits[]
-  instituteViews          InstituteView[]
-  instituteImages         InstituteImages[]
-  instituteVerifications  InstituteVerifications[]
-  conversations           Conversation[]
-}
-
-model InstituteCredits {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  credits     Int        @default(0)
-  institute   Institute? @relation(fields: [instituteId], references: [id])
-  instituteId String?
-}
-
-model CreditsWallet {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  newJobCreditsPrice   Int @default(0)
-  renewJobCreditsPrice Int @default(0)
-}
-
-model Job {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  title            String
-  jobType          String
-  role             String
-  skills           String[]
-  workLocation     String
-  city             String?
-  country          String?
-  experienceLevel  String
-  shortDescription String?
-
-  fullDescription String
-  requirements    String
-  additionalInfo  String?
-
-  salaryCurrency      String?   @default("INR")
-  salaryMin           Int
-  salaryMax           Int
-  applicationDeadline DateTime?
-  contactEmail        String?
-  contactPhone        String?
-  contactPerson       String?
-
-  status      String    @default("active")
-  institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
-  instituteId String
-
-  speciality    String? @default("")
-  subSpeciality String? @default("")
-
-  applications  Application[]
-  JobView       JobView[]
-  savedJobs     SavedJob[]
-  renewedAt     DateTime?
-  notifications Notification[]
-}
-
-model Application {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  status      ApplicationStatus @default(APPLIED)
-  appliedDate DateTime          @default(now())
-  resumeUrl   String
-
-  coverLetter       String?
-  experienceYears   Int?
-  currentPosition   String?
-  currentInstitute  String?
-  additionalDetails Json?
-
-  job           Job            @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  jobId         String
-  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId        String
-  notifications Notification[]
-}
-
-model JobView {
-  id       String   @id @default(uuid())
-  jobId    String
-  userId   String?
-  viewedAt DateTime @default(now())
-
-  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
-}
-
-model InstituteView {
-  id          String   @id @default(uuid())
-  instituteId String
-  userId      String?
-  viewedAt    DateTime @default(now())
-
-  institute Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
-
-  @@unique([instituteId, userId])
-}
-
-model InstituteImages {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  instituteId  String @default("")
-  coverImage   String @default("")
-  profileImage String @default("")
-
-  institute Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
-}
-
-model UserImages {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId       String @default("")
-  coverImage   String @default("")
-  profileImage String @default("")
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model SavedJob {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  job    Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  jobId  String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String
-}
-
-model Notification {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-
-  receiverId   String
-  receiverRole String
-  title        String
-  message      String
-  isRead       Boolean @default(false)
-
-  relatedJobId         String?
-  relatedApplicationId String?
-  status               ApplicationStatus?
-
-  job         Job?         @relation(fields: [relatedJobId], references: [id])
-  application Application? @relation(fields: [relatedApplicationId], references: [id])
-}
-
-model UserExperiences {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId           String   @default("")
-  organizationName String   @default("")
-  role             String   @default("")
-  startDate        DateTime @default(now())
-  endDate          DateTime @default(now())
-  description      String   @default("")
-  locationType     String   @default("")
-  country          String   @default("")
-  city             String   @default("")
-  isCurrentJob     Boolean  @default(false)
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model UserEducation {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId        String   @default("")
-  instituteName String   @default("")
-  degree        String   @default("")
-  startDate     DateTime @default(now())
-  endDate       DateTime @default(now())
-  country       String   @default("")
-  city          String   @default("")
-  isCurrentJob  Boolean  @default(false)
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model UserSkills {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId String   @default("")
-  skills String[] @default([])
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model UserSpecialities {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId       String   @default("")
-  specialities String[] @default([])
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model UserLinks {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  userId String   @default("")
-  links  String[] @default([])
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model UserVerifications {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  user     User      @relation(fields: [userId], references: [id])
-  userId   String
-  userRole UserRoles
-
-  status VerificationStatus @default(PENDING)
-
-  firstName         String
-  lastName          String
-  dob               DateTime
-  governMentId      String
-  authorizeToVerify Boolean
-  email             String
-  phone             String
-  country           String
-  city              String
-
-  professionalTitle             String
-  primarySpecialty              String
-  licenseNumber                 String
-  licenseExpiryDate             DateTime
-  degree                        String
-  university                    String
-  yearOfGraduation              DateTime
-  degreeCertificate             String
-  postGraduateDegree            String?
-  postGraduateUniversity        String?
-  postGraduateDegreeCertificate String?
-
-  currentEmployer String?
-  currentRole     String?
-  practiceCountry String?
-  practiceCity    String?
-
-  isLicenceSuspended      Boolean @default(false)
-  licenceSuspensionReason String?
-}
-
-model InstituteVerifications {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  institute   Institute @relation(fields: [instituteId], references: [id])
-  instituteId String    @unique
-
-  status VerificationStatus @default(PENDING)
-
-  telephone               String
-  email                   String
-  adminName               String
-  adminPhone              String
-  registrationCertificate String
-}
-
 enum SenderType {
   USER
   INSTITUTE
@@ -419,48 +425,15 @@ enum MediaType {
   VOICE
 }
 
-model Conversation {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  institute   Institute @relation(fields: [instituteId], references: [id])
-  instituteId String
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String
-
-  lastMessage   Message? @relation("LastMessage", fields: [lastMessageId], references: [id])
-  lastMessageId String?  @unique
-
-  instituteUnreadCount Int @default(0)
-  userUnreadCount      Int @default(0)
-
-  messages Message[] @relation("ConversationMessages")
-
-  @@unique([instituteId, userId])
-  @@index([instituteId])
-  @@index([userId])
+enum CreditHistoryType {
+  DEBIT
+  CREDIT
 }
 
-model Message {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  conversation   Conversation @relation("ConversationMessages", fields: [conversationId], references: [id], onDelete: Cascade)
-  conversationId String
-
-  senderType SenderType
-  senderId   String
-
-  content   String?
-  mediaUrl  String?
-  mediaType MediaType?
-
-  isRead Boolean @default(false)
-
-  lastInConversation Conversation? @relation("LastMessage")
-
-  @@index([conversationId])
-  @@index([isRead])
+enum CreditHistoryAction {
+  JOB_POSTED
+  JOB_RENEWED
+  JOB_DELETED
+  JOB_EDITED
+  CREDITS_PURCHASED
 }

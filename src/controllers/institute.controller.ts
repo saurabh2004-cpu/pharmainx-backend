@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js'; // Ensure .js extension for runtime compatibility if not using ts-node/tsx handling
 import { getServiceLogger } from '../utils/logger.js';
-import { InstituteRoles, AuthRoles, Prisma, ApplicationStatus } from '../generated/prisma/client.ts'; // Import defaults from generated client
+import { InstituteRoles, AuthRoles, Prisma, ApplicationStatus, VerificationStatus } from '../generated/prisma/client.ts'; // Import defaults from generated client
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { getCloudFrontUrl } from '../services/aws.service.js';
@@ -161,7 +161,7 @@ export const loginInstitute = async (req: AuthRequest, res: Response) => {
 
 
 
-        const token = jwt.sign({ id: institute.id, role: institute.role }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
+        const token = jwt.sign({ id: institute.id, role: institute.role }, process.env.JWT_SECRET || 'secret', { expiresIn: '7d' });
 
         logger.info({ id: institute.id }, 'Institute logged in successfully');
 
@@ -199,7 +199,8 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
         headline,
         about,
         city,
-        country
+        country,
+        verified
     } = req.body;
 
     const updateData: any = {};
@@ -235,6 +236,14 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
         updateData.staffCount = parsedStaff;
     }
 
+    if (verified !== undefined) {
+        updateData.instituteVerifications = {
+            update: {
+                status: verified === true || verified === 'true' ? 'APPROVED' : 'REJECTED'
+            }
+        };
+    }
+
     // Prevent passing empty update (optional, but good practice)
     if (Object.keys(updateData).length === 0) {
         // If the frontend sends ONLY invalid keys, this might happen.
@@ -248,10 +257,14 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
         const institute = await prisma.institute.update({
             where: { id },
             data: updateData,
+            include: { instituteVerifications: true },
         });
 
         logger.info({ id, institute }, 'Institute updated successfully');
-        res.status(200).json(institute);
+        res.status(200).json({
+            ...institute,
+            verified: institute.instituteVerifications?.status === 'APPROVED' ? true : false,
+        });
     } catch (err: any) {
         if (err.code === 'P2025') {
             logger.warn({ id }, 'Institute not found during update');
@@ -427,11 +440,12 @@ export const getInstituteStats = async (req: AuthRequest, res: Response) => {
 
 export const searchInstitutes = async (req: Request, res: Response) => {
     const query = req.query as any;
-    const { name, specialty, city, country, role, verified } = query;
+    const { name, specialty, city, country, role, verified, status } = query;
     const page = parseInt((query.page as string) || '1');
-    const pageSize = parseInt((query.pageSize as string) || '20');
-    const skip = (page - 1) * pageSize;
-    const take = pageSize;
+    const limitParams = query.limit || query.pageSize;
+    const limit = parseInt((limitParams as string) || '10');
+    const skip = (page - 1) * limit;
+    const take = limit;
 
     const where: Prisma.InstituteWhereInput = {};
 
@@ -442,7 +456,12 @@ export const searchInstitutes = async (req: Request, res: Response) => {
     if (city) where.city = { contains: city as string, mode: 'insensitive' };
     if (country) where.country = { contains: country as string, mode: 'insensitive' };
     if (role) where.role = role as any;
-    if (verified !== undefined) where.verified = verified === 'true';
+    if (verified !== undefined) where.verified = verified;
+    if (status) {
+        where.instituteVerifications = {
+            status: status as any
+        };
+    }
 
     try {
         const [institutes, total] = await Promise.all([
@@ -451,22 +470,35 @@ export const searchInstitutes = async (req: Request, res: Response) => {
                 skip,
                 take,
                 orderBy: { created_at: 'desc' },
-                include: { instituteImages: true }
+                include: { instituteImages: true, instituteVerifications: true },
             }),
             prisma.institute.count({ where }),
         ]);
+
+        console.log("institute list", institutes)
 
         const mappedInstitutes = institutes.map(inst => {
             const images = (inst as any).instituteImages && (inst as any).instituteImages.length > 0 ? (inst as any).instituteImages[0] : null;
             return {
                 ...inst,
+                verified: inst?.instituteVerifications?.status || '',
                 profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
                 banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
             };
         });
 
-        logger.info({ query, page, pageSize, total }, 'Fetched institutes search results');
-        res.status(200).json({ institutes: mappedInstitutes, page, pageSize, total });
+        console.log("mappedInstitutes", mappedInstitutes)
+
+        logger.info({ query, page, limit, total }, 'Fetched institutes search results');
+        res.status(200).json({
+            institutes: mappedInstitutes,
+            data: mappedInstitutes,
+            page,
+            pageSize: limit,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
+        });
     } catch (err) {
         logger.error({ err, query }, 'Database error during searchInstitutes');
         res.status(500).json({ error: 'Database error' });
@@ -485,7 +517,7 @@ export const getInstituteById = async (req: Request, res: Response) => {
     try {
         const institute = await prisma.institute.findUnique({
             where: { id },
-            include: { instituteImages: true }
+            include: { instituteImages: true, instituteVerifications: true },
         });
 
         if (!institute) {
@@ -496,6 +528,7 @@ export const getInstituteById = async (req: Request, res: Response) => {
         const images = (institute as any).instituteImages && (institute as any).instituteImages.length > 0 ? (institute as any).instituteImages[0] : null;
         const mappedInstitute = {
             ...institute,
+            verified: institute?.instituteVerifications?.status === VerificationStatus.APPROVED ? true : false,
             profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
             banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
         };

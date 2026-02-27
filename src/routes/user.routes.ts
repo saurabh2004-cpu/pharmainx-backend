@@ -5,6 +5,8 @@ import {
     getMyUser,
     searchUsers,
     getAllUsers,
+    getUnverifiedUsers,
+    verifyUser,
     getUserById,
     SignupUser,
     signInUser,
@@ -36,7 +38,8 @@ const router = Router();
 // Public Routes
 router.get('/search-users', searchUsers);
 router.get('/get-all-users', getAllUsers);
-router.get('/get-user/:id', getUserById);
+router.get('/unverified-users', getUnverifiedUsers);
+router.get('/get-user/:id', getUserById); 
 router.get('/resume/download/:userId', authenticateToken, downloadResume);
 
 // Private Routes (Apply Auth Middleware)
@@ -44,6 +47,7 @@ router.post('/create-user', SignupUser);
 router.post('/signin-user', signInUser);
 router.get('/my-profile', authenticateToken, getMyUser);
 router.put('/update-user/:id', authenticateToken, updateUser);
+router.patch('/verify/:id', authenticateToken, verifyUser);
 router.delete('/delete-user/:id', authenticateToken, deleteUser);
 
 // Experience Routes
