@@ -388,6 +388,33 @@ enum ApplicationStatus {
   HIRED
 }
 
+model ActivityLogs {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  action ActivityLogsAction
+  module ActivityLogsModule
+}
+
+enum ActivityLogsAction {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum ActivityLogsModule {
+  user
+  institute
+  job
+  savedJob
+  application
+  creditsWallet
+  instituteVerifications
+  userVerifications
+  instituteCredits
+}
+
 enum AuthRoles {
   USER
   INSTITUTE

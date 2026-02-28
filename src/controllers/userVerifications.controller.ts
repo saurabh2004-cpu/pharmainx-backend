@@ -6,7 +6,7 @@ import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs/promises';
 
-import { uploadToS3, getCloudFrontUrl } from '../services/aws.service.js';
+import { uploadToS3, getCloudFrontUrl, deleteFromS3 } from '../services/aws.service.js';
 
 const logger = getServiceLogger("UserVerifications");
 
@@ -85,8 +85,8 @@ export const createVerification = async (req: AuthRequest, res: Response) => {
                 // Upload to S3
                 await uploadToS3(file.buffer, s3Key, file.mimetype);
 
-                // Return CloudFront URL
-                return getCloudFrontUrl(s3Key);
+                // Return S3 Key
+                return s3Key;
             }
             return null;
         };
@@ -174,12 +174,9 @@ export const getVerificationById = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Verification not found' });
         }
 
-        // const updated = await prisma.userVerifications.update({
-        //     where: { id: id as string },
-        //     data: { status: VerificationStatus.APPROVED }
-        // });
-
-        // console.log("updated verification ", updated);
+        if (verification.governMentId) verification.governMentId = getCloudFrontUrl(verification.governMentId);
+        if (verification.degreeCertificate) verification.degreeCertificate = getCloudFrontUrl(verification.degreeCertificate);
+        if (verification.postGraduateDegreeCertificate) verification.postGraduateDegreeCertificate = getCloudFrontUrl(verification.postGraduateDegreeCertificate);
 
         res.status(200).json(verification);
     } catch (err: any) {
@@ -214,7 +211,14 @@ export const getAllUserVerifications = async (req: Request, res: Response) => {
             prisma.userVerifications.count({ where })
         ]);
 
-        res.status(200).json({ verifications, total, page: parseInt(page), pageSize: take });
+        const formattedVerifications = verifications.map(v => ({
+            ...v,
+            governMentId: v.governMentId ? getCloudFrontUrl(v.governMentId) : v.governMentId,
+            degreeCertificate: v.degreeCertificate ? getCloudFrontUrl(v.degreeCertificate) : v.degreeCertificate,
+            postGraduateDegreeCertificate: v.postGraduateDegreeCertificate ? getCloudFrontUrl(v.postGraduateDegreeCertificate) : v.postGraduateDegreeCertificate
+        }));
+
+        res.status(200).json({ verifications: formattedVerifications, total, page: parseInt(page), pageSize: take });
     } catch (err: any) {
         logger.error({ err }, 'Error fetching all verifications');
         res.status(500).json({ error: 'Database error', message: err.message });
@@ -225,6 +229,13 @@ export const getAllUserVerifications = async (req: Request, res: Response) => {
 export const deleteVerificationById = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
+        const verification = await prisma.userVerifications.findUnique({ where: { id: id as string } });
+        if (verification) {
+            if (verification.governMentId) await deleteFromS3(verification.governMentId).catch(e => console.error("S3 delete err", e));
+            if (verification.degreeCertificate) await deleteFromS3(verification.degreeCertificate).catch(e => console.error("S3 delete err", e));
+            if (verification.postGraduateDegreeCertificate) await deleteFromS3(verification.postGraduateDegreeCertificate).catch(e => console.error("S3 delete err", e));
+        }
+
         await prisma.userVerifications.delete({ where: { id: id as string } });
         logger.info({ id }, 'Verification deleted successfully');
         res.status(204).send();

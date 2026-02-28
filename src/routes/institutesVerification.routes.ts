@@ -3,7 +3,9 @@ import {
     getInstituteVerification,
     approveInstituteVerification,
     rejectInstituteVerification,
-    getAllInstituteVerifications
+    getAllInstituteVerifications,
+    deleteInstituteVerificationById,
+    fetVerificationById
 } from "../controllers/instituteVerification.controller.js";
 import { Router } from "express";
 import { upload } from '../middlewares/upload.js';
@@ -21,5 +23,7 @@ router.get("/get-verification/:instituteId", authenticateToken, getInstituteVeri
 router.put("/approve-verification/:instituteId", authenticateToken, approveInstituteVerification);
 router.put("/reject-verification/:instituteId", authenticateToken, rejectInstituteVerification);
 router.get("/get-all-verifications", authenticateToken, getAllInstituteVerifications);
+router.delete("/delete-verification/:id", authenticateToken, deleteInstituteVerificationById);
+router.get("/get-verification-by-id/:id", authenticateToken, fetVerificationById);
 
 export default router;
