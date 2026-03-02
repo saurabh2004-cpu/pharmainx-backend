@@ -73,7 +73,8 @@ export const ModelName = {
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
-  Message: 'Message'
+  Message: 'Message',
+  ActivityLogs: 'ActivityLogs'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -466,6 +467,19 @@ export const MessageScalarFieldEnum = {
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const ActivityLogsScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  module: 'module',
+  action: 'action',
+  description: 'description',
+  oldData: 'oldData',
+  newData: 'newData'
+} as const
+
+export type ActivityLogsScalarFieldEnum = (typeof ActivityLogsScalarFieldEnum)[keyof typeof ActivityLogsScalarFieldEnum]
 
 
 export const SortOrder = {

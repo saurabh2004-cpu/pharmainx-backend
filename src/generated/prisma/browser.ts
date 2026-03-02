@@ -132,3 +132,8 @@ export type Conversation = Prisma.ConversationModel
  * 
  */
 export type Message = Prisma.MessageModel
+/**
+ * Model ActivityLogs
+ * 
+ */
+export type ActivityLogs = Prisma.ActivityLogsModel

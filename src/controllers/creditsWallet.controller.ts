@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { z } from 'zod';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("CreditsWallet");
 
@@ -42,6 +44,14 @@ export const createCreditsWallet = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ walletId: wallet.id }, 'Credits wallet created');
+
+        await logActivity({
+            module: ActivityLogsModule.CREDITS_WALLET,
+            action: ActivityActionType.CREATE,
+            newData: wallet,
+            description: 'Credits wallet created'
+        });
+
         res.status(201).json(wallet);
     } catch (err) {
         logger.error({ err, body: req.body }, 'Database error during createCreditsWallet');
@@ -121,6 +131,15 @@ export const updateCreditsWallet = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ walletId: id }, 'Credits wallet updated');
+
+        await logActivity({
+            module: ActivityLogsModule.CREDITS_WALLET,
+            action: ActivityActionType.UPDATE,
+            oldData: existingWallet,
+            newData: updatedWallet,
+            description: 'Credits wallet updated'
+        });
+
         res.status(200).json(updatedWallet);
     } catch (err) {
         logger.error({ err, id, body: req.body }, 'Database error during updateCreditsWallet');
@@ -142,6 +161,14 @@ export const deleteCreditsWallet = async (req: AuthRequest, res: Response) => {
         await prisma.creditsWallet.delete({ where: { id: idStr } });
 
         logger.info({ walletId: id }, 'Credits wallet deleted');
+
+        await logActivity({
+            module: ActivityLogsModule.CREDITS_WALLET,
+            action: ActivityActionType.DELETE,
+            oldData: existingWallet,
+            description: 'Credits wallet deleted'
+        });
+
         res.status(200).json({ message: 'Credits wallet deleted successfully' });
     } catch (err) {
         logger.error({ err, id }, 'Database error during deleteCreditsWallet');

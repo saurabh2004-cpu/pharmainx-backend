@@ -406,6 +406,40 @@ export type EnumMediaTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumMediaTypeNullableFilter<$PrismaModel>
 }
 
+export type EnumActivityLogsModuleFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityLogsModule | Prisma.EnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel> | $Enums.ActivityLogsModule
+}
+
+export type EnumActivityActionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityActionType | Prisma.EnumActivityActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel> | $Enums.ActivityActionType
+}
+
+export type EnumActivityLogsModuleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityLogsModule | Prisma.EnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityLogsModuleWithAggregatesFilter<$PrismaModel> | $Enums.ActivityLogsModule
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel>
+}
+
+export type EnumActivityActionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityActionType | Prisma.EnumActivityActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityActionTypeWithAggregatesFilter<$PrismaModel> | $Enums.ActivityActionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
+}
+
 export type NestedIntFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
@@ -782,6 +816,40 @@ export type NestedEnumMediaTypeNullableWithAggregatesFilter<$PrismaModel = never
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumMediaTypeNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumMediaTypeNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumActivityLogsModuleFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityLogsModule | Prisma.EnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel> | $Enums.ActivityLogsModule
+}
+
+export type NestedEnumActivityActionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityActionType | Prisma.EnumActivityActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel> | $Enums.ActivityActionType
+}
+
+export type NestedEnumActivityLogsModuleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityLogsModule | Prisma.EnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityLogsModule[] | Prisma.ListEnumActivityLogsModuleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityLogsModuleWithAggregatesFilter<$PrismaModel> | $Enums.ActivityLogsModule
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumActivityLogsModuleFilter<$PrismaModel>
+}
+
+export type NestedEnumActivityActionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ActivityActionType | Prisma.EnumActivityActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ActivityActionType[] | Prisma.ListEnumActivityActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumActivityActionTypeWithAggregatesFilter<$PrismaModel> | $Enums.ActivityActionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
 }
 
 

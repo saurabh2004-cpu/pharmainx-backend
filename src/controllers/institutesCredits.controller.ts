@@ -3,6 +3,8 @@ import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { z } from 'zod';
 import { CreditHistoryAction, CreditHistoryType } from '../generated/prisma/enums.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("InstituteCredits");
 
@@ -83,6 +85,14 @@ export const createInstituteCredits = async (req: AuthRequest, res: Response) =>
             })
 
             logger.info({ instituteId, creditsId: newCredits.id }, 'Institute credits record created');
+
+            await logActivity({
+                module: ActivityLogsModule.INSTITUTE_CREDITS,
+                action: ActivityActionType.CREATE,
+                newData: newCredits,
+                description: 'Institute credits record created'
+            });
+
             return newCredits;
         });
 
@@ -151,6 +161,15 @@ export const updateInstituteCredits = async (req: AuthRequest, res: Response) =>
             })
 
             logger.info({ creditsId: updatedRecord.id, newCredits: credits }, 'Institute credits updated');
+
+            await logActivity({
+                module: ActivityLogsModule.INSTITUTE_CREDITS,
+                action: ActivityActionType.UPDATE,
+                oldData: targetRecord,
+                newData: updatedRecord,
+                description: 'Institute credits updated'
+            });
+
             return updatedRecord;
         });
 
@@ -268,6 +287,14 @@ export const deleteInstituteCredits = async (req: AuthRequest, res: Response) =>
         await prisma.instituteCredits.delete({ where: { id: idStr } });
 
         logger.info({ creditsId: idStr }, 'Institute credits record deleted');
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_CREDITS,
+            action: ActivityActionType.DELETE,
+            oldData: existingRecord,
+            description: 'Institute credits deleted'
+        });
+
         res.status(200).json({ message: 'Institute credits deleted successfully' });
     } catch (err: any) {
         logger.error({ err, id: idStr }, 'Database error during deleteInstituteCredits');

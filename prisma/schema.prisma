@@ -389,30 +389,31 @@ enum ApplicationStatus {
 }
 
 model ActivityLogs {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  action ActivityLogsAction
-  module ActivityLogsModule
+  id          String             @id @default(uuid())
+  createdAt   DateTime           @default(now())
+  module      ActivityLogsModule
+  action      ActivityActionType
+  description String?
+  oldData     Json?
+  newData     Json?
 }
 
-enum ActivityLogsAction {
+enum ActivityActionType {
   CREATE
   UPDATE
   DELETE
 }
 
 enum ActivityLogsModule {
-  user
-  institute
-  job
-  savedJob
-  application
-  creditsWallet
-  instituteVerifications
-  userVerifications
-  instituteCredits
+  USER
+  INSTITUTE
+  JOB
+  SAVED_JOB
+  APPLICATION
+  CREDITS_WALLET
+  INSTITUTE_VERIFICATIONS
+  USER_VERIFICATIONS
+  INSTITUTE_CREDITS
 }
 
 enum AuthRoles {

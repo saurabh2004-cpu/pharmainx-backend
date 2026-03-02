@@ -7,6 +7,8 @@ import crypto from 'crypto';
 import fs from 'fs/promises';
 
 import { uploadToS3, getCloudFrontUrl, deleteFromS3 } from '../services/aws.service.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("UserVerifications");
 
@@ -238,6 +240,14 @@ export const deleteVerificationById = async (req: Request, res: Response) => {
 
         await prisma.userVerifications.delete({ where: { id: id as string } });
         logger.info({ id }, 'Verification deleted successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.USER_VERIFICATIONS,
+            action: ActivityActionType.DELETE,
+            oldData: verification,
+            description: 'User verification deleted'
+        });
+
         res.status(204).send();
     } catch (err: any) {
         logger.error({ err, id }, 'Error deleting verification');
@@ -273,6 +283,14 @@ export const approveVerification = async (req: Request, res: Response) => {
         });
 
         logger.info({ id, userId: verification.userId }, 'Verification approved');
+
+        await logActivity({
+            module: ActivityLogsModule.USER_VERIFICATIONS,
+            action: ActivityActionType.UPDATE,
+            newData: verification,
+            description: 'User verification approved'
+        });
+
         res.status(200).json(verification);
     } catch (err: any) {
         logger.error({ err, id }, 'Error approving verification');
@@ -296,6 +314,14 @@ export const rejectVerification = async (req: Request, res: Response) => {
         });
 
         logger.info({ id, userId: verification.userId }, 'Verification rejected');
+
+        await logActivity({
+            module: ActivityLogsModule.USER_VERIFICATIONS,
+            action: ActivityActionType.UPDATE,
+            newData: verification,
+            description: 'User verification rejected'
+        });
+
         res.status(200).json(verification);
     } catch (err: any) {
         logger.error({ err, id }, 'Error rejecting verification');

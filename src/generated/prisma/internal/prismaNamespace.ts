@@ -406,7 +406,8 @@ export const ModelName = {
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
-  Message: 'Message'
+  Message: 'Message',
+  ActivityLogs: 'ActivityLogs'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -422,7 +423,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2128,6 +2129,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ActivityLogs: {
+      payload: Prisma.$ActivityLogsPayload<ExtArgs>
+      fields: Prisma.ActivityLogsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ActivityLogsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ActivityLogsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        findFirst: {
+          args: Prisma.ActivityLogsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ActivityLogsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        findMany: {
+          args: Prisma.ActivityLogsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>[]
+        }
+        create: {
+          args: Prisma.ActivityLogsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        createMany: {
+          args: Prisma.ActivityLogsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ActivityLogsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>[]
+        }
+        delete: {
+          args: Prisma.ActivityLogsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        update: {
+          args: Prisma.ActivityLogsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        deleteMany: {
+          args: Prisma.ActivityLogsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ActivityLogsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ActivityLogsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>[]
+        }
+        upsert: {
+          args: Prisma.ActivityLogsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityLogsPayload>
+        }
+        aggregate: {
+          args: Prisma.ActivityLogsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateActivityLogs>
+        }
+        groupBy: {
+          args: Prisma.ActivityLogsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ActivityLogsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ActivityLogsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ActivityLogsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2543,6 +2618,19 @@ export const MessageScalarFieldEnum = {
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
+export const ActivityLogsScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  module: 'module',
+  action: 'action',
+  description: 'description',
+  oldData: 'oldData',
+  newData: 'newData'
+} as const
+
+export type ActivityLogsScalarFieldEnum = (typeof ActivityLogsScalarFieldEnum)[keyof typeof ActivityLogsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2766,6 +2854,34 @@ export type ListEnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
 
 
 /**
+ * Reference to a field of type 'ActivityLogsModule'
+ */
+export type EnumActivityLogsModuleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityLogsModule'>
+    
+
+
+/**
+ * Reference to a field of type 'ActivityLogsModule[]'
+ */
+export type ListEnumActivityLogsModuleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityLogsModule[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ActivityActionType'
+ */
+export type EnumActivityActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityActionType'>
+    
+
+
+/**
+ * Reference to a field of type 'ActivityActionType[]'
+ */
+export type ListEnumActivityActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ActivityActionType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2896,6 +3012,7 @@ export type GlobalOmitConfig = {
   instituteVerifications?: Prisma.InstituteVerificationsOmit
   conversation?: Prisma.ConversationOmit
   message?: Prisma.MessageOmit
+  activityLogs?: Prisma.ActivityLogsOmit
 }
 
 /* Types for Logging */

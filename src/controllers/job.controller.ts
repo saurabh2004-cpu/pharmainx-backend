@@ -4,6 +4,8 @@ import { getServiceLogger } from '../utils/logger.js';
 import { JobCreateUpdateSchema } from '../types/job.js';
 import { CreditHistoryAction, CreditHistoryType, Prisma } from '../generated/prisma/client.ts';
 import { getCloudFrontUrl } from '../services/aws.service.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("Job");
 
@@ -68,9 +70,9 @@ export const createJob = async (req: AuthRequest, res: Response) => {
 
     // Define credit costs based on job type
     const JOB_TYPE_CREDITS: Record<string, number> = {
-        'Doctor': 50,
-        'Other': 30,
-        'Student': 10
+        'DOCTOR': 50,
+        'OTHER': 30,
+        'STUDENT': 10
     };
 
     // Determine credit cost for this job type
@@ -99,12 +101,12 @@ export const createJob = async (req: AuthRequest, res: Response) => {
         }
 
         // 2. Fetch Global Credits Config (kept for potential future use)
-        const creditsConfig = await prisma.creditsWallet.findFirst();
+        // const creditsConfig = await prisma.creditsWallet.findFirst();
 
-        if (!creditsConfig) {
-            logger.error('Global CreditsWallet config missing');
-            return res.status(500).json({ success: false, message: 'No Credits Wallet Found', error: 'Credits config missing' });
-        }
+        // if (!creditsConfig) {
+        //     logger.error('Global CreditsWallet config missing');
+        //     return res.status(500).json({ success: false, message: 'No Credits Wallet Found', error: 'Credits config missing' });
+        // }
 
         // 3. Get Institute Balance
         // Schema: instituteCreditsWallets InstituteCredits[]
@@ -192,6 +194,14 @@ export const createJob = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ instituteId: authId, jobId: result.id, jobType: jobData.jobType, cost: jobCreditsCost }, 'Job created successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.JOB,
+            action: ActivityActionType.CREATE,
+            newData: result,
+            description: 'Job created'
+        });
+
         res.status(201).json(result);
     } catch (err: any) {
         logger.error({ err, message: err.message, code: err.code, meta: err.meta, instituteId: authId }, 'Database error during job creation');
@@ -372,6 +382,15 @@ export const updateJob = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ instituteId: authId, jobId: job.id }, 'Job updated successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.JOB,
+            action: ActivityActionType.UPDATE,
+            oldData: existingJob,
+            newData: job,
+            description: 'Job updated'
+        });
+
         res.status(200).json(job);
     } catch (err) {
         logger.error({ err, instituteId: authId, jobId: id }, 'Database error during job update');
@@ -400,6 +419,14 @@ export const deleteJob = async (req: AuthRequest, res: Response) => {
 
         await prisma.job.delete({ where: { id } });
         logger.info({ instituteId: authId, jobId: id }, 'Job deleted successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.JOB,
+            action: ActivityActionType.DELETE,
+            oldData: existingJob,
+            description: 'Job deleted'
+        });
+
         res.status(204).send();
     } catch (err) {
         logger.error({ err, instituteId: authId, jobId: id }, 'Database error during job deletion');

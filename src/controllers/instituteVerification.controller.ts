@@ -6,6 +6,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
 import { uploadToS3, getCloudFrontUrl, deleteFromS3 } from '../services/aws.service.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const createInstituteVerification = async (req: AuthRequest, res: Response) => {
     const instituteId = req.user?.id?.toString()
@@ -14,8 +16,15 @@ const createInstituteVerification = async (req: AuthRequest, res: Response) => {
         return res.status(400).json({ error: "Institute ID is required" });
     }
 
+
     const { telephone, email, adminName, adminPhone } = req.body;
     let registrationCertificateKey = "";
+
+    const existingVerification = await prisma.instituteVerifications.findUnique({
+        where: {
+            instituteId: instituteId.toString(),
+        },
+    });
 
     try {
         if (req.file) {
@@ -33,8 +42,32 @@ const createInstituteVerification = async (req: AuthRequest, res: Response) => {
             registrationCertificateKey = `verification-documents/institute/${instituteId}/registration/${uniqueName}${fileExt}`;
 
             await uploadToS3(fileBuffer, registrationCertificateKey, req.file.mimetype || 'application/pdf');
+        }
 
-            // Do not delete req.file.path here as multer might clean it up or keep it
+        if (existingVerification) {
+            const updatedVerification = await prisma.instituteVerifications.update({
+                where: {
+                    instituteId: instituteId.toString(),
+                },
+                data: {
+                    status: VerificationStatus.PENDING,
+                    telephone,
+                    email,
+                    adminName,
+                    adminPhone,
+                    registrationCertificate: registrationCertificateKey,
+                },
+            });
+
+            await logActivity({
+                module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
+                action: ActivityActionType.UPDATE,
+                newData: updatedVerification,
+                description: 'Institute verification updated'
+            });
+
+            res.json({ message: "Institute verification updated successfully", instituteVerification: existingVerification });
+            return;
         }
 
         const instituteVerification = await prisma.instituteVerifications.create({
@@ -146,6 +179,13 @@ const approveInstituteVerification = async (req: AuthRequest, res: Response) => 
             return res.status(400).json({ error: "Failed to verify institute verification" });
         }
 
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
+            action: ActivityActionType.UPDATE,
+            newData: instituteVerification,
+            description: 'Institute verification approved'
+        });
+
         res.json({ message: "Institute verification verified successfully", instituteVerification });
     } catch (error: any) {
         console.error(error);
@@ -173,6 +213,13 @@ const rejectInstituteVerification = async (req: AuthRequest, res: Response) => {
         if (!instituteVerification) {
             return res.status(400).json({ error: "Failed to reject institute verification" });
         }
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
+            action: ActivityActionType.UPDATE,
+            newData: instituteVerification,
+            description: 'Institute verification rejected'
+        });
 
         res.json({ message: "Institute verification rejected successfully", instituteVerification });
     } catch (error: any) {
@@ -271,6 +318,13 @@ const deleteInstituteVerificationById = async (req: AuthRequest, res: Response) 
 
         await prisma.instituteVerifications.delete({
             where: { id: id.toString() }
+        });
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
+            action: ActivityActionType.DELETE,
+            oldData: verification,
+            description: 'Institute verification deleted'
         });
 
         res.json({ message: "Institute verification deleted successfully" });

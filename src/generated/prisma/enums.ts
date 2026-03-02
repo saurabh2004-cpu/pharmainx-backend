@@ -24,6 +24,30 @@ export const ApplicationStatus = {
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
 
 
+export const ActivityActionType = {
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
+} as const
+
+export type ActivityActionType = (typeof ActivityActionType)[keyof typeof ActivityActionType]
+
+
+export const ActivityLogsModule = {
+  USER: 'USER',
+  INSTITUTE: 'INSTITUTE',
+  JOB: 'JOB',
+  SAVED_JOB: 'SAVED_JOB',
+  APPLICATION: 'APPLICATION',
+  CREDITS_WALLET: 'CREDITS_WALLET',
+  INSTITUTE_VERIFICATIONS: 'INSTITUTE_VERIFICATIONS',
+  USER_VERIFICATIONS: 'USER_VERIFICATIONS',
+  INSTITUTE_CREDITS: 'INSTITUTE_CREDITS'
+} as const
+
+export type ActivityLogsModule = (typeof ActivityLogsModule)[keyof typeof ActivityLogsModule]
+
+
 export const AuthRoles = {
   USER: 'USER',
   INSTITUTE: 'INSTITUTE'

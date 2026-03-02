@@ -5,6 +5,8 @@ import { AuthRoles, Prisma, VerificationStatus, UserRoles } from '../generated/p
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { getCloudFrontUrl } from '../services/aws.service.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("User");
 
@@ -75,6 +77,14 @@ export const SignupUser = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ userId: user.id }, 'User created successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.USER,
+            action: ActivityActionType.CREATE,
+            newData: user,
+            description: 'User created'
+        });
+
         res.status(200).json(user);
     } catch (err) {
         logger.error({ err, }, 'Database error during user creation');
@@ -151,6 +161,8 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
     const authRole = AuthRoles.USER;
 
     try {
+        const oldData = await prisma.user.findUnique({ where: { id } });
+
         const user = await prisma.user.update({
             where: { id },
             data: {
@@ -159,6 +171,15 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ authId, user }, 'User updated successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.USER,
+            action: ActivityActionType.UPDATE,
+            oldData,
+            newData: user,
+            description: 'User updated profile'
+        });
+
         res.status(200).json(user);
     } catch (err: any) {
         if (err.code === 'P2025') {
@@ -185,8 +206,18 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
     }
 
     try {
+        const existingData = await prisma.user.findUnique({ where: { id } });
+
         await prisma.user.delete({ where: { id } });
         logger.info({ authId, id }, 'User deleted successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.USER,
+            action: ActivityActionType.DELETE,
+            oldData: existingData,
+            description: 'User deleted'
+        });
+
         res.status(204).send();
     } catch (err: any) {
         if (err.code === 'P2025') {
@@ -310,7 +341,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
     try {
         const [users, total] = await Promise.all([
             prisma.user.findMany({
-                where,
+                // where,
                 skip,
                 take: limit,
                 orderBy: { created_at: 'desc' },
@@ -1081,8 +1112,8 @@ export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Re
         // console.log("is user verified", user.userVerifications, isVerified);
 
         if (!isVerified) {
-            return res.status(400).json({
-                isComplete: false,
+            return res.status(200).json({
+                isVerified: false,
                 error: "Not Verified. Please verify your profile before applying."
             });
         }
