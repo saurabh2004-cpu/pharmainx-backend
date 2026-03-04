@@ -373,6 +373,7 @@ export const updateJob = async (req: AuthRequest, res: Response) => {
                 city: updateData.city,
                 country: updateData.country,
                 additionalInfo: updateData.additionalInfo ?? null,
+                salaryCurrency: updateData.salaryCurrency,
                 speciality: updateData.speciality,
                 subSpeciality: updateData.subSpeciality,
             },

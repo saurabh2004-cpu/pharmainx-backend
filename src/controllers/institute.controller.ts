@@ -199,7 +199,12 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
         about,
         city,
         country,
-        verified
+        verified,
+        ownership,
+        affiliatedUniversity,
+        yearEstablished,
+        role,
+        type
     } = req.body;
 
     const updateData: any = {};
@@ -212,6 +217,9 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
     if (about !== undefined) updateData.about = about;
     if (city !== undefined) updateData.city = city;
     if (country !== undefined) updateData.country = country;
+    if (ownership !== undefined) updateData.ownership = ownership;
+    if (affiliatedUniversity !== undefined) updateData.affiliatedUniversity = affiliatedUniversity;
+    if (type !== undefined) updateData.type = type;
 
     // Update the verified flag on the Institute model directly
     if (verified !== undefined) {
@@ -233,6 +241,26 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
             return res.status(400).json({ error: 'Invalid staffCount' });
         }
         updateData.staffCount = parsedStaff;
+    }
+
+    if (yearEstablished !== undefined) {
+        if (yearEstablished === null || yearEstablished === '') {
+            updateData.yearEstablished = null;
+        } else {
+            const parsedYear = parseInt(yearEstablished, 10);
+            if (isNaN(parsedYear)) {
+                return res.status(400).json({ error: 'Invalid yearEstablished' });
+            }
+            updateData.yearEstablished = parsedYear;
+        }
+    }
+
+    if (role !== undefined) {
+        if (Object.values(InstituteRoles).includes(role as InstituteRoles)) {
+            updateData.role = role as InstituteRoles;
+        } else {
+            return res.status(400).json({ error: 'Invalid role' });
+        }
     }
 
     try {
