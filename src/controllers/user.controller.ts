@@ -157,10 +157,9 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
     // }
 
     const body = req.body;
-    const { location, experience, ...rest } = body;
+    const { experience, ...rest } = body;
 
     const updateData: any = { ...rest };
-    if (location) updateData.city = location;
     if (experience !== undefined) updateData.experience = parseInt(experience as string);
 
     // List of valid fields for the User model
