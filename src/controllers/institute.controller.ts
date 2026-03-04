@@ -245,7 +245,7 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
         const institute = await prisma.institute.update({
             where: { id },
             data: updateData,
-            include: { instituteVerifications: true },
+            include: { instituteVerifications: true, instituteImages: true },
         });
 
         // Handle the secondary update for instituteVerifications record IF it exists
@@ -264,20 +264,31 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
             }
         }
 
-        logger.info({ id, institute }, 'Institute updated successfully');
+        const images = (institute as any).instituteImages && (institute as any).instituteImages.length > 0 ? (institute as any).instituteImages[0] : null;
+
+        const mappedInstitute: any = {
+            ...institute,
+            verified: institute.verified || institute?.instituteVerifications?.status === VerificationStatus.APPROVED,
+        };
+
+        if (images?.profileImage) {
+            mappedInstitute.profile_picture = getCloudFrontUrl(images.profileImage);
+        }
+        if (images?.coverImage) {
+            mappedInstitute.banner_picture = getCloudFrontUrl(images.coverImage);
+        }
+
+        logger.info({ id, hasProfile: !!mappedInstitute.profile_picture, hasBanner: !!mappedInstitute.banner_picture }, 'Institute updated successfully');
 
         await logActivity({
             module: ActivityLogsModule.INSTITUTE,
             action: ActivityActionType.UPDATE,
             oldData,
-            newData: institute,
+            newData: mappedInstitute,
             description: 'Institute updated profile'
         });
 
-        res.status(200).json({
-            ...institute,
-            verified: institute.verified || institute?.instituteVerifications?.status === VerificationStatus.APPROVED,
-        });
+        res.status(200).json(mappedInstitute);
     } catch (err: any) {
         if (err.code === 'P2025') {
             logger.warn({ id }, 'Institute not found during update');
@@ -548,14 +559,22 @@ export const getInstituteById = async (req: Request, res: Response) => {
         }
 
         const images = (institute as any).instituteImages && (institute as any).instituteImages.length > 0 ? (institute as any).instituteImages[0] : null;
-        const mappedInstitute = {
+
+        const mappedInstitute: any = {
             ...institute,
             verified: institute.verified || institute?.instituteVerifications?.status === VerificationStatus.APPROVED,
-            profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
-            banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
         };
 
-        logger.info({ id }, 'Fetched institute by id');
+        if (images?.profileImage) {
+            mappedInstitute.profile_picture = getCloudFrontUrl(images.profileImage);
+        }
+        if (images?.coverImage) {
+            mappedInstitute.banner_picture = getCloudFrontUrl(images.coverImage);
+        }
+
+        // Log the response for debugging
+        logger.info({ instituteId: id, hasProfile: !!mappedInstitute.profile_picture, hasBanner: !!mappedInstitute.banner_picture }, 'Institute profile updated successfully');
+
         res.status(200).json(mappedInstitute);
     } catch (err) {
         logger.error({ err, id }, 'Database error during getInstituteById');

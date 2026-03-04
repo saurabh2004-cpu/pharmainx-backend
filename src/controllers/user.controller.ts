@@ -156,31 +156,60 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
     //     return res.status(403).json({ error: 'Forbidden: cannot update another user' });
     // }
 
-    const updateData = req.body;
+    const body = req.body;
+    const { location, experience, ...rest } = body;
 
-    const authRole = AuthRoles.USER;
+    const updateData: any = { ...rest };
+    if (location) updateData.city = location;
+    if (experience !== undefined) updateData.experience = parseInt(experience as string);
+
+    // List of valid fields for the User model
+    const validUserFields = [
+        'firstName', 'lastName', 'email', 'role', 'headline', 'about',
+        'degree', 'university', 'yearOfStudy', 'specialization',
+        'speciality', 'subSpeciality', 'city', 'country', 'gender', 'verified', 'experience'
+    ];
+
+    const filteredData = Object.keys(updateData)
+        .filter(key => validUserFields.includes(key))
+        .reduce((obj: any, key) => {
+            obj[key] = updateData[key];
+            return obj;
+        }, {});
 
     try {
         const oldData = await prisma.user.findUnique({ where: { id } });
 
         const user = await prisma.user.update({
             where: { id },
-            data: {
-                ...updateData,
-            },
+            data: filteredData,
+            include: { userImages: true }
         });
 
-        logger.info({ authId, user }, 'User updated successfully');
+        const images = user.userImages && user.userImages.length > 0 ? user.userImages[0] : null;
+
+        const mappedUser: any = {
+            ...user,
+        };
+
+        if (images?.profileImage) {
+            mappedUser.profile_picture = getCloudFrontUrl(images.profileImage);
+        }
+        if (images?.coverImage) {
+            mappedUser.banner_picture = getCloudFrontUrl(images.coverImage);
+        }
+
+        logger.info({ authId, hasProfile: !!mappedUser.profile_picture, hasBanner: !!mappedUser.banner_picture }, 'User updated successfully');
 
         await logActivity({
             module: ActivityLogsModule.USER,
             action: ActivityActionType.UPDATE,
             oldData,
-            newData: user,
+            newData: mappedUser,
             description: 'User updated profile'
         });
 
-        res.status(200).json(user);
+        res.status(200).json(mappedUser);
     } catch (err: any) {
         if (err.code === 'P2025') {
             logger.warn({ authId, id }, 'User not found during update');
