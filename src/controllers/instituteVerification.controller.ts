@@ -276,10 +276,10 @@ const checkInstituteVerificationStatus = async (req: AuthRequest, res: Response)
             });
         }
 
-        await prisma.instituteVerifications.update({
-            where: { instituteId: instituteId },
-            data: { status: VerificationStatus.APPROVED }
-        });
+        // await prisma.instituteVerifications.update({
+        //     where: { instituteId: instituteId },
+        //     data: { status: VerificationStatus.APPROVED }
+        // });
 
         return res.status(200).json({
             success: true,
