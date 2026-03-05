@@ -396,6 +396,7 @@ export const ModelName = {
   InstituteView: 'InstituteView',
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
+  UserVerificationRejection: 'UserVerificationRejection',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
   UserExperiences: 'UserExperiences',
@@ -423,7 +424,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1312,6 +1313,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserImagesCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserImagesCountAggregateOutputType> | number
+        }
+      }
+    }
+    UserVerificationRejection: {
+      payload: Prisma.$UserVerificationRejectionPayload<ExtArgs>
+      fields: Prisma.UserVerificationRejectionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserVerificationRejectionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserVerificationRejectionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        findFirst: {
+          args: Prisma.UserVerificationRejectionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserVerificationRejectionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        findMany: {
+          args: Prisma.UserVerificationRejectionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>[]
+        }
+        create: {
+          args: Prisma.UserVerificationRejectionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        createMany: {
+          args: Prisma.UserVerificationRejectionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserVerificationRejectionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>[]
+        }
+        delete: {
+          args: Prisma.UserVerificationRejectionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        update: {
+          args: Prisma.UserVerificationRejectionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserVerificationRejectionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserVerificationRejectionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserVerificationRejectionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserVerificationRejectionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserVerificationRejectionPayload>
+        }
+        aggregate: {
+          args: Prisma.UserVerificationRejectionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserVerificationRejection>
+        }
+        groupBy: {
+          args: Prisma.UserVerificationRejectionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserVerificationRejectionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserVerificationRejectionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserVerificationRejectionCountAggregateOutputType> | number
         }
       }
     }
@@ -2438,6 +2513,19 @@ export const UserImagesScalarFieldEnum = {
 export type UserImagesScalarFieldEnum = (typeof UserImagesScalarFieldEnum)[keyof typeof UserImagesScalarFieldEnum]
 
 
+export const UserVerificationRejectionScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  documentField: 'documentField',
+  customNote: 'customNote',
+  verificationId: 'verificationId',
+  userId: 'userId'
+} as const
+
+export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
+
+
 export const SavedJobScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
@@ -3001,6 +3089,7 @@ export type GlobalOmitConfig = {
   instituteView?: Prisma.InstituteViewOmit
   instituteImages?: Prisma.InstituteImagesOmit
   userImages?: Prisma.UserImagesOmit
+  userVerificationRejection?: Prisma.UserVerificationRejectionOmit
   savedJob?: Prisma.SavedJobOmit
   notification?: Prisma.NotificationOmit
   userExperiences?: Prisma.UserExperiencesOmit

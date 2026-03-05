@@ -15,36 +15,37 @@ model Admin {
 }
 
 model User {
-  id                String              @id @default(uuid())
-  created_at        DateTime            @default(now())
-  verified          Boolean             @default(false)
-  gender            String?
-  role              UserRoles           @default(STUDENT)
-  headline          String?
-  about             String?
-  degree            String?
-  email             String              @unique
-  firstName         String
-  lastName          String
-  password          String
-  university        String?
-  yearOfStudy       String?
-  specialization    String?
-  experience        Int?
-  speciality        String?
-  subSpeciality     String?
-  city              String              @default("")
-  country           String              @default("India")
-  JobApplication    Application[]
-  conversations     Conversation[]
-  savedJobs         SavedJob[]
-  userEducations    UserEducation[]
-  userExperiences   UserExperiences[]
-  userImages        UserImages[]
-  userLinks         UserLinks[]
-  skills            UserSkills[]
-  userSpecialities  UserSpecialities[]
-  userVerifications UserVerifications[]
+  id                         String                      @id @default(uuid())
+  created_at                 DateTime                    @default(now())
+  verified                   Boolean                     @default(false)
+  gender                     String?
+  role                       UserRoles                   @default(STUDENT)
+  headline                   String?
+  about                      String?
+  degree                     String?
+  email                      String                      @unique
+  firstName                  String
+  lastName                   String
+  password                   String
+  university                 String?
+  yearOfStudy                String?
+  specialization             String?
+  experience                 Int?
+  speciality                 String?
+  subSpeciality              String?
+  city                       String                      @default("")
+  country                    String                      @default("India")
+  JobApplication             Application[]
+  conversations              Conversation[]
+  savedJobs                  SavedJob[]
+  userEducations             UserEducation[]
+  userExperiences            UserExperiences[]
+  userImages                 UserImages[]
+  userLinks                  UserLinks[]
+  skills                     UserSkills[]
+  userSpecialities           UserSpecialities[]
+  userVerifications          UserVerifications[]
+  userVerificationRejections UserVerificationRejection[]
 }
 
 model Institute {
@@ -205,6 +206,23 @@ model UserImages {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model UserVerificationRejection {
+  id            String   @id @default(uuid())
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  documentField String
+
+  customNote String? @db.Text
+
+  verificationId String
+  verification   UserVerifications @relation(fields: [verificationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId         String
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([userId])
+  @@index([verificationId])
+}
+
 model SavedJob {
   id         String   @id @default(uuid())
   created_at DateTime @default(now())
@@ -290,12 +308,12 @@ model UserLinks {
 }
 
 model UserVerifications {
-  id                            String             @id @default(uuid())
-  created_at                    DateTime           @default(now())
-  updated_at                    DateTime           @updatedAt
+  id                            String                      @id @default(uuid())
+  created_at                    DateTime                    @default(now())
+  updated_at                    DateTime                    @updatedAt
   userId                        String
   userRole                      UserRoles
-  status                        VerificationStatus @default(PENDING)
+  status                        VerificationStatus          @default(PENDING)
   firstName                     String
   lastName                      String
   dob                           DateTime
@@ -320,9 +338,10 @@ model UserVerifications {
   currentRole                   String?
   practiceCountry               String?
   practiceCity                  String?
-  isLicenceSuspended            Boolean            @default(false)
+  isLicenceSuspended            Boolean                     @default(false)
   licenceSuspensionReason       String?
-  user                          User               @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user                          User                        @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userVerificationRejections    UserVerificationRejection[]
 }
 
 model InstituteVerifications {

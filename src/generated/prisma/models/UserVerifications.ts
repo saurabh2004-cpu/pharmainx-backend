@@ -399,6 +399,7 @@ export type UserVerificationsWhereInput = {
   isLicenceSuspended?: Prisma.BoolFilter<"UserVerifications"> | boolean
   licenceSuspensionReason?: Prisma.StringNullableFilter<"UserVerifications"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  userVerificationRejections?: Prisma.UserVerificationRejectionListRelationFilter
 }
 
 export type UserVerificationsOrderByWithRelationInput = {
@@ -435,6 +436,7 @@ export type UserVerificationsOrderByWithRelationInput = {
   isLicenceSuspended?: Prisma.SortOrder
   licenceSuspensionReason?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionOrderByRelationAggregateInput
 }
 
 export type UserVerificationsWhereUniqueInput = Prisma.AtLeast<{
@@ -474,6 +476,7 @@ export type UserVerificationsWhereUniqueInput = Prisma.AtLeast<{
   isLicenceSuspended?: Prisma.BoolFilter<"UserVerifications"> | boolean
   licenceSuspensionReason?: Prisma.StringNullableFilter<"UserVerifications"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  userVerificationRejections?: Prisma.UserVerificationRejectionListRelationFilter
 }, "id">
 
 export type UserVerificationsOrderByWithAggregationInput = {
@@ -585,6 +588,7 @@ export type UserVerificationsCreateInput = {
   isLicenceSuspended?: boolean
   licenceSuspensionReason?: string | null
   user: Prisma.UserCreateNestedOneWithoutUserVerificationsInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutVerificationInput
 }
 
 export type UserVerificationsUncheckedCreateInput = {
@@ -620,6 +624,7 @@ export type UserVerificationsUncheckedCreateInput = {
   practiceCity?: string | null
   isLicenceSuspended?: boolean
   licenceSuspensionReason?: string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutVerificationInput
 }
 
 export type UserVerificationsUpdateInput = {
@@ -655,6 +660,7 @@ export type UserVerificationsUpdateInput = {
   isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
   licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutUserVerificationsNestedInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutVerificationNestedInput
 }
 
 export type UserVerificationsUncheckedUpdateInput = {
@@ -690,6 +696,7 @@ export type UserVerificationsUncheckedUpdateInput = {
   practiceCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
   licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutVerificationNestedInput
 }
 
 export type UserVerificationsCreateManyInput = {
@@ -804,6 +811,11 @@ export type UserVerificationsListRelationFilter = {
 
 export type UserVerificationsOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type UserVerificationsScalarRelationFilter = {
+  is?: Prisma.UserVerificationsWhereInput
+  isNot?: Prisma.UserVerificationsWhereInput
 }
 
 export type UserVerificationsCountOrderByAggregateInput = {
@@ -953,6 +965,20 @@ export type UserVerificationsUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.UserVerificationsScalarWhereInput | Prisma.UserVerificationsScalarWhereInput[]
 }
 
+export type UserVerificationsCreateNestedOneWithoutUserVerificationRejectionsInput = {
+  create?: Prisma.XOR<Prisma.UserVerificationsCreateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedCreateWithoutUserVerificationRejectionsInput>
+  connectOrCreate?: Prisma.UserVerificationsCreateOrConnectWithoutUserVerificationRejectionsInput
+  connect?: Prisma.UserVerificationsWhereUniqueInput
+}
+
+export type UserVerificationsUpdateOneRequiredWithoutUserVerificationRejectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserVerificationsCreateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedCreateWithoutUserVerificationRejectionsInput>
+  connectOrCreate?: Prisma.UserVerificationsCreateOrConnectWithoutUserVerificationRejectionsInput
+  upsert?: Prisma.UserVerificationsUpsertWithoutUserVerificationRejectionsInput
+  connect?: Prisma.UserVerificationsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserVerificationsUpdateToOneWithWhereWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUpdateWithoutUserVerificationRejectionsInput>, Prisma.UserVerificationsUncheckedUpdateWithoutUserVerificationRejectionsInput>
+}
+
 export type EnumVerificationStatusFieldUpdateOperationsInput = {
   set?: $Enums.VerificationStatus
 }
@@ -989,6 +1015,7 @@ export type UserVerificationsCreateWithoutUserInput = {
   practiceCity?: string | null
   isLicenceSuspended?: boolean
   licenceSuspensionReason?: string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutVerificationInput
 }
 
 export type UserVerificationsUncheckedCreateWithoutUserInput = {
@@ -1023,6 +1050,7 @@ export type UserVerificationsUncheckedCreateWithoutUserInput = {
   practiceCity?: string | null
   isLicenceSuspended?: boolean
   licenceSuspensionReason?: string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutVerificationInput
 }
 
 export type UserVerificationsCreateOrConnectWithoutUserInput = {
@@ -1087,6 +1115,162 @@ export type UserVerificationsScalarWhereInput = {
   practiceCity?: Prisma.StringNullableFilter<"UserVerifications"> | string | null
   isLicenceSuspended?: Prisma.BoolFilter<"UserVerifications"> | boolean
   licenceSuspensionReason?: Prisma.StringNullableFilter<"UserVerifications"> | string | null
+}
+
+export type UserVerificationsCreateWithoutUserVerificationRejectionsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  userRole: $Enums.UserRoles
+  status?: $Enums.VerificationStatus
+  firstName: string
+  lastName: string
+  dob: Date | string
+  governMentId: string
+  authorizeToVerify: boolean
+  email: string
+  phone: string
+  country: string
+  city: string
+  professionalTitle: string
+  primarySpecialty: string
+  licenseNumber: string
+  licenseExpiryDate: Date | string
+  degree: string
+  university: string
+  yearOfGraduation: Date | string
+  degreeCertificate: string
+  postGraduateDegree?: string | null
+  postGraduateUniversity?: string | null
+  postGraduateDegreeCertificate?: string | null
+  currentEmployer?: string | null
+  currentRole?: string | null
+  practiceCountry?: string | null
+  practiceCity?: string | null
+  isLicenceSuspended?: boolean
+  licenceSuspensionReason?: string | null
+  user: Prisma.UserCreateNestedOneWithoutUserVerificationsInput
+}
+
+export type UserVerificationsUncheckedCreateWithoutUserVerificationRejectionsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  userId: string
+  userRole: $Enums.UserRoles
+  status?: $Enums.VerificationStatus
+  firstName: string
+  lastName: string
+  dob: Date | string
+  governMentId: string
+  authorizeToVerify: boolean
+  email: string
+  phone: string
+  country: string
+  city: string
+  professionalTitle: string
+  primarySpecialty: string
+  licenseNumber: string
+  licenseExpiryDate: Date | string
+  degree: string
+  university: string
+  yearOfGraduation: Date | string
+  degreeCertificate: string
+  postGraduateDegree?: string | null
+  postGraduateUniversity?: string | null
+  postGraduateDegreeCertificate?: string | null
+  currentEmployer?: string | null
+  currentRole?: string | null
+  practiceCountry?: string | null
+  practiceCity?: string | null
+  isLicenceSuspended?: boolean
+  licenceSuspensionReason?: string | null
+}
+
+export type UserVerificationsCreateOrConnectWithoutUserVerificationRejectionsInput = {
+  where: Prisma.UserVerificationsWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserVerificationsCreateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedCreateWithoutUserVerificationRejectionsInput>
+}
+
+export type UserVerificationsUpsertWithoutUserVerificationRejectionsInput = {
+  update: Prisma.XOR<Prisma.UserVerificationsUpdateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedUpdateWithoutUserVerificationRejectionsInput>
+  create: Prisma.XOR<Prisma.UserVerificationsCreateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedCreateWithoutUserVerificationRejectionsInput>
+  where?: Prisma.UserVerificationsWhereInput
+}
+
+export type UserVerificationsUpdateToOneWithWhereWithoutUserVerificationRejectionsInput = {
+  where?: Prisma.UserVerificationsWhereInput
+  data: Prisma.XOR<Prisma.UserVerificationsUpdateWithoutUserVerificationRejectionsInput, Prisma.UserVerificationsUncheckedUpdateWithoutUserVerificationRejectionsInput>
+}
+
+export type UserVerificationsUpdateWithoutUserVerificationRejectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userRole?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+  status?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  dob?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  governMentId?: Prisma.StringFieldUpdateOperationsInput | string
+  authorizeToVerify?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  professionalTitle?: Prisma.StringFieldUpdateOperationsInput | string
+  primarySpecialty?: Prisma.StringFieldUpdateOperationsInput | string
+  licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  licenseExpiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  degree?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.StringFieldUpdateOperationsInput | string
+  yearOfGraduation?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  degreeCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  postGraduateDegree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postGraduateUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postGraduateDegreeCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentEmployer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  practiceCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  practiceCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user?: Prisma.UserUpdateOneRequiredWithoutUserVerificationsNestedInput
+}
+
+export type UserVerificationsUncheckedUpdateWithoutUserVerificationRejectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userRole?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+  status?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  dob?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  governMentId?: Prisma.StringFieldUpdateOperationsInput | string
+  authorizeToVerify?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  professionalTitle?: Prisma.StringFieldUpdateOperationsInput | string
+  primarySpecialty?: Prisma.StringFieldUpdateOperationsInput | string
+  licenseNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  licenseExpiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  degree?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.StringFieldUpdateOperationsInput | string
+  yearOfGraduation?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  degreeCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  postGraduateDegree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postGraduateUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postGraduateDegreeCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentEmployer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  practiceCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  practiceCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserVerificationsCreateManyUserInput = {
@@ -1155,6 +1339,7 @@ export type UserVerificationsUpdateWithoutUserInput = {
   practiceCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
   licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutVerificationNestedInput
 }
 
 export type UserVerificationsUncheckedUpdateWithoutUserInput = {
@@ -1189,6 +1374,7 @@ export type UserVerificationsUncheckedUpdateWithoutUserInput = {
   practiceCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLicenceSuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
   licenceSuspensionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutVerificationNestedInput
 }
 
 export type UserVerificationsUncheckedUpdateManyWithoutUserInput = {
@@ -1226,6 +1412,35 @@ export type UserVerificationsUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type UserVerificationsCountOutputType
+ */
+
+export type UserVerificationsCountOutputType = {
+  userVerificationRejections: number
+}
+
+export type UserVerificationsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  userVerificationRejections?: boolean | UserVerificationsCountOutputTypeCountUserVerificationRejectionsArgs
+}
+
+/**
+ * UserVerificationsCountOutputType without action
+ */
+export type UserVerificationsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserVerificationsCountOutputType
+   */
+  select?: Prisma.UserVerificationsCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserVerificationsCountOutputType without action
+ */
+export type UserVerificationsCountOutputTypeCountUserVerificationRejectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserVerificationRejectionWhereInput
+}
+
 
 export type UserVerificationsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1261,6 +1476,8 @@ export type UserVerificationsSelect<ExtArgs extends runtime.Types.Extensions.Int
   isLicenceSuspended?: boolean
   licenceSuspensionReason?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  userVerificationRejections?: boolean | Prisma.UserVerifications$userVerificationRejectionsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserVerificationsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userVerifications"]>
 
 export type UserVerificationsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1373,6 +1590,8 @@ export type UserVerificationsSelectScalar = {
 export type UserVerificationsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "userId" | "userRole" | "status" | "firstName" | "lastName" | "dob" | "governMentId" | "authorizeToVerify" | "email" | "phone" | "country" | "city" | "professionalTitle" | "primarySpecialty" | "licenseNumber" | "licenseExpiryDate" | "degree" | "university" | "yearOfGraduation" | "degreeCertificate" | "postGraduateDegree" | "postGraduateUniversity" | "postGraduateDegreeCertificate" | "currentEmployer" | "currentRole" | "practiceCountry" | "practiceCity" | "isLicenceSuspended" | "licenceSuspensionReason", ExtArgs["result"]["userVerifications"]>
 export type UserVerificationsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  userVerificationRejections?: boolean | Prisma.UserVerifications$userVerificationRejectionsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserVerificationsCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserVerificationsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1385,6 +1604,7 @@ export type $UserVerificationsPayload<ExtArgs extends runtime.Types.Extensions.I
   name: "UserVerifications"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    userVerificationRejections: Prisma.$UserVerificationRejectionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1814,6 +2034,7 @@ readonly fields: UserVerificationsFieldRefs;
 export interface Prisma__UserVerificationsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  userVerificationRejections<T extends Prisma.UserVerifications$userVerificationRejectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserVerifications$userVerificationRejectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserVerificationRejectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2268,6 +2489,30 @@ export type UserVerificationsDeleteManyArgs<ExtArgs extends runtime.Types.Extens
    * Limit how many UserVerifications to delete.
    */
   limit?: number
+}
+
+/**
+ * UserVerifications.userVerificationRejections
+ */
+export type UserVerifications$userVerificationRejectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserVerificationRejection
+   */
+  select?: Prisma.UserVerificationRejectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserVerificationRejection
+   */
+  omit?: Prisma.UserVerificationRejectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserVerificationRejectionInclude<ExtArgs> | null
+  where?: Prisma.UserVerificationRejectionWhereInput
+  orderBy?: Prisma.UserVerificationRejectionOrderByWithRelationInput | Prisma.UserVerificationRejectionOrderByWithRelationInput[]
+  cursor?: Prisma.UserVerificationRejectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserVerificationRejectionScalarFieldEnum | Prisma.UserVerificationRejectionScalarFieldEnum[]
 }
 
 /**

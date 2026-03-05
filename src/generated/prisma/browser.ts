@@ -78,6 +78,11 @@ export type InstituteImages = Prisma.InstituteImagesModel
  */
 export type UserImages = Prisma.UserImagesModel
 /**
+ * Model UserVerificationRejection
+ * 
+ */
+export type UserVerificationRejection = Prisma.UserVerificationRejectionModel
+/**
  * Model SavedJob
  * 
  */

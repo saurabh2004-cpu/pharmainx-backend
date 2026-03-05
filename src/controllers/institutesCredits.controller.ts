@@ -46,14 +46,31 @@ export const createInstituteCredits = async (req: AuthRequest, res: Response) =>
         }
 
 
-
-        // Validation: Only one credits record per institute
         const existingCredits = await prisma.instituteCredits.findFirst({
             where: { instituteId: instituteId }
         });
 
         if (existingCredits) {
-            return res.status(400).json({ error: 'Credits record already exists for this institute' });
+            console.log("existingCredits", existingCredits);
+            const result = await prisma.$transaction(async (tx) => {
+                existingCredits.credits += credits;
+                await tx.instituteCredits.update({
+                    where: { id: existingCredits.id },
+                    data: { credits: existingCredits.credits }
+                });
+
+                await tx.creditsHistory.create({
+                    data: {
+                        instituteId,
+                        currentCredits: existingCredits.credits,
+                        purchasedCredits: credits,
+                        action: CreditHistoryAction.CREDITS_PURCHASED,
+                        type: CreditHistoryType.CREDIT
+                    }
+                })
+            })
+
+            return res.status(201).json(result);
         }
 
         const result = await prisma.$transaction(async (tx) => {

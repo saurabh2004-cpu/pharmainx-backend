@@ -229,8 +229,12 @@ const rejectInstituteVerification = async (req: AuthRequest, res: Response) => {
 };
 
 const getAllInstituteVerifications = async (req: AuthRequest, res: Response) => {
+    const { page, pageSize, status } = req.query;
     try {
         const instituteVerifications = await prisma.instituteVerifications.findMany({
+            where: {
+                status: status ? (status as string as VerificationStatus) : undefined,
+            },
             include: {
                 institute: {
                     select: {

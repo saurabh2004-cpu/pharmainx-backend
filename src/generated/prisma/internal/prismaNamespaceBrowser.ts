@@ -63,6 +63,7 @@ export const ModelName = {
   InstituteView: 'InstituteView',
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
+  UserVerificationRejection: 'UserVerificationRejection',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
   UserExperiences: 'UserExperiences',
@@ -287,6 +288,19 @@ export const UserImagesScalarFieldEnum = {
 } as const
 
 export type UserImagesScalarFieldEnum = (typeof UserImagesScalarFieldEnum)[keyof typeof UserImagesScalarFieldEnum]
+
+
+export const UserVerificationRejectionScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  documentField: 'documentField',
+  customNote: 'customNote',
+  verificationId: 'verificationId',
+  userId: 'userId'
+} as const
+
+export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
 
 
 export const SavedJobScalarFieldEnum = {

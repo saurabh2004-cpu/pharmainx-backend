@@ -200,7 +200,7 @@ export const getAllUserVerifications = async (req: Request, res: Response) => {
     if (userId) {
         where.userId = userId as string;
     }
-
+    where.status = VerificationStatus.PENDING;
     try {
         const [verifications, total] = await Promise.all([
             prisma.userVerifications.findMany({
@@ -301,34 +301,69 @@ export const approveVerification = async (req: Request, res: Response) => {
 // 7. Reject Verification
 export const rejectVerification = async (req: Request, res: Response) => {
     const { id } = req.params;
+    const { documentField, customNote } = req.body;
+
+    // Validate request payload
+    if (!documentField || !customNote) {
+        return res.status(400).json({ error: 'documentField and customNote are required for rejection' });
+    }
+
     try {
-        const verification = await prisma.userVerifications.update({
-            where: { id: String(id) },
-            data: { status: VerificationStatus.REJECTED }
+        const result = await prisma.$transaction(async (tx) => {
+            // First get the verification to ensure it exists and get userId
+            const verification = await tx.userVerifications.findUnique({
+                where: { id: String(id) }
+            });
+
+            if (!verification) {
+                throw new Error("Verification not found");
+            }
+
+            // 1. Update verification status
+            const updatedVerification = await tx.userVerifications.update({
+                where: { id: String(id) },
+                data: { status: VerificationStatus.REJECTED }
+            });
+
+            // 2. Set user as unverified
+            await tx.user.update({
+                where: { id: String(verification.userId) },
+                data: { verified: false }
+            });
+
+            // 3. Create the granular Rejection record
+            await tx.userVerificationRejection.create({
+                data: {
+                    documentField,
+                    customNote: customNote || null,
+                    verificationId: verification.id,
+                    userId: verification.userId
+                }
+            });
+
+            return updatedVerification;
+        }, {
+            maxWait: 5000, // default is 2000
+            timeout: 10000 // default is 5000
         });
 
-        // Update user's verified status to false (if it was true before, though unlikely)
-        await prisma.user.update({
-            where: { id: String(verification.userId) },
-            data: { verified: false }
-        });
-
-        logger.info({ id, userId: verification.userId }, 'Verification rejected');
-
+        // 4. Activity Log (Moved outside transaction to avoid P2028 error)
         await logActivity({
             module: ActivityLogsModule.USER_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
-            newData: verification,
-            description: 'User verification rejected'
+            newData: result,
+            description: `User verification rejected for ${documentField}`
         });
 
-        res.status(200).json(verification);
+        res.status(200).json(result);
     } catch (err: any) {
         logger.error({ err, id }, 'Error rejecting verification');
+        if (err.message === "Verification not found") {
+            return res.status(404).json({ error: err.message });
+        }
         res.status(500).json({ error: 'Database error', message: err.message });
     }
 };
-
 
 export const getVerificationByUserId = async (req: Request, res: Response) => {
     const { userId } = req.params;
@@ -341,10 +376,13 @@ export const getVerificationByUserId = async (req: Request, res: Response) => {
             return res.status(404).json({ error: 'Verification not found' });
         }
 
-        // await prisma.userVerifications.update({
-        //     where: { id: verification.id },
-        //     data: { status: VerificationStatus.APPROVED }
-        // });
+        if (verification.status === VerificationStatus.REJECTED) {
+            const rejection = await prisma.userVerificationRejection.findFirst({
+                where: { verificationId: verification.id }
+            });
+            return res.status(200).json({ status: verification.status, rejection });
+        }
+
         res.status(200).json(verification.status);
     } catch (err: any) {
         logger.error({ err, userId }, 'Error fetching verification by user id');

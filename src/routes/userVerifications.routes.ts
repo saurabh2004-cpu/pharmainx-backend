@@ -7,7 +7,7 @@ import {
     deleteAllVerifications,
     approveVerification,
     rejectVerification,
-    getVerificationByUserId
+    getVerificationByUserId,
 } from '../controllers/userVerifications.controller.js';
 import { upload } from '../middlewares/upload.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
@@ -41,5 +41,6 @@ router.patch('/reject-verification/:id', authenticateToken, rejectVerification);
 
 // Get Verification By User Id
 router.get('/get-verification-by-user-id/:userId', authenticateToken, getVerificationByUserId);
+
 
 export default router;

@@ -531,7 +531,21 @@ export const searchInstitutes = async (req: Request, res: Response) => {
                 skip,
                 take,
                 orderBy: { created_at: 'desc' },
-                include: { instituteImages: true, instituteVerifications: true },
+                include: {
+                    instituteImages: true,
+                    instituteVerifications: true,
+                    instituteCreditsWallets: {
+                        select: {
+                            credits: true
+                        }
+                    },
+                    _count: {
+                        select: {
+                            Job: true
+                        }
+                    }
+
+                },
             }),
             prisma.institute.count({ where }),
         ]);
@@ -545,6 +559,7 @@ export const searchInstitutes = async (req: Request, res: Response) => {
                 verified: inst.verified || inst?.instituteVerifications?.status === VerificationStatus.APPROVED,
                 profile_picture: images?.profileImage ? getCloudFrontUrl(images.profileImage) : null,
                 banner_picture: images?.coverImage ? getCloudFrontUrl(images.coverImage) : null,
+                jobCount: inst._count.Job,
             };
         });
 

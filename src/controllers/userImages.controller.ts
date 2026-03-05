@@ -14,7 +14,7 @@ interface AuthRequest extends Request {
 }
 
 export const uploadUserImages = async (req: AuthRequest, res: Response) => {
-    const userId = req.user?.id as string;
+    const userId = (req.query.userId as string) || String(req.user?.id);
 
     if (!userId) {
         return res.status(401).json({ error: 'Unauthorized' });
