@@ -42,9 +42,8 @@ export const login = async (req: Request, res: Response) => {
         const token = jwt.sign({ id: admin.id, role: admin.role }, process.env.JWT_SECRET!, { expiresIn: "1d" });
         res
             .status(200)
-            .cookie("adminAccessToken", token, { 
-                httpOnly: true,
-                secure: process.env.NODE_ENV === "production" ? req.protocol === "https" : false,
+            .cookie("adminAccessToken", token, {
+                httpOnly: true, 
                 sameSite: "lax",
                 maxAge: 24 * 60 * 60 * 1000
             })
