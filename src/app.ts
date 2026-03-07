@@ -13,6 +13,9 @@ dotenv.config();
 // Create Express app
 const app: Express = express();
 
+// Trust proxy for correct req.protocol
+app.set('trust proxy', 1);
+
 // Global Middlewares
 app.use(helmet());
 app.use(cors({

@@ -40,11 +40,12 @@ export const login = async (req: Request, res: Response) => {
             return res.status(401).json({ message: "Invalid password" });
         }
         const token = jwt.sign({ id: admin.id, role: admin.role }, process.env.JWT_SECRET!, { expiresIn: "1d" });
-        res.status(200)
-            .cookie("adminAccessToken", token, {
+        res
+            .status(200)
+            .cookie("adminAccessToken", token, { 
                 httpOnly: true,
-                secure: true,
-                sameSite: "strict",
+                secure: process.env.NODE_ENV === "production" ? req.protocol === "https" : false,
+                sameSite: "lax",
                 maxAge: 24 * 60 * 60 * 1000
             })
             .json({
@@ -61,8 +62,8 @@ export const logout = async (req: Request, res: Response) => {
         res.status(200)
             .clearCookie("adminAccessToken", {
                 httpOnly: true,
-                secure: true,
-                sameSite: "strict"
+                secure: process.env.NODE_ENV === "production" ? req.protocol === "https" : false,
+                sameSite: "lax"
             })
             .json({ message: "Admin logged out successfully" });
     } catch (error) {
