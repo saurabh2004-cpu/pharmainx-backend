@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const AdminRoles = {
+  MASTER_ADMIN: 'MASTER_ADMIN',
+  ADMIN: 'ADMIN'
+} as const
+
+export type AdminRoles = (typeof AdminRoles)[keyof typeof AdminRoles]
+
+
 export const ApplicationStatus = {
   APPLIED: 'APPLIED',
   SHORTLISTED: 'SHORTLISTED',

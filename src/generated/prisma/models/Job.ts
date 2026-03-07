@@ -398,6 +398,7 @@ export type JobWhereInput = {
   notifications?: Prisma.NotificationListRelationFilter
   savedJobs?: Prisma.SavedJobListRelationFilter
   creditsHistories?: Prisma.CreditsHistoryListRelationFilter
+  jobInactiveReasons?: Prisma.JobInactiveReasonListRelationFilter
 }
 
 export type JobOrderByWithRelationInput = {
@@ -434,6 +435,7 @@ export type JobOrderByWithRelationInput = {
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   savedJobs?: Prisma.SavedJobOrderByRelationAggregateInput
   creditsHistories?: Prisma.CreditsHistoryOrderByRelationAggregateInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonOrderByRelationAggregateInput
 }
 
 export type JobWhereUniqueInput = Prisma.AtLeast<{
@@ -473,6 +475,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<{
   notifications?: Prisma.NotificationListRelationFilter
   savedJobs?: Prisma.SavedJobListRelationFilter
   creditsHistories?: Prisma.CreditsHistoryListRelationFilter
+  jobInactiveReasons?: Prisma.JobInactiveReasonListRelationFilter
 }, "id">
 
 export type JobOrderByWithAggregationInput = {
@@ -576,6 +579,7 @@ export type JobCreateInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateInput = {
@@ -611,6 +615,7 @@ export type JobUncheckedCreateInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobUpdateInput = {
@@ -646,6 +651,7 @@ export type JobUpdateInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateInput = {
@@ -681,6 +687,7 @@ export type JobUncheckedUpdateInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateManyInput = {
@@ -989,6 +996,20 @@ export type JobUpdateOneRequiredWithoutJobViewNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.JobUpdateToOneWithWhereWithoutJobViewInput, Prisma.JobUpdateWithoutJobViewInput>, Prisma.JobUncheckedUpdateWithoutJobViewInput>
 }
 
+export type JobCreateNestedOneWithoutJobInactiveReasonsInput = {
+  create?: Prisma.XOR<Prisma.JobCreateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedCreateWithoutJobInactiveReasonsInput>
+  connectOrCreate?: Prisma.JobCreateOrConnectWithoutJobInactiveReasonsInput
+  connect?: Prisma.JobWhereUniqueInput
+}
+
+export type JobUpdateOneRequiredWithoutJobInactiveReasonsNestedInput = {
+  create?: Prisma.XOR<Prisma.JobCreateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedCreateWithoutJobInactiveReasonsInput>
+  connectOrCreate?: Prisma.JobCreateOrConnectWithoutJobInactiveReasonsInput
+  upsert?: Prisma.JobUpsertWithoutJobInactiveReasonsInput
+  connect?: Prisma.JobWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.JobUpdateToOneWithWhereWithoutJobInactiveReasonsInput, Prisma.JobUpdateWithoutJobInactiveReasonsInput>, Prisma.JobUncheckedUpdateWithoutJobInactiveReasonsInput>
+}
+
 export type JobCreateNestedOneWithoutSavedJobsInput = {
   create?: Prisma.XOR<Prisma.JobCreateWithoutSavedJobsInput, Prisma.JobUncheckedCreateWithoutSavedJobsInput>
   connectOrCreate?: Prisma.JobCreateOrConnectWithoutSavedJobsInput
@@ -1051,6 +1072,7 @@ export type JobCreateWithoutInstituteInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutInstituteInput = {
@@ -1085,6 +1107,7 @@ export type JobUncheckedCreateWithoutInstituteInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutInstituteInput = {
@@ -1178,6 +1201,7 @@ export type JobCreateWithoutCreditsHistoriesInput = {
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutCreditsHistoriesInput = {
@@ -1212,6 +1236,7 @@ export type JobUncheckedCreateWithoutCreditsHistoriesInput = {
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutCreditsHistoriesInput = {
@@ -1262,6 +1287,7 @@ export type JobUpdateWithoutCreditsHistoriesInput = {
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutCreditsHistoriesInput = {
@@ -1296,6 +1322,7 @@ export type JobUncheckedUpdateWithoutCreditsHistoriesInput = {
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutApplicationsInput = {
@@ -1330,6 +1357,7 @@ export type JobCreateWithoutApplicationsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutApplicationsInput = {
@@ -1364,6 +1392,7 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutApplicationsInput = {
@@ -1414,6 +1443,7 @@ export type JobUpdateWithoutApplicationsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutApplicationsInput = {
@@ -1448,6 +1478,7 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutJobViewInput = {
@@ -1482,6 +1513,7 @@ export type JobCreateWithoutJobViewInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutJobViewInput = {
@@ -1516,6 +1548,7 @@ export type JobUncheckedCreateWithoutJobViewInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutJobViewInput = {
@@ -1566,6 +1599,7 @@ export type JobUpdateWithoutJobViewInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutJobViewInput = {
@@ -1597,6 +1631,163 @@ export type JobUncheckedUpdateWithoutJobViewInput = {
   speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
+}
+
+export type JobCreateWithoutJobInactiveReasonsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  title: string
+  jobType: string
+  workLocation: string
+  experienceLevel: string
+  requirements: string
+  salaryMin: number
+  salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
+  applicationDeadline?: Date | string | null
+  contactEmail?: string | null
+  contactPhone?: string | null
+  contactPerson?: string | null
+  additionalInfo?: string | null
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
+  institute: Prisma.InstituteCreateNestedOneWithoutJobInput
+  JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+}
+
+export type JobUncheckedCreateWithoutJobInactiveReasonsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  title: string
+  jobType: string
+  workLocation: string
+  experienceLevel: string
+  requirements: string
+  salaryMin: number
+  salaryMax: number
+  status?: string
+  shortDescription?: string | null
+  salaryCurrency?: string | null
+  applicationDeadline?: Date | string | null
+  contactEmail?: string | null
+  contactPhone?: string | null
+  contactPerson?: string | null
+  additionalInfo?: string | null
+  instituteId: string
+  city?: string | null
+  fullDescription: string
+  role: string
+  skills?: Prisma.JobCreateskillsInput | string[]
+  country?: string | null
+  renewedAt?: Date | string | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
+  JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+}
+
+export type JobCreateOrConnectWithoutJobInactiveReasonsInput = {
+  where: Prisma.JobWhereUniqueInput
+  create: Prisma.XOR<Prisma.JobCreateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedCreateWithoutJobInactiveReasonsInput>
+}
+
+export type JobUpsertWithoutJobInactiveReasonsInput = {
+  update: Prisma.XOR<Prisma.JobUpdateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedUpdateWithoutJobInactiveReasonsInput>
+  create: Prisma.XOR<Prisma.JobCreateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedCreateWithoutJobInactiveReasonsInput>
+  where?: Prisma.JobWhereInput
+}
+
+export type JobUpdateToOneWithWhereWithoutJobInactiveReasonsInput = {
+  where?: Prisma.JobWhereInput
+  data: Prisma.XOR<Prisma.JobUpdateWithoutJobInactiveReasonsInput, Prisma.JobUncheckedUpdateWithoutJobInactiveReasonsInput>
+}
+
+export type JobUpdateWithoutJobInactiveReasonsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  jobType?: Prisma.StringFieldUpdateOperationsInput | string
+  workLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.StringFieldUpdateOperationsInput | string
+  salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
+  salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutJobNestedInput
+  JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+}
+
+export type JobUncheckedUpdateWithoutJobInactiveReasonsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  jobType?: Prisma.StringFieldUpdateOperationsInput | string
+  workLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.StringFieldUpdateOperationsInput | string
+  salaryMin?: Prisma.IntFieldUpdateOperationsInput | number
+  salaryMax?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contactEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactPerson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  additionalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullDescription?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  skills?: Prisma.JobUpdateskillsInput | string[]
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  renewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
+  JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
@@ -1634,6 +1825,7 @@ export type JobCreateWithoutSavedJobsInput = {
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutSavedJobsInput = {
@@ -1668,6 +1860,7 @@ export type JobUncheckedCreateWithoutSavedJobsInput = {
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutSavedJobsInput = {
@@ -1718,6 +1911,7 @@ export type JobUpdateWithoutSavedJobsInput = {
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutSavedJobsInput = {
@@ -1752,6 +1946,7 @@ export type JobUncheckedUpdateWithoutSavedJobsInput = {
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateWithoutNotificationsInput = {
@@ -1786,6 +1981,7 @@ export type JobCreateWithoutNotificationsInput = {
   JobView?: Prisma.JobViewCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonCreateNestedManyWithoutJobInput
 }
 
 export type JobUncheckedCreateWithoutNotificationsInput = {
@@ -1820,6 +2016,7 @@ export type JobUncheckedCreateWithoutNotificationsInput = {
   JobView?: Prisma.JobViewUncheckedCreateNestedManyWithoutJobInput
   savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutJobInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutJobInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedCreateNestedManyWithoutJobInput
 }
 
 export type JobCreateOrConnectWithoutNotificationsInput = {
@@ -1870,6 +2067,7 @@ export type JobUpdateWithoutNotificationsInput = {
   JobView?: Prisma.JobViewUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutNotificationsInput = {
@@ -1904,6 +2102,7 @@ export type JobUncheckedUpdateWithoutNotificationsInput = {
   JobView?: Prisma.JobViewUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobCreateManyInstituteInput = {
@@ -1967,6 +2166,7 @@ export type JobUpdateWithoutInstituteInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateWithoutInstituteInput = {
@@ -2001,6 +2201,7 @@ export type JobUncheckedUpdateWithoutInstituteInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutJobNestedInput
   savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutJobNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutJobNestedInput
+  jobInactiveReasons?: Prisma.JobInactiveReasonUncheckedUpdateManyWithoutJobNestedInput
 }
 
 export type JobUncheckedUpdateManyWithoutInstituteInput = {
@@ -2043,6 +2244,7 @@ export type JobCountOutputType = {
   notifications: number
   savedJobs: number
   creditsHistories: number
+  jobInactiveReasons: number
 }
 
 export type JobCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2051,6 +2253,7 @@ export type JobCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.In
   notifications?: boolean | JobCountOutputTypeCountNotificationsArgs
   savedJobs?: boolean | JobCountOutputTypeCountSavedJobsArgs
   creditsHistories?: boolean | JobCountOutputTypeCountCreditsHistoriesArgs
+  jobInactiveReasons?: boolean | JobCountOutputTypeCountJobInactiveReasonsArgs
 }
 
 /**
@@ -2098,6 +2301,13 @@ export type JobCountOutputTypeCountCreditsHistoriesArgs<ExtArgs extends runtime.
   where?: Prisma.CreditsHistoryWhereInput
 }
 
+/**
+ * JobCountOutputType without action
+ */
+export type JobCountOutputTypeCountJobInactiveReasonsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JobInactiveReasonWhereInput
+}
+
 
 export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2133,6 +2343,7 @@ export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   notifications?: boolean | Prisma.Job$notificationsArgs<ExtArgs>
   savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
   creditsHistories?: boolean | Prisma.Job$creditsHistoriesArgs<ExtArgs>
+  jobInactiveReasons?: boolean | Prisma.Job$jobInactiveReasonsArgs<ExtArgs>
   _count?: boolean | Prisma.JobCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["job"]>
 
@@ -2236,6 +2447,7 @@ export type JobInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   notifications?: boolean | Prisma.Job$notificationsArgs<ExtArgs>
   savedJobs?: boolean | Prisma.Job$savedJobsArgs<ExtArgs>
   creditsHistories?: boolean | Prisma.Job$creditsHistoriesArgs<ExtArgs>
+  jobInactiveReasons?: boolean | Prisma.Job$jobInactiveReasonsArgs<ExtArgs>
   _count?: boolean | Prisma.JobCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type JobIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2254,6 +2466,7 @@ export type $JobPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     savedJobs: Prisma.$SavedJobPayload<ExtArgs>[]
     creditsHistories: Prisma.$CreditsHistoryPayload<ExtArgs>[]
+    jobInactiveReasons: Prisma.$JobInactiveReasonPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2683,6 +2896,7 @@ export interface Prisma__JobClient<T, Null = never, ExtArgs extends runtime.Type
   notifications<T extends Prisma.Job$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   savedJobs<T extends Prisma.Job$savedJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$savedJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   creditsHistories<T extends Prisma.Job$creditsHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$creditsHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditsHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  jobInactiveReasons<T extends Prisma.Job$jobInactiveReasonsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Job$jobInactiveReasonsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobInactiveReasonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3252,6 +3466,30 @@ export type Job$creditsHistoriesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.CreditsHistoryScalarFieldEnum | Prisma.CreditsHistoryScalarFieldEnum[]
+}
+
+/**
+ * Job.jobInactiveReasons
+ */
+export type Job$jobInactiveReasonsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JobInactiveReason
+   */
+  select?: Prisma.JobInactiveReasonSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the JobInactiveReason
+   */
+  omit?: Prisma.JobInactiveReasonOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobInactiveReasonInclude<ExtArgs> | null
+  where?: Prisma.JobInactiveReasonWhereInput
+  orderBy?: Prisma.JobInactiveReasonOrderByWithRelationInput | Prisma.JobInactiveReasonOrderByWithRelationInput[]
+  cursor?: Prisma.JobInactiveReasonWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobInactiveReasonScalarFieldEnum | Prisma.JobInactiveReasonScalarFieldEnum[]
 }
 
 /**

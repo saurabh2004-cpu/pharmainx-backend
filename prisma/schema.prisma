@@ -7,11 +7,17 @@ datasource db {
   provider = "postgresql"
 }
 
+enum AdminRoles {
+  MASTER_ADMIN
+  ADMIN
+}
+
 model Admin {
-  id         Int      @id @default(autoincrement())
-  created_at DateTime @default(now())
-  email      String   @unique
+  id         String     @id @default(uuid())
+  created_at DateTime   @default(now())
+  email      String     @unique
   password   String
+  role       AdminRoles @default(ADMIN)
 }
 
 model User {
@@ -114,9 +120,9 @@ model CreditsHistory {
 }
 
 model Job {
-  id                  String           @id @default(uuid())
-  created_at          DateTime         @default(now())
-  updated_at          DateTime         @updatedAt
+  id                  String              @id @default(uuid())
+  created_at          DateTime            @default(now())
+  updated_at          DateTime            @updatedAt
   title               String
   jobType             String
   workLocation        String
@@ -124,9 +130,9 @@ model Job {
   requirements        String
   salaryMin           Int
   salaryMax           Int
-  status              String           @default("active")
+  status              String              @default("active")
   shortDescription    String?
-  salaryCurrency      String?          @default("INR")
+  salaryCurrency      String?             @default("INR")
   applicationDeadline DateTime?
   contactEmail        String?
   contactPhone        String?
@@ -139,14 +145,15 @@ model Job {
   skills              String[]
   country             String?
   renewedAt           DateTime?
-  speciality          String?          @default("")
-  subSpeciality       String?          @default("")
+  speciality          String?             @default("")
+  subSpeciality       String?             @default("")
   applications        Application[]
-  institute           Institute        @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  institute           Institute           @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   JobView             JobView[]
   notifications       Notification[]
   savedJobs           SavedJob[]
   creditsHistories    CreditsHistory[]
+  jobInactiveReasons  JobInactiveReason[]
 }
 
 model Application {
@@ -221,6 +228,15 @@ model UserVerificationRejection {
 
   @@index([userId])
   @@index([verificationId])
+}
+
+model JobInactiveReason {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  jobId      String
+  job        Job      @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  reason     String
 }
 
 model SavedJob {

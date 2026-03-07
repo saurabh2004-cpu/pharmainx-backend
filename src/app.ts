@@ -77,9 +77,30 @@ app.use('/api/v1/activity-logs', activityLogsRoutes);
 // Static Uploads removed - Served via CloudFront
 
 // Global Error Handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    if (err.name === 'MulterError') {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+            return res.status(400).json({
+                error: 'File too large',
+                message: 'The uploaded file is too large. Maximum size allowed is 5MB.'
+            });
+        }
+        return res.status(400).json({
+            error: 'Upload Error',
+            message: err.message
+        });
+    }
+
+    // Handle generic errors
+    if (err.message && err.message.includes('Invalid file type')) {
+        return res.status(400).json({
+            error: 'Invalid file type',
+            message: err.message
+        });
+    }
+
     console.error(err.stack);
-    res.status(500).json({
+    res.status(err.status || 500).json({
         error: 'Internal Server Error',
         message: process.env.NODE_ENV === 'development' ? err.message : undefined
     });

@@ -707,6 +707,7 @@ export const getJobsByInstitution = async (req: Request, res: Response) => {
                 orderBy: { created_at: 'desc' },
                 include: {
                     institute: true,
+                    jobInactiveReasons: true,
                 },
             }),
             prisma.job.count({ where: { instituteId } }),
@@ -788,19 +789,37 @@ export const toggleJobStatus = async (req: AuthRequest, res: Response) => {
     const { id } = req.params as any;
     const authId = req.user?.id;
     const authRole = req.user?.role;
+    const { reason, isAdmin } = req.body as any;
 
     try {
         const job = await prisma.job.findUnique({ where: { id } });
+
         if (!job) {
             return res.status(404).json({ error: 'Job not found' });
         }
-        // if (job.instituteId !== authId) {
-        //     return res.status(403).json({ error: "Forbidden: cannot toggle another institute's job" });
-        // }
+
         const updatedJob = await prisma.job.update({
             where: { id },
             data: { status: job.status === 'active' ? 'inactive' : 'active' },
         });
+
+        if (updatedJob.status === 'inactive' && typeof reason === 'string' && reason.trim() !== '' && reason !== null && reason !== undefined) {
+            await prisma.jobInactiveReason.create({
+                data: {
+                    jobId: id,
+                    reason: reason,
+                },
+            });
+        }
+
+        if (updatedJob.status === 'active' && isAdmin) {
+            await prisma.jobInactiveReason.deleteMany({
+                where: {
+                    jobId: id,
+                },
+            });
+        }
+
         logger.info({ instituteId: authId, jobId: id, status: job.status }, 'Job status toggled successfully');
         res.status(200).json(updatedJob);
     } catch (err) {

@@ -83,6 +83,11 @@ export type UserImages = Prisma.UserImagesModel
  */
 export type UserVerificationRejection = Prisma.UserVerificationRejectionModel
 /**
+ * Model JobInactiveReason
+ * 
+ */
+export type JobInactiveReason = Prisma.JobInactiveReasonModel
+/**
  * Model SavedJob
  * 
  */

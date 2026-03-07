@@ -397,6 +397,7 @@ export const ModelName = {
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
   UserVerificationRejection: 'UserVerificationRejection',
+  JobInactiveReason: 'JobInactiveReason',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
   UserExperiences: 'UserExperiences',
@@ -424,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1390,6 +1391,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    JobInactiveReason: {
+      payload: Prisma.$JobInactiveReasonPayload<ExtArgs>
+      fields: Prisma.JobInactiveReasonFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.JobInactiveReasonFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.JobInactiveReasonFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        findFirst: {
+          args: Prisma.JobInactiveReasonFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.JobInactiveReasonFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        findMany: {
+          args: Prisma.JobInactiveReasonFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>[]
+        }
+        create: {
+          args: Prisma.JobInactiveReasonCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        createMany: {
+          args: Prisma.JobInactiveReasonCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.JobInactiveReasonCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>[]
+        }
+        delete: {
+          args: Prisma.JobInactiveReasonDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        update: {
+          args: Prisma.JobInactiveReasonUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        deleteMany: {
+          args: Prisma.JobInactiveReasonDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.JobInactiveReasonUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.JobInactiveReasonUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>[]
+        }
+        upsert: {
+          args: Prisma.JobInactiveReasonUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$JobInactiveReasonPayload>
+        }
+        aggregate: {
+          args: Prisma.JobInactiveReasonAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateJobInactiveReason>
+        }
+        groupBy: {
+          args: Prisma.JobInactiveReasonGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobInactiveReasonGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.JobInactiveReasonCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobInactiveReasonCountAggregateOutputType> | number
+        }
+      }
+    }
     SavedJob: {
       payload: Prisma.$SavedJobPayload<ExtArgs>
       fields: Prisma.SavedJobFieldRefs
@@ -2321,7 +2396,8 @@ export const AdminScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  role: 'role'
 } as const
 
 export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
@@ -2524,6 +2600,17 @@ export const UserVerificationRejectionScalarFieldEnum = {
 } as const
 
 export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
+
+
+export const JobInactiveReasonScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  jobId: 'jobId',
+  reason: 'reason'
+} as const
+
+export type JobInactiveReasonScalarFieldEnum = (typeof JobInactiveReasonScalarFieldEnum)[keyof typeof JobInactiveReasonScalarFieldEnum]
 
 
 export const SavedJobScalarFieldEnum = {
@@ -2767,16 +2854,16 @@ export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof Json
 
 
 /**
- * Reference to a field of type 'Int'
+ * Reference to a field of type 'String'
  */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
     
 
 
 /**
- * Reference to a field of type 'Int[]'
+ * Reference to a field of type 'String[]'
  */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -2795,16 +2882,16 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'String'
+ * Reference to a field of type 'AdminRoles'
  */
-export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+export type EnumAdminRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdminRoles'>
     
 
 
 /**
- * Reference to a field of type 'String[]'
+ * Reference to a field of type 'AdminRoles[]'
  */
-export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+export type ListEnumAdminRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdminRoles[]'>
     
 
 
@@ -2826,6 +2913,20 @@ export type EnumUserRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'UserRoles[]'
  */
 export type ListEnumUserRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRoles[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -3090,6 +3191,7 @@ export type GlobalOmitConfig = {
   instituteImages?: Prisma.InstituteImagesOmit
   userImages?: Prisma.UserImagesOmit
   userVerificationRejection?: Prisma.UserVerificationRejectionOmit
+  jobInactiveReason?: Prisma.JobInactiveReasonOmit
   savedJob?: Prisma.SavedJobOmit
   notification?: Prisma.NotificationOmit
   userExperiences?: Prisma.UserExperiencesOmit

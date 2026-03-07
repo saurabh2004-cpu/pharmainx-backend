@@ -4,7 +4,7 @@ import { getServiceLogger } from '../utils/logger.js';
 import { AuthRoles, Prisma, VerificationStatus, UserRoles } from '../generated/prisma/client.ts';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { getCloudFrontUrl } from '../services/aws.service.js';
+import { getCloudFrontUrl, deleteFromS3, invalidateCloudFront } from '../services/aws.service.js';
 import { logActivity } from '../utils/activityLogger.js';
 import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
@@ -220,30 +220,63 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
 };
 
 export const deleteUser = async (req: AuthRequest, res: Response) => {
-    const { id: paramId } = req.params as any;
-    const id = paramId;
-    const authId = req.user?.id;
+    const { id } = req.params;
 
+    console.log("useridddd", id)
+
+    const authId = req.user?.id;
     if (!authId) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    if (id !== authId) {
-        logger.warn({ authId, id }, "User tried to delete another user's profile");
-        return res.status(403).json({ error: 'Forbidden: cannot delete another user' });
-    }
-
     try {
-        const existingData = await prisma.user.findUnique({ where: { id } });
+        const existingData = await prisma.user.findUnique({
+            where: { id: id as string },
+            include: {
+                userImages: true,
+                userVerifications: true
+            }
+        });
 
-        await prisma.user.delete({ where: { id } });
-        logger.info({ authId, id }, 'User deleted successfully');
+        if (!existingData) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // 1. Delete User Images (Profile/Cover) from S3/CloudFront
+        if (existingData.userImages && existingData.userImages.length > 0) {
+            for (const imgRecord of existingData.userImages) {
+                const keys = [imgRecord.profileImage, imgRecord.coverImage].filter(Boolean);
+                for (const key of keys) {
+                    await deleteFromS3(key as string);
+                    await invalidateCloudFront(key as string);
+                }
+            }
+        }
+
+        // 2. Delete Verification Documents from S3/CloudFront
+        if (existingData.userVerifications && existingData.userVerifications.length > 0) {
+            for (const verif of existingData.userVerifications) {
+                const docKeys = [
+                    verif.governMentId,
+                    verif.degreeCertificate,
+                    verif.postGraduateDegreeCertificate
+                ].filter(Boolean);
+
+                for (const key of docKeys) {
+                    await deleteFromS3(key as string);
+                    await invalidateCloudFront(key as string);
+                }
+            }
+        }
+
+        await prisma.user.delete({ where: { id: id as string } });
+        logger.info({ authId, id }, 'User and all associated files deleted successfully');
 
         await logActivity({
             module: ActivityLogsModule.USER,
             action: ActivityActionType.DELETE,
             oldData: existingData,
-            description: 'User deleted'
+            description: 'User and associated files deleted'
         });
 
         res.status(204).send();
@@ -355,12 +388,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
     const skip = (page - 1) * limit;
     const role = query.role;
 
-    const where: Prisma.UserWhereInput = {
-        OR: [
-            { verified: true },
-            { userVerifications: { some: { status: 'APPROVED' } } }
-        ]
-    };
+    const where: Prisma.UserWhereInput = {};
 
     if (role && role !== 'All') {
         where.role = role as UserRoles;
@@ -369,7 +397,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
     try {
         const [users, total] = await Promise.all([
             prisma.user.findMany({
-                // where,
+                where,
                 skip,
                 take: limit,
                 orderBy: { created_at: 'desc' },

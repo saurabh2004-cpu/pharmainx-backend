@@ -64,6 +64,7 @@ export const ModelName = {
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
   UserVerificationRejection: 'UserVerificationRejection',
+  JobInactiveReason: 'JobInactiveReason',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
   UserExperiences: 'UserExperiences',
@@ -98,7 +99,8 @@ export const AdminScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  role: 'role'
 } as const
 
 export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
@@ -301,6 +303,17 @@ export const UserVerificationRejectionScalarFieldEnum = {
 } as const
 
 export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
+
+
+export const JobInactiveReasonScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  jobId: 'jobId',
+  reason: 'reason'
+} as const
+
+export type JobInactiveReasonScalarFieldEnum = (typeof JobInactiveReasonScalarFieldEnum)[keyof typeof JobInactiveReasonScalarFieldEnum]
 
 
 export const SavedJobScalarFieldEnum = {
