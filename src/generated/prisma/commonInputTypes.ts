@@ -457,6 +457,23 @@ export type EnumActivityActionTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
 }
 
+export type EnumSocialMediaPlatformsFilter<$PrismaModel = never> = {
+  equals?: $Enums.SocialMediaPlatforms | Prisma.EnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  in?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel> | $Enums.SocialMediaPlatforms
+}
+
+export type EnumSocialMediaPlatformsWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SocialMediaPlatforms | Prisma.EnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  in?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSocialMediaPlatformsWithAggregatesFilter<$PrismaModel> | $Enums.SocialMediaPlatforms
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -884,6 +901,23 @@ export type NestedEnumActivityActionTypeWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumActivityActionTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumSocialMediaPlatformsFilter<$PrismaModel = never> = {
+  equals?: $Enums.SocialMediaPlatforms | Prisma.EnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  in?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel> | $Enums.SocialMediaPlatforms
+}
+
+export type NestedEnumSocialMediaPlatformsWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SocialMediaPlatforms | Prisma.EnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  in?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SocialMediaPlatforms[] | Prisma.ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSocialMediaPlatformsWithAggregatesFilter<$PrismaModel> | $Enums.SocialMediaPlatforms
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSocialMediaPlatformsFilter<$PrismaModel>
 }
 
 

@@ -15,7 +15,7 @@ let io: SocketIOServer;
 export const initializeSocket = (httpServer: HttpServer) => {
     io = new SocketIOServer(httpServer, {
         cors: {
-            origin: [ 
+            origin: [
                 process.env.SOCKET_ALLOWED_ORIGIN || "http://localhost:3000",
             ],
             methods: ["GET", "POST", "PUT", "DELETE"],
@@ -73,7 +73,20 @@ export const initializeSocket = (httpServer: HttpServer) => {
                         receiverId: userId,
                         isRead: false
                     },
-                    orderBy: { createdAt: 'asc' }
+                    orderBy: { createdAt: 'asc' },
+                    include: {
+                        application: {
+                            include: {
+                                job: {
+                                    include: {
+                                        institute: {
+                                            include: { instituteImages: true }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 });
 
                 if (notifications.length > 0) {

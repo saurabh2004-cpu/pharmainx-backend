@@ -123,14 +123,11 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
             }
         });
 
-        console.log("userverifications", user);
 
         const educations = user?.userEducations;
         const experiences = user?.userExperiences;
         const skills = user?.skills;
         const specialities = user?.userSpecialities;
-
-
 
         const isStudent = req.user?.role === 'STUDENT';
 
@@ -213,8 +210,7 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
             receiverRole: 'INSTITUTE',
             title: 'New Job Application',
             message: `User ${application.user.firstName} ${application.user.lastName} applied for ${job.title}`,
-            relatedJobId: jobId,
-            relatedApplicationId: application.id,
+            applicationId: application.id,
             status: 'APPLIED'
         });
 
@@ -251,9 +247,8 @@ export const shortList = async (req: AuthRequest, res: Response) => {
             receiverRole: 'USER',
             title: 'Application Shortlisted',
             message: `Your application for ${app.job.title} was shortlisted.`,
-            relatedJobId: app.jobId,
             status: 'SHORTLISTED',
-            relatedApplicationId: app.id
+            applicationId: app.id,
         });
 
         res.status(200).json(updated);
@@ -292,8 +287,7 @@ export const requestNextRound = async (req: AuthRequest, res: Response) => {
             receiverRole: 'USER',
             title: 'Next Round Requested',
             message: `The institute has requested a next round for your application to ${app.job.title}`,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
+            applicationId: app.id,
             status: 'NEXT_ROUND_REQUESTED'
         });
 
@@ -334,8 +328,7 @@ export const respondNextRound = async (req: AuthRequest, res: Response) => {
             receiverRole: 'INSTITUTE',
             title: `Next Round ${status === 'accept' ? 'Accepted' : 'Rejected'}`,
             message: `User ${app.user.firstName} ${app.user.lastName} has ${status}ed the next round request for ${app.job.title}`,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
+            applicationId: app.id,
             status: newStatus
         });
 
@@ -382,9 +375,11 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
             receiverRole: 'USER',
             title: 'Interview Scheduled',
             message: notificationMessage,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
-            status: 'INTERVIEW_SCHEDULED'
+            applicationId: app.id,
+            status: 'INTERVIEW_SCHEDULED',
+            interviewType: interviewLink ? "Video Interview" : "Phone Interview",
+            interviewTime: interviewTime,
+            interviewLink: interviewLink
         });
 
         res.status(200).json(updated);
@@ -428,8 +423,7 @@ export const interviewDecision = async (req: AuthRequest, res: Response) => {
             receiverRole: 'INSTITUTE',
             title: `Interview Result: ${decision === 'accept' ? 'Accepted' : 'Rejected'}`,
             message: `User has ${decision}ed the interview for ${app.job.title}.`,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
+            applicationId: app.id,
             status: newStatus
         });
 
@@ -466,8 +460,7 @@ export const hire = async (req: AuthRequest, res: Response) => {
             receiverRole: 'USER',
             title: 'Congratulations! You are Hired',
             message: `You have been hired for ${app.job.title}!`,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
+            applicationId: app.id,
             status: 'HIRED'
         });
 
@@ -504,8 +497,7 @@ export const reject = async (req: AuthRequest, res: Response) => {
             receiverRole: 'USER',
             title: 'Application Rejected',
             message: `Your application for ${app.job.title} was rejected.`,
-            relatedJobId: app.jobId,
-            relatedApplicationId: app.id,
+            applicationId: app.id,
             status: 'REJECTED'
         });
 

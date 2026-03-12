@@ -47,41 +47,43 @@ model User {
   userEducations             UserEducation[]
   userExperiences            UserExperiences[]
   userImages                 UserImages[]
-  userLinks                  UserLinks[]
   skills                     UserSkills[]
   userSpecialities           UserSpecialities[]
   userVerifications          UserVerifications[]
   userVerificationRejections UserVerificationRejection[]
+  userSocialMediaLinks       UserSocialMediaLinks[]
 }
 
 model Institute {
-  id                      String                  @id @default(uuid())
-  created_at              DateTime                @default(now())
-  name                    String                  @unique
-  verified                Boolean                 @default(false)
-  contactEmail            String                  @unique
-  contactNumber           String
-  role                    InstituteRoles          @default(HOSPITAL)
-  affiliatedUniversity    String?
-  yearEstablished         Int?
-  ownership               String?
-  headline                String?
-  about                   String?
-  password                String
-  bedsCount               Int
-  services                String[]
-  staffCount              Int
-  telephone               String
-  type                    String
-  city                    String?
-  country                 String?
-  conversations           Conversation[]
-  instituteCreditsWallets InstituteCredits[]
-  instituteImages         InstituteImages[]
-  instituteVerifications  InstituteVerifications?
-  instituteViews          InstituteView[]
-  Job                     Job[]
-  creditsHistories        CreditsHistory[]
+  id                              String                           @id @default(uuid())
+  created_at                      DateTime                         @default(now())
+  name                            String                           @unique
+  verified                        Boolean                          @default(false)
+  contactEmail                    String                           @unique
+  contactNumber                   String
+  role                            InstituteRoles                   @default(HOSPITAL)
+  affiliatedUniversity            String?
+  yearEstablished                 Int?
+  ownership                       String?
+  headline                        String?
+  about                           String?
+  password                        String
+  bedsCount                       Int
+  services                        String[]
+  staffCount                      Int
+  telephone                       String
+  type                            String
+  city                            String?
+  country                         String?
+  conversations                   Conversation[]
+  instituteCreditsWallets         InstituteCredits[]
+  instituteImages                 InstituteImages[]
+  instituteVerifications          InstituteVerifications?
+  instituteViews                  InstituteView[]
+  Job                             Job[]
+  creditsHistories                CreditsHistory[]
+  instituteVerificationRejections InstituteVerificationRejection[]
+  instituteSocialMediaLinks       InstituteSocialMediaLinks[]
 }
 
 model InstituteCredits {
@@ -150,7 +152,6 @@ model Job {
   applications        Application[]
   institute           Institute           @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   JobView             JobView[]
-  notifications       Notification[]
   savedJobs           SavedJob[]
   creditsHistories    CreditsHistory[]
   jobInactiveReasons  JobInactiveReason[]
@@ -230,6 +231,22 @@ model UserVerificationRejection {
   @@index([verificationId])
 }
 
+model InstituteVerificationRejection {
+  id            String   @id @default(uuid())
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  documentField String
+
+  customNote     String?                @db.Text
+  verificationId String
+  verification   InstituteVerifications @relation(fields: [verificationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  instituteId    String
+  institute      Institute              @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([instituteId])
+  @@index([verificationId])
+}
+
 model JobInactiveReason {
   id         String   @id @default(uuid())
   created_at DateTime @default(now())
@@ -250,18 +267,18 @@ model SavedJob {
 }
 
 model Notification {
-  id                   String             @id @default(uuid())
-  createdAt            DateTime           @default(now())
-  receiverId           String
-  receiverRole         String
-  title                String
-  message              String
-  isRead               Boolean            @default(false)
-  relatedJobId         String?
-  relatedApplicationId String?
-  status               ApplicationStatus?
-  application          Application?       @relation(fields: [relatedApplicationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  job                  Job?               @relation(fields: [relatedJobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  receiverId   String
+  receiverRole String
+  title        String
+  message      String
+  isRead       Boolean @default(false)
+
+  status        ApplicationStatus?
+  applicationId String?
+  application   Application?       @relation(fields: [applicationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model UserExperiences {
@@ -314,15 +331,6 @@ model UserSpecialities {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model UserLinks {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  userId     String   @default("")
-  links      String[] @default([])
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 model UserVerifications {
   id                            String                      @id @default(uuid())
   created_at                    DateTime                    @default(now())
@@ -361,17 +369,18 @@ model UserVerifications {
 }
 
 model InstituteVerifications {
-  id                      String             @id @default(uuid())
-  created_at              DateTime           @default(now())
-  updated_at              DateTime           @updatedAt
-  instituteId             String             @unique
-  status                  VerificationStatus @default(PENDING)
-  telephone               String
-  email                   String
-  adminName               String
-  adminPhone              String
-  registrationCertificate String
-  institute               Institute          @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  id                              String                           @id @default(uuid())
+  created_at                      DateTime                         @default(now())
+  updated_at                      DateTime                         @updatedAt
+  instituteId                     String                           @unique
+  status                          VerificationStatus               @default(PENDING)
+  telephone                       String
+  email                           String
+  adminName                       String
+  adminPhone                      String
+  registrationCertificate         String
+  institute                       Institute                        @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  instituteVerificationRejections InstituteVerificationRejection[]
 }
 
 model Conversation {
@@ -431,6 +440,37 @@ model ActivityLogs {
   description String?
   oldData     Json?
   newData     Json?
+}
+
+model UserSocialMediaLinks {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  link       String   @default("")
+
+  platform SocialMediaPlatforms
+
+  userId String @default("")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model InstituteSocialMediaLinks {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  link       String   @default("")
+
+  platform SocialMediaPlatforms
+
+  instituteId String    @default("")
+  institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+}
+
+enum SocialMediaPlatforms {
+  TWITTER
+  LINKEDIN
+  INSTAGRAM
+  FACEBOOK
 }
 
 enum ActivityActionType {

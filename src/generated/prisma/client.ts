@@ -105,6 +105,11 @@ export type UserImages = Prisma.UserImagesModel
  */
 export type UserVerificationRejection = Prisma.UserVerificationRejectionModel
 /**
+ * Model InstituteVerificationRejection
+ * 
+ */
+export type InstituteVerificationRejection = Prisma.InstituteVerificationRejectionModel
+/**
  * Model JobInactiveReason
  * 
  */
@@ -140,11 +145,6 @@ export type UserSkills = Prisma.UserSkillsModel
  */
 export type UserSpecialities = Prisma.UserSpecialitiesModel
 /**
- * Model UserLinks
- * 
- */
-export type UserLinks = Prisma.UserLinksModel
-/**
  * Model UserVerifications
  * 
  */
@@ -169,3 +169,13 @@ export type Message = Prisma.MessageModel
  * 
  */
 export type ActivityLogs = Prisma.ActivityLogsModel
+/**
+ * Model UserSocialMediaLinks
+ * 
+ */
+export type UserSocialMediaLinks = Prisma.UserSocialMediaLinksModel
+/**
+ * Model InstituteSocialMediaLinks
+ * 
+ */
+export type InstituteSocialMediaLinks = Prisma.InstituteSocialMediaLinksModel

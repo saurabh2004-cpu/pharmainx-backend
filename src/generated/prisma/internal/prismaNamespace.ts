@@ -397,6 +397,7 @@ export const ModelName = {
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
   UserVerificationRejection: 'UserVerificationRejection',
+  InstituteVerificationRejection: 'InstituteVerificationRejection',
   JobInactiveReason: 'JobInactiveReason',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
@@ -404,12 +405,13 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserSkills: 'UserSkills',
   UserSpecialities: 'UserSpecialities',
-  UserLinks: 'UserLinks',
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
   Message: 'Message',
-  ActivityLogs: 'ActivityLogs'
+  ActivityLogs: 'ActivityLogs',
+  UserSocialMediaLinks: 'UserSocialMediaLinks',
+  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -425,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userLinks" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1391,6 +1393,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    InstituteVerificationRejection: {
+      payload: Prisma.$InstituteVerificationRejectionPayload<ExtArgs>
+      fields: Prisma.InstituteVerificationRejectionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InstituteVerificationRejectionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InstituteVerificationRejectionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        findFirst: {
+          args: Prisma.InstituteVerificationRejectionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InstituteVerificationRejectionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        findMany: {
+          args: Prisma.InstituteVerificationRejectionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>[]
+        }
+        create: {
+          args: Prisma.InstituteVerificationRejectionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        createMany: {
+          args: Prisma.InstituteVerificationRejectionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InstituteVerificationRejectionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>[]
+        }
+        delete: {
+          args: Prisma.InstituteVerificationRejectionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        update: {
+          args: Prisma.InstituteVerificationRejectionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        deleteMany: {
+          args: Prisma.InstituteVerificationRejectionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InstituteVerificationRejectionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InstituteVerificationRejectionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>[]
+        }
+        upsert: {
+          args: Prisma.InstituteVerificationRejectionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVerificationRejectionPayload>
+        }
+        aggregate: {
+          args: Prisma.InstituteVerificationRejectionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInstituteVerificationRejection>
+        }
+        groupBy: {
+          args: Prisma.InstituteVerificationRejectionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVerificationRejectionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InstituteVerificationRejectionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVerificationRejectionCountAggregateOutputType> | number
+        }
+      }
+    }
     JobInactiveReason: {
       payload: Prisma.$JobInactiveReasonPayload<ExtArgs>
       fields: Prisma.JobInactiveReasonFieldRefs
@@ -1909,80 +1985,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    UserLinks: {
-      payload: Prisma.$UserLinksPayload<ExtArgs>
-      fields: Prisma.UserLinksFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.UserLinksFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.UserLinksFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        findFirst: {
-          args: Prisma.UserLinksFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.UserLinksFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        findMany: {
-          args: Prisma.UserLinksFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>[]
-        }
-        create: {
-          args: Prisma.UserLinksCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        createMany: {
-          args: Prisma.UserLinksCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.UserLinksCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>[]
-        }
-        delete: {
-          args: Prisma.UserLinksDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        update: {
-          args: Prisma.UserLinksUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        deleteMany: {
-          args: Prisma.UserLinksDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.UserLinksUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.UserLinksUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>[]
-        }
-        upsert: {
-          args: Prisma.UserLinksUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserLinksPayload>
-        }
-        aggregate: {
-          args: Prisma.UserLinksAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateUserLinks>
-        }
-        groupBy: {
-          args: Prisma.UserLinksGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserLinksGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.UserLinksCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserLinksCountAggregateOutputType> | number
-        }
-      }
-    }
     UserVerifications: {
       payload: Prisma.$UserVerificationsPayload<ExtArgs>
       fields: Prisma.UserVerificationsFieldRefs
@@ -2353,6 +2355,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserSocialMediaLinks: {
+      payload: Prisma.$UserSocialMediaLinksPayload<ExtArgs>
+      fields: Prisma.UserSocialMediaLinksFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserSocialMediaLinksFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserSocialMediaLinksFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        findFirst: {
+          args: Prisma.UserSocialMediaLinksFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserSocialMediaLinksFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        findMany: {
+          args: Prisma.UserSocialMediaLinksFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>[]
+        }
+        create: {
+          args: Prisma.UserSocialMediaLinksCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        createMany: {
+          args: Prisma.UserSocialMediaLinksCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserSocialMediaLinksCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>[]
+        }
+        delete: {
+          args: Prisma.UserSocialMediaLinksDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        update: {
+          args: Prisma.UserSocialMediaLinksUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserSocialMediaLinksDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserSocialMediaLinksUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserSocialMediaLinksUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserSocialMediaLinksUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSocialMediaLinksPayload>
+        }
+        aggregate: {
+          args: Prisma.UserSocialMediaLinksAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserSocialMediaLinks>
+        }
+        groupBy: {
+          args: Prisma.UserSocialMediaLinksGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserSocialMediaLinksGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserSocialMediaLinksCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserSocialMediaLinksCountAggregateOutputType> | number
+        }
+      }
+    }
+    InstituteSocialMediaLinks: {
+      payload: Prisma.$InstituteSocialMediaLinksPayload<ExtArgs>
+      fields: Prisma.InstituteSocialMediaLinksFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InstituteSocialMediaLinksFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InstituteSocialMediaLinksFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        findFirst: {
+          args: Prisma.InstituteSocialMediaLinksFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InstituteSocialMediaLinksFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        findMany: {
+          args: Prisma.InstituteSocialMediaLinksFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>[]
+        }
+        create: {
+          args: Prisma.InstituteSocialMediaLinksCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        createMany: {
+          args: Prisma.InstituteSocialMediaLinksCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InstituteSocialMediaLinksCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>[]
+        }
+        delete: {
+          args: Prisma.InstituteSocialMediaLinksDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        update: {
+          args: Prisma.InstituteSocialMediaLinksUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        deleteMany: {
+          args: Prisma.InstituteSocialMediaLinksDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InstituteSocialMediaLinksUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InstituteSocialMediaLinksUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>[]
+        }
+        upsert: {
+          args: Prisma.InstituteSocialMediaLinksUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteSocialMediaLinksPayload>
+        }
+        aggregate: {
+          args: Prisma.InstituteSocialMediaLinksAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInstituteSocialMediaLinks>
+        }
+        groupBy: {
+          args: Prisma.InstituteSocialMediaLinksGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteSocialMediaLinksGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InstituteSocialMediaLinksCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteSocialMediaLinksCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2602,6 +2752,19 @@ export const UserVerificationRejectionScalarFieldEnum = {
 export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
 
 
+export const InstituteVerificationRejectionScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  documentField: 'documentField',
+  customNote: 'customNote',
+  verificationId: 'verificationId',
+  instituteId: 'instituteId'
+} as const
+
+export type InstituteVerificationRejectionScalarFieldEnum = (typeof InstituteVerificationRejectionScalarFieldEnum)[keyof typeof InstituteVerificationRejectionScalarFieldEnum]
+
+
 export const JobInactiveReasonScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
@@ -2632,9 +2795,8 @@ export const NotificationScalarFieldEnum = {
   title: 'title',
   message: 'message',
   isRead: 'isRead',
-  relatedJobId: 'relatedJobId',
-  relatedApplicationId: 'relatedApplicationId',
-  status: 'status'
+  status: 'status',
+  applicationId: 'applicationId'
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -2696,17 +2858,6 @@ export const UserSpecialitiesScalarFieldEnum = {
 } as const
 
 export type UserSpecialitiesScalarFieldEnum = (typeof UserSpecialitiesScalarFieldEnum)[keyof typeof UserSpecialitiesScalarFieldEnum]
-
-
-export const UserLinksScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  userId: 'userId',
-  links: 'links'
-} as const
-
-export type UserLinksScalarFieldEnum = (typeof UserLinksScalarFieldEnum)[keyof typeof UserLinksScalarFieldEnum]
 
 
 export const UserVerificationsScalarFieldEnum = {
@@ -2804,6 +2955,30 @@ export const ActivityLogsScalarFieldEnum = {
 } as const
 
 export type ActivityLogsScalarFieldEnum = (typeof ActivityLogsScalarFieldEnum)[keyof typeof ActivityLogsScalarFieldEnum]
+
+
+export const UserSocialMediaLinksScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  link: 'link',
+  platform: 'platform',
+  userId: 'userId'
+} as const
+
+export type UserSocialMediaLinksScalarFieldEnum = (typeof UserSocialMediaLinksScalarFieldEnum)[keyof typeof UserSocialMediaLinksScalarFieldEnum]
+
+
+export const InstituteSocialMediaLinksScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  link: 'link',
+  platform: 'platform',
+  instituteId: 'instituteId'
+} as const
+
+export type InstituteSocialMediaLinksScalarFieldEnum = (typeof InstituteSocialMediaLinksScalarFieldEnum)[keyof typeof InstituteSocialMediaLinksScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3071,6 +3246,20 @@ export type ListEnumActivityActionTypeFieldRefInput<$PrismaModel> = FieldRefInpu
 
 
 /**
+ * Reference to a field of type 'SocialMediaPlatforms'
+ */
+export type EnumSocialMediaPlatformsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SocialMediaPlatforms'>
+    
+
+
+/**
+ * Reference to a field of type 'SocialMediaPlatforms[]'
+ */
+export type ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SocialMediaPlatforms[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3191,6 +3380,7 @@ export type GlobalOmitConfig = {
   instituteImages?: Prisma.InstituteImagesOmit
   userImages?: Prisma.UserImagesOmit
   userVerificationRejection?: Prisma.UserVerificationRejectionOmit
+  instituteVerificationRejection?: Prisma.InstituteVerificationRejectionOmit
   jobInactiveReason?: Prisma.JobInactiveReasonOmit
   savedJob?: Prisma.SavedJobOmit
   notification?: Prisma.NotificationOmit
@@ -3198,12 +3388,13 @@ export type GlobalOmitConfig = {
   userEducation?: Prisma.UserEducationOmit
   userSkills?: Prisma.UserSkillsOmit
   userSpecialities?: Prisma.UserSpecialitiesOmit
-  userLinks?: Prisma.UserLinksOmit
   userVerifications?: Prisma.UserVerificationsOmit
   instituteVerifications?: Prisma.InstituteVerificationsOmit
   conversation?: Prisma.ConversationOmit
   message?: Prisma.MessageOmit
   activityLogs?: Prisma.ActivityLogsOmit
+  userSocialMediaLinks?: Prisma.UserSocialMediaLinksOmit
+  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksOmit
 }
 
 /* Types for Logging */

@@ -64,6 +64,7 @@ export const ModelName = {
   InstituteImages: 'InstituteImages',
   UserImages: 'UserImages',
   UserVerificationRejection: 'UserVerificationRejection',
+  InstituteVerificationRejection: 'InstituteVerificationRejection',
   JobInactiveReason: 'JobInactiveReason',
   SavedJob: 'SavedJob',
   Notification: 'Notification',
@@ -71,12 +72,13 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserSkills: 'UserSkills',
   UserSpecialities: 'UserSpecialities',
-  UserLinks: 'UserLinks',
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
   Message: 'Message',
-  ActivityLogs: 'ActivityLogs'
+  ActivityLogs: 'ActivityLogs',
+  UserSocialMediaLinks: 'UserSocialMediaLinks',
+  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -305,6 +307,19 @@ export const UserVerificationRejectionScalarFieldEnum = {
 export type UserVerificationRejectionScalarFieldEnum = (typeof UserVerificationRejectionScalarFieldEnum)[keyof typeof UserVerificationRejectionScalarFieldEnum]
 
 
+export const InstituteVerificationRejectionScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  documentField: 'documentField',
+  customNote: 'customNote',
+  verificationId: 'verificationId',
+  instituteId: 'instituteId'
+} as const
+
+export type InstituteVerificationRejectionScalarFieldEnum = (typeof InstituteVerificationRejectionScalarFieldEnum)[keyof typeof InstituteVerificationRejectionScalarFieldEnum]
+
+
 export const JobInactiveReasonScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
@@ -335,9 +350,8 @@ export const NotificationScalarFieldEnum = {
   title: 'title',
   message: 'message',
   isRead: 'isRead',
-  relatedJobId: 'relatedJobId',
-  relatedApplicationId: 'relatedApplicationId',
-  status: 'status'
+  status: 'status',
+  applicationId: 'applicationId'
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -399,17 +413,6 @@ export const UserSpecialitiesScalarFieldEnum = {
 } as const
 
 export type UserSpecialitiesScalarFieldEnum = (typeof UserSpecialitiesScalarFieldEnum)[keyof typeof UserSpecialitiesScalarFieldEnum]
-
-
-export const UserLinksScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  userId: 'userId',
-  links: 'links'
-} as const
-
-export type UserLinksScalarFieldEnum = (typeof UserLinksScalarFieldEnum)[keyof typeof UserLinksScalarFieldEnum]
 
 
 export const UserVerificationsScalarFieldEnum = {
@@ -507,6 +510,30 @@ export const ActivityLogsScalarFieldEnum = {
 } as const
 
 export type ActivityLogsScalarFieldEnum = (typeof ActivityLogsScalarFieldEnum)[keyof typeof ActivityLogsScalarFieldEnum]
+
+
+export const UserSocialMediaLinksScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  link: 'link',
+  platform: 'platform',
+  userId: 'userId'
+} as const
+
+export type UserSocialMediaLinksScalarFieldEnum = (typeof UserSocialMediaLinksScalarFieldEnum)[keyof typeof UserSocialMediaLinksScalarFieldEnum]
+
+
+export const InstituteSocialMediaLinksScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  link: 'link',
+  platform: 'platform',
+  instituteId: 'instituteId'
+} as const
+
+export type InstituteSocialMediaLinksScalarFieldEnum = (typeof InstituteSocialMediaLinksScalarFieldEnum)[keyof typeof InstituteSocialMediaLinksScalarFieldEnum]
 
 
 export const SortOrder = {

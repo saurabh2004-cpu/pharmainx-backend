@@ -83,7 +83,9 @@ export const sendMessage = async (req: Request, res: Response): Promise<void> =>
         const io = getIO();
         const receiverId = senderRole === 'USER' ? conversation.instituteId : conversation.userId;
 
+        // Emit to both the specific receiver's room and the conversation room
         io.to(receiverId).emit('new_message', message);
+        io.to(conversationId).emit('new_message', message);
 
         // Also emit to sender logic (handled by frontend typically, but good to acknowledge)
         // io.to(senderId).emit('message_sent', message);
@@ -286,6 +288,7 @@ export const sendVoiceMessage = async (req: Request, res: Response): Promise<voi
         const receiverId = senderRole === 'USER' ? conversation.instituteId : conversation.userId;
 
         io.to(receiverId).emit('new_message', message);
+        io.to(conversationId).emit('new_message', message);
 
         res.status(201).json(message);
 

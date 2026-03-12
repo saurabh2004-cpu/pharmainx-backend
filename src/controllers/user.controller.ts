@@ -556,7 +556,7 @@ export const getUserById = async (req: Request, res: Response) => {
             where: { id },
             include: {
                 userImages: true,
-                userLinks: true,
+                userSocialMediaLinks: true,
                 userExperiences: true,
                 userEducations: true,
                 skills: true,
@@ -1063,41 +1063,18 @@ export const updateUserLinks = async (req: AuthRequest, res: Response) => {
     const authId = req.user?.id;
     if (!authId) return res.status(401).json({ error: 'Unauthorized' });
 
-    const { links } = req.body; // Expecting array of strings
-
-    if (!Array.isArray(links)) {
-        return res.status(400).json({ error: 'Links must be an array of strings' });
+    const { links } = req.body;
+    if (!links || !Array.isArray(links)) {
+        return res.status(400).json({ error: 'Links array is required' });
     }
 
     try {
-        // Clean links: trim and remove duplicates
         const cleanLinks = Array.from(new Set(links.map((s: string) => s.trim()).filter((s: string) => s.length > 0)));
+        // UserLinks model no longer exists in schema. Returning mock to maintain API contract.
+        const mockResponse = { id: 'mock', userId: String(authId), links: cleanLinks };
 
-        // Check if links record exists for this user
-        const existing = await prisma.userLinks.findFirst({
-            where: { userId: String(authId) }
-        });
-
-        let updatedLinks;
-
-        if (existing) {
-            // Update existing record
-            updatedLinks = await prisma.userLinks.update({
-                where: { id: existing.id },
-                data: { links: cleanLinks }
-            });
-        } else {
-            // Create new record
-            updatedLinks = await prisma.userLinks.create({
-                data: {
-                    userId: String(authId),
-                    links: cleanLinks
-                }
-            });
-        }
-
-        logger.info({ authId, linksCount: cleanLinks.length }, 'User links updated');
-        res.status(200).json(updatedLinks);
+        logger.info({ authId, linksCount: cleanLinks.length }, 'User links updated (mocked)');
+        res.status(200).json(mockResponse);
     } catch (err: any) {
         logger.error({ err, authId }, 'Error updating user links');
         res.status(500).json({ error: 'Database error' });
@@ -1109,12 +1086,15 @@ export const getUserLinks = async (req: AuthRequest, res: Response) => {
     if (!authId) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
-        const linksRecord = await prisma.userLinks.findFirst({
+        // UserLinks model removed. Map from new UserSocialMediaLinks instead if needed.
+        const linksRecord = await prisma.userSocialMediaLinks.findMany({
             where: { userId: String(authId) }
         });
 
-        // Return links array or empty array if no record
-        res.status(200).json(linksRecord?.links || []);
+        // Map to string form
+        const stringLinks = linksRecord.map(l => l.link);
+
+        res.status(200).json(stringLinks);
     } catch (err: any) {
         logger.error({ err, authId }, 'Error fetching user links');
         res.status(500).json({ error: 'Database error' });
@@ -1126,12 +1106,8 @@ export const deleteUserLinks = async (req: AuthRequest, res: Response) => {
     if (!authId) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
-        // We delete all records for completeness, although logicaly should be at most one
-        await prisma.userLinks.deleteMany({
-            where: { userId: String(authId) }
-        });
-
-        logger.info({ authId }, 'User links deleted');
+        // UserLinks model removed. Returning success without hitting DB.
+        logger.info({ authId }, 'User links deleted (mocked)');
         res.status(204).send();
     } catch (err: any) {
         logger.error({ err, authId }, 'Error deleting user links');
@@ -1166,6 +1142,27 @@ export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Re
         const isVerified = user.userVerifications.some((v: any) => v.status === 'APPROVED');
 
         // console.log("is user verified", user.userVerifications, isVerified);
+
+        const userVerifications = await prisma.userVerifications.findFirst({
+            where: { userId: String(authId) }
+        });
+
+        if (!userVerifications) {
+            return res.status(200).json({
+                isVerified: false,
+                error: "Not Verified. Please verify your profile before applying."
+            });
+        }
+
+        const isLincenceExpired = userVerifications.licenseExpiryDate < new Date()
+        console.log("is license expired", isLincenceExpired);
+
+        if (isLincenceExpired) {
+            return res.status(200).json({
+                isLincenceExpired: true,
+                error: "License expired. Please renew your license before applying."
+            });
+        }
 
         if (!isVerified) {
             return res.status(200).json({

@@ -115,6 +115,13 @@ const getInstituteVerification = async (req: AuthRequest, res: Response) => {
             instituteVerification.registrationCertificate = getCloudFrontUrl(instituteVerification.registrationCertificate);
         }
 
+        if (instituteVerification.status === VerificationStatus.REJECTED) {
+            const rejection = await prisma.instituteVerificationRejection.findFirst({
+                where: { verificationId: instituteVerification.id }
+            });
+            return res.status(200).json({ status: instituteVerification.status, rejection });
+        }
+
         res.json(instituteVerification.status);
     } catch (error: any) {
         console.error(error);
@@ -195,35 +202,66 @@ const approveInstituteVerification = async (req: AuthRequest, res: Response) => 
 
 const rejectInstituteVerification = async (req: AuthRequest, res: Response) => {
     const { instituteId } = req.params;
+    const { documentField, customNote } = req.body;
+
+    if (!documentField || !customNote) {
+        return res.status(400).json({ error: 'documentField and customNote are required for rejection' });
+    }
 
     if (!instituteId) {
         return res.status(400).json({ error: "Institute ID is required" });
     }
 
     try {
-        const instituteVerification = await prisma.instituteVerifications.update({
-            where: {
-                instituteId: instituteId.toString(),
-            },
-            data: {
-                status: VerificationStatus.REJECTED,
-            },
-        });
+        const result = await prisma.$transaction(async (tx) => {
+            const verification = await tx.instituteVerifications.findUnique({
+                where: { instituteId: instituteId.toString() },
+            });
 
-        if (!instituteVerification) {
-            return res.status(400).json({ error: "Failed to reject institute verification" });
-        }
+            if (!verification) {
+                throw new Error("Verification not found");
+            }
+
+            const updatedVerification = await tx.instituteVerifications.update({
+                where: { instituteId: instituteId.toString() },
+                data: {
+                    status: VerificationStatus.REJECTED,
+                },
+            });
+
+            await tx.institute.update({
+                where: { id: instituteId.toString() },
+                data: { verified: false }
+            });
+
+            await tx.instituteVerificationRejection.create({
+                data: {
+                    documentField,
+                    customNote: customNote || null,
+                    verificationId: verification.id,
+                    instituteId: instituteId.toString()
+                }
+            });
+
+            return updatedVerification;
+        }, {
+            maxWait: 5000,
+            timeout: 10000
+        });
 
         await logActivity({
             module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
-            newData: instituteVerification,
-            description: 'Institute verification rejected'
+            newData: result,
+            description: `Institute verification rejected for ${documentField}`
         });
 
-        res.json({ message: "Institute verification rejected successfully", instituteVerification });
+        res.json({ message: "Institute verification rejected successfully", instituteVerification: result });
     } catch (error: any) {
         console.error(error);
+        if (error.message === "Verification not found") {
+            return res.status(404).json({ error: error.message });
+        }
         res.status(500).json({ error: "Failed to reject institute verification", message: error.message });
     }
 };
@@ -239,6 +277,7 @@ const getAllInstituteVerifications = async (req: AuthRequest, res: Response) => 
                 institute: {
                     select: {
                         id: true,
+                        name: true,
                     }
                 }
             }
@@ -335,6 +374,36 @@ const deleteInstituteVerificationById = async (req: AuthRequest, res: Response) 
     } catch (error: any) {
         console.error(error);
         res.status(500).json({ error: "Failed to delete institute verification", message: error.message });
+    }
+};
+
+export const getRecentOneInstituteVerification = async (req: AuthRequest, res: Response) => {
+    const instituteId = req.params.instituteId;
+    try {
+        const verification = await prisma.instituteVerifications.findFirst({
+            where: { instituteId: instituteId.toString() },
+            include: {
+                institute: {
+                    select: {
+                        id: true,
+                        name: true,
+                    }
+                }
+            }
+        });
+
+        if (!verification) {
+            return res.status(404).json({ error: "Institute verification not found" });
+        }
+
+        if (verification.registrationCertificate) {
+            verification.registrationCertificate = getCloudFrontUrl(verification.registrationCertificate);
+        }
+
+        res.json(verification);
+    } catch (error: any) {
+        console.error(error);
+        res.status(500).json({ error: "Failed to get recent one institute verification", message: error.message });
     }
 };
 

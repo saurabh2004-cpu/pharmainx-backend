@@ -56,6 +56,7 @@ import conversationRoutes from './routes/conversations.routes.ts';
 import messageRoutes from './routes/messages.routes.ts';
 import creditsHistoryRoutes from './routes/creditsHistoryRoutes.ts';
 import activityLogsRoutes from './routes/activityLogs.routes.js';
+import socialMediaRoutes from './routes/socialMedia.routes.js';
 
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/user', userRoutes);
@@ -77,6 +78,7 @@ app.use('/api/v1/conversations', conversationRoutes);
 app.use('/api/v1/messages', messageRoutes);
 app.use('/api/v1/credits-history', creditsHistoryRoutes);
 app.use('/api/v1/activity-logs', activityLogsRoutes);
+app.use('/api/v1/social-media', socialMediaRoutes);
 // Static Uploads removed - Served via CloudFront
 
 // Global Error Handler

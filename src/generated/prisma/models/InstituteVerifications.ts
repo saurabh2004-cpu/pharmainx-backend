@@ -223,6 +223,7 @@ export type InstituteVerificationsWhereInput = {
   adminPhone?: Prisma.StringFilter<"InstituteVerifications"> | string
   registrationCertificate?: Prisma.StringFilter<"InstituteVerifications"> | string
   institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionListRelationFilter
 }
 
 export type InstituteVerificationsOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type InstituteVerificationsOrderByWithRelationInput = {
   adminPhone?: Prisma.SortOrder
   registrationCertificate?: Prisma.SortOrder
   institute?: Prisma.InstituteOrderByWithRelationInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionOrderByRelationAggregateInput
 }
 
 export type InstituteVerificationsWhereUniqueInput = Prisma.AtLeast<{
@@ -254,6 +256,7 @@ export type InstituteVerificationsWhereUniqueInput = Prisma.AtLeast<{
   adminPhone?: Prisma.StringFilter<"InstituteVerifications"> | string
   registrationCertificate?: Prisma.StringFilter<"InstituteVerifications"> | string
   institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionListRelationFilter
 }, "id" | "instituteId">
 
 export type InstituteVerificationsOrderByWithAggregationInput = {
@@ -299,6 +302,7 @@ export type InstituteVerificationsCreateInput = {
   adminPhone: string
   registrationCertificate: string
   institute: Prisma.InstituteCreateNestedOneWithoutInstituteVerificationsInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutVerificationInput
 }
 
 export type InstituteVerificationsUncheckedCreateInput = {
@@ -312,6 +316,7 @@ export type InstituteVerificationsUncheckedCreateInput = {
   adminName: string
   adminPhone: string
   registrationCertificate: string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutVerificationInput
 }
 
 export type InstituteVerificationsUpdateInput = {
@@ -325,6 +330,7 @@ export type InstituteVerificationsUpdateInput = {
   adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
   registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
   institute?: Prisma.InstituteUpdateOneRequiredWithoutInstituteVerificationsNestedInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutVerificationNestedInput
 }
 
 export type InstituteVerificationsUncheckedUpdateInput = {
@@ -338,6 +344,7 @@ export type InstituteVerificationsUncheckedUpdateInput = {
   adminName?: Prisma.StringFieldUpdateOperationsInput | string
   adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
   registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutVerificationNestedInput
 }
 
 export type InstituteVerificationsCreateManyInput = {
@@ -381,6 +388,11 @@ export type InstituteVerificationsUncheckedUpdateManyInput = {
 export type InstituteVerificationsNullableScalarRelationFilter = {
   is?: Prisma.InstituteVerificationsWhereInput | null
   isNot?: Prisma.InstituteVerificationsWhereInput | null
+}
+
+export type InstituteVerificationsScalarRelationFilter = {
+  is?: Prisma.InstituteVerificationsWhereInput
+  isNot?: Prisma.InstituteVerificationsWhereInput
 }
 
 export type InstituteVerificationsCountOrderByAggregateInput = {
@@ -454,6 +466,20 @@ export type InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput 
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteVerificationsUpdateToOneWithWhereWithoutInstituteInput, Prisma.InstituteVerificationsUpdateWithoutInstituteInput>, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteInput>
 }
 
+export type InstituteVerificationsCreateNestedOneWithoutInstituteVerificationRejectionsInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteVerificationRejectionsInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteVerificationRejectionsInput
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
+}
+
+export type InstituteVerificationsUpdateOneRequiredWithoutInstituteVerificationRejectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteVerificationRejectionsInput>
+  connectOrCreate?: Prisma.InstituteVerificationsCreateOrConnectWithoutInstituteVerificationRejectionsInput
+  upsert?: Prisma.InstituteVerificationsUpsertWithoutInstituteVerificationRejectionsInput
+  connect?: Prisma.InstituteVerificationsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteVerificationsUpdateToOneWithWhereWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUpdateWithoutInstituteVerificationRejectionsInput>, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteVerificationRejectionsInput>
+}
+
 export type InstituteVerificationsCreateWithoutInstituteInput = {
   id?: string
   created_at?: Date | string
@@ -464,6 +490,7 @@ export type InstituteVerificationsCreateWithoutInstituteInput = {
   adminName: string
   adminPhone: string
   registrationCertificate: string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutVerificationInput
 }
 
 export type InstituteVerificationsUncheckedCreateWithoutInstituteInput = {
@@ -476,6 +503,7 @@ export type InstituteVerificationsUncheckedCreateWithoutInstituteInput = {
   adminName: string
   adminPhone: string
   registrationCertificate: string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutVerificationInput
 }
 
 export type InstituteVerificationsCreateOrConnectWithoutInstituteInput = {
@@ -504,6 +532,7 @@ export type InstituteVerificationsUpdateWithoutInstituteInput = {
   adminName?: Prisma.StringFieldUpdateOperationsInput | string
   adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
   registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutVerificationNestedInput
 }
 
 export type InstituteVerificationsUncheckedUpdateWithoutInstituteInput = {
@@ -516,8 +545,106 @@ export type InstituteVerificationsUncheckedUpdateWithoutInstituteInput = {
   adminName?: Prisma.StringFieldUpdateOperationsInput | string
   adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
   registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutVerificationNestedInput
 }
 
+export type InstituteVerificationsCreateWithoutInstituteVerificationRejectionsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  status?: $Enums.VerificationStatus
+  telephone: string
+  email: string
+  adminName: string
+  adminPhone: string
+  registrationCertificate: string
+  institute: Prisma.InstituteCreateNestedOneWithoutInstituteVerificationsInput
+}
+
+export type InstituteVerificationsUncheckedCreateWithoutInstituteVerificationRejectionsInput = {
+  id?: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  instituteId: string
+  status?: $Enums.VerificationStatus
+  telephone: string
+  email: string
+  adminName: string
+  adminPhone: string
+  registrationCertificate: string
+}
+
+export type InstituteVerificationsCreateOrConnectWithoutInstituteVerificationRejectionsInput = {
+  where: Prisma.InstituteVerificationsWhereUniqueInput
+  create: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteVerificationRejectionsInput>
+}
+
+export type InstituteVerificationsUpsertWithoutInstituteVerificationRejectionsInput = {
+  update: Prisma.XOR<Prisma.InstituteVerificationsUpdateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteVerificationRejectionsInput>
+  create: Prisma.XOR<Prisma.InstituteVerificationsCreateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedCreateWithoutInstituteVerificationRejectionsInput>
+  where?: Prisma.InstituteVerificationsWhereInput
+}
+
+export type InstituteVerificationsUpdateToOneWithWhereWithoutInstituteVerificationRejectionsInput = {
+  where?: Prisma.InstituteVerificationsWhereInput
+  data: Prisma.XOR<Prisma.InstituteVerificationsUpdateWithoutInstituteVerificationRejectionsInput, Prisma.InstituteVerificationsUncheckedUpdateWithoutInstituteVerificationRejectionsInput>
+}
+
+export type InstituteVerificationsUpdateWithoutInstituteVerificationRejectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutInstituteVerificationsNestedInput
+}
+
+export type InstituteVerificationsUncheckedUpdateWithoutInstituteVerificationRejectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationCertificate?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+
+/**
+ * Count Type InstituteVerificationsCountOutputType
+ */
+
+export type InstituteVerificationsCountOutputType = {
+  instituteVerificationRejections: number
+}
+
+export type InstituteVerificationsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  instituteVerificationRejections?: boolean | InstituteVerificationsCountOutputTypeCountInstituteVerificationRejectionsArgs
+}
+
+/**
+ * InstituteVerificationsCountOutputType without action
+ */
+export type InstituteVerificationsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InstituteVerificationsCountOutputType
+   */
+  select?: Prisma.InstituteVerificationsCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * InstituteVerificationsCountOutputType without action
+ */
+export type InstituteVerificationsCountOutputTypeCountInstituteVerificationRejectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InstituteVerificationRejectionWhereInput
+}
 
 
 export type InstituteVerificationsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -532,6 +659,8 @@ export type InstituteVerificationsSelect<ExtArgs extends runtime.Types.Extension
   adminPhone?: boolean
   registrationCertificate?: boolean
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
+  instituteVerificationRejections?: boolean | Prisma.InstituteVerifications$instituteVerificationRejectionsArgs<ExtArgs>
+  _count?: boolean | Prisma.InstituteVerificationsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["instituteVerifications"]>
 
 export type InstituteVerificationsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -578,6 +707,8 @@ export type InstituteVerificationsSelectScalar = {
 export type InstituteVerificationsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "updated_at" | "instituteId" | "status" | "telephone" | "email" | "adminName" | "adminPhone" | "registrationCertificate", ExtArgs["result"]["instituteVerifications"]>
 export type InstituteVerificationsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
+  instituteVerificationRejections?: boolean | Prisma.InstituteVerifications$instituteVerificationRejectionsArgs<ExtArgs>
+  _count?: boolean | Prisma.InstituteVerificationsCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type InstituteVerificationsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
@@ -590,6 +721,7 @@ export type $InstituteVerificationsPayload<ExtArgs extends runtime.Types.Extensi
   name: "InstituteVerifications"
   objects: {
     institute: Prisma.$InstitutePayload<ExtArgs>
+    instituteVerificationRejections: Prisma.$InstituteVerificationRejectionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -997,6 +1129,7 @@ readonly fields: InstituteVerificationsFieldRefs;
 export interface Prisma__InstituteVerificationsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   institute<T extends Prisma.InstituteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstituteDefaultArgs<ExtArgs>>): Prisma.Prisma__InstituteClient<runtime.Types.Result.GetResult<Prisma.$InstitutePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  instituteVerificationRejections<T extends Prisma.InstituteVerifications$instituteVerificationRejectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstituteVerifications$instituteVerificationRejectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationRejectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1429,6 +1562,30 @@ export type InstituteVerificationsDeleteManyArgs<ExtArgs extends runtime.Types.E
    * Limit how many InstituteVerifications to delete.
    */
   limit?: number
+}
+
+/**
+ * InstituteVerifications.instituteVerificationRejections
+ */
+export type InstituteVerifications$instituteVerificationRejectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InstituteVerificationRejection
+   */
+  select?: Prisma.InstituteVerificationRejectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InstituteVerificationRejection
+   */
+  omit?: Prisma.InstituteVerificationRejectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InstituteVerificationRejectionInclude<ExtArgs> | null
+  where?: Prisma.InstituteVerificationRejectionWhereInput
+  orderBy?: Prisma.InstituteVerificationRejectionOrderByWithRelationInput | Prisma.InstituteVerificationRejectionOrderByWithRelationInput[]
+  cursor?: Prisma.InstituteVerificationRejectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InstituteVerificationRejectionScalarFieldEnum | Prisma.InstituteVerificationRejectionScalarFieldEnum[]
 }
 
 /**

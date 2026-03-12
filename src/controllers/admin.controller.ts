@@ -43,7 +43,7 @@ export const login = async (req: Request, res: Response) => {
         res
             .status(200)
             .cookie("adminAccessToken", token, {
-                httpOnly: true, 
+                httpOnly: true,
                 sameSite: "lax",
                 maxAge: 24 * 60 * 60 * 1000
             })
@@ -142,5 +142,34 @@ export const getAllAdmins = async (req: AuthRequest, res: Response) => {
     } catch (error) {
         logger.error({ err: error }, 'Error fetching admins');
         res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+
+export const getStats = async (req: AuthRequest, res: Response) => {
+    try {
+        const [usersCount, jobsCount, applicationsCount, institutesCount] = await Promise.all([
+            prisma.user.count(),
+            prisma.job.count(),
+            prisma.application.count(),
+            prisma.institute.count()
+        ])
+
+
+        const stats = {
+            usersCount,
+            jobsCount,
+            applicationsCount,
+            institutesCount
+        };
+
+        if (!stats) {
+            return res.status(500).json("error whicle fetching stats")
+        }
+
+        res.status(200).json(stats)
+
+    } catch (error) {
+
     }
 }

@@ -10,9 +10,11 @@ interface SendNotificationParams {
     receiverRole: 'USER' | 'INSTITUTE';
     title: string;
     message: string;
-    relatedJobId?: string;
-    relatedApplicationId?: string;
+    applicationId: string;
     status: ApplicationStatus;
+    interviewType?: string;
+    interviewTime?: string;
+    interviewLink?: string;
 }
 
 /**
@@ -25,8 +27,10 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
         receiverRole,
         title,
         message,
-        relatedJobId,
-        relatedApplicationId,
+        applicationId,
+        interviewType,
+        interviewTime,
+        interviewLink
     } = params;
 
     console.log("notification params", params);
@@ -39,17 +43,49 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
                 receiverRole,
                 title,
                 message,
-                relatedJobId: relatedJobId || null,
-                relatedApplicationId: relatedApplicationId || null,
+                applicationId,
                 isRead: false,
                 status: params.status
+            },
+            include: {
+                application: {
+                    select: {
+                        id: true,
+                        job: {
+                            select: {
+                                id: true,
+                                title: true,
+                                institute: {
+                                    select: {
+                                        id: true,
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         });
 
         // Emit notification via Socket.IO to the receiver
         try {
             const io = getIO();
-            io.to(receiverId).emit('notification', notification, params.status);
+            
+            // Prepare payload with transient interview details if they exist
+            const emitPayload = {
+                ...notification,
+                interviewType: interviewType || undefined,
+                interviewTime: interviewTime || undefined,
+                interviewLink: interviewLink || undefined,
+                interviewDetails: interviewType ? {
+                    interviewType,
+                    interviewTime,
+                    interviewLink
+                } : undefined
+            };
+
+            io.to(receiverId).emit('notification', emitPayload, params.status);
             logger.info({ notificationId: notification.id, receiverId }, 'Notification sent via Socket.IO');
         } catch (socketError) {
             // Socket.IO might not be initialized in some contexts (e.g., tests)

@@ -32,6 +32,16 @@ export const ApplicationStatus = {
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
 
 
+export const SocialMediaPlatforms = {
+  TWITTER: 'TWITTER',
+  LINKEDIN: 'LINKEDIN',
+  INSTAGRAM: 'INSTAGRAM',
+  FACEBOOK: 'FACEBOOK'
+} as const
+
+export type SocialMediaPlatforms = (typeof SocialMediaPlatforms)[keyof typeof SocialMediaPlatforms]
+
+
 export const ActivityActionType = {
   CREATE: 'CREATE',
   UPDATE: 'UPDATE',

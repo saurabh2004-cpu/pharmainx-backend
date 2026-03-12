@@ -1,4 +1,4 @@
-import { signUp, login, logout, getAdminById, editAdmin, deleteAdmin, getAllAdmins } from "../controllers/admin.controller";
+import { signUp, login, logout, getAdminById, editAdmin, deleteAdmin, getAllAdmins, getStats } from "../controllers/admin.controller";
 import { Router } from "express";
 import { authenticateToken } from "../middlewares/auth.middleware";
 const router = Router();
@@ -10,5 +10,6 @@ router.get("/get-admin/:id", authenticateToken, getAdminById);
 router.put("/edit-admin/:id", authenticateToken, editAdmin);
 router.delete("/delete-admin/:id", authenticateToken, deleteAdmin);
 router.get("/get-all-admins", authenticateToken, getAllAdmins);
+router.get("/get-stats", authenticateToken, getStats);
 
 export default router;
