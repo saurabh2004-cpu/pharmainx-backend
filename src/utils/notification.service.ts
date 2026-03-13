@@ -13,6 +13,7 @@ interface SendNotificationParams {
     applicationId: string;
     status: ApplicationStatus;
     interviewType?: string;
+    interviewDate?: string;
     interviewTime?: string;
     interviewLink?: string;
 }
@@ -29,6 +30,7 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
         message,
         applicationId,
         interviewType,
+        interviewDate,
         interviewTime,
         interviewLink
     } = params;
@@ -76,10 +78,12 @@ export const sendNotification = async (params: SendNotificationParams): Promise<
             const emitPayload = {
                 ...notification,
                 interviewType: interviewType || undefined,
+                interviewDate: interviewDate || undefined,
                 interviewTime: interviewTime || undefined,
                 interviewLink: interviewLink || undefined,
                 interviewDetails: interviewType ? {
                     interviewType,
+                    interviewDate,
                     interviewTime,
                     interviewLink
                 } : undefined

@@ -52,6 +52,7 @@ model User {
   userVerifications          UserVerifications[]
   userVerificationRejections UserVerificationRejection[]
   userSocialMediaLinks       UserSocialMediaLinks[]
+  interviews                 Interviews[]
 }
 
 model Institute {
@@ -174,6 +175,21 @@ model Application {
   job               Job               @relation(fields: [jobId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user              User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   notifications     Notification[]
+  interviews        Interviews[]
+}
+
+model Interviews {
+  id            String @id @default(uuid())
+  userId        String
+  applicationId String
+
+  interviewType String
+  interviewTime DateTime
+  interviewDate DateTime
+  interviewLink String?
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model JobView {

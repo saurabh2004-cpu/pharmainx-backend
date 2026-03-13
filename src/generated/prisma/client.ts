@@ -80,6 +80,11 @@ export type Job = Prisma.JobModel
  */
 export type Application = Prisma.ApplicationModel
 /**
+ * Model Interviews
+ * 
+ */
+export type Interviews = Prisma.InterviewsModel
+/**
  * Model JobView
  * 
  */

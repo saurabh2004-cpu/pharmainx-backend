@@ -55,8 +55,15 @@ export const getMyNotifications = async (req: AuthRequest, res: Response) => {
                 take,
                 orderBy: { createdAt: 'desc' },
                 include: {
-                    job: true,
-                    application: true
+                    application: {
+                        include: {
+                            job: {
+                                include: {
+                                    institute: true
+                                }
+                            }
+                        }
+                    }
                 }
             }),
             prisma.notification.count({
@@ -201,8 +208,15 @@ export const getAllMyUnreadNotifications = async (req: AuthRequest, res: Respons
             },
             orderBy: { createdAt: 'desc' },
             include: {
-                job: true,
-                application: true
+                application: {
+                    include: {
+                        job: {
+                            include: {
+                                institute: true
+                            }
+                        }
+                    }
+                }
             }
         });
 

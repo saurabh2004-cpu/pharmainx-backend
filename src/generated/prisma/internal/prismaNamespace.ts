@@ -392,6 +392,7 @@ export const ModelName = {
   CreditsHistory: 'CreditsHistory',
   Job: 'Job',
   Application: 'Application',
+  Interviews: 'Interviews',
   JobView: 'JobView',
   InstituteView: 'InstituteView',
   InstituteImages: 'InstituteImages',
@@ -427,7 +428,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "interviews" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1020,6 +1021,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ApplicationCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ApplicationCountAggregateOutputType> | number
+        }
+      }
+    }
+    Interviews: {
+      payload: Prisma.$InterviewsPayload<ExtArgs>
+      fields: Prisma.InterviewsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InterviewsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InterviewsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        findFirst: {
+          args: Prisma.InterviewsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InterviewsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        findMany: {
+          args: Prisma.InterviewsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>[]
+        }
+        create: {
+          args: Prisma.InterviewsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        createMany: {
+          args: Prisma.InterviewsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InterviewsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>[]
+        }
+        delete: {
+          args: Prisma.InterviewsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        update: {
+          args: Prisma.InterviewsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        deleteMany: {
+          args: Prisma.InterviewsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InterviewsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InterviewsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>[]
+        }
+        upsert: {
+          args: Prisma.InterviewsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InterviewsPayload>
+        }
+        aggregate: {
+          args: Prisma.InterviewsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInterviews>
+        }
+        groupBy: {
+          args: Prisma.InterviewsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InterviewsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InterviewsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InterviewsCountAggregateOutputType> | number
         }
       }
     }
@@ -2695,6 +2770,19 @@ export const ApplicationScalarFieldEnum = {
 export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
 
 
+export const InterviewsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  interviewType: 'interviewType',
+  interviewTime: 'interviewTime',
+  interviewDate: 'interviewDate',
+  interviewLink: 'interviewLink'
+} as const
+
+export type InterviewsScalarFieldEnum = (typeof InterviewsScalarFieldEnum)[keyof typeof InterviewsScalarFieldEnum]
+
+
 export const JobViewScalarFieldEnum = {
   id: 'id',
   jobId: 'jobId',
@@ -3375,6 +3463,7 @@ export type GlobalOmitConfig = {
   creditsHistory?: Prisma.CreditsHistoryOmit
   job?: Prisma.JobOmit
   application?: Prisma.ApplicationOmit
+  interviews?: Prisma.InterviewsOmit
   jobView?: Prisma.JobViewOmit
   instituteView?: Prisma.InstituteViewOmit
   instituteImages?: Prisma.InstituteImagesOmit

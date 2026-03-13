@@ -59,6 +59,7 @@ export const ModelName = {
   CreditsHistory: 'CreditsHistory',
   Job: 'Job',
   Application: 'Application',
+  Interviews: 'Interviews',
   JobView: 'JobView',
   InstituteView: 'InstituteView',
   InstituteImages: 'InstituteImages',
@@ -248,6 +249,19 @@ export const ApplicationScalarFieldEnum = {
 } as const
 
 export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
+
+
+export const InterviewsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  interviewType: 'interviewType',
+  interviewTime: 'interviewTime',
+  interviewDate: 'interviewDate',
+  interviewLink: 'interviewLink'
+} as const
+
+export type InterviewsScalarFieldEnum = (typeof InterviewsScalarFieldEnum)[keyof typeof InterviewsScalarFieldEnum]
 
 
 export const JobViewScalarFieldEnum = {

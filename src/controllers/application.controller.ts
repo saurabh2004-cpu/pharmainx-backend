@@ -70,17 +70,36 @@ export const getApplicationsByUserId = async (req: AuthRequest, res: Response) =
                             include: { instituteImages: true }
                         }
                     }
+                },
+                interviews: {
+                    orderBy: {
+                        interviewDate: 'desc'
+                    }
                 }
             },
+            orderBy: {
+                created_at: 'desc'
+            }
         });
 
-        // Map profile_picture onto each institute
+
         const mapped = applications.map((app: any) => {
             if (app.job?.institute) {
                 const imgs = app.job.institute.instituteImages;
                 const img = Array.isArray(imgs) && imgs.length > 0 ? imgs[0] : null;
                 app.job.institute.profile_picture = img?.profileImage ? getCloudFrontUrl(img.profileImage) : null;
             }
+
+            // Deduplicate interviews by applicationId to handle existing duplicate records
+            if (app.interviews && app.interviews.length > 1) {
+                const seen = new Set();
+                app.interviews = app.interviews.filter((iv: any) => {
+                    if (seen.has(iv.applicationId)) return false;
+                    seen.add(iv.applicationId);
+                    return true;
+                });
+            }
+
             return app;
         });
 
@@ -357,11 +376,57 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
         if (!app) return res.status(404).json({ error: "Application not found" });
         if (app.job.instituteId !== authId) return res.status(403).json({ error: "Forbidden" });
 
+        const interviewDateObj = new Date(interviewDate);
+        const interviewTimeObj = new Date(`${interviewDate}T${interviewTime}`);
+
+        if (isNaN(interviewDateObj.getTime()) || isNaN(interviewTimeObj.getTime())) {
+            return res.status(400).json({ error: "Invalid interview date or time format" });
+        }
+
+        const interviewDetails = {
+            interviewType: interviewLink ? "Video Interview" : "Phone Interview",
+            interviewDate: interviewDateObj,
+            interviewTime: interviewTimeObj,
+            interviewLink
+        };
+
+        // Check if an interview already exists for this application to avoid duplicates
+        const existingInterview = await prisma.interviews.findFirst({
+            where: { applicationId: app.id }
+        });
+
+        if (existingInterview) {
+            await prisma.interviews.update({
+                where: { id: existingInterview.id },
+                data: {
+                    interviewType: interviewDetails.interviewType,
+                    interviewDate: interviewDetails.interviewDate,
+                    interviewTime: interviewDetails.interviewTime,
+                    interviewLink: interviewDetails.interviewLink
+                }
+            });
+        } else {
+            await prisma.interviews.create({
+                data: {
+                    userId: app.userId,
+                    applicationId: app.id,
+                    interviewType: interviewDetails.interviewType,
+                    interviewDate: interviewDetails.interviewDate,
+                    interviewTime: interviewDetails.interviewTime,
+                    interviewLink: interviewDetails.interviewLink
+                }
+            });
+        }
+
         const updated = await prisma.application.update({
             where: { id },
             data: {
                 status: 'INTERVIEW_SCHEDULED',
-                // Assuming we might want to store interview details in additionalDetails or similar, skipping for now as per schema constraints
+                additionalDetails: {
+                    ...interviewDetails,
+                    interviewDate, // Keep original strings for display if needed
+                    interviewTime
+                } as any
             }
         });
 
@@ -377,9 +442,10 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
             message: notificationMessage,
             applicationId: app.id,
             status: 'INTERVIEW_SCHEDULED',
-            interviewType: interviewLink ? "Video Interview" : "Phone Interview",
+            interviewType: interviewDetails.interviewType,
+            interviewDate: interviewDate,
             interviewTime: interviewTime,
-            interviewLink: interviewLink
+            interviewLink: interviewDetails.interviewLink
         });
 
         res.status(200).json(updated);
