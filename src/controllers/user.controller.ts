@@ -1158,6 +1158,32 @@ export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Re
         console.log("is license expired", isLincenceExpired);
 
         if (isLincenceExpired) {
+
+            const result = await prisma.$transaction(async (tx) => {
+                // 1. Update verification status
+                const updatedVerification = await tx.userVerifications.update({
+                    where: { id: String(userVerifications.id) },
+                    data: { status: VerificationStatus.REJECTED }
+                });
+
+                // 2. Set user as unverified
+                await tx.user.update({
+                    where: { id: String(authId) },
+                    data: { verified: false }
+                });
+
+                // 3. Create the granular Rejection record
+                await tx.userVerificationRejection.create({
+                    data: {
+                        documentField: "licenseExpiryDate",
+                        customNote: "License expired. Please renew your license before applying.",
+                        verificationId: userVerifications.id,
+                        userId: userVerifications.userId
+                    }
+                });
+            })
+
+
             return res.status(200).json({
                 isLincenceExpired: true,
                 error: "License expired. Please renew your license before applying."

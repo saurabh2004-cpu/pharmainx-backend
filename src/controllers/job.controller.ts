@@ -483,13 +483,17 @@ export const getAllJobs = async (req: Request, res: Response) => {
                 const userSpec = String(user.speciality || '').trim();
                 const userSubSpec = String(user.subSpeciality || '').trim();
                 const userExp = user.experience || 0;
+                const userCountry = String(user.country || '').trim();
+                const userCity = String(user.city || '').trim();
 
                 console.log("DEBUG Ranking - User Profile:", {
                     id: user.id,
                     role: userRole,
                     speciality: userSpec,
                     subSpeciality: userSubSpec,
-                    experience: userExp
+                    experience: userExp,
+                    country: userCountry,
+                    city: userCity
                 });
 
                 jobs = await prisma.$queryRaw`
@@ -497,6 +501,8 @@ export const getAllJobs = async (req: Request, res: Response) => {
                     (CASE WHEN "role" IS NOT NULL AND ${userRole} <> '' AND TRIM("role") ILIKE ${userRole} THEN 1 ELSE 0 END) as role_match,
                     (CASE WHEN "speciality" IS NOT NULL AND "speciality" <> '' AND ${userSpec} <> '' AND TRIM("speciality") ILIKE ${userSpec} THEN 1 ELSE 0 END) as spec_match,
                     (CASE WHEN "subSpeciality" IS NOT NULL AND "subSpeciality" <> '' AND ${userSubSpec} <> '' AND TRIM("subSpeciality") ILIKE ${userSubSpec} THEN 1 ELSE 0 END) as subspec_match,
+                    (CASE WHEN "country" IS NOT NULL AND "country" <> '' AND ${userCountry} <> '' AND TRIM("country") ILIKE ${userCountry} THEN 1 ELSE 0 END) as country_match,
+                    (CASE WHEN "city" IS NOT NULL AND "city" <> '' AND ${userCity} <> '' AND TRIM("city") ILIKE ${userCity} THEN 1 ELSE 0 END) as city_match,
                     (CASE 
                         WHEN ("experienceLevel" ILIKE '%fresher%' AND ${userExp} BETWEEN 0 AND 1) THEN 1
                         WHEN ("experienceLevel" ILIKE '%intermediate%' AND ${userExp} BETWEEN 2 AND 4) THEN 1
@@ -509,7 +515,7 @@ export const getAllJobs = async (req: Request, res: Response) => {
                     ${jobTypeFilter}
                     ${locationFilter}
                     ${expFilter}
-                    ORDER BY role_match DESC, spec_match DESC, subspec_match DESC, exp_match DESC, "created_at" DESC
+                    ORDER BY role_match DESC, spec_match DESC, subspec_match DESC, country_match DESC, city_match DESC, exp_match DESC, "created_at" DESC
                     LIMIT ${take} OFFSET ${skip}
                  `;
 
@@ -582,9 +588,9 @@ const calculateExperienceScore = (userExp: number | null, jobExpLevel: string): 
 
     const jExp = jobExpLevel.toLowerCase().trim();
 
-    if (jExp.includes('fresher') && userExp >= 0 && userExp <= 1) return 25;
-    if (jExp.includes('intermediate') && userExp >= 2 && userExp <= 4) return 25;
-    if (jExp.includes('experienced') && userExp >= 5) return 25;
+    if (jExp.includes('fresher') && userExp >= 0 && userExp <= 1) return 20;
+    if (jExp.includes('intermediate') && userExp >= 2 && userExp <= 4) return 20;
+    if (jExp.includes('experienced') && userExp >= 5) return 20;
 
     return 0;
 };
@@ -608,6 +614,7 @@ export const getJobById = async (req: Request, res: Response) => {
         }
 
         let matchingScore: number | null = null;
+        let matchedFields: string[] = [];
 
         // Calculate matching score if user is explicitly authenticated
         if (authId) {
@@ -625,24 +632,47 @@ export const getJobById = async (req: Request, res: Response) => {
                 const jobRole = job.role || '';
                 if (userRole && jobRole && userRole.toLowerCase() === jobRole.toLowerCase()) {
                     matchingScore += 20;
+                    matchedFields.push('Role');
                 }
 
-                // 2. Speciality Match (+30%)
+                // 2. Speciality Match (+25%)
                 const userSpec = user.speciality || '';
                 const jobSpec = job.speciality || '';
                 if (userSpec && jobSpec && userSpec === jobSpec) {
-                    matchingScore += 30;
+                    matchingScore += 25;
+                    matchedFields.push('Speciality');
                 }
 
-                // 3. Sub-Speciality Match (+25%)
+                // 3. Sub-Speciality Match (+15%)
                 const userSubSpec = user.subSpeciality || '';
                 const jobSubSpec = job.subSpeciality || '';
                 if (userSubSpec && jobSubSpec && userSubSpec === jobSubSpec) {
-                    matchingScore += 25;
+                    matchingScore += 15;
+                    matchedFields.push('Sub-Speciality');
                 }
 
-                // 4. Experience Match (+25%)
-                matchingScore += calculateExperienceScore(user.experience, job.experienceLevel);
+                // 4. Experience Match (+20%)
+                const expScore = calculateExperienceScore(user.experience, job.experienceLevel);
+                if (expScore > 0) {
+                    matchingScore += expScore;
+                    matchedFields.push('Experience');
+                }
+
+                // 5. Country Match (+10%)
+                const userCountry = user.country || '';
+                const jobCountry = job.country || '';
+                if (userCountry && jobCountry && userCountry.toLowerCase() === jobCountry.toLowerCase()) {
+                    matchingScore += 10;
+                    matchedFields.push('Country');
+                }
+
+                // 6. City Match (+10%)
+                const userCity = user.city || '';
+                const jobCity = job.city || '';
+                if (userCity && jobCity && userCity.toLowerCase() === jobCity.toLowerCase()) {
+                    matchingScore += 10;
+                    matchedFields.push('City');
+                }
             }
         }
 
@@ -651,10 +681,11 @@ export const getJobById = async (req: Request, res: Response) => {
         // Map institute profile_picture
         const mappedJob = mapJobInstituteImage({ ...job });
 
-        // Return strictly formatted response: { job: { ... }, matchingScore }
+        // Return strictly formatted response: { job: { ... }, matchingScore, matchedFields }
         res.status(200).json({
             job: mappedJob,
-            matchingScore
+            matchingScore,
+            matchedFields
         });
 
     } catch (err) {
