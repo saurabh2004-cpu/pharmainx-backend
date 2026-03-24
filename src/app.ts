@@ -24,6 +24,8 @@ app.use(cors({
         "http://localhost:5173",
         "http://88.222.242.191:3000",
         "http://88.222.242.191:5173",
+        "https://pharmainc.in",
+        "https://admin.pharmainc.in"
     ],
     credentials: true,
 }));
