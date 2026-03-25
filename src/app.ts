@@ -25,7 +25,7 @@ app.use(cors({
         "http://88.222.242.191:3000",
         "http://88.222.242.191:5173",
         "https://pharmainc.in",
-        "https://admin.pharmainc.in"
+        "https://admin.pharminc.in"
     ],
     credentials: true,
 }));

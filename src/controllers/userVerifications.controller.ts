@@ -389,3 +389,26 @@ export const getVerificationByUserId = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Database error', message: err.message });
     }
 }
+
+export const getRecentOneUserVerification = async (req: Request, res: Response) => {
+    const { userId } = req.params;
+    try {
+        const verification = await prisma.userVerifications.findFirst({
+            where: { userId: userId.toString() },
+            orderBy: { created_at: 'desc' }
+        });
+
+        if (!verification) {
+            return res.status(404).json({ error: 'Verification not found' });
+        }
+
+        if (verification.governMentId) verification.governMentId = getCloudFrontUrl(verification.governMentId);
+        if (verification.degreeCertificate) verification.degreeCertificate = getCloudFrontUrl(verification.degreeCertificate);
+        if (verification.postGraduateDegreeCertificate) verification.postGraduateDegreeCertificate = getCloudFrontUrl(verification.postGraduateDegreeCertificate);
+
+        res.status(200).json(verification);
+    } catch (err: any) {
+        logger.error({ err, userId }, 'Error fetching recent verification by user id');
+        res.status(500).json({ error: 'Database error', message: err.message });
+    }
+}
