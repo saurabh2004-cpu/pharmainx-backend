@@ -85,6 +85,7 @@ model Institute {
   creditsHistories                CreditsHistory[]
   instituteVerificationRejections InstituteVerificationRejection[]
   instituteSocialMediaLinks       InstituteSocialMediaLinks[]
+  transactions                    Transactions[]
 }
 
 model InstituteCredits {
@@ -479,6 +480,29 @@ model InstituteSocialMediaLinks {
   platform SocialMediaPlatforms
 
   instituteId String    @default("")
+  institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+}
+
+model Packages {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name         String
+  price        Int
+  credits      Int
+  transactions Transactions[]
+}
+
+model Transactions {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  amount      Int
+  instituteId String
+  packageId   String
+  package     Packages  @relation(fields: [packageId], references: [id], onDelete: Cascade)
   institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
 }
 

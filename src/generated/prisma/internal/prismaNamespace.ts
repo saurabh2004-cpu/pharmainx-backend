@@ -412,7 +412,9 @@ export const ModelName = {
   Message: 'Message',
   ActivityLogs: 'ActivityLogs',
   UserSocialMediaLinks: 'UserSocialMediaLinks',
-  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks'
+  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks',
+  Packages: 'Packages',
+  Transactions: 'Transactions'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -428,7 +430,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "interviews" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "interviews" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks" | "packages" | "transactions"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2578,6 +2580,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Packages: {
+      payload: Prisma.$PackagesPayload<ExtArgs>
+      fields: Prisma.PackagesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PackagesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PackagesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        findFirst: {
+          args: Prisma.PackagesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PackagesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        findMany: {
+          args: Prisma.PackagesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>[]
+        }
+        create: {
+          args: Prisma.PackagesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        createMany: {
+          args: Prisma.PackagesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PackagesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>[]
+        }
+        delete: {
+          args: Prisma.PackagesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        update: {
+          args: Prisma.PackagesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        deleteMany: {
+          args: Prisma.PackagesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PackagesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PackagesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>[]
+        }
+        upsert: {
+          args: Prisma.PackagesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackagesPayload>
+        }
+        aggregate: {
+          args: Prisma.PackagesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePackages>
+        }
+        groupBy: {
+          args: Prisma.PackagesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackagesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PackagesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackagesCountAggregateOutputType> | number
+        }
+      }
+    }
+    Transactions: {
+      payload: Prisma.$TransactionsPayload<ExtArgs>
+      fields: Prisma.TransactionsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransactionsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransactionsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        findFirst: {
+          args: Prisma.TransactionsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransactionsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        findMany: {
+          args: Prisma.TransactionsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+        }
+        create: {
+          args: Prisma.TransactionsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        createMany: {
+          args: Prisma.TransactionsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TransactionsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+        }
+        delete: {
+          args: Prisma.TransactionsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        update: {
+          args: Prisma.TransactionsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        deleteMany: {
+          args: Prisma.TransactionsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransactionsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TransactionsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>[]
+        }
+        upsert: {
+          args: Prisma.TransactionsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionsPayload>
+        }
+        aggregate: {
+          args: Prisma.TransactionsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransactions>
+        }
+        groupBy: {
+          args: Prisma.TransactionsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransactionsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransactionsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransactionsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3069,6 +3219,30 @@ export const InstituteSocialMediaLinksScalarFieldEnum = {
 export type InstituteSocialMediaLinksScalarFieldEnum = (typeof InstituteSocialMediaLinksScalarFieldEnum)[keyof typeof InstituteSocialMediaLinksScalarFieldEnum]
 
 
+export const PackagesScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  price: 'price',
+  credits: 'credits'
+} as const
+
+export type PackagesScalarFieldEnum = (typeof PackagesScalarFieldEnum)[keyof typeof PackagesScalarFieldEnum]
+
+
+export const TransactionsScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  amount: 'amount',
+  instituteId: 'instituteId',
+  packageId: 'packageId'
+} as const
+
+export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3484,6 +3658,8 @@ export type GlobalOmitConfig = {
   activityLogs?: Prisma.ActivityLogsOmit
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksOmit
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksOmit
+  packages?: Prisma.PackagesOmit
+  transactions?: Prisma.TransactionsOmit
 }
 
 /* Types for Logging */

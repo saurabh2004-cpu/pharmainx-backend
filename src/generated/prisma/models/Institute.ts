@@ -349,6 +349,7 @@ export type InstituteWhereInput = {
   creditsHistories?: Prisma.CreditsHistoryListRelationFilter
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionListRelationFilter
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksListRelationFilter
+  transactions?: Prisma.TransactionsListRelationFilter
 }
 
 export type InstituteOrderByWithRelationInput = {
@@ -381,6 +382,7 @@ export type InstituteOrderByWithRelationInput = {
   creditsHistories?: Prisma.CreditsHistoryOrderByRelationAggregateInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionOrderByRelationAggregateInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksOrderByRelationAggregateInput
+  transactions?: Prisma.TransactionsOrderByRelationAggregateInput
 }
 
 export type InstituteWhereUniqueInput = Prisma.AtLeast<{
@@ -416,6 +418,7 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   creditsHistories?: Prisma.CreditsHistoryListRelationFilter
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionListRelationFilter
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksListRelationFilter
+  transactions?: Prisma.TransactionsListRelationFilter
 }, "id" | "name" | "contactEmail">
 
 export type InstituteOrderByWithAggregationInput = {
@@ -502,6 +505,7 @@ export type InstituteCreateInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateInput = {
@@ -534,6 +538,7 @@ export type InstituteUncheckedCreateInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUpdateInput = {
@@ -566,6 +571,7 @@ export type InstituteUpdateInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateInput = {
@@ -598,6 +604,7 @@ export type InstituteUncheckedUpdateInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateManyInput = {
@@ -917,6 +924,20 @@ export type InstituteUpdateOneRequiredWithoutInstituteSocialMediaLinksNestedInpu
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutInstituteSocialMediaLinksInput, Prisma.InstituteUpdateWithoutInstituteSocialMediaLinksInput>, Prisma.InstituteUncheckedUpdateWithoutInstituteSocialMediaLinksInput>
 }
 
+export type InstituteCreateNestedOneWithoutTransactionsInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutTransactionsInput, Prisma.InstituteUncheckedCreateWithoutTransactionsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutTransactionsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+}
+
+export type InstituteUpdateOneRequiredWithoutTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutTransactionsInput, Prisma.InstituteUncheckedCreateWithoutTransactionsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutTransactionsInput
+  upsert?: Prisma.InstituteUpsertWithoutTransactionsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutTransactionsInput, Prisma.InstituteUpdateWithoutTransactionsInput>, Prisma.InstituteUncheckedUpdateWithoutTransactionsInput>
+}
+
 export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   id?: string
   created_at?: Date | string
@@ -946,6 +967,7 @@ export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
@@ -977,6 +999,7 @@ export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteCreditsWalletsInput = {
@@ -1024,6 +1047,7 @@ export type InstituteUpdateWithoutInstituteCreditsWalletsInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
@@ -1055,6 +1079,7 @@ export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutCreditsHistoriesInput = {
@@ -1086,6 +1111,7 @@ export type InstituteCreateWithoutCreditsHistoriesInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutCreditsHistoriesInput = {
@@ -1117,6 +1143,7 @@ export type InstituteUncheckedCreateWithoutCreditsHistoriesInput = {
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutCreditsHistoriesInput = {
@@ -1164,6 +1191,7 @@ export type InstituteUpdateWithoutCreditsHistoriesInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutCreditsHistoriesInput = {
@@ -1195,6 +1223,7 @@ export type InstituteUncheckedUpdateWithoutCreditsHistoriesInput = {
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutJobInput = {
@@ -1226,6 +1255,7 @@ export type InstituteCreateWithoutJobInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutJobInput = {
@@ -1257,6 +1287,7 @@ export type InstituteUncheckedCreateWithoutJobInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutJobInput = {
@@ -1304,6 +1335,7 @@ export type InstituteUpdateWithoutJobInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutJobInput = {
@@ -1335,6 +1367,7 @@ export type InstituteUncheckedUpdateWithoutJobInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteViewsInput = {
@@ -1366,6 +1399,7 @@ export type InstituteCreateWithoutInstituteViewsInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
@@ -1397,6 +1431,7 @@ export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteViewsInput = {
@@ -1444,6 +1479,7 @@ export type InstituteUpdateWithoutInstituteViewsInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
@@ -1475,6 +1511,7 @@ export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteImagesInput = {
@@ -1506,6 +1543,7 @@ export type InstituteCreateWithoutInstituteImagesInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
@@ -1537,6 +1575,7 @@ export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteImagesInput = {
@@ -1584,6 +1623,7 @@ export type InstituteUpdateWithoutInstituteImagesInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
@@ -1615,6 +1655,7 @@ export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteVerificationRejectionsInput = {
@@ -1646,6 +1687,7 @@ export type InstituteCreateWithoutInstituteVerificationRejectionsInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteVerificationRejectionsInput = {
@@ -1677,6 +1719,7 @@ export type InstituteUncheckedCreateWithoutInstituteVerificationRejectionsInput 
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteVerificationRejectionsInput = {
@@ -1724,6 +1767,7 @@ export type InstituteUpdateWithoutInstituteVerificationRejectionsInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteVerificationRejectionsInput = {
@@ -1755,6 +1799,7 @@ export type InstituteUncheckedUpdateWithoutInstituteVerificationRejectionsInput 
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteVerificationsInput = {
@@ -1786,6 +1831,7 @@ export type InstituteCreateWithoutInstituteVerificationsInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteVerificationsInput = {
@@ -1817,6 +1863,7 @@ export type InstituteUncheckedCreateWithoutInstituteVerificationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteVerificationsInput = {
@@ -1864,6 +1911,7 @@ export type InstituteUpdateWithoutInstituteVerificationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteVerificationsInput = {
@@ -1895,6 +1943,7 @@ export type InstituteUncheckedUpdateWithoutInstituteVerificationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutConversationsInput = {
@@ -1926,6 +1975,7 @@ export type InstituteCreateWithoutConversationsInput = {
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutConversationsInput = {
@@ -1957,6 +2007,7 @@ export type InstituteUncheckedCreateWithoutConversationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutConversationsInput = {
@@ -2004,6 +2055,7 @@ export type InstituteUpdateWithoutConversationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutConversationsInput = {
@@ -2035,6 +2087,7 @@ export type InstituteUncheckedUpdateWithoutConversationsInput = {
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteCreateWithoutInstituteSocialMediaLinksInput = {
@@ -2066,6 +2119,7 @@ export type InstituteCreateWithoutInstituteSocialMediaLinksInput = {
   Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
   creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteUncheckedCreateWithoutInstituteSocialMediaLinksInput = {
@@ -2097,6 +2151,7 @@ export type InstituteUncheckedCreateWithoutInstituteSocialMediaLinksInput = {
   Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
 }
 
 export type InstituteCreateOrConnectWithoutInstituteSocialMediaLinksInput = {
@@ -2144,6 +2199,7 @@ export type InstituteUpdateWithoutInstituteSocialMediaLinksInput = {
   Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
   creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
 }
 
 export type InstituteUncheckedUpdateWithoutInstituteSocialMediaLinksInput = {
@@ -2175,6 +2231,151 @@ export type InstituteUncheckedUpdateWithoutInstituteSocialMediaLinksInput = {
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteCreateWithoutTransactionsInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  verified?: boolean
+  contactEmail: string
+  contactNumber: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
+  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteUncheckedCreateWithoutTransactionsInput = {
+  id?: string
+  created_at?: Date | string
+  name: string
+  verified?: boolean
+  contactEmail: string
+  contactNumber: string
+  role?: $Enums.InstituteRoles
+  affiliatedUniversity?: string | null
+  yearEstablished?: number | null
+  ownership?: string | null
+  headline?: string | null
+  about?: string | null
+  password: string
+  bedsCount: number
+  services?: Prisma.InstituteCreateservicesInput | string[]
+  staffCount: number
+  telephone: string
+  type: string
+  city?: string | null
+  country?: string | null
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
+  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
+  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
+  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
+  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteCreateOrConnectWithoutTransactionsInput = {
+  where: Prisma.InstituteWhereUniqueInput
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutTransactionsInput, Prisma.InstituteUncheckedCreateWithoutTransactionsInput>
+}
+
+export type InstituteUpsertWithoutTransactionsInput = {
+  update: Prisma.XOR<Prisma.InstituteUpdateWithoutTransactionsInput, Prisma.InstituteUncheckedUpdateWithoutTransactionsInput>
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutTransactionsInput, Prisma.InstituteUncheckedCreateWithoutTransactionsInput>
+  where?: Prisma.InstituteWhereInput
+}
+
+export type InstituteUpdateToOneWithWhereWithoutTransactionsInput = {
+  where?: Prisma.InstituteWhereInput
+  data: Prisma.XOR<Prisma.InstituteUpdateWithoutTransactionsInput, Prisma.InstituteUncheckedUpdateWithoutTransactionsInput>
+}
+
+export type InstituteUpdateWithoutTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
+  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteUncheckedUpdateWithoutTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
+  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
+  services?: Prisma.InstituteUpdateservicesInput | string[]
+  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
+  telephone?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
+  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
+  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
+  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
 }
 
 
@@ -2191,6 +2392,7 @@ export type InstituteCountOutputType = {
   creditsHistories: number
   instituteVerificationRejections: number
   instituteSocialMediaLinks: number
+  transactions: number
 }
 
 export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2202,6 +2404,7 @@ export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   creditsHistories?: boolean | InstituteCountOutputTypeCountCreditsHistoriesArgs
   instituteVerificationRejections?: boolean | InstituteCountOutputTypeCountInstituteVerificationRejectionsArgs
   instituteSocialMediaLinks?: boolean | InstituteCountOutputTypeCountInstituteSocialMediaLinksArgs
+  transactions?: boolean | InstituteCountOutputTypeCountTransactionsArgs
 }
 
 /**
@@ -2270,6 +2473,13 @@ export type InstituteCountOutputTypeCountInstituteSocialMediaLinksArgs<ExtArgs e
   where?: Prisma.InstituteSocialMediaLinksWhereInput
 }
 
+/**
+ * InstituteCountOutputType without action
+ */
+export type InstituteCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TransactionsWhereInput
+}
+
 
 export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2301,6 +2511,7 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   creditsHistories?: boolean | Prisma.Institute$creditsHistoriesArgs<ExtArgs>
   instituteVerificationRejections?: boolean | Prisma.Institute$instituteVerificationRejectionsArgs<ExtArgs>
   instituteSocialMediaLinks?: boolean | Prisma.Institute$instituteSocialMediaLinksArgs<ExtArgs>
+  transactions?: boolean | Prisma.Institute$transactionsArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["institute"]>
 
@@ -2384,6 +2595,7 @@ export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   creditsHistories?: boolean | Prisma.Institute$creditsHistoriesArgs<ExtArgs>
   instituteVerificationRejections?: boolean | Prisma.Institute$instituteVerificationRejectionsArgs<ExtArgs>
   instituteSocialMediaLinks?: boolean | Prisma.Institute$instituteSocialMediaLinksArgs<ExtArgs>
+  transactions?: boolean | Prisma.Institute$transactionsArgs<ExtArgs>
   _count?: boolean | Prisma.InstituteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type InstituteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2401,6 +2613,7 @@ export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     creditsHistories: Prisma.$CreditsHistoryPayload<ExtArgs>[]
     instituteVerificationRejections: Prisma.$InstituteVerificationRejectionPayload<ExtArgs>[]
     instituteSocialMediaLinks: Prisma.$InstituteSocialMediaLinksPayload<ExtArgs>[]
+    transactions: Prisma.$TransactionsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2826,6 +3039,7 @@ export interface Prisma__InstituteClient<T, Null = never, ExtArgs extends runtim
   creditsHistories<T extends Prisma.Institute$creditsHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$creditsHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditsHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteVerificationRejections<T extends Prisma.Institute$instituteVerificationRejectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteVerificationRejectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationRejectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteSocialMediaLinks<T extends Prisma.Institute$instituteSocialMediaLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteSocialMediaLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteSocialMediaLinksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  transactions<T extends Prisma.Institute$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3471,6 +3685,30 @@ export type Institute$instituteSocialMediaLinksArgs<ExtArgs extends runtime.Type
   take?: number
   skip?: number
   distinct?: Prisma.InstituteSocialMediaLinksScalarFieldEnum | Prisma.InstituteSocialMediaLinksScalarFieldEnum[]
+}
+
+/**
+ * Institute.transactions
+ */
+export type Institute$transactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Transactions
+   */
+  select?: Prisma.TransactionsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Transactions
+   */
+  omit?: Prisma.TransactionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransactionsInclude<ExtArgs> | null
+  where?: Prisma.TransactionsWhereInput
+  orderBy?: Prisma.TransactionsOrderByWithRelationInput | Prisma.TransactionsOrderByWithRelationInput[]
+  cursor?: Prisma.TransactionsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TransactionsScalarFieldEnum | Prisma.TransactionsScalarFieldEnum[]
 }
 
 /**

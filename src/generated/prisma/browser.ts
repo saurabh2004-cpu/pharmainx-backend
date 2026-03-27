@@ -162,3 +162,13 @@ export type UserSocialMediaLinks = Prisma.UserSocialMediaLinksModel
  * 
  */
 export type InstituteSocialMediaLinks = Prisma.InstituteSocialMediaLinksModel
+/**
+ * Model Packages
+ * 
+ */
+export type Packages = Prisma.PackagesModel
+/**
+ * Model Transactions
+ * 
+ */
+export type Transactions = Prisma.TransactionsModel

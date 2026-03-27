@@ -79,7 +79,9 @@ export const ModelName = {
   Message: 'Message',
   ActivityLogs: 'ActivityLogs',
   UserSocialMediaLinks: 'UserSocialMediaLinks',
-  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks'
+  InstituteSocialMediaLinks: 'InstituteSocialMediaLinks',
+  Packages: 'Packages',
+  Transactions: 'Transactions'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -548,6 +550,30 @@ export const InstituteSocialMediaLinksScalarFieldEnum = {
 } as const
 
 export type InstituteSocialMediaLinksScalarFieldEnum = (typeof InstituteSocialMediaLinksScalarFieldEnum)[keyof typeof InstituteSocialMediaLinksScalarFieldEnum]
+
+
+export const PackagesScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  price: 'price',
+  credits: 'credits'
+} as const
+
+export type PackagesScalarFieldEnum = (typeof PackagesScalarFieldEnum)[keyof typeof PackagesScalarFieldEnum]
+
+
+export const TransactionsScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  amount: 'amount',
+  instituteId: 'instituteId',
+  packageId: 'packageId'
+} as const
+
+export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
 
 
 export const SortOrder = {
