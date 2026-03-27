@@ -303,6 +303,8 @@ export const deleteInstituteCredits = async (req: AuthRequest, res: Response) =>
 
         await prisma.instituteCredits.delete({ where: { id: idStr } });
 
+        await prisma.creditsHistory.deleteMany({ where: { instituteId: existingRecord.instituteId } });
+
         logger.info({ creditsId: idStr }, 'Institute credits record deleted');
 
         await logActivity({
