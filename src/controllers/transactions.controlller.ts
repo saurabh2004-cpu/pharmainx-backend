@@ -78,11 +78,15 @@ export const createTransaction = async (req: Request, res: Response) => {
 export const getAllTransactions = async (req: Request, res: Response) => {
     try {
         const transactions = await prisma.transactions.findMany({
+            orderBy: {
+                createdAt: 'desc'
+            },
             include: {
                 institute: true,
                 package: true
             }
         })
+
 
         if (!transactions) {
             return res.status(404).json({ message: 'Transactions not found' });
@@ -102,11 +106,15 @@ export const getTransactionsByInstituteId = async (req: Request, res: Response) 
     try {
         const transactions = await prisma.transactions.findMany({
             where: { instituteId: String(instituteId) },
+            orderBy: {
+                createdAt: 'desc'
+            },
             include: {
                 institute: true,
                 package: true
-            }
+            },
         })
+
 
         if (!transactions) {
             return res.status(404).json({ message: 'Transactions not found' });
@@ -126,6 +134,9 @@ export const getTransactionsByPackageId = async (req: Request, res: Response) =>
     try {
         const transactions = await prisma.transactions.findMany({
             where: { packageId: String(packageId) },
+            orderBy: {
+                createdAt: 'desc'
+            },
             include: {
                 institute: true,
                 package: true

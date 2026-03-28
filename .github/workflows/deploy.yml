@@ -37,3 +37,4 @@ jobs:
             cd /var/www/myapps
             docker-compose pull
             docker-compose up -d
+            docker image prune -af
