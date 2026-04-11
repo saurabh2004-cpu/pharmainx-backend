@@ -645,8 +645,8 @@ export const createUserExperience = async (req: AuthRequest, res: Response) => {
 };
 
 export const getUserExperiences = async (req: AuthRequest, res: Response) => {
-    const authId = req.user?.id;
-    if (!authId) return res.status(401).json({ error: 'Unauthorized' });
+    const authId = req.user?.id || req.query.id;
+    if (!authId) return res.status(400).json({ error: 'User ID is required' });
 
     try {
         const experiences = await prisma.userExperiences.findMany({
@@ -810,8 +810,8 @@ export const createUserEducation = async (req: AuthRequest, res: Response) => {
 };
 
 export const getUserEducation = async (req: AuthRequest, res: Response) => {
-    const authId = req.user?.id;
-    if (!authId) return res.status(401).json({ error: 'Unauthorized' });
+    const authId = req.user?.id || req.query.id;
+    if (!authId) return res.status(400).json({ error: 'User ID is required' });
 
     try {
         const education = await prisma.userEducation.findMany({
@@ -941,8 +941,8 @@ export const updateUserSkills = async (req: AuthRequest, res: Response) => {
 };
 
 export const getUserSkills = async (req: AuthRequest, res: Response) => {
-    const authId = req.user?.id;
-    if (!authId) return res.status(401).json({ error: 'Unauthorized' });
+    const authId = req.user?.id || req.query.id;
+    if (!authId) return res.status(400).json({ error: 'User ID is required' });
 
     try {
         const skillsRecord = await prisma.userSkills.findFirst({
@@ -1023,8 +1023,8 @@ export const updateUserSpecialities = async (req: AuthRequest, res: Response) =>
 };
 
 export const getUserSpecialities = async (req: AuthRequest, res: Response) => {
-    const authId = req.user?.id;
-    if (!authId) return res.status(401).json({ error: 'Unauthorized' });
+    const authId = req.user?.id || req.query.id;
+    if (!authId) return res.status(400).json({ error: 'User ID is required' });
 
     try {
         const specialitiesRecord = await prisma.userSpecialities.findFirst({

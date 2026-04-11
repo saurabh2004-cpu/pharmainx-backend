@@ -455,6 +455,30 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
     }
 };
 
+export const revokeInterview = async (req: AuthRequest, res: Response) => {
+    const { id } = req.params as any;
+    try {
+        const app = await prisma.application.findUnique({
+            where: { id },
+            include: { job: true }
+        });
+        if (!app) return res.status(404).json({ error: "Application not found" });
+        const updated = await prisma.application.update({
+            where: { id },
+            data: {
+                status: 'NEXT_ROUND_ACCEPTED',
+            }
+        });
+        await prisma.interviews.deleteMany({
+            where: { applicationId: app.id }
+        });
+        res.status(200).json(updated);
+    } catch (err: any) {
+        logger.error(err);
+        res.status(500).json({ error: "Database error" });
+    }
+}
+
 // STEP 5: user Interview Decision
 export const interviewDecision = async (req: AuthRequest, res: Response) => {
     const { id } = req.params as any;

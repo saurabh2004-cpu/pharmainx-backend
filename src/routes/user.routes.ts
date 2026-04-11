@@ -32,6 +32,7 @@ import {
 } from '../controllers/user.controller.js';
 import { downloadResume } from '../controllers/resume.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
+import { optionalAuthenticateToken } from '../middlewares/optionalAuth.middleware.js';
 
 const router = Router();
 
@@ -52,25 +53,25 @@ router.delete('/delete-user/:id', authenticateToken, deleteUser);
 
 // Experience Routes
 router.post('/create-experience', authenticateToken, createUserExperience);
-router.get('/get-experience', authenticateToken, getUserExperiences);
+router.get('/get-experience', optionalAuthenticateToken, getUserExperiences);
 router.get('/get-current-organization', authenticateToken, getCurrentOrganization);
 router.put('/update-experience/:id', authenticateToken, updateUserExperience);
 router.delete('/delete-experience/:id', authenticateToken, deleteUserExperience);
 
 // Education Routes
 router.post('/create-education', authenticateToken, createUserEducation);
-router.get('/get-education', authenticateToken, getUserEducation);
+router.get('/get-education', optionalAuthenticateToken, getUserEducation);
 router.put('/update-education/:id', authenticateToken, updateUserEducation);
 router.delete('/delete-education/:id', authenticateToken, deleteUserEducation);
 
 // Skills Routes
 router.post('/create-skills', authenticateToken, updateUserSkills);
-router.get('/get-skills', authenticateToken, getUserSkills);
+router.get('/get-skills', optionalAuthenticateToken, getUserSkills);
 router.delete('/delete-skills', authenticateToken, deleteUserSkills);
 
 // Specialities Routes
 router.post('/create-specialities', authenticateToken, updateUserSpecialities);
-router.get('/get-specialities', authenticateToken, getUserSpecialities);
+router.get('/get-specialities', optionalAuthenticateToken, getUserSpecialities);
 router.delete('/delete-specialities', authenticateToken, deleteUserSpecialities);
 
 // Links Routes

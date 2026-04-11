@@ -14,6 +14,7 @@ import {
     getUserApplicationStats,
     shortList,
     reject,
+    revokeInterview
 } from '../controllers/application.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
 import { uploadRecursive } from '../middlewares/multer.js';
@@ -49,5 +50,8 @@ router.put('/:id/reject', authenticateToken, reject);
 // Delete
 router.delete('/delete-application/:id', authenticateToken, deleteApplication);
 
-
+// Revoke
+router.put('/:id/revoke-interview', authenticateToken, revokeInterview);
+ 
+ 
 export default router;
