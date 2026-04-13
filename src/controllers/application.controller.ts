@@ -7,6 +7,8 @@ import { sendNotification } from '../utils/notification.service.js';
 import { InstituteRoles } from './job.controller.js';
 import { getCloudFrontUrl, uploadToS3 } from '../services/aws.service.js';
 import path from 'path';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.js';
 
 const logger = getServiceLogger("Application");
 
@@ -234,6 +236,15 @@ export const applyForJob = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(201).json(application);
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.CREATE,
+            userId: authUserId,
+            newData: application,
+            description: `User applied for job: ${job.title}`
+        });
     } catch (err) {
         logger.error({ err }, "Error applying for job");
         res.status(500).json({ error: "Database error" });
@@ -251,7 +262,15 @@ export const shortList = async (req: AuthRequest, res: Response) => {
     try {
         const app = await prisma.application.findUnique({
             where: { id },
-            include: { job: true }
+            include: {
+                job: true,
+                user: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
         if (app.job.instituteId !== authId) return res.status(403).json({ error: "Forbidden" });
@@ -271,6 +290,21 @@ export const shortList = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        const isAdminShort = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isInstituteShort = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdminShort ? authId : undefined,
+            instituteId: isInstituteShort ? authId : undefined,
+            userId: (!isAdminShort && !isInstituteShort) ? authId : undefined,
+            oldData: app,
+            newData: updated,
+            description: `${isAdminShort ? 'Admin' : (isInstituteShort ? 'Institute' : 'User')} shortlisted ${app.user.firstName} ${app.user.lastName} for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -288,7 +322,15 @@ export const requestNextRound = async (req: AuthRequest, res: Response) => {
     try {
         const app = await prisma.application.findUnique({
             where: { id },
-            include: { job: true }
+            include: {
+                job: true,
+                user: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
 
@@ -311,6 +353,21 @@ export const requestNextRound = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        const isAdminNext = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isInstituteNext = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdminNext ? authId : undefined,
+            instituteId: isInstituteNext ? authId : undefined,
+            userId: (!isAdminNext && !isInstituteNext) ? authId : undefined,
+            oldData: app,
+            newData: updated,
+            description: `${isAdminNext ? 'Admin' : (isInstituteNext ? 'Institute' : 'User')} requested next round to user: ${app.user.firstName} ${app.user.lastName} for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -352,6 +409,16 @@ export const respondNextRound = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            userId: authUserId,
+            oldData: app,
+            newData: updated,
+            description: `User ${status}ed next round request for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -371,7 +438,15 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
     try {
         const app = await prisma.application.findUnique({
             where: { id },
-            include: { job: true }
+            include: {
+                job: true,
+                user: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
         if (app.job.instituteId !== authId) return res.status(403).json({ error: "Forbidden" });
@@ -449,6 +524,21 @@ export const scheduleInterview = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        const isScheduleAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isScheduleInstitute = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            adminId: isScheduleAdmin ? authId : undefined,
+            instituteId: isScheduleInstitute ? authId : undefined,
+            userId: (!isScheduleAdmin && !isScheduleInstitute) ? authId : undefined,
+            oldData: app,
+            newData: updated,
+            description: `${isScheduleAdmin ? 'Admin' : (isScheduleInstitute ? 'Institute' : 'User')} scheduled interview for job: ${app.job.title} to user: ${app.user.firstName} ${app.user.lastName}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -460,7 +550,15 @@ export const revokeInterview = async (req: AuthRequest, res: Response) => {
     try {
         const app = await prisma.application.findUnique({
             where: { id },
-            include: { job: true }
+            include: {
+                job: true,
+                user: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
         const updated = await prisma.application.update({
@@ -472,6 +570,16 @@ export const revokeInterview = async (req: AuthRequest, res: Response) => {
         await prisma.interviews.deleteMany({
             where: { applicationId: app.id }
         });
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            userId: req.user?.id,
+            oldData: app,
+            newData: updated,
+            description: `Institute revoked interview for job: ${app.job.title} for user: ${app.user.firstName} ${app.user.lastName}`
+        });
+
         res.status(200).json(updated);
     } catch (err: any) {
         logger.error(err);
@@ -518,6 +626,16 @@ export const interviewDecision = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            userId: authId,
+            oldData: app,
+            newData: updated,
+            description: `User ${decision}ed interview for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -555,6 +673,21 @@ export const hire = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        const isHireAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isHireInstitute = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            adminId: isHireAdmin ? authId : undefined,
+            instituteId: isHireInstitute ? authId : undefined,
+            userId: (!isHireAdmin && !isHireInstitute) ? authId : undefined,
+            oldData: app,
+            newData: updated,
+            description: `${isHireAdmin ? 'Admin' : (isHireInstitute ? 'Institute' : 'User')} hired applicant for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -572,7 +705,15 @@ export const reject = async (req: AuthRequest, res: Response) => {
     try {
         const app = await prisma.application.findUnique({
             where: { id },
-            include: { job: true }
+            include: {
+                job: true,
+                user: {
+                    select: {
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
         });
         if (!app) return res.status(404).json({ error: "Application not found" });
         if (app.job.instituteId !== authId) return res.status(403).json({ error: "Forbidden" });
@@ -592,6 +733,21 @@ export const reject = async (req: AuthRequest, res: Response) => {
         });
 
         res.status(200).json(updated);
+
+        // Activity Log
+        const isRejectAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isRejectInstitute = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.UPDATE,
+            adminId: isRejectAdmin ? authId : undefined,
+            instituteId: isRejectInstitute ? authId : undefined,
+            userId: (!isRejectAdmin && !isRejectInstitute) ? authId : undefined,
+            oldData: app,
+            newData: updated,
+            description: `${isRejectAdmin ? 'Admin' : (isRejectInstitute ? 'Institute' : 'User')} rejected ${app.user.firstName} ${app.user.lastName} for job: ${app.job.title}`
+        });
     } catch (err: any) {
         logger.error(err);
         res.status(500).json({ error: "Database error" });
@@ -624,8 +780,23 @@ export const deleteApplication = async (req: AuthRequest, res: Response) => {
     if (!authUserId) return res.status(401).json({ error: 'Unauthorized' });
 
     try {
+        const application = await prisma.application.findUnique({ where: { id } });
         await prisma.application.delete({ where: { id } });
         res.status(200).json({ success: true });
+
+        // Activity Log
+        const isDeleteAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isDeleteInst = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.APPLICATION,
+            action: ActivityActionType.DELETE,
+            adminId: isDeleteAdmin ? authUserId : undefined,
+            instituteId: isDeleteInst ? authUserId : undefined,
+            userId: (!isDeleteAdmin && !isDeleteInst) ? authUserId : undefined,
+            oldData: application,
+            description: `${isDeleteAdmin ? 'Admin' : (isDeleteInst ? 'Institute' : 'User')} deleted job application`
+        });
     } catch (err: any) {
         if (err.code === 'P2025') {
             return res.status(404).json({ error: 'Application not found' });

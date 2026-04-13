@@ -103,6 +103,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const AdminScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
+  name: 'name',
   email: 'email',
   password: 'password',
   role: 'role'
@@ -520,6 +521,9 @@ export const ActivityLogsScalarFieldEnum = {
   createdAt: 'createdAt',
   module: 'module',
   action: 'action',
+  userId: 'userId',
+  adminId: 'adminId',
+  instituteId: 'instituteId',
   description: 'description',
   oldData: 'oldData',
   newData: 'newData'

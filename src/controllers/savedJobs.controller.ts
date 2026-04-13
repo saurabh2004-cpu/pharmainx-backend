@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { getCloudFrontUrl } from '../services/aws.service.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.js';
 
 const logger = getServiceLogger("SavedJobs");
 
@@ -56,6 +58,15 @@ export const addToSavedJobs = async (req: AuthRequest, res: Response) => {
 
         logger.info({ userId: authId, jobId }, 'Job saved successfully');
         res.status(201).json(savedJob);
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.SAVED_JOB,
+            action: ActivityActionType.CREATE,
+            userId: authId,
+            newData: savedJob,
+            description: `User saved job: ${savedJob.job.title}`
+        });
     } catch (err) {
         logger.error({ err, userId: authId, jobId }, 'Database error during save job');
         res.status(500).json({ error: 'Database error' });
@@ -77,6 +88,13 @@ export const removeFromSavedJobs = async (req: AuthRequest, res: Response) => {
             where: {
                 userId: authId,
                 jobId: jobIdStr
+            },
+            include: {
+                job: {
+                    select: {
+                        title: true
+                    }
+                }
             }
         });
 
@@ -98,11 +116,21 @@ export const removeFromSavedJobs = async (req: AuthRequest, res: Response) => {
         // Verify ownership (implicit in the findFirst query above by userId)
 
         await prisma.savedJob.delete({
-            where: { id: savedJob.id }
+            where: { id: savedJob.id },
+
         });
 
         logger.info({ userId: authId, savedJobId: savedJob.id }, 'Saved job removed');
         res.status(200).json({ message: 'Job removed from saved jobs' });
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.SAVED_JOB,
+            action: ActivityActionType.DELETE,
+            userId: authId,
+            oldData: savedJob,
+            description: `User unsaved job: ${savedJob.job.title}`
+        });
     } catch (err) {
         logger.error({ err, userId: authId, jobId: jobIdStr }, 'Database error during remove saved job');
         res.status(500).json({ error: 'Database error' });

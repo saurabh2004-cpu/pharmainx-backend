@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js'; // Ensure .js extension for runtime compatibility if not using ts-node/tsx handling
 import { getServiceLogger } from '../utils/logger.js';
-import { InstituteRoles, AuthRoles, Prisma, ApplicationStatus, VerificationStatus } from '../generated/prisma/client.ts'; // Import defaults from generated client
+import { InstituteRoles, AuthRoles, Prisma, ApplicationStatus, VerificationStatus, AdminRoles } from '../generated/prisma/client.ts'; // Import defaults from generated client
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { getCloudFrontUrl } from '../services/aws.service.js';
@@ -112,11 +112,134 @@ export const createInstitute = async (req: AuthRequest, res: Response) => {
 
         logger.info({ instituteId: institute.id }, 'Institute created successfully');
 
+        const isAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+
         await logActivity({
             module: ActivityLogsModule.INSTITUTE,
             action: ActivityActionType.CREATE,
+            adminId: isAdmin ? req.user?.id.toString() : undefined,
             newData: institute,
-            description: 'Institute created'
+            description: `${isAdmin ? 'Admin' : 'System'} created Institute: ${institute.name}`
+        });
+
+        res.status(201).json(institute);
+    } catch (err: any) {
+        logger.error({
+            err,
+            message: err.message,
+            code: err.code,
+            meta: err.meta,
+            body: req.body
+        }, 'Database error during institute creation');
+
+        if (err.code === 'P2002') {
+            return res.status(409).json({ error: `Unique constraint failed on the fields: ${err.meta?.target}` });
+        }
+        res.status(500).json({ error: 'Database error', details: err.message });
+    }
+};
+export const signUpInstitute = async (req: AuthRequest, res: Response) => {
+    const {
+        name,
+        city,
+        country,
+        verified,
+        contactEmail,
+        contactNumber,
+        role,
+        specialties,
+        affiliatedUniversity,
+        yearEstablished,
+        ownership,
+        headline,
+        about,
+        password,
+        bedsCount,
+        staffCount,
+        type,
+        services,
+        telephone
+    } = req.body;
+
+
+    console.log("req.body   ", req.body);
+    // define required fields explicitly
+    const requiredFields = [name, city, country, contactEmail, contactNumber, role, type, services, telephone];
+
+    // Check for missing required fields (ignoring 0 as falsy for numeric checks if any were required, but here these are mostly strings)
+    if (requiredFields.some((field) => !field && field !== 0)) {
+        return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    // Explicitly parse numeric fields to allow usage of formData or loosen calls
+    const parsedBedsCount = bedsCount !== undefined && bedsCount !== null ? parseInt(bedsCount) : undefined;
+    const parsedStaffCount = staffCount !== undefined && staffCount !== null ? parseInt(staffCount) : undefined;
+    const parsedYearEstablished = yearEstablished !== undefined && yearEstablished !== null ? parseInt(yearEstablished) : undefined;
+
+    // Validate that if they are provided, they are valid numbers
+    if (
+        (bedsCount && isNaN(parsedBedsCount!)) ||
+        (staffCount && isNaN(parsedStaffCount!)) ||
+        (yearEstablished && isNaN(parsedYearEstablished!))
+    ) {
+        return res.status(400).json({ error: 'Invalid numeric fields provided' });
+    }
+
+    try {
+
+        let validInstituteRole: InstituteRoles = InstituteRoles.HOSPITAL;
+        if (Object.values(InstituteRoles).includes(role as InstituteRoles)) {
+            validInstituteRole = role as InstituteRoles;
+        }
+
+        const existingName = await prisma.institute.findUnique({
+            where: { contactEmail },
+        });
+
+        if (existingName) {
+            logger.warn({ name }, 'Attempt to create duplicate institute (name)');
+            return res.status(409).json({ error: 'Institute with this name already exists' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const institute = await prisma.institute.create({
+            data: {
+                name,
+                city,
+                country,
+                verified: verified || false,
+                contactEmail,
+                password: hashedPassword,
+                contactNumber,
+                role: validInstituteRole, // Use validated Enum
+                affiliatedUniversity,
+                yearEstablished: parsedYearEstablished,
+                ownership,
+                headline,
+                about,
+                bedsCount: parsedBedsCount !== undefined ? parsedBedsCount : 0, // Default to 0 if not provided but schema requires Int (assuming new schema might default this, strictly schema says Int, usually defaults to 0 or we must provide it. If schema has no default, we must provide it. Based on user prompt "new required... bedsCount", we should provide it. If it was optional in schema, we'd pass undefined. Let's assume strict requirement requires a value, 0 is safe.)
+                staffCount: parsedStaffCount !== undefined ? parsedStaffCount : 0,
+                type,
+                services,
+                telephone,
+            },
+        });
+
+        if (!institute) {
+            return res.status(400).json({ error: 'Institute not created' });
+        }
+
+
+        logger.info({ instituteId: institute.id }, 'Institute created successfully');
+
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE,
+            action: ActivityActionType.CREATE,
+            instituteId: institute.id,
+            newData: institute,
+            description: `Institute: ${institute.name} created`
         });
 
         res.status(201).json(institute);
@@ -308,12 +431,17 @@ export const updateInstitute = async (req: AuthRequest, res: Response) => {
 
         logger.info({ id, hasProfile: !!mappedInstitute.profile_picture, hasBanner: !!mappedInstitute.banner_picture }, 'Institute updated successfully');
 
+        const isAdminUpdate = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isInstituteUpdate = req.user?.role && Object.values(InstituteRoles).includes(req.user?.role as any);
+
         await logActivity({
             module: ActivityLogsModule.INSTITUTE,
             action: ActivityActionType.UPDATE,
+            adminId: isAdminUpdate ? req.user?.id.toString() : undefined,
+            instituteId: isInstituteUpdate ? req.user?.id.toString() : undefined,
             oldData,
             newData: mappedInstitute,
-            description: 'Institute updated profile'
+            description: `${isAdminUpdate ? 'Admin' : 'Institute'} updated institute : ${mappedInstitute.name}`
         });
 
         res.status(200).json(mappedInstitute);
@@ -342,13 +470,15 @@ export const deleteInstitute = async (req: AuthRequest, res: Response) => {
         await prisma.institute.delete({ where: { id } });
         logger.info({ id }, 'Institute deleted successfully');
 
+        const isAdminDel = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+
         await logActivity({
             module: ActivityLogsModule.INSTITUTE,
             action: ActivityActionType.DELETE,
+            adminId: isAdminDel ? req.user?.id.toString() : undefined,
             oldData: existingData,
-            description: 'Institute deleted'
+            description: `${isAdminDel ? 'Admin' : 'Institute'} deleted institute: ${existingData?.name || id}`
         });
-
         res.status(204).send();
     } catch (err: any) {
         if (err.code === 'P2025') {

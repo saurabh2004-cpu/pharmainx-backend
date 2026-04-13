@@ -13,11 +13,13 @@ enum AdminRoles {
 }
 
 model Admin {
-  id         String     @id @default(uuid())
-  created_at DateTime   @default(now())
-  email      String     @unique
-  password   String
-  role       AdminRoles @default(ADMIN)
+  id           String         @id @default(uuid())
+  created_at   DateTime       @default(now())
+  name         String?
+  email        String         @unique
+  password     String
+  role         AdminRoles     @default(ADMIN)
+  activityLogs ActivityLogs[]
 }
 
 model User {
@@ -53,6 +55,7 @@ model User {
   userVerificationRejections UserVerificationRejection[]
   userSocialMediaLinks       UserSocialMediaLinks[]
   interviews                 Interviews[]
+  activityLogs               ActivityLogs[]
 }
 
 model Institute {
@@ -86,6 +89,7 @@ model Institute {
   instituteVerificationRejections InstituteVerificationRejection[]
   instituteSocialMediaLinks       InstituteSocialMediaLinks[]
   transactions                    Transactions[]
+  activityLogs                    ActivityLogs[]
 }
 
 model InstituteCredits {
@@ -450,10 +454,17 @@ enum ApplicationStatus {
 }
 
 model ActivityLogs {
-  id          String             @id @default(uuid())
-  createdAt   DateTime           @default(now())
-  module      ActivityLogsModule
-  action      ActivityActionType
+  id        String             @id @default(uuid())
+  createdAt DateTime           @default(now())
+  module    ActivityLogsModule
+  action    ActivityActionType
+
+  user        User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?
+  admin       Admin?     @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  adminId     String?
+  institute   Institute? @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  instituteId String?
   description String?
   oldData     Json?
   newData     Json?
@@ -529,6 +540,9 @@ enum ActivityLogsModule {
   INSTITUTE_VERIFICATIONS
   USER_VERIFICATIONS
   INSTITUTE_CREDITS
+  INSTITUTE_IMAGES
+  USER_IMAGES
+  PACKAGES
 }
 
 enum AuthRoles {

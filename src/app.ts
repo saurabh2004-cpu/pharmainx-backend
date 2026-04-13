@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
+import Razorpay from "razorpay";
 
 import cookieParser from 'cookie-parser';
 
@@ -15,6 +16,12 @@ const app: Express = express();
 
 // Trust proxy for correct req.protocol
 app.set('trust proxy', 1);
+
+// Razorpay instance
+export const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
 
 // Global Middlewares
 app.use(helmet());
@@ -61,8 +68,10 @@ import activityLogsRoutes from './routes/activityLogs.routes.js';
 import socialMediaRoutes from './routes/socialMedia.routes.js';
 import packagesRoutes from './routes/packages.routes.js';
 import transactionsRoutes from './routes/transactions.routes.ts';
+import conversationsAdminRoutes from './routes/conversations.admin.routes.js';
 
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/admin/conversations', conversationsAdminRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/institute', instituteRoutes);
 app.use('/api/v1/job', jobRoutes);

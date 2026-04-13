@@ -10,7 +10,8 @@ import {
     getInstituteById,
     loginInstitute,
     getInstituteJobs,
-    getInstituteCredits
+    getInstituteCredits,
+    signUpInstitute
 } from '../controllers/institute.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
 import { instituteViewTrackerMiddleware } from '../middlewares/institute-view-tracker.middleware.js';
@@ -24,7 +25,9 @@ router.get('/get-all-institutes', getAllInstitutes);
 router.get('/get-institute/:id', instituteViewTrackerMiddleware, getInstituteById);
 
 // Private Routes   
-router.post('/create-institute', createInstitute);
+router.post('/create-institute', authenticateToken, createInstitute);
+router.post('/signup-institute', signUpInstitute);
+ 
 router.post('/signin-institute', loginInstitute);
 router.get('/my-profile', authenticateToken, getMyInstitute);
 router.get('/my-stats', authenticateToken, getInstituteStats);

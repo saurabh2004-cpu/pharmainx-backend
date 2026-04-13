@@ -8,7 +8,7 @@ import fs from 'fs/promises';
 
 import { uploadToS3, getCloudFrontUrl, deleteFromS3 } from '../services/aws.service.js';
 import { logActivity } from '../utils/activityLogger.js';
-import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("UserVerifications");
 
@@ -141,6 +141,14 @@ export const createVerification = async (req: AuthRequest, res: Response) => {
 
         logger.info({ verificationId: verification.id, userId }, 'User verification created successfully');
         res.status(201).json(verification);
+
+        await logActivity({
+            module: ActivityLogsModule.USER_VERIFICATIONS,
+            action: ActivityActionType.CREATE,
+            userId: userId as string,
+            newData: verification,
+            description: `User submitted verification documents: ${firstName} ${lastName}`
+        });
     } catch (err: any) {
         logger.error({
             message: err.message,
@@ -241,11 +249,14 @@ export const deleteVerificationById = async (req: Request, res: Response) => {
         await prisma.userVerifications.delete({ where: { id: id as string } });
         logger.info({ id }, 'Verification deleted successfully');
 
+        const isAdminLog = (req as any).user?.role === AdminRoles.MASTER_ADMIN || (req as any).user?.role === AdminRoles.ADMIN;
         await logActivity({
             module: ActivityLogsModule.USER_VERIFICATIONS,
             action: ActivityActionType.DELETE,
+            adminId: isAdminLog ? (req as any).user?.id.toString() : undefined,
+            userId: !isAdminLog ? (req as any).user?.id.toString() : undefined,
             oldData: verification,
-            description: 'User verification deleted'
+            description: `${isAdminLog ? 'Admin' : 'User'} deleted verification record`
         });
 
         res.status(204).send();
@@ -273,7 +284,8 @@ export const approveVerification = async (req: Request, res: Response) => {
     try {
         const verification = await prisma.userVerifications.update({
             where: { id: String(id) },
-            data: { status: VerificationStatus.APPROVED }
+            data: { status: VerificationStatus.APPROVED },
+            include: { user: true }
         });
 
         // Update user's verified status
@@ -287,8 +299,9 @@ export const approveVerification = async (req: Request, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.USER_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
+            adminId: (req as any).user?.id.toString(),
             newData: verification,
-            description: 'User verification approved'
+            description: `Admin approved verification for user: ${verification.user?.firstName} ${verification.user?.lastName}`
         });
 
         res.status(200).json(verification);
@@ -322,7 +335,8 @@ export const rejectVerification = async (req: Request, res: Response) => {
             // 1. Update verification status
             const updatedVerification = await tx.userVerifications.update({
                 where: { id: String(id) },
-                data: { status: VerificationStatus.REJECTED }
+                data: { status: VerificationStatus.REJECTED },
+                include: { user: true }
             });
 
             // 2. Set user as unverified
@@ -351,8 +365,9 @@ export const rejectVerification = async (req: Request, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.USER_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
+            adminId: (req as any).user?.id.toString(),
             newData: result,
-            description: `User verification rejected for ${documentField}`
+            description: `Admin rejected verification for user: ${result.user?.firstName} ${result.user?.lastName} - Reason: ${documentField}`
         });
 
         res.status(200).json(result);

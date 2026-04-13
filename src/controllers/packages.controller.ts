@@ -1,10 +1,13 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { AuthRequest } from '../middlewares/auth.middleware.js';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
+import { logActivity } from '../utils/activityLogger.js';
+import { AdminRoles, ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("Packages");
 
-export const createPackage = async (req: Request, res: Response) => {
+export const createPackage = async (req: AuthRequest, res: Response) => {
     try {
         const { name, price, credits } = req.body;
 
@@ -20,6 +23,14 @@ export const createPackage = async (req: Request, res: Response) => {
             }
         });
 
+        await logActivity({
+            module: ActivityLogsModule.PACKAGES,
+            action: ActivityActionType.CREATE,
+            adminId: req.user?.id?.toString(),
+            newData: newPackage,
+            description: `Package created: ${newPackage.name}`
+        });
+
         res.status(201).json({
             message: 'Package created successfully',
             data: newPackage
@@ -30,7 +41,7 @@ export const createPackage = async (req: Request, res: Response) => {
     }
 };
 
-export const getAllPackages = async (req: Request, res: Response) => {
+export const getAllPackages = async (req: AuthRequest, res: Response) => {
     try {
         const packages = await prisma.packages.findMany({
             orderBy: { createdAt: 'desc' }
@@ -45,7 +56,7 @@ export const getAllPackages = async (req: Request, res: Response) => {
     }
 };
 
-export const getPackageById = async (req: Request, res: Response) => {
+export const getPackageById = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const pkg = await prisma.packages.findUnique({
@@ -65,7 +76,7 @@ export const getPackageById = async (req: Request, res: Response) => {
     }
 };
 
-export const updatePackage = async (req: Request, res: Response) => {
+export const updatePackage = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const { name, price, credits } = req.body;
@@ -87,6 +98,19 @@ export const updatePackage = async (req: Request, res: Response) => {
             }
         });
 
+        const isAdminUpdate = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const actorIdUpdate = req.user?.id?.toString();
+
+        await logActivity({
+            module: ActivityLogsModule.PACKAGES,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdminUpdate ? actorIdUpdate : undefined,
+            userId: !isAdminUpdate ? actorIdUpdate : undefined,
+            oldData: pkg,
+            newData: updatedPackage,
+            description: `Package updated: ${updatedPackage.name}`
+        });
+
         res.status(200).json({
             message: 'Package updated successfully',
             data: updatedPackage
@@ -97,7 +121,7 @@ export const updatePackage = async (req: Request, res: Response) => {
     }
 };
 
-export const deletePackage = async (req: Request, res: Response) => {
+export const deletePackage = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
 
@@ -111,6 +135,18 @@ export const deletePackage = async (req: Request, res: Response) => {
 
         await prisma.packages.delete({
             where: { id: String(id) }
+        });
+
+        const isAdminDelete = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const actorIdDelete = req.user?.id?.toString();
+
+        await logActivity({
+            module: ActivityLogsModule.PACKAGES,
+            action: ActivityActionType.DELETE,
+            adminId: isAdminDelete ? actorIdDelete : undefined,
+            userId: !isAdminDelete ? actorIdDelete : undefined,
+            oldData: pkg,
+            description: `Package deleted: ${pkg.name}`
         });
 
         res.status(200).json({

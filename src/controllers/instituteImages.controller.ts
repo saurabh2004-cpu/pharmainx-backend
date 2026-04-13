@@ -3,6 +3,8 @@ import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { uploadToS3, deleteFromS3, invalidateCloudFront, getCloudFrontUrl } from '../services/aws.service.js';
 import path from 'path';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger('InstituteImages');
 
@@ -21,13 +23,15 @@ export const uploadInstituteImages = async (req: AuthRequest, res: Response) => 
     }
 
     const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
     if (!files || (Object.keys(files).length === 0)) {
         return res.status(400).json({ error: 'No files uploaded' });
     }
 
     try {
         let instImages = await prisma.instituteImages.findFirst({
-            where: { instituteId }
+            where: { instituteId },
         });
 
         const dataToUpdate: any = {};
@@ -77,6 +81,17 @@ export const uploadInstituteImages = async (req: AuthRequest, res: Response) => 
             coverImage: getCloudFrontUrl(instImages.coverImage)
         };
 
+        const isAdmin = req.user?.role === AdminRoles.ADMIN || req.user?.role === AdminRoles.MASTER_ADMIN;
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_IMAGES,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdmin ? req.user?.id.toString() : undefined,
+            instituteId: isAdmin ? undefined : instituteId,
+            newData: result,
+            description: `${isAdmin ? 'Admin' : 'Institute'} updated institute image`
+        });
+
         logger.info({ instituteId, updatedFields: Object.keys(dataToUpdate) }, 'Institute images updated');
         res.status(200).json(result);
 
@@ -123,8 +138,8 @@ export const deleteInstituteImage = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    if (type !== 'profile' && type !== 'cover') {
-        return res.status(400).json({ error: 'Invalid image type. Must be "profile" or "cover"' });
+    if (type !== 'profileImage' && type !== 'coverImage') {
+        return res.status(400).json({ error: 'Invalid image type. Must be "profileImage" or "coverImage"' });
     }
 
     try {
@@ -139,10 +154,10 @@ export const deleteInstituteImage = async (req: AuthRequest, res: Response) => {
         const dataToUpdate: any = {};
         let keyToDelete = '';
 
-        if (type === 'profile' && instImages.profileImage) {
+        if (type === 'profileImage' && instImages.profileImage) {
             keyToDelete = instImages.profileImage;
             dataToUpdate.profileImage = '';
-        } else if (type === 'cover' && instImages.coverImage) {
+        } else if (type === 'coverImage' && instImages.coverImage) {
             keyToDelete = instImages.coverImage;
             dataToUpdate.coverImage = '';
         } else {
@@ -164,6 +179,18 @@ export const deleteInstituteImage = async (req: AuthRequest, res: Response) => {
             profileImage: getCloudFrontUrl(updated.profileImage),
             coverImage: getCloudFrontUrl(updated.coverImage)
         };
+
+        const isAdmin = req.user?.role === AdminRoles.ADMIN || req.user?.role === AdminRoles.MASTER_ADMIN;
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_IMAGES,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdmin ? req.user?.id.toString() : undefined,
+            instituteId: isAdmin ? undefined : instituteId,
+            newData: result,
+            description: `${isAdmin ? 'Admin' : 'Institute'} deleted institute ${type} image`
+        });
+
         res.status(200).json(result);
 
     } catch (err: any) {

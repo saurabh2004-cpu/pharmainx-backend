@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { JobCreateUpdateSchema } from '../types/job.js';
-import { CreditHistoryAction, CreditHistoryType, Prisma } from '../generated/prisma/client.ts';
+import { AdminRoles, CreditHistoryAction, CreditHistoryType, Prisma } from '../generated/prisma/client.ts';
 import { getCloudFrontUrl } from '../services/aws.service.js';
 import { logActivity } from '../utils/activityLogger.js';
 import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
@@ -195,11 +195,14 @@ export const createJob = async (req: AuthRequest, res: Response) => {
 
         logger.info({ instituteId: authId, jobId: result.id, jobType: jobData.jobType, cost: jobCreditsCost }, 'Job created successfully');
 
+        // Activity Log
+
         await logActivity({
             module: ActivityLogsModule.JOB,
             action: ActivityActionType.CREATE,
+            instituteId: authId?.toString(),
             newData: result,
-            description: 'Job created'
+            description: `Institute created job: ${result.title}`
         });
 
         res.status(201).json(result);
@@ -319,6 +322,16 @@ export const renewJob = async (req: AuthRequest, res: Response) => {
         });
 
         logger.info({ instituteId: authId, jobId: result.id, cost: renewCost }, 'Job renewed successfully');
+
+        await logActivity({
+            module: ActivityLogsModule.JOB,
+            action: ActivityActionType.UPDATE,
+            instituteId: authId?.toString(),
+            oldData: existingJob,
+            newData: result,
+            description: `Institute renewed job: ${existingJob.title}`
+        });
+
         res.status(200).json(result);
 
     } catch (err: any) {
@@ -384,12 +397,17 @@ export const updateJob = async (req: AuthRequest, res: Response) => {
 
         logger.info({ instituteId: authId, jobId: job.id }, 'Job updated successfully');
 
+        const isAdminUpdate = req?.user?.role === AdminRoles.MASTER_ADMIN || req?.user?.role === AdminRoles.ADMIN;
+        const isInstituteUpdate = InstituteRoles.includes(req?.user?.role || '');
+
         await logActivity({
             module: ActivityLogsModule.JOB,
             action: ActivityActionType.UPDATE,
+            adminId: isAdminUpdate ? authId : undefined,
+            instituteId: isInstituteUpdate ? authId : undefined,
             oldData: existingJob,
             newData: job,
-            description: 'Job updated'
+            description: `${isAdminUpdate ? 'Admin' : (isInstituteUpdate ? 'Institute' : 'User')} updated job: ${job.title}`
         });
 
         res.status(200).json(job);
@@ -421,11 +439,16 @@ export const deleteJob = async (req: AuthRequest, res: Response) => {
         await prisma.job.delete({ where: { id } });
         logger.info({ instituteId: authId, jobId: id }, 'Job deleted successfully');
 
+        const isAdminDel = req?.user?.role === AdminRoles.MASTER_ADMIN || req?.user?.role === AdminRoles.ADMIN;
+        const isInstituteDel = InstituteRoles.includes(req?.user?.role || '');
+
         await logActivity({
             module: ActivityLogsModule.JOB,
             action: ActivityActionType.DELETE,
+            adminId: isAdminDel ? authId : undefined,
+            instituteId: isInstituteDel ? authId : undefined,
             oldData: existingJob,
-            description: 'Job deleted'
+            description: `${isAdminDel ? 'Admin' : (isInstituteDel ? 'Institute' : 'User')} deleted job: ${existingJob.title}`
         });
 
         res.status(204).send();
@@ -852,6 +875,20 @@ export const toggleJobStatus = async (req: AuthRequest, res: Response) => {
         }
 
         logger.info({ instituteId: authId, jobId: id, status: job.status }, 'Job status toggled successfully');
+
+        const isAdminToggle = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const isInstituteToggle = InstituteRoles.includes(req.user?.role || '');
+
+        await logActivity({
+            module: ActivityLogsModule.JOB,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdminToggle ? authId?.toString() : undefined,
+            instituteId: isInstituteToggle ? authId?.toString() : undefined,
+            oldData: job,
+            newData: updatedJob,
+            description: `${isAdminToggle ? 'Admin' : (isInstituteToggle ? 'Institute' : 'User')} toggled status for job: ${job.title} to ${updatedJob.status}`
+        });
+
         res.status(200).json(updatedJob);
     } catch (err) {
         logger.error({ err, instituteId: authId, jobId: id }, 'Database error during job status toggle');

@@ -4,29 +4,45 @@ import jwt from "jsonwebtoken";
 import { prisma } from '../lib/prisma.js';
 import { AuthRequest } from "../middlewares/auth.middleware.js";
 import logger from "../lib/logging-client.js";
-
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.js';
 
 export const signUp = async (req: Request, res: Response) => {
     try {
-        const { email, password, role } = req.body;
+        const { name, email, password, role } = req.body;
 
-        console.log("role in admin controller", role)
+        console.log("name in admin controller:", name);
+        console.log("email in admin controller:", email);
+        console.log("role in admin controller:", role);
 
         const admin = await prisma.admin.findUnique({ where: { email } });
         if (admin) {
             return res.status(400).json({ message: "Admin already exists" });
         }
-        const newAdmin = await prisma.admin.create({ data: { email, password, role } });
+
+        const newAdmin = await prisma.admin.create({
+            data: { name, email, password, role }
+        });
 
         if (!newAdmin) {
             return res.status(500).json({ message: "Internal server error" });
         }
 
-        res.status(200).json({ "message": "Admin created successfully" });
+        res.status(200).json({ message: "Admin created successfully" });
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.USER, // Admins are also users in a sense, or maybe use a system module if exists. Schema only has specific enums.
+            action: ActivityActionType.CREATE,
+            adminId: newAdmin.id,
+            newData: newAdmin,
+            description: `New Admin account created: ${newAdmin.name} (${newAdmin.role})`
+        });
     } catch (error) {
+        console.error("Error in admin signup:", error);
         res.status(500).json({ message: "Internal server error" });
     }
-}
+};
 
 export const login = async (req: Request, res: Response) => {
     try {
@@ -107,11 +123,21 @@ export const editAdmin = async (req: AuthRequest, res: Response) => {
         if (!admin) {
             return res.status(404).json({ message: "Admin not found" });
         }
-        await prisma.admin.update({
+        const updatedAdmin = await prisma.admin.update({
             where: { id: id.toString() },
             data: { email, password, role }
         });
         res.status(200).json({ message: "Admin updated successfully" });
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.USER,
+            action: ActivityActionType.UPDATE,
+            adminId: req.user?.id.toString(),
+            oldData: admin,
+            newData: updatedAdmin,
+            description: `Master Admin updated admin account: ${updatedAdmin.name}`
+        });
     } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }
@@ -128,6 +154,15 @@ export const deleteAdmin = async (req: AuthRequest, res: Response) => {
             where: { id: id.toString() },
         });
         res.status(200).json({ message: "Admin deleted successfully" });
+
+        // Activity Log
+        await logActivity({
+            module: ActivityLogsModule.USER,
+            action: ActivityActionType.DELETE,
+            adminId: req.user?.id.toString(),
+            oldData: admin,
+            description: `Master Admin deleted admin account: ${admin.name}`
+        });
     } catch (error) {
         res.status(500).json({ message: "Internal server error" });
     }

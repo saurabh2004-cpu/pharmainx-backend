@@ -1,9 +1,17 @@
 import { Router } from 'express';
 const router = Router();
 import { authenticateToken } from '../middlewares/auth.middleware.js';
-import { createTransaction, getAllTransactions, getTransactionsByInstituteId, getTransactionsByPackageId } from '../controllers/transactions.controlller.js';
+import {
+    createOrder,
+    createTransaction,
+    getAllTransactions,
+    getTransactionsByInstituteId,
+    getTransactionsByPackageId,
+    verifyPayment
+} from '../controllers/transactions.controlller.js';
 
-
+router.post("/create-order/:packageId", authenticateToken, createOrder);
+router.post("/verify-payment", verifyPayment);
 router.post("/create-transaction/:packageId", authenticateToken, createTransaction);
 router.get("/get-all-transactions", authenticateToken, getAllTransactions);
 router.get("/get-transactions-by-institute-id", authenticateToken, getTransactionsByInstituteId);

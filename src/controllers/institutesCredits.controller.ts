@@ -4,7 +4,7 @@ import { getServiceLogger } from '../utils/logger.js';
 import { z } from 'zod';
 import { CreditHistoryAction, CreditHistoryType } from '../generated/prisma/enums.js';
 import { logActivity } from '../utils/activityLogger.js';
-import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("InstituteCredits");
 
@@ -106,8 +106,9 @@ export const createInstituteCredits = async (req: AuthRequest, res: Response) =>
             await logActivity({
                 module: ActivityLogsModule.INSTITUTE_CREDITS,
                 action: ActivityActionType.CREATE,
+                adminId: req.user?.id.toString(),
                 newData: newCredits,
-                description: 'Institute credits record created'
+                description: `Admin allocated ${credits} credits to institute: ${newCredits.institute?.name || ''}`
             });
 
             return newCredits;
@@ -182,9 +183,10 @@ export const updateInstituteCredits = async (req: AuthRequest, res: Response) =>
             await logActivity({
                 module: ActivityLogsModule.INSTITUTE_CREDITS,
                 action: ActivityActionType.UPDATE,
+                adminId: req.user?.id.toString(),
                 oldData: targetRecord,
                 newData: updatedRecord,
-                description: 'Institute credits updated'
+                description: `Admin updated credits for institute: ${updatedRecord.institute?.name || ''} (New Balance: ${credits})`
             });
 
             return updatedRecord;
@@ -296,7 +298,17 @@ export const deleteInstituteCredits = async (req: AuthRequest, res: Response) =>
     const idStr = id as string;
 
     try {
-        const existingRecord = await prisma.instituteCredits.findUnique({ where: { id: idStr } });
+        const existingRecord = await prisma.instituteCredits.findUnique(
+            {
+                where: { id: idStr },
+                include: {
+                    institute: {
+                        select: {
+                            name: true
+                        }
+                    }
+                }
+            });
         if (!existingRecord) {
             return res.status(404).json({ error: 'Institute credits record not found' });
         }
@@ -310,8 +322,9 @@ export const deleteInstituteCredits = async (req: AuthRequest, res: Response) =>
         await logActivity({
             module: ActivityLogsModule.INSTITUTE_CREDITS,
             action: ActivityActionType.DELETE,
+            adminId: req.user?.id.toString(),
             oldData: existingRecord,
-            description: 'Institute credits deleted'
+            description: `Admin deleted credits record for institute ID: ${existingRecord.institute?.name}`
         });
 
         res.status(200).json({ message: 'Institute credits deleted successfully' });

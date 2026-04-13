@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
-import { AuthRoles, Prisma, VerificationStatus, UserRoles } from '../generated/prisma/client.ts';
+import { AuthRoles, Prisma, VerificationStatus, UserRoles, AdminRoles } from '../generated/prisma/client.ts';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { getCloudFrontUrl, deleteFromS3, invalidateCloudFront } from '../services/aws.service.js';
@@ -13,7 +13,7 @@ const logger = getServiceLogger("User");
 // Extend Request to include user from auth middleware
 interface AuthRequest extends Request {
     user?: {
-        id: number;
+        id: string;
         role: string;
     };
 }
@@ -73,6 +73,9 @@ export const SignupUser = async (req: AuthRequest, res: Response) => {
                     experience: experience ? parseInt(experience as string) : null
                 }
             });
+
+            console.log("new user created", newUser)
+
             return newUser;
         });
 
@@ -81,8 +84,9 @@ export const SignupUser = async (req: AuthRequest, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.USER,
             action: ActivityActionType.CREATE,
+            userId: user.id,
             newData: user,
-            description: 'User created'
+            description: `New User signed up: ${user.firstName} ${user.lastName} (${user.role})`
         });
 
         res.status(200).json(user);
@@ -131,7 +135,7 @@ export const signInUser = async (req: AuthRequest, res: Response) => {
             // .cookie("accessToken", token, {
             //     httpOnly: true,
             //     secure: true,
-            //     sameSite: 'lax',
+            //     sameSite: 'lax', 
             //     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
             // })
             .status(200)
@@ -199,14 +203,30 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
         }
 
         logger.info({ authId, hasProfile: !!mappedUser.profile_picture, hasBanner: !!mappedUser.banner_picture }, 'User updated successfully');
+        const isAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
 
-        await logActivity({
-            module: ActivityLogsModule.USER,
-            action: ActivityActionType.UPDATE,
-            oldData,
-            newData: mappedUser,
-            description: 'User updated profile'
-        });
+        console.log("isAdmin", isAdmin)
+        console.log("req.user", req.user)
+
+        if (isAdmin) {
+            await logActivity({
+                module: ActivityLogsModule.USER,
+                action: ActivityActionType.UPDATE,
+                oldData,
+                adminId: req.user?.id.toString(),
+                newData: mappedUser,
+                description: 'Admin updated User profile'
+            });
+        } else {
+            await logActivity({
+                module: ActivityLogsModule.USER,
+                action: ActivityActionType.UPDATE,
+                oldData,
+                userId: req.user?.id.toString(),
+                newData: mappedUser,
+                description: 'User updated profile'
+            });
+        }
 
         res.status(200).json(mappedUser);
     } catch (err: any) {
@@ -271,13 +291,24 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
 
         await prisma.user.delete({ where: { id: id as string } });
         logger.info({ authId, id }, 'User and all associated files deleted successfully');
-
-        await logActivity({
-            module: ActivityLogsModule.USER,
-            action: ActivityActionType.DELETE,
-            oldData: existingData,
-            description: 'User and associated files deleted'
-        });
+        const isAdmin = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        if (isAdmin) {
+            await logActivity({
+                adminId: req.user?.id.toString(),
+                module: ActivityLogsModule.USER,
+                action: ActivityActionType.DELETE,
+                oldData: existingData,
+                description: `Admin deleted User : ${existingData.firstName} ${existingData.lastName} (${existingData.role})`
+            })
+        } else {
+            await logActivity({
+                userId: req.user?.id.toString(),
+                module: ActivityLogsModule.USER,
+                action: ActivityActionType.DELETE,
+                oldData: existingData,
+                description: 'User and associated files deleted'
+            })
+        }
 
         res.status(204).send();
     } catch (err: any) {

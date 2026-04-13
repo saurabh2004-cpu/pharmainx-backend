@@ -10,7 +10,7 @@ router.use(authenticateToken);
 router.post('/upload', upload.fields([
     { name: 'profileImage', maxCount: 1 },
     { name: 'coverImage', maxCount: 1 }
-]), uploadInstituteImages);
+]), authenticateToken, uploadInstituteImages);
 
 // Get images
 router.get('/', getInstituteImages);

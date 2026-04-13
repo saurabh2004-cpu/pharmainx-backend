@@ -3,7 +3,7 @@ import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { z } from 'zod';
 import { logActivity } from '../utils/activityLogger.js';
-import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger("CreditsWallet");
 
@@ -48,8 +48,9 @@ export const createCreditsWallet = async (req: AuthRequest, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.CREDITS_WALLET,
             action: ActivityActionType.CREATE,
+            adminId: req.user?.id.toString(),
             newData: wallet,
-            description: 'Credits wallet created'
+            description: 'Admin created new Credits Pricing configuration'
         });
 
         res.status(201).json(wallet);
@@ -135,9 +136,10 @@ export const updateCreditsWallet = async (req: AuthRequest, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.CREDITS_WALLET,
             action: ActivityActionType.UPDATE,
+            adminId: req.user?.id.toString(),
             oldData: existingWallet,
             newData: updatedWallet,
-            description: 'Credits wallet updated'
+            description: 'Admin updated Credits Pricing configuration'
         });
 
         res.status(200).json(updatedWallet);
@@ -165,8 +167,9 @@ export const deleteCreditsWallet = async (req: AuthRequest, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.CREDITS_WALLET,
             action: ActivityActionType.DELETE,
+            adminId: req.user?.id.toString(),
             oldData: existingWallet,
-            description: 'Credits wallet deleted'
+            description: 'Admin deleted Credits Pricing configuration'
         });
 
         res.status(200).json({ message: 'Credits wallet deleted successfully' });

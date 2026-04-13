@@ -7,7 +7,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { uploadToS3, getCloudFrontUrl, deleteFromS3 } from '../services/aws.service.js';
 import { logActivity } from '../utils/activityLogger.js';
-import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const createInstituteVerification = async (req: AuthRequest, res: Response) => {
     const instituteId = req.user?.id?.toString()
@@ -57,13 +57,21 @@ const createInstituteVerification = async (req: AuthRequest, res: Response) => {
                     adminPhone,
                     registrationCertificate: registrationCertificateKey,
                 },
+                include: {
+                    institute: {
+                        select: {
+                            name: true
+                        }
+                    }
+                }
             });
 
             await logActivity({
                 module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
                 action: ActivityActionType.UPDATE,
+                instituteId: instituteId,
                 newData: updatedVerification,
-                description: 'Institute verification updated'
+                description: `Institute Resubmitted verification : ${updatedVerification.institute?.name || ''}`
             });
 
             res.json({ message: "Institute verification updated successfully", instituteVerification: existingVerification });
@@ -80,11 +88,20 @@ const createInstituteVerification = async (req: AuthRequest, res: Response) => {
                 adminPhone,
                 registrationCertificate: registrationCertificateKey,
             },
+            include: { institute: true }
         });
 
         if (!instituteVerification) {
             return res.status(400).json({ error: "Failed to create institute verification" });
         }
+
+        await logActivity({
+            module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
+            action: ActivityActionType.CREATE,
+            instituteId: instituteId,
+            newData: instituteVerification,
+            description: `Institute submitted verification: ${instituteVerification.institute?.name || ''}`
+        });
 
         res.json({ message: "Institute verification created successfully", instituteVerification });
     } catch (error: any) {
@@ -180,6 +197,7 @@ const approveInstituteVerification = async (req: AuthRequest, res: Response) => 
             data: {
                 status: VerificationStatus.APPROVED,
             },
+            include: { institute: true }
         });
 
         if (!instituteVerification) {
@@ -189,8 +207,9 @@ const approveInstituteVerification = async (req: AuthRequest, res: Response) => 
         await logActivity({
             module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
+            adminId: req.user?.id.toString(),
             newData: instituteVerification,
-            description: 'Institute verification approved'
+            description: `Admin approved verification for: ${instituteVerification.institute?.name || ''}`
         });
 
         res.json({ message: "Institute verification verified successfully", instituteVerification });
@@ -227,6 +246,13 @@ const rejectInstituteVerification = async (req: AuthRequest, res: Response) => {
                 data: {
                     status: VerificationStatus.REJECTED,
                 },
+                include: {
+                    institute: {
+                        select: {
+                            name: true
+                        }
+                    }
+                }
             });
 
             await tx.institute.update({
@@ -252,8 +278,9 @@ const rejectInstituteVerification = async (req: AuthRequest, res: Response) => {
         await logActivity({
             module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
             action: ActivityActionType.UPDATE,
+            adminId: req.user?.id.toString(),
             newData: result,
-            description: `Institute verification rejected for ${documentField}`
+            description: `Admin rejected verification for institute ${result.institute?.name} - Reason: ${documentField}`
         });
 
         res.json({ message: "Institute verification rejected successfully", instituteVerification: result });
@@ -363,11 +390,15 @@ const deleteInstituteVerificationById = async (req: AuthRequest, res: Response) 
             where: { id: id.toString() }
         });
 
+        const isAdminDel = req.user?.role === AdminRoles.MASTER_ADMIN || req.user?.role === AdminRoles.ADMIN;
+        const actorId = req.user?.id.toString();
+
         await logActivity({
             module: ActivityLogsModule.INSTITUTE_VERIFICATIONS,
             action: ActivityActionType.DELETE,
+            adminId: isAdminDel ? actorId : undefined,
             oldData: verification,
-            description: 'Institute verification deleted'
+            description: `${isAdminDel ? 'Admin' : 'Institute'} deleted verification record`
         });
 
         res.json({ message: "Institute verification deleted successfully" });

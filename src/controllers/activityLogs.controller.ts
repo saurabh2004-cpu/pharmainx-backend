@@ -21,7 +21,32 @@ export const getAllActivityLogs = async (req: Request, res: Response) => {
             where,
             orderBy: { createdAt: 'desc' },
             skip: (page - 1) * limit,
-            take: limit
+            take: limit,
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        firstName: true,
+                        lastName: true,
+                        role: true
+                    }
+                },
+                admin: {
+                    select: {
+                        id: true,
+                        name: true,
+                        role: true
+                    }
+                },
+                institute: {
+                    select: {
+                        id: true,
+                        name: true,
+                        role: true
+                    }
+                }
+            }
+
         });
 
         const totalPages = Math.ceil(total / limit);
@@ -45,7 +70,31 @@ export const getActivityLogById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const log = await prisma.activityLogs.findUnique({
-            where: { id: String(id) }
+            where: { id: String(id) },
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        firstName: true,
+                        lastName: true,
+                        role: true
+                    }
+                },
+                admin: {
+                    select: {
+                        id: true,
+                        name: true,
+                        role: true
+                    }
+                },
+                institute: {
+                    select: {
+                        id: true,
+                        name: true,
+                        role: true
+                    }
+                }
+            }
         });
 
         if (!log) {

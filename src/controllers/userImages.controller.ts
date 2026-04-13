@@ -3,6 +3,8 @@ import { prisma } from '../lib/prisma.js';
 import { getServiceLogger } from '../utils/logger.js';
 import { uploadToS3, deleteFromS3, invalidateCloudFront, getCloudFrontUrl } from '../services/aws.service.js';
 import path from 'path';
+import { logActivity } from '../utils/activityLogger.js';
+import { ActivityLogsModule, ActivityActionType, AdminRoles } from '../generated/prisma/client.ts';
 
 const logger = getServiceLogger('UserImages');
 
@@ -89,6 +91,17 @@ export const uploadUserImages = async (req: AuthRequest, res: Response) => {
             coverImage: getCloudFrontUrl(userImages.coverImage)
         };
 
+        const isAdmin = req.user?.role === AdminRoles.ADMIN || req.user?.role === AdminRoles.MASTER_ADMIN;
+
+        await logActivity({
+            module: ActivityLogsModule.USER_IMAGES,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdmin ? req.user?.id.toString() : undefined,
+            userId: isAdmin ? undefined : userId,
+            newData: result,
+            description: `${isAdmin ? 'Admin' : 'User'} updated profile image`
+        });
+
         logger.info({ userId, updatedFields: Object.keys(dataToUpdate) }, 'User images updated');
         res.status(200).json(result);
 
@@ -135,8 +148,8 @@ export const deleteUserImage = async (req: AuthRequest, res: Response) => {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    if (type !== 'profile' && type !== 'cover') {
-        return res.status(400).json({ error: 'Invalid image type. Must be "profile" or "cover"' });
+    if (type !== 'profileImage' && type !== 'coverImage') {
+        return res.status(400).json({ error: 'Invalid image type. Must be "profileImage" or "coverImage"' });
     }
 
     try {
@@ -152,10 +165,10 @@ export const deleteUserImage = async (req: AuthRequest, res: Response) => {
 
         let keyToDelete = '';
 
-        if (type === 'profile' && userImages.profileImage) {
+        if (type === 'profileImage' && userImages.profileImage) {
             keyToDelete = userImages.profileImage;
             dataToUpdate.profileImage = '';
-        } else if (type === 'cover' && userImages.coverImage) {
+        } else if (type === 'coverImage' && userImages.coverImage) {
             keyToDelete = userImages.coverImage;
             dataToUpdate.coverImage = '';
         } else {
@@ -179,6 +192,18 @@ export const deleteUserImage = async (req: AuthRequest, res: Response) => {
             profileImage: getCloudFrontUrl(updated.profileImage),
             coverImage: getCloudFrontUrl(updated.coverImage)
         };
+
+        const isAdminDel = req.user?.role === AdminRoles.ADMIN || req.user?.role === AdminRoles.MASTER_ADMIN;
+
+        await logActivity({
+            module: ActivityLogsModule.USER_IMAGES,
+            action: ActivityActionType.UPDATE,
+            adminId: isAdminDel ? req.user?.id.toString() : undefined,
+            userId: isAdminDel ? undefined : userId,
+            newData: result,
+            description: `${isAdminDel ? 'Admin' : 'User'} deleted ${type} image`
+        });
+
         res.status(200).json(result);
 
     } catch (err: any) {
