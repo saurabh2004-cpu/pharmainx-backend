@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/myapps
+            cd /var/www/sandbox
             docker-compose pull
             docker-compose up -d
-            docker image prune -af
+            docker image prune -af  

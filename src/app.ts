@@ -130,7 +130,7 @@ import { createServer } from 'http';
 import { initializeSocket } from './lib/socket.js';
 import { initJobExpiryCron } from './cron-jobs/jobs.js';
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const server = createServer(app);
 
 initializeSocket(server);
