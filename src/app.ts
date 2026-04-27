@@ -45,7 +45,7 @@ app.use(morgan('dev'));
 app.get('/health', (req: Request, res: Response) => {
     res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
-
+ 
 // Routes
 import adminRoutes from './routes/admin.routes.js';
 import userRoutes from './routes/user.routes.js';
