@@ -21,20 +21,20 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:sandbox .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:sandbox
 
       - name: Deploy on VPS via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_HOST }}
+          host: ${{ secrets.SERVER_HOST }} 
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/my-apps
+            cd /var/www/sandbox
             docker-compose pull
             docker-compose up -d
             docker image prune -af  
