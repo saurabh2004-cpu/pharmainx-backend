@@ -1,4 +1,4 @@
-name: Build and Deploy Backend
+name: Build and Deploy Backend on sandbox enviornment
 
 on:
   push:
