@@ -56,6 +56,7 @@ model User {
   userSocialMediaLinks       UserSocialMediaLinks[]
   interviews                 Interviews[]
   activityLogs               ActivityLogs[]
+  userFeedbacks              UserFeedbacks[]
 }
 
 model Institute {
@@ -517,6 +518,23 @@ model Transactions {
   institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
 }
 
+model UserFeedbacks {
+  id           String       @id @default(uuid())
+  userId       String       @default("")
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  feedbackType FeedbackType
+  message      String       @default("")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+// enums
+enum FeedbackType {
+  JOB_LOOKING
+  FEATURE
+  CHAT
+}
+
 enum SocialMediaPlatforms {
   TWITTER
   LINKEDIN
@@ -543,6 +561,7 @@ enum ActivityLogsModule {
   INSTITUTE_IMAGES
   USER_IMAGES
   PACKAGES
+  USER_FEEDBACKS
 }
 
 enum AuthRoles {

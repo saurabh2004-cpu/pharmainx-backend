@@ -28,7 +28,8 @@ import {
     updateUserLinks,
     getUserLinks,
     deleteUserLinks,
-    checkUserProfileCompletionStatus
+    checkUserProfileCompletionStatus,
+    checkUserProfileCompletionStatusForpopup
 } from '../controllers/user.controller.js';
 import { downloadResume } from '../controllers/resume.controller.js';
 import { authenticateToken } from '../middlewares/auth.middleware.js';
@@ -40,7 +41,7 @@ const router = Router();
 router.get('/search-users', searchUsers);
 router.get('/get-all-users', getAllUsers);
 router.get('/unverified-users', getUnverifiedUsers);
-router.get('/get-user/:id', getUserById); 
+router.get('/get-user/:id', getUserById);
 router.get('/resume/download/:userId', authenticateToken, downloadResume);
 
 // Private Routes (Apply Auth Middleware)
@@ -81,5 +82,6 @@ router.delete('/delete-links', authenticateToken, deleteUserLinks);
 
 // Profile Completion Routes
 router.get('/check-profile-completion', authenticateToken, checkUserProfileCompletionStatus);
+router.get('/check-profile-completion-popup', authenticateToken, checkUserProfileCompletionStatusForpopup);
 
 export default router;

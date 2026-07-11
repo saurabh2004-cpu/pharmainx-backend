@@ -31,7 +31,7 @@ app.use(cors({
         "http://localhost:5173",
         "http://88.222.242.191:3000",
         "http://88.222.242.191:5173",
-        "https://pharmainc.in", 
+        "https://pharmainc.in",
         "https://admin.pharminc.in",
         "https://pharmincdev.in"
     ],
@@ -72,6 +72,7 @@ import socialMediaRoutes from './routes/socialMedia.routes.js';
 import packagesRoutes from './routes/packages.routes.js';
 import transactionsRoutes from './routes/transactions.routes.ts';
 import conversationsAdminRoutes from './routes/conversations.admin.routes.js';
+import userFeedbackRoutes from './routes/userFeedback.routes.ts';
 
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/admin/conversations', conversationsAdminRoutes);
@@ -84,6 +85,7 @@ app.use('/api/v1/saved-job', savedJobRoutes);
 app.use('/api/v1/credits-wallet', creditsWalletRoutes);
 app.use('/api/v1/institute-credits', institutesCreditsRoutes);
 app.use('/api/v1/notifications', notificationRoutes);
+app.use('/api/v1/user-feedbacks', userFeedbackRoutes);
 
 // Image Routes
 app.use('/api/v1/user-images', userImagesRoutes);

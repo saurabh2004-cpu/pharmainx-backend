@@ -81,7 +81,8 @@ export const ModelName = {
   UserSocialMediaLinks: 'UserSocialMediaLinks',
   InstituteSocialMediaLinks: 'InstituteSocialMediaLinks',
   Packages: 'Packages',
-  Transactions: 'Transactions'
+  Transactions: 'Transactions',
+  UserFeedbacks: 'UserFeedbacks'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -578,6 +579,18 @@ export const TransactionsScalarFieldEnum = {
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
+
+
+export const UserFeedbacksScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  feedbackType: 'feedbackType',
+  message: 'message',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserFeedbacksScalarFieldEnum = (typeof UserFeedbacksScalarFieldEnum)[keyof typeof UserFeedbacksScalarFieldEnum]
 
 
 export const SortOrder = {

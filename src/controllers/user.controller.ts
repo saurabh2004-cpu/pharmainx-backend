@@ -8,7 +8,7 @@ import { getCloudFrontUrl, deleteFromS3, invalidateCloudFront } from '../service
 import { logActivity } from '../utils/activityLogger.js';
 import { ActivityLogsModule, ActivityActionType } from '../generated/prisma/client.ts';
 
-const logger = getServiceLogger("User");
+const logger: any = getServiceLogger("User");
 
 // Extend Request to include user from auth middleware
 interface AuthRequest extends Request {
@@ -1146,6 +1146,119 @@ export const deleteUserLinks = async (req: AuthRequest, res: Response) => {
     }
 };
 
+export const checkUserProfileCompletionStatusForpopup = async (
+    req: AuthRequest,
+    res: Response
+) => {
+    const authId = req.user?.id;
+
+    if (!authId) {
+        return res.status(401).json({
+            error: "Unauthorized",
+        });
+    }
+
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: String(authId),
+            },
+            include: {
+                userSpecialities: true,
+                userExperiences: true,
+                skills: true,
+                userEducations: true,
+                userVerifications: true,
+            },
+        });
+
+        if (!user) {
+            return res.status(404).json({
+                error: "User not found",
+            });
+        }
+
+        const isStudent = user.role === "STUDENT";
+
+        const verification =
+            user.userVerifications[0] || null;
+
+        const isLincenceExpired =
+            Boolean(
+                verification?.licenseExpiryDate &&
+                verification.licenseExpiryDate < new Date()
+            );
+
+        const isVerified =
+            Boolean(
+                verification?.status === "APPROVED" &&
+                !isLincenceExpired
+            );
+
+        const hasEducation =
+            user.userEducations.length > 0;
+
+        const hasExperience =
+            user.userExperiences.length > 0;
+
+        const hasSkills =
+            user.skills.length > 0;
+
+        const hasSpecialities =
+            user.userSpecialities.length > 0;
+
+        const isComplete = isStudent
+            ? hasEducation &&
+            hasSkills &&
+            hasSpecialities
+            : hasEducation &&
+            hasExperience &&
+            hasSkills &&
+            hasSpecialities;
+
+        const messages: string[] = [];
+
+        if (isLincenceExpired) {
+            messages.push(
+                "Your license has expired. Please renew your verification."
+            );
+        } else if (!isVerified) {
+            messages.push(
+                "Your account has not been verified."
+            );
+        }
+
+        if (!isComplete) {
+            messages.push(
+                isStudent
+                    ? "Complete your education, skills and speciality details."
+                    : "Complete your experience, education, skills and speciality details."
+            );
+        }
+
+        return res.status(200).json({
+            isVerified,
+            isComplete,
+            isLincenceExpired,
+            error:
+                messages.length > 0
+                    ? messages.join(" ")
+                    : null,
+        });
+    } catch (error) {
+        logger.error(
+            {
+                error,
+                authId,
+            },
+            "Error checking profile completion status"
+        );
+
+        return res.status(500).json({
+            error: "Database error",
+        });
+    }
+};
 
 export const checkUserProfileCompletionStatus = async (req: AuthRequest, res: Response) => {
     const authId = req.user?.id;

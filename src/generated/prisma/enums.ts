@@ -32,6 +32,15 @@ export const ApplicationStatus = {
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
 
 
+export const FeedbackType = {
+  JOB_LOOKING: 'JOB_LOOKING',
+  FEATURE: 'FEATURE',
+  CHAT: 'CHAT'
+} as const
+
+export type FeedbackType = (typeof FeedbackType)[keyof typeof FeedbackType]
+
+
 export const SocialMediaPlatforms = {
   TWITTER: 'TWITTER',
   LINKEDIN: 'LINKEDIN',
@@ -63,7 +72,8 @@ export const ActivityLogsModule = {
   INSTITUTE_CREDITS: 'INSTITUTE_CREDITS',
   INSTITUTE_IMAGES: 'INSTITUTE_IMAGES',
   USER_IMAGES: 'USER_IMAGES',
-  PACKAGES: 'PACKAGES'
+  PACKAGES: 'PACKAGES',
+  USER_FEEDBACKS: 'USER_FEEDBACKS'
 } as const
 
 export type ActivityLogsModule = (typeof ActivityLogsModule)[keyof typeof ActivityLogsModule]

@@ -349,6 +349,7 @@ export type UserWhereInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksListRelationFilter
   interviews?: Prisma.InterviewsListRelationFilter
   activityLogs?: Prisma.ActivityLogsListRelationFilter
+  userFeedbacks?: Prisma.UserFeedbacksListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -385,6 +386,7 @@ export type UserOrderByWithRelationInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksOrderByRelationAggregateInput
   interviews?: Prisma.InterviewsOrderByRelationAggregateInput
   activityLogs?: Prisma.ActivityLogsOrderByRelationAggregateInput
+  userFeedbacks?: Prisma.UserFeedbacksOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -424,6 +426,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksListRelationFilter
   interviews?: Prisma.InterviewsListRelationFilter
   activityLogs?: Prisma.ActivityLogsListRelationFilter
+  userFeedbacks?: Prisma.UserFeedbacksListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -514,6 +517,7 @@ export type UserCreateInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -550,6 +554,7 @@ export type UserUncheckedCreateInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -586,6 +591,7 @@ export type UserUpdateInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -622,6 +628,7 @@ export type UserUncheckedUpdateInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -980,6 +987,20 @@ export type UserUpdateOneRequiredWithoutUserSocialMediaLinksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserSocialMediaLinksInput, Prisma.UserUpdateWithoutUserSocialMediaLinksInput>, Prisma.UserUncheckedUpdateWithoutUserSocialMediaLinksInput>
 }
 
+export type UserCreateNestedOneWithoutUserFeedbacksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserFeedbacksInput, Prisma.UserUncheckedCreateWithoutUserFeedbacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserFeedbacksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserFeedbacksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserFeedbacksInput, Prisma.UserUncheckedCreateWithoutUserFeedbacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserFeedbacksInput
+  upsert?: Prisma.UserUpsertWithoutUserFeedbacksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserFeedbacksInput, Prisma.UserUpdateWithoutUserFeedbacksInput>, Prisma.UserUncheckedUpdateWithoutUserFeedbacksInput>
+}
+
 export type UserCreateWithoutJobApplicationInput = {
   id?: string
   created_at?: Date | string
@@ -1013,6 +1034,7 @@ export type UserCreateWithoutJobApplicationInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutJobApplicationInput = {
@@ -1048,6 +1070,7 @@ export type UserUncheckedCreateWithoutJobApplicationInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutJobApplicationInput = {
@@ -1099,6 +1122,7 @@ export type UserUpdateWithoutJobApplicationInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutJobApplicationInput = {
@@ -1134,6 +1158,7 @@ export type UserUncheckedUpdateWithoutJobApplicationInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInterviewsInput = {
@@ -1169,6 +1194,7 @@ export type UserCreateWithoutInterviewsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutUserInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInterviewsInput = {
@@ -1204,6 +1230,7 @@ export type UserUncheckedCreateWithoutInterviewsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutUserInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInterviewsInput = {
@@ -1255,6 +1282,7 @@ export type UserUpdateWithoutInterviewsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutUserNestedInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInterviewsInput = {
@@ -1290,6 +1318,7 @@ export type UserUncheckedUpdateWithoutInterviewsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutUserNestedInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserImagesInput = {
@@ -1325,6 +1354,7 @@ export type UserCreateWithoutUserImagesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserImagesInput = {
@@ -1360,6 +1390,7 @@ export type UserUncheckedCreateWithoutUserImagesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserImagesInput = {
@@ -1411,6 +1442,7 @@ export type UserUpdateWithoutUserImagesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserImagesInput = {
@@ -1446,6 +1478,7 @@ export type UserUncheckedUpdateWithoutUserImagesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserVerificationRejectionsInput = {
@@ -1481,6 +1514,7 @@ export type UserCreateWithoutUserVerificationRejectionsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserVerificationRejectionsInput = {
@@ -1516,6 +1550,7 @@ export type UserUncheckedCreateWithoutUserVerificationRejectionsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserVerificationRejectionsInput = {
@@ -1567,6 +1602,7 @@ export type UserUpdateWithoutUserVerificationRejectionsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserVerificationRejectionsInput = {
@@ -1602,6 +1638,7 @@ export type UserUncheckedUpdateWithoutUserVerificationRejectionsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavedJobsInput = {
@@ -1637,6 +1674,7 @@ export type UserCreateWithoutSavedJobsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavedJobsInput = {
@@ -1672,6 +1710,7 @@ export type UserUncheckedCreateWithoutSavedJobsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavedJobsInput = {
@@ -1723,6 +1762,7 @@ export type UserUpdateWithoutSavedJobsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavedJobsInput = {
@@ -1758,6 +1798,7 @@ export type UserUncheckedUpdateWithoutSavedJobsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserExperiencesInput = {
@@ -1793,6 +1834,7 @@ export type UserCreateWithoutUserExperiencesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserExperiencesInput = {
@@ -1828,6 +1870,7 @@ export type UserUncheckedCreateWithoutUserExperiencesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserExperiencesInput = {
@@ -1879,6 +1922,7 @@ export type UserUpdateWithoutUserExperiencesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserExperiencesInput = {
@@ -1914,6 +1958,7 @@ export type UserUncheckedUpdateWithoutUserExperiencesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserEducationsInput = {
@@ -1949,6 +1994,7 @@ export type UserCreateWithoutUserEducationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserEducationsInput = {
@@ -1984,6 +2030,7 @@ export type UserUncheckedCreateWithoutUserEducationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserEducationsInput = {
@@ -2035,6 +2082,7 @@ export type UserUpdateWithoutUserEducationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserEducationsInput = {
@@ -2070,6 +2118,7 @@ export type UserUncheckedUpdateWithoutUserEducationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSkillsInput = {
@@ -2105,6 +2154,7 @@ export type UserCreateWithoutSkillsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSkillsInput = {
@@ -2140,6 +2190,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSkillsInput = {
@@ -2191,6 +2242,7 @@ export type UserUpdateWithoutSkillsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSkillsInput = {
@@ -2226,6 +2278,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserSpecialitiesInput = {
@@ -2261,6 +2314,7 @@ export type UserCreateWithoutUserSpecialitiesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserSpecialitiesInput = {
@@ -2296,6 +2350,7 @@ export type UserUncheckedCreateWithoutUserSpecialitiesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserSpecialitiesInput = {
@@ -2347,6 +2402,7 @@ export type UserUpdateWithoutUserSpecialitiesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserSpecialitiesInput = {
@@ -2382,6 +2438,7 @@ export type UserUncheckedUpdateWithoutUserSpecialitiesInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserVerificationsInput = {
@@ -2417,6 +2474,7 @@ export type UserCreateWithoutUserVerificationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserVerificationsInput = {
@@ -2452,6 +2510,7 @@ export type UserUncheckedCreateWithoutUserVerificationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserVerificationsInput = {
@@ -2503,6 +2562,7 @@ export type UserUpdateWithoutUserVerificationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserVerificationsInput = {
@@ -2538,6 +2598,7 @@ export type UserUncheckedUpdateWithoutUserVerificationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationsInput = {
@@ -2573,6 +2634,7 @@ export type UserCreateWithoutConversationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationsInput = {
@@ -2608,6 +2670,7 @@ export type UserUncheckedCreateWithoutConversationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationsInput = {
@@ -2659,6 +2722,7 @@ export type UserUpdateWithoutConversationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsInput = {
@@ -2694,6 +2758,7 @@ export type UserUncheckedUpdateWithoutConversationsInput = {
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutActivityLogsInput = {
@@ -2729,6 +2794,7 @@ export type UserCreateWithoutActivityLogsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutUserInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutActivityLogsInput = {
@@ -2764,6 +2830,7 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutUserInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutActivityLogsInput = {
@@ -2815,6 +2882,7 @@ export type UserUpdateWithoutActivityLogsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutUserNestedInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityLogsInput = {
@@ -2850,6 +2918,7 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutUserNestedInput
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserSocialMediaLinksInput = {
@@ -2885,6 +2954,7 @@ export type UserCreateWithoutUserSocialMediaLinksInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserSocialMediaLinksInput = {
@@ -2920,6 +2990,7 @@ export type UserUncheckedCreateWithoutUserSocialMediaLinksInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutUserInput
   interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserSocialMediaLinksInput = {
@@ -2971,6 +3042,7 @@ export type UserUpdateWithoutUserSocialMediaLinksInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserSocialMediaLinksInput = {
@@ -3006,6 +3078,167 @@ export type UserUncheckedUpdateWithoutUserSocialMediaLinksInput = {
   userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutUserNestedInput
   interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
+  userFeedbacks?: Prisma.UserFeedbacksUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserFeedbacksInput = {
+  id?: string
+  created_at?: Date | string
+  verified?: boolean
+  gender?: string | null
+  role?: $Enums.UserRoles
+  headline?: string | null
+  about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
+  JobApplication?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillsCreateNestedManyWithoutUserInput
+  userSpecialities?: Prisma.UserSpecialitiesCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsCreateNestedManyWithoutUserInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionCreateNestedManyWithoutUserInput
+  userSocialMediaLinks?: Prisma.UserSocialMediaLinksCreateNestedManyWithoutUserInput
+  interviews?: Prisma.InterviewsCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserFeedbacksInput = {
+  id?: string
+  created_at?: Date | string
+  verified?: boolean
+  gender?: string | null
+  role?: $Enums.UserRoles
+  headline?: string | null
+  about?: string | null
+  degree?: string | null
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  university?: string | null
+  yearOfStudy?: string | null
+  specialization?: string | null
+  experience?: number | null
+  speciality?: string | null
+  subSpeciality?: string | null
+  city?: string
+  country?: string
+  JobApplication?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutUserInput
+  savedJobs?: Prisma.SavedJobUncheckedCreateNestedManyWithoutUserInput
+  userEducations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  userExperiences?: Prisma.UserExperiencesUncheckedCreateNestedManyWithoutUserInput
+  userImages?: Prisma.UserImagesUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillsUncheckedCreateNestedManyWithoutUserInput
+  userSpecialities?: Prisma.UserSpecialitiesUncheckedCreateNestedManyWithoutUserInput
+  userVerifications?: Prisma.UserVerificationsUncheckedCreateNestedManyWithoutUserInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedCreateNestedManyWithoutUserInput
+  userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedCreateNestedManyWithoutUserInput
+  interviews?: Prisma.InterviewsUncheckedCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserFeedbacksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserFeedbacksInput, Prisma.UserUncheckedCreateWithoutUserFeedbacksInput>
+}
+
+export type UserUpsertWithoutUserFeedbacksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserFeedbacksInput, Prisma.UserUncheckedUpdateWithoutUserFeedbacksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserFeedbacksInput, Prisma.UserUncheckedCreateWithoutUserFeedbacksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserFeedbacksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserFeedbacksInput, Prisma.UserUncheckedUpdateWithoutUserFeedbacksInput>
+}
+
+export type UserUpdateWithoutUserFeedbacksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  JobApplication?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillsUpdateManyWithoutUserNestedInput
+  userSpecialities?: Prisma.UserSpecialitiesUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUpdateManyWithoutUserNestedInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionUpdateManyWithoutUserNestedInput
+  userSocialMediaLinks?: Prisma.UserSocialMediaLinksUpdateManyWithoutUserNestedInput
+  interviews?: Prisma.InterviewsUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogsUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserFeedbacksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRolesFieldUpdateOperationsInput | $Enums.UserRoles
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  degree?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  university?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yearOfStudy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  speciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subSpeciality?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  JobApplication?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutUserNestedInput
+  savedJobs?: Prisma.SavedJobUncheckedUpdateManyWithoutUserNestedInput
+  userEducations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  userExperiences?: Prisma.UserExperiencesUncheckedUpdateManyWithoutUserNestedInput
+  userImages?: Prisma.UserImagesUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillsUncheckedUpdateManyWithoutUserNestedInput
+  userSpecialities?: Prisma.UserSpecialitiesUncheckedUpdateManyWithoutUserNestedInput
+  userVerifications?: Prisma.UserVerificationsUncheckedUpdateManyWithoutUserNestedInput
+  userVerificationRejections?: Prisma.UserVerificationRejectionUncheckedUpdateManyWithoutUserNestedInput
+  userSocialMediaLinks?: Prisma.UserSocialMediaLinksUncheckedUpdateManyWithoutUserNestedInput
+  interviews?: Prisma.InterviewsUncheckedUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -3027,6 +3260,7 @@ export type UserCountOutputType = {
   userSocialMediaLinks: number
   interviews: number
   activityLogs: number
+  userFeedbacks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3043,6 +3277,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   userSocialMediaLinks?: boolean | UserCountOutputTypeCountUserSocialMediaLinksArgs
   interviews?: boolean | UserCountOutputTypeCountInterviewsArgs
   activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
+  userFeedbacks?: boolean | UserCountOutputTypeCountUserFeedbacksArgs
 }
 
 /**
@@ -3146,6 +3381,13 @@ export type UserCountOutputTypeCountActivityLogsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ActivityLogsWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserFeedbacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserFeedbacksWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3181,6 +3423,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userSocialMediaLinks?: boolean | Prisma.User$userSocialMediaLinksArgs<ExtArgs>
   interviews?: boolean | Prisma.User$interviewsArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
+  userFeedbacks?: boolean | Prisma.User$userFeedbacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3268,6 +3511,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userSocialMediaLinks?: boolean | Prisma.User$userSocialMediaLinksArgs<ExtArgs>
   interviews?: boolean | Prisma.User$interviewsArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
+  userFeedbacks?: boolean | Prisma.User$userFeedbacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3289,6 +3533,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userSocialMediaLinks: Prisma.$UserSocialMediaLinksPayload<ExtArgs>[]
     interviews: Prisma.$InterviewsPayload<ExtArgs>[]
     activityLogs: Prisma.$ActivityLogsPayload<ExtArgs>[]
+    userFeedbacks: Prisma.$UserFeedbacksPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3718,6 +3963,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   userSocialMediaLinks<T extends Prisma.User$userSocialMediaLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userSocialMediaLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSocialMediaLinksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   interviews<T extends Prisma.User$interviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InterviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityLogs<T extends Prisma.User$activityLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityLogsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userFeedbacks<T extends Prisma.User$userFeedbacksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userFeedbacksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFeedbacksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4464,6 +4710,30 @@ export type User$activityLogsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ActivityLogsScalarFieldEnum | Prisma.ActivityLogsScalarFieldEnum[]
+}
+
+/**
+ * User.userFeedbacks
+ */
+export type User$userFeedbacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserFeedbacks
+   */
+  select?: Prisma.UserFeedbacksSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserFeedbacks
+   */
+  omit?: Prisma.UserFeedbacksOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserFeedbacksInclude<ExtArgs> | null
+  where?: Prisma.UserFeedbacksWhereInput
+  orderBy?: Prisma.UserFeedbacksOrderByWithRelationInput | Prisma.UserFeedbacksOrderByWithRelationInput[]
+  cursor?: Prisma.UserFeedbacksWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserFeedbacksScalarFieldEnum | Prisma.UserFeedbacksScalarFieldEnum[]
 }
 
 /**

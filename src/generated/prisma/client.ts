@@ -194,3 +194,8 @@ export type Packages = Prisma.PackagesModel
  * 
  */
 export type Transactions = Prisma.TransactionsModel
+/**
+ * Model UserFeedbacks
+ * 
+ */
+export type UserFeedbacks = Prisma.UserFeedbacksModel
