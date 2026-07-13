@@ -74,7 +74,45 @@ export const SignupUser = async (req: AuthRequest, res: Response) => {
                 }
             });
 
-            console.log("new user created", newUser)
+            // Create SUPER_ADMIN ↔ USER conversation
+            const SUPER_ADMIN_ID = '00000000-0000-0000-0000-000000000000';
+            const conversation = await tx.conversation.create({
+                data: {
+                    instituteUnreadCount: 0,
+                    userUnreadCount: 1, // Welcome message is unread for the user
+                    participants: {
+                        create: [
+                            {
+                                participantType: 'SUPER_ADMIN',
+                                participantId: SUPER_ADMIN_ID
+                            },
+                            {
+                                participantType: 'USER',
+                                participantId: newUser.id
+                            }
+                        ]
+                    }
+                }
+            });
+
+            // Insert welcome message
+            const welcomeMsg = await tx.message.create({
+                data: {
+                    conversationId: conversation.id,
+                    senderType: 'SUPER_ADMIN',
+                    senderId: SUPER_ADMIN_ID,
+                    content: "Welcome to our platform! Feel free to contact us anytime if you need assistance.",
+                    isRead: false
+                }
+            });
+
+            // Set last message
+            await tx.conversation.update({
+                where: { id: conversation.id },
+                data: { lastMessageId: welcomeMsg.id }
+            });
+
+            console.log("new user created and admin conversation initialized", newUser)
 
             return newUser;
         });

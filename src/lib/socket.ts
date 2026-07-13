@@ -13,18 +13,39 @@ interface AuthSocket extends Socket {
 let io: SocketIOServer;
 
 export const initializeSocket = (httpServer: HttpServer) => {
+    const allowedOrigins = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://88.222.242.191:3000",
+        "http://88.222.242.191:5173",
+        "https://pharmainc.in",
+        "https://admin.pharminc.in",
+        "https://pharmincdev.in"
+    ];
+
+    if (process.env.SOCKET_ALLOWED_ORIGIN) {
+        allowedOrigins.push(process.env.SOCKET_ALLOWED_ORIGIN);
+    }
+
     io = new SocketIOServer(httpServer, {
         cors: {
-            origin: [
-                process.env.SOCKET_ALLOWED_ORIGIN || "http://localhost:3000",
-            ],
+            origin: allowedOrigins,
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true
         }
     });
 
     io.use((socket: AuthSocket, next) => {
-        const token = socket.handshake.auth.token || socket.handshake.headers.authorization?.split(' ')[1];
+        let token = socket.handshake.auth.token || socket.handshake.headers.authorization?.split(' ')[1];
+
+        if (!token && socket.handshake.headers.cookie) {
+            const cookies = socket.handshake.headers.cookie.split(';').reduce((acc: any, cookie) => {
+                const [key, value] = cookie.trim().split('=');
+                if (key && value) acc[key] = value;
+                return acc;
+            }, {});
+            token = cookies.adminAccessToken || cookies.accessToken;
+        }
 
         if (!token) {
             return next(new Error("Authentication error: No token provided"));
@@ -46,6 +67,13 @@ export const initializeSocket = (httpServer: HttpServer) => {
         if (userId) {
             console.log(`User connected: ${userId} (${role})`);
             socket.join(userId); // Join room based on ID (works for both User and Institute)
+
+            // Let Admin/Super Admin join the general SUPER_ADMIN room
+            if (role === 'MASTER_ADMIN' || role === 'ADMIN' || role === 'SUPER_ADMIN') {
+                const SUPER_ADMIN_ID = '00000000-0000-0000-0000-000000000000';
+                socket.join(SUPER_ADMIN_ID);
+                console.log(`Admin ${userId} joined system SUPER_ADMIN channel`);
+            }
 
             // Conversation Events
             socket.on('join_conversation', (conversationId: string) => {

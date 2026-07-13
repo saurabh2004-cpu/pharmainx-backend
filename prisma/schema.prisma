@@ -44,7 +44,6 @@ model User {
   city                       String                      @default("")
   country                    String                      @default("India")
   JobApplication             Application[]
-  conversations              Conversation[]
   savedJobs                  SavedJob[]
   userEducations             UserEducation[]
   userExperiences            UserExperiences[]
@@ -56,7 +55,6 @@ model User {
   userSocialMediaLinks       UserSocialMediaLinks[]
   interviews                 Interviews[]
   activityLogs               ActivityLogs[]
-  userFeedbacks              UserFeedbacks[]
 }
 
 model Institute {
@@ -80,7 +78,6 @@ model Institute {
   type                            String
   city                            String?
   country                         String?
-  conversations                   Conversation[]
   instituteCreditsWallets         InstituteCredits[]
   instituteImages                 InstituteImages[]
   instituteVerifications          InstituteVerifications?
@@ -405,23 +402,43 @@ model InstituteVerifications {
   instituteVerificationRejections InstituteVerificationRejection[]
 }
 
-model Conversation {
-  id                   String    @id @default(uuid())
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
-  instituteId          String
-  userId               String
-  lastMessageId        String?   @unique
-  instituteUnreadCount Int       @default(0)
-  userUnreadCount      Int       @default(0)
-  institute            Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  lastMessage          Message?  @relation("LastMessage", fields: [lastMessageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  messages             Message[] @relation("ConversationMessages")
+// model Conversation {
+//   id                   String    @id @default(uuid())
+//   createdAt            DateTime  @default(now())
+//   updatedAt            DateTime  @updatedAt
+//   instituteId          String
+//   userId               String
+//   lastMessageId        String?   @unique
+//   instituteUnreadCount Int       @default(0)
+//   userUnreadCount      Int       @default(0)
+//   institute            Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   lastMessage          Message?  @relation("LastMessage", fields: [lastMessageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+//   messages             Message[] @relation("ConversationMessages")
 
-  @@unique([instituteId, userId])
-  @@index([instituteId])
-  @@index([userId])
+//   @@unique([instituteId, userId])
+//   @@index([instituteId])
+//   @@index([userId])
+// }
+
+model Conversation {
+  id                   String                     @id @default(uuid())
+  createdAt            DateTime                   @default(now())
+  updatedAt            DateTime                   @updatedAt
+  lastMessageId        String?                    @unique
+  instituteUnreadCount Int                        @default(0)
+  userUnreadCount      Int                        @default(0)
+  lastMessage          Message?                   @relation("LastMessage", fields: [lastMessageId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  messages             Message[]                  @relation("ConversationMessages")
+  participants         ConversationParticipants[]
+}
+
+model ConversationParticipants {
+  id              String          @id @default(uuid())
+  conversationId  String
+  participantType ParticipantType
+  participantId   String
+  conversation    Conversation    @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 }
 
 model Message {
@@ -440,6 +457,13 @@ model Message {
 
   @@index([conversationId])
   @@index([isRead])
+}
+
+enum ParticipantType {
+  USER
+  INSTITUTE
+  ADMIN
+  SUPER_ADMIN
 }
 
 enum ApplicationStatus {
@@ -518,23 +542,6 @@ model Transactions {
   institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
 }
 
-model UserFeedbacks {
-  id           String       @id @default(uuid())
-  userId       String       @default("")
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  feedbackType FeedbackType
-  message      String       @default("")
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-}
-
-// enums
-enum FeedbackType {
-  JOB_LOOKING
-  FEATURE
-  CHAT
-}
-
 enum SocialMediaPlatforms {
   TWITTER
   LINKEDIN
@@ -592,6 +599,7 @@ enum VerificationStatus {
 enum SenderType {
   USER
   INSTITUTE
+  SUPER_ADMIN
 }
 
 enum MediaType {

@@ -72,7 +72,6 @@ import socialMediaRoutes from './routes/socialMedia.routes.js';
 import packagesRoutes from './routes/packages.routes.js';
 import transactionsRoutes from './routes/transactions.routes.ts';
 import conversationsAdminRoutes from './routes/conversations.admin.routes.js';
-import userFeedbackRoutes from './routes/userFeedback.routes.ts';
 
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/admin/conversations', conversationsAdminRoutes);
@@ -85,7 +84,6 @@ app.use('/api/v1/saved-job', savedJobRoutes);
 app.use('/api/v1/credits-wallet', creditsWalletRoutes);
 app.use('/api/v1/institute-credits', institutesCreditsRoutes);
 app.use('/api/v1/notifications', notificationRoutes);
-app.use('/api/v1/user-feedbacks', userFeedbackRoutes);
 
 // Image Routes
 app.use('/api/v1/user-images', userImagesRoutes);

@@ -3,6 +3,8 @@ import { prisma } from '../lib/prisma.js';
 import { getIO } from '../lib/socket.js';
 import { InstituteRoles, UserRoles } from '../generated/prisma/client.ts';
 import { getCloudFrontUrl } from '../services/aws.service.js';
+import { ParticipantType } from '../generated/prisma/client.ts';
+import { SUPER_ADMIN_ID } from './messages.controller.js';
 
 // Initiate Conversation (Institute Only)
 export const initiateConversation = async (req: Request, res: Response): Promise<void> => {
@@ -40,8 +42,24 @@ export const initiateConversation = async (req: Request, res: Response): Promise
         // 2. Check if conversation exists
         let conversation = await prisma.conversation.findFirst({
             where: {
-                instituteId: instituteId,
-                userId: userId
+                AND: [
+                    {
+                        participants: {
+                            some: {
+                                participantType: ParticipantType.USER,
+                                participantId: userId
+                            }
+                        }
+                    },
+                    {
+                        participants: {
+                            some: {
+                                participantType: ParticipantType.INSTITUTE,
+                                participantId: instituteId
+                            }
+                        }
+                    }
+                ]
             }
         });
 
@@ -51,10 +69,20 @@ export const initiateConversation = async (req: Request, res: Response): Promise
             // Create new conversation
             conversation = await prisma.conversation.create({
                 data: {
-                    instituteId: instituteId,
-                    userId: userId,
                     instituteUnreadCount: 0,
-                    userUnreadCount: 0
+                    userUnreadCount: 0,
+                    participants: {
+                        create: [
+                            {
+                                participantType: ParticipantType.INSTITUTE,
+                                participantId: instituteId
+                            },
+                            {
+                                participantType: ParticipantType.USER,
+                                participantId: userId
+                            }
+                        ]
+                    }
                 }
             });
 
@@ -89,42 +117,66 @@ export const getConversations = async (req: Request, res: Response): Promise<voi
         const roleType = getRoleType(role as string);
         const isInstituteUser = roleType === 'INSTITUTE';
 
-        let whereClause = {};
-        if (isInstituteUser) {
-            whereClause = { instituteId: id };
-        } else {
-            whereClause = { userId: id };
-        }
+        const whereClause = {
+            participants: {
+                some: {
+                    participantType: isInstituteUser ? ParticipantType.INSTITUTE : ParticipantType.USER,
+                    participantId: id
+                }
+            }
+        };
 
         const conversations = await prisma.conversation.findMany({
             where: whereClause,
             include: {
-                user: {
-                    select: {
-                        id: true,
-                        firstName: true,
-                        lastName: true,
-                        userImages: true,
-                    }
-                },
-                institute: {
-                    select: {
-                        id: true,
-                        name: true,
-                        instituteImages: true,
-                    }
-                },
+                participants: true,
                 lastMessage: true
             },
             orderBy: { updatedAt: 'desc' }
         });
 
-        const formattedConversations = conversations.map(conv => {
-            const participant: any = isInstituteUser ? conv.user : conv.institute;
-            // Map images
+        const formattedConversations = await Promise.all(conversations.map(async conv => {
+            const otherParticipant = conv.participants.find(p => p.participantId !== id);
+            let participant: any = null;
+
+            if (otherParticipant) {
+                if (otherParticipant.participantType === 'USER') {
+                    participant = await prisma.user.findUnique({
+                        where: { id: otherParticipant.participantId },
+                        select: {
+                            id: true,
+                            firstName: true,
+                            lastName: true,
+                            userImages: true,
+                        }
+                    });
+                } else if (otherParticipant.participantType === 'INSTITUTE') {
+                    participant = await prisma.institute.findUnique({
+                        where: { id: otherParticipant.participantId },
+                        select: {
+                            id: true,
+                            name: true,
+                            instituteImages: true,
+                        }
+                    });
+                } else if (otherParticipant.participantType === 'SUPER_ADMIN') {
+                    participant = {
+                        id: SUPER_ADMIN_ID,
+                        name: 'Pharminc',
+                        role: 'SUPER_ADMIN',
+                        profile_picture: null
+                    };
+                }
+            }
+
             if (participant) {
-                const images = isInstituteUser ? participant.userImages?.[0] : participant.instituteImages?.[0];
-                participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+                if (otherParticipant?.participantType === 'USER') {
+                    const images = participant.userImages?.[0];
+                    participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+                } else if (otherParticipant?.participantType === 'INSTITUTE') {
+                    const images = participant.instituteImages?.[0];
+                    participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+                }
             }
 
             return {
@@ -134,7 +186,7 @@ export const getConversations = async (req: Request, res: Response): Promise<voi
                 unreadCount: isInstituteUser ? conv.instituteUnreadCount : conv.userUnreadCount,
                 updatedAt: conv.updatedAt
             };
-        });
+        }));
 
         res.status(200).json(formattedConversations);
 
@@ -158,14 +210,20 @@ export const getUnreadMessagesCount = async (req: Request, res: Response): Promi
         };
 
         const roleType = getRoleType(role as string);
-        let whereClause = {};
         let countField = '';
 
+        const whereClause = {
+            participants: {
+                some: {
+                    participantType: roleType === 'INSTITUTE' ? ParticipantType.INSTITUTE : ParticipantType.USER,
+                    participantId: id
+                }
+            }
+        };
+
         if (roleType === 'INSTITUTE') {
-            whereClause = { instituteId: id };
             countField = 'instituteUnreadCount';
         } else {
-            whereClause = { userId: id };
             countField = 'userUnreadCount';
         }
 

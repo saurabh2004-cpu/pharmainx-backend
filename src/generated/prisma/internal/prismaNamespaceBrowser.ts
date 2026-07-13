@@ -76,13 +76,13 @@ export const ModelName = {
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
+  ConversationParticipants: 'ConversationParticipants',
   Message: 'Message',
   ActivityLogs: 'ActivityLogs',
   UserSocialMediaLinks: 'UserSocialMediaLinks',
   InstituteSocialMediaLinks: 'InstituteSocialMediaLinks',
   Packages: 'Packages',
-  Transactions: 'Transactions',
-  UserFeedbacks: 'UserFeedbacks'
+  Transactions: 'Transactions'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -491,14 +491,22 @@ export const ConversationScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  instituteId: 'instituteId',
-  userId: 'userId',
   lastMessageId: 'lastMessageId',
   instituteUnreadCount: 'instituteUnreadCount',
   userUnreadCount: 'userUnreadCount'
 } as const
 
 export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const ConversationParticipantsScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  participantType: 'participantType',
+  participantId: 'participantId'
+} as const
+
+export type ConversationParticipantsScalarFieldEnum = (typeof ConversationParticipantsScalarFieldEnum)[keyof typeof ConversationParticipantsScalarFieldEnum]
 
 
 export const MessageScalarFieldEnum = {
@@ -579,18 +587,6 @@ export const TransactionsScalarFieldEnum = {
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
-
-
-export const UserFeedbacksScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  feedbackType: 'feedbackType',
-  message: 'message',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type UserFeedbacksScalarFieldEnum = (typeof UserFeedbacksScalarFieldEnum)[keyof typeof UserFeedbacksScalarFieldEnum]
 
 
 export const SortOrder = {

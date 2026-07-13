@@ -143,6 +143,11 @@ export type InstituteVerifications = Prisma.InstituteVerificationsModel
  */
 export type Conversation = Prisma.ConversationModel
 /**
+ * Model ConversationParticipants
+ * 
+ */
+export type ConversationParticipants = Prisma.ConversationParticipantsModel
+/**
  * Model Message
  * 
  */
@@ -172,8 +177,3 @@ export type Packages = Prisma.PackagesModel
  * 
  */
 export type Transactions = Prisma.TransactionsModel
-/**
- * Model UserFeedbacks
- * 
- */
-export type UserFeedbacks = Prisma.UserFeedbacksModel

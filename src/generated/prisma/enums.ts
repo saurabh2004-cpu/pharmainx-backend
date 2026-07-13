@@ -17,6 +17,16 @@ export const AdminRoles = {
 export type AdminRoles = (typeof AdminRoles)[keyof typeof AdminRoles]
 
 
+export const ParticipantType = {
+  USER: 'USER',
+  INSTITUTE: 'INSTITUTE',
+  ADMIN: 'ADMIN',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+} as const
+
+export type ParticipantType = (typeof ParticipantType)[keyof typeof ParticipantType]
+
+
 export const ApplicationStatus = {
   APPLIED: 'APPLIED',
   SHORTLISTED: 'SHORTLISTED',
@@ -30,15 +40,6 @@ export const ApplicationStatus = {
 } as const
 
 export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
-
-
-export const FeedbackType = {
-  JOB_LOOKING: 'JOB_LOOKING',
-  FEATURE: 'FEATURE',
-  CHAT: 'CHAT'
-} as const
-
-export type FeedbackType = (typeof FeedbackType)[keyof typeof FeedbackType]
 
 
 export const SocialMediaPlatforms = {
@@ -118,7 +119,8 @@ export type VerificationStatus = (typeof VerificationStatus)[keyof typeof Verifi
 
 export const SenderType = {
   USER: 'USER',
-  INSTITUTE: 'INSTITUTE'
+  INSTITUTE: 'INSTITUTE',
+  SUPER_ADMIN: 'SUPER_ADMIN'
 } as const
 
 export type SenderType = (typeof SenderType)[keyof typeof SenderType]

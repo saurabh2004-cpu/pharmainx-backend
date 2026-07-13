@@ -409,13 +409,13 @@ export const ModelName = {
   UserVerifications: 'UserVerifications',
   InstituteVerifications: 'InstituteVerifications',
   Conversation: 'Conversation',
+  ConversationParticipants: 'ConversationParticipants',
   Message: 'Message',
   ActivityLogs: 'ActivityLogs',
   UserSocialMediaLinks: 'UserSocialMediaLinks',
   InstituteSocialMediaLinks: 'InstituteSocialMediaLinks',
   Packages: 'Packages',
-  Transactions: 'Transactions',
-  UserFeedbacks: 'UserFeedbacks'
+  Transactions: 'Transactions'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -431,7 +431,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "interviews" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks" | "packages" | "transactions" | "userFeedbacks"
+    modelProps: "admin" | "user" | "institute" | "instituteCredits" | "creditsWallet" | "creditsHistory" | "job" | "application" | "interviews" | "jobView" | "instituteView" | "instituteImages" | "userImages" | "userVerificationRejection" | "instituteVerificationRejection" | "jobInactiveReason" | "savedJob" | "notification" | "userExperiences" | "userEducation" | "userSkills" | "userSpecialities" | "userVerifications" | "instituteVerifications" | "conversation" | "conversationParticipants" | "message" | "activityLogs" | "userSocialMediaLinks" | "instituteSocialMediaLinks" | "packages" | "transactions"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2285,6 +2285,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ConversationParticipants: {
+      payload: Prisma.$ConversationParticipantsPayload<ExtArgs>
+      fields: Prisma.ConversationParticipantsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConversationParticipantsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConversationParticipantsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        findFirst: {
+          args: Prisma.ConversationParticipantsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConversationParticipantsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        findMany: {
+          args: Prisma.ConversationParticipantsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>[]
+        }
+        create: {
+          args: Prisma.ConversationParticipantsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        createMany: {
+          args: Prisma.ConversationParticipantsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ConversationParticipantsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>[]
+        }
+        delete: {
+          args: Prisma.ConversationParticipantsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        update: {
+          args: Prisma.ConversationParticipantsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConversationParticipantsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConversationParticipantsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ConversationParticipantsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>[]
+        }
+        upsert: {
+          args: Prisma.ConversationParticipantsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantsPayload>
+        }
+        aggregate: {
+          args: Prisma.ConversationParticipantsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConversationParticipants>
+        }
+        groupBy: {
+          args: Prisma.ConversationParticipantsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationParticipantsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConversationParticipantsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationParticipantsCountAggregateOutputType> | number
+        }
+      }
+    }
     Message: {
       payload: Prisma.$MessagePayload<ExtArgs>
       fields: Prisma.MessageFieldRefs
@@ -2729,80 +2803,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    UserFeedbacks: {
-      payload: Prisma.$UserFeedbacksPayload<ExtArgs>
-      fields: Prisma.UserFeedbacksFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.UserFeedbacksFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.UserFeedbacksFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        findFirst: {
-          args: Prisma.UserFeedbacksFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.UserFeedbacksFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        findMany: {
-          args: Prisma.UserFeedbacksFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>[]
-        }
-        create: {
-          args: Prisma.UserFeedbacksCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        createMany: {
-          args: Prisma.UserFeedbacksCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.UserFeedbacksCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>[]
-        }
-        delete: {
-          args: Prisma.UserFeedbacksDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        update: {
-          args: Prisma.UserFeedbacksUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        deleteMany: {
-          args: Prisma.UserFeedbacksDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.UserFeedbacksUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.UserFeedbacksUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>[]
-        }
-        upsert: {
-          args: Prisma.UserFeedbacksUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserFeedbacksPayload>
-        }
-        aggregate: {
-          args: Prisma.UserFeedbacksAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateUserFeedbacks>
-        }
-        groupBy: {
-          args: Prisma.UserFeedbacksGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserFeedbacksGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.UserFeedbacksCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserFeedbacksCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -3232,14 +3232,22 @@ export const ConversationScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  instituteId: 'instituteId',
-  userId: 'userId',
   lastMessageId: 'lastMessageId',
   instituteUnreadCount: 'instituteUnreadCount',
   userUnreadCount: 'userUnreadCount'
 } as const
 
 export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const ConversationParticipantsScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  participantType: 'participantType',
+  participantId: 'participantId'
+} as const
+
+export type ConversationParticipantsScalarFieldEnum = (typeof ConversationParticipantsScalarFieldEnum)[keyof typeof ConversationParticipantsScalarFieldEnum]
 
 
 export const MessageScalarFieldEnum = {
@@ -3320,18 +3328,6 @@ export const TransactionsScalarFieldEnum = {
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
-
-
-export const UserFeedbacksScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  feedbackType: 'feedbackType',
-  message: 'message',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type UserFeedbacksScalarFieldEnum = (typeof UserFeedbacksScalarFieldEnum)[keyof typeof UserFeedbacksScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3543,6 +3539,20 @@ export type ListEnumVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInpu
 
 
 /**
+ * Reference to a field of type 'ParticipantType'
+ */
+export type EnumParticipantTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParticipantType'>
+    
+
+
+/**
+ * Reference to a field of type 'ParticipantType[]'
+ */
+export type ListEnumParticipantTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParticipantType[]'>
+    
+
+
+/**
  * Reference to a field of type 'SenderType'
  */
 export type EnumSenderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SenderType'>
@@ -3609,20 +3619,6 @@ export type EnumSocialMediaPlatformsFieldRefInput<$PrismaModel> = FieldRefInputT
  * Reference to a field of type 'SocialMediaPlatforms[]'
  */
 export type ListEnumSocialMediaPlatformsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SocialMediaPlatforms[]'>
-    
-
-
-/**
- * Reference to a field of type 'FeedbackType'
- */
-export type EnumFeedbackTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FeedbackType'>
-    
-
-
-/**
- * Reference to a field of type 'FeedbackType[]'
- */
-export type ListEnumFeedbackTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FeedbackType[]'>
     
 
 
@@ -3759,13 +3755,13 @@ export type GlobalOmitConfig = {
   userVerifications?: Prisma.UserVerificationsOmit
   instituteVerifications?: Prisma.InstituteVerificationsOmit
   conversation?: Prisma.ConversationOmit
+  conversationParticipants?: Prisma.ConversationParticipantsOmit
   message?: Prisma.MessageOmit
   activityLogs?: Prisma.ActivityLogsOmit
   userSocialMediaLinks?: Prisma.UserSocialMediaLinksOmit
   instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksOmit
   packages?: Prisma.PackagesOmit
   transactions?: Prisma.TransactionsOmit
-  userFeedbacks?: Prisma.UserFeedbacksOmit
 }
 
 /* Types for Logging */

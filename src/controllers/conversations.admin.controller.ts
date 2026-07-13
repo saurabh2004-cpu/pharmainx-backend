@@ -67,66 +67,99 @@ export const getAdminUsers = async (req: AuthRequest, res: Response) => {
  */
 export const getAdminConversations = async (req: AuthRequest, res: Response) => {
     try {
-        const { instituteId, userId, page = 1, limit = 20 } = req.query;
+        const { type, search = '', page = 1, limit = 20 } = req.query;
         const skip = (Number(page) - 1) * Number(limit);
+        const SUPER_ADMIN_ID = '00000000-0000-0000-0000-000000000000';
 
-        const where: any = {};
-        if (instituteId) where.instituteId = instituteId as string;
-        if (userId) where.userId = userId as string;
+        const conversations = await prisma.conversation.findMany({
+            where: {
+                participants: {
+                    some: {
+                        participantType: 'SUPER_ADMIN',
+                        participantId: SUPER_ADMIN_ID
+                    }
+                }
+            },
+            include: {
+                participants: true,
+                lastMessage: true
+            },
+            orderBy: { updatedAt: 'desc' }
+        });
 
-        const [conversations, total] = await Promise.all([
-            prisma.conversation.findMany({
-                where,
-                include: {
-                    user: {
+        const formattedConversations = await Promise.all(conversations.map(async conv => {
+            const otherParticipant = conv.participants.find(p => p.participantId !== SUPER_ADMIN_ID);
+            let participant: any = null;
+
+            if (otherParticipant) {
+                if (otherParticipant.participantType === 'USER') {
+                    participant = await prisma.user.findUnique({
+                        where: { id: otherParticipant.participantId },
                         select: {
                             id: true,
                             firstName: true,
                             lastName: true,
-                            userImages: true
+                            userImages: true,
+                            email: true
                         }
-                    },
-                    institute: {
+                    });
+                } else if (otherParticipant.participantType === 'INSTITUTE') {
+                    participant = await prisma.institute.findUnique({
+                        where: { id: otherParticipant.participantId },
                         select: {
                             id: true,
                             name: true,
-                            instituteImages: true
+                            instituteImages: true,
+                            contactEmail: true
                         }
-                    },
-                    lastMessage: true,
-                    _count: {
-                        select: { messages: true }
-                    }
-                },
-                orderBy: { updatedAt: 'desc' },
-                skip,
-                take: Number(limit)
-            }),
-            prisma.conversation.count({ where })
-        ]);
+                    });
+                }
+            }
 
-        const formattedConversations = conversations.map(conv => {
-            const userImg = conv.user.userImages?.[0];
-            const instImg = conv.institute.instituteImages?.[0];
+            if (participant && otherParticipant) {
+                if (otherParticipant.participantType === 'USER') {
+                    const images = participant.userImages?.[0];
+                    participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+                    participant.displayName = `${participant.firstName} ${participant.lastName || ''}`;
+                } else if (otherParticipant.participantType === 'INSTITUTE') {
+                    const images = participant.instituteImages?.[0];
+                    participant.profile_picture = images?.profileImage ? getCloudFrontUrl(images.profileImage) : null;
+                    participant.displayName = participant.name;
+                }
+                participant.participantType = otherParticipant.participantType;
+            }
 
             return {
                 id: conv.id,
-                user: {
-                    ...conv.user,
-                    profileImage: userImg?.profileImage ? getCloudFrontUrl(userImg.profileImage) : null
-                },
-                institute: {
-                    ...conv.institute,
-                    profileImage: instImg?.profileImage ? getCloudFrontUrl(instImg.profileImage) : null
-                },
+                participant,
                 lastMessage: conv.lastMessage,
-                totalMessages: conv._count.messages,
+                unreadCount: otherParticipant ? (otherParticipant.participantType === 'USER' ? conv.instituteUnreadCount : conv.userUnreadCount) : 0,
                 updatedAt: conv.updatedAt
             };
-        });
+        }));
+
+        let filtered = formattedConversations.filter(c => c.participant !== null);
+
+        if (type === 'USER') {
+            filtered = filtered.filter(c => c.participant.participantType === 'USER');
+        } else if (type === 'INSTITUTE') {
+            filtered = filtered.filter(c => c.participant.participantType === 'INSTITUTE');
+        }
+
+        if (search) {
+            const query = (search as string).toLowerCase();
+            filtered = filtered.filter(c => 
+                c.participant.displayName.toLowerCase().includes(query) ||
+                (c.participant.email && c.participant.email.toLowerCase().includes(query)) ||
+                (c.participant.contactEmail && c.participant.contactEmail.toLowerCase().includes(query))
+            );
+        }
+
+        const total = filtered.length;
+        const paginated = filtered.slice(skip, skip + Number(limit));
 
         res.status(200).json({
-            conversations: formattedConversations,
+            conversations: paginated,
             total,
             page: Number(page),
             totalPages: Math.ceil(total / Number(limit))

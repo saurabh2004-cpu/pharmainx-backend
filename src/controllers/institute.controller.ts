@@ -203,27 +203,69 @@ export const signUpInstitute = async (req: AuthRequest, res: Response) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const institute = await prisma.institute.create({
-            data: {
-                name,
-                city,
-                country,
-                verified: verified || false,
-                contactEmail,
-                password: hashedPassword,
-                contactNumber,
-                role: validInstituteRole, // Use validated Enum
-                affiliatedUniversity,
-                yearEstablished: parsedYearEstablished,
-                ownership,
-                headline,
-                about,
-                bedsCount: parsedBedsCount !== undefined ? parsedBedsCount : 0, // Default to 0 if not provided but schema requires Int (assuming new schema might default this, strictly schema says Int, usually defaults to 0 or we must provide it. If schema has no default, we must provide it. Based on user prompt "new required... bedsCount", we should provide it. If it was optional in schema, we'd pass undefined. Let's assume strict requirement requires a value, 0 is safe.)
-                staffCount: parsedStaffCount !== undefined ? parsedStaffCount : 0,
-                type,
-                services,
-                telephone,
-            },
+        const institute = await prisma.$transaction(async (tx) => {
+            const newInst = await tx.institute.create({
+                data: {
+                    name,
+                    city,
+                    country,
+                    verified: verified || false,
+                    contactEmail,
+                    password: hashedPassword,
+                    contactNumber,
+                    role: validInstituteRole, // Use validated Enum
+                    affiliatedUniversity,
+                    yearEstablished: parsedYearEstablished,
+                    ownership,
+                    headline,
+                    about,
+                    bedsCount: parsedBedsCount !== undefined ? parsedBedsCount : 0, // Default to 0 if not provided but schema requires Int (assuming new schema might default this, strictly schema says Int, usually defaults to 0 or we must provide it. If schema has no default, we must provide it. Based on user prompt "new required... bedsCount", we should provide it. If it was optional in schema, we'd pass undefined. Let's assume strict requirement requires a value, 0 is safe.)
+                    staffCount: parsedStaffCount !== undefined ? parsedStaffCount : 0,
+                    type,
+                    services,
+                    telephone,
+                },
+            });
+
+            // Create SUPER_ADMIN ↔ INSTITUTE conversation
+            const SUPER_ADMIN_ID = '00000000-0000-0000-0000-000000000000';
+            const conversation = await tx.conversation.create({
+                data: {
+                    instituteUnreadCount: 1, // Welcome message is unread for the institute
+                    userUnreadCount: 0,
+                    participants: {
+                        create: [
+                            {
+                                participantType: 'SUPER_ADMIN',
+                                participantId: SUPER_ADMIN_ID
+                            },
+                            {
+                                participantType: 'INSTITUTE',
+                                participantId: newInst.id
+                            }
+                        ]
+                    }
+                }
+            });
+
+            // Insert welcome message
+            const welcomeMsg = await tx.message.create({
+                data: {
+                    conversationId: conversation.id,
+                    senderType: 'SUPER_ADMIN',
+                    senderId: SUPER_ADMIN_ID,
+                    content: "Welcome to our platform! Feel free to contact us anytime if you need assistance.",
+                    isRead: false
+                }
+            });
+
+            // Set last message
+            await tx.conversation.update({
+                where: { id: conversation.id },
+                data: { lastMessageId: welcomeMsg.id }
+            });
+
+            return newInst;
         });
 
         if (!institute) {

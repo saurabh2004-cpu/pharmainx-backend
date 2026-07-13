@@ -14,7 +14,7 @@ export const authenticateToken = (req: AuthRequest, res: Response, next: NextFun
 
     console.log("acctoken", token);
 
-    if (!token) { 
+    if (!token) {
         return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }
 

@@ -340,7 +340,6 @@ export type InstituteWhereInput = {
   type?: Prisma.StringFilter<"Institute"> | string
   city?: Prisma.StringNullableFilter<"Institute"> | string | null
   country?: Prisma.StringNullableFilter<"Institute"> | string | null
-  conversations?: Prisma.ConversationListRelationFilter
   instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
   instituteImages?: Prisma.InstituteImagesListRelationFilter
   instituteVerifications?: Prisma.XOR<Prisma.InstituteVerificationsNullableScalarRelationFilter, Prisma.InstituteVerificationsWhereInput> | null
@@ -374,7 +373,6 @@ export type InstituteOrderByWithRelationInput = {
   type?: Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrderInput | Prisma.SortOrder
-  conversations?: Prisma.ConversationOrderByRelationAggregateInput
   instituteCreditsWallets?: Prisma.InstituteCreditsOrderByRelationAggregateInput
   instituteImages?: Prisma.InstituteImagesOrderByRelationAggregateInput
   instituteVerifications?: Prisma.InstituteVerificationsOrderByWithRelationInput
@@ -411,7 +409,6 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.StringFilter<"Institute"> | string
   city?: Prisma.StringNullableFilter<"Institute"> | string | null
   country?: Prisma.StringNullableFilter<"Institute"> | string | null
-  conversations?: Prisma.ConversationListRelationFilter
   instituteCreditsWallets?: Prisma.InstituteCreditsListRelationFilter
   instituteImages?: Prisma.InstituteImagesListRelationFilter
   instituteVerifications?: Prisma.XOR<Prisma.InstituteVerificationsNullableScalarRelationFilter, Prisma.InstituteVerificationsWhereInput> | null
@@ -499,7 +496,6 @@ export type InstituteCreateInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -533,7 +529,6 @@ export type InstituteUncheckedCreateInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -567,7 +562,6 @@ export type InstituteUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -601,7 +595,6 @@ export type InstituteUncheckedUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -903,20 +896,6 @@ export type InstituteUpdateOneRequiredWithoutInstituteVerificationsNestedInput =
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutInstituteVerificationsInput, Prisma.InstituteUpdateWithoutInstituteVerificationsInput>, Prisma.InstituteUncheckedUpdateWithoutInstituteVerificationsInput>
 }
 
-export type InstituteCreateNestedOneWithoutConversationsInput = {
-  create?: Prisma.XOR<Prisma.InstituteCreateWithoutConversationsInput, Prisma.InstituteUncheckedCreateWithoutConversationsInput>
-  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutConversationsInput
-  connect?: Prisma.InstituteWhereUniqueInput
-}
-
-export type InstituteUpdateOneRequiredWithoutConversationsNestedInput = {
-  create?: Prisma.XOR<Prisma.InstituteCreateWithoutConversationsInput, Prisma.InstituteUncheckedCreateWithoutConversationsInput>
-  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutConversationsInput
-  upsert?: Prisma.InstituteUpsertWithoutConversationsInput
-  connect?: Prisma.InstituteWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutConversationsInput, Prisma.InstituteUpdateWithoutConversationsInput>, Prisma.InstituteUncheckedUpdateWithoutConversationsInput>
-}
-
 export type InstituteCreateNestedOneWithoutActivityLogsInput = {
   create?: Prisma.XOR<Prisma.InstituteCreateWithoutActivityLogsInput, Prisma.InstituteUncheckedCreateWithoutActivityLogsInput>
   connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutActivityLogsInput
@@ -982,7 +961,6 @@ export type InstituteCreateWithoutInstituteCreditsWalletsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
@@ -1015,7 +993,6 @@ export type InstituteUncheckedCreateWithoutInstituteCreditsWalletsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
@@ -1064,7 +1041,6 @@ export type InstituteUpdateWithoutInstituteCreditsWalletsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
@@ -1097,7 +1073,6 @@ export type InstituteUncheckedUpdateWithoutInstituteCreditsWalletsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
@@ -1130,7 +1105,6 @@ export type InstituteCreateWithoutCreditsHistoriesInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -1163,7 +1137,6 @@ export type InstituteUncheckedCreateWithoutCreditsHistoriesInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -1212,7 +1185,6 @@ export type InstituteUpdateWithoutCreditsHistoriesInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -1245,7 +1217,6 @@ export type InstituteUncheckedUpdateWithoutCreditsHistoriesInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -1278,7 +1249,6 @@ export type InstituteCreateWithoutJobInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -1311,7 +1281,6 @@ export type InstituteUncheckedCreateWithoutJobInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -1360,7 +1329,6 @@ export type InstituteUpdateWithoutJobInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -1393,7 +1361,6 @@ export type InstituteUncheckedUpdateWithoutJobInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -1426,7 +1393,6 @@ export type InstituteCreateWithoutInstituteViewsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -1459,7 +1425,6 @@ export type InstituteUncheckedCreateWithoutInstituteViewsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -1508,7 +1473,6 @@ export type InstituteUpdateWithoutInstituteViewsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -1541,7 +1505,6 @@ export type InstituteUncheckedUpdateWithoutInstituteViewsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -1574,7 +1537,6 @@ export type InstituteCreateWithoutInstituteImagesInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
@@ -1607,7 +1569,6 @@ export type InstituteUncheckedCreateWithoutInstituteImagesInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
@@ -1656,7 +1617,6 @@ export type InstituteUpdateWithoutInstituteImagesInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
@@ -1689,7 +1649,6 @@ export type InstituteUncheckedUpdateWithoutInstituteImagesInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
@@ -1722,7 +1681,6 @@ export type InstituteCreateWithoutInstituteVerificationRejectionsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -1755,7 +1713,6 @@ export type InstituteUncheckedCreateWithoutInstituteVerificationRejectionsInput 
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -1804,7 +1761,6 @@ export type InstituteUpdateWithoutInstituteVerificationRejectionsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -1837,7 +1793,6 @@ export type InstituteUncheckedUpdateWithoutInstituteVerificationRejectionsInput 
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -1870,7 +1825,6 @@ export type InstituteCreateWithoutInstituteVerificationsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
@@ -1903,7 +1857,6 @@ export type InstituteUncheckedCreateWithoutInstituteVerificationsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
@@ -1952,7 +1905,6 @@ export type InstituteUpdateWithoutInstituteVerificationsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
@@ -1985,157 +1937,8 @@ export type InstituteUncheckedUpdateWithoutInstituteVerificationsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
-  Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
-  creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedUpdateManyWithoutInstituteNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutInstituteNestedInput
-  activityLogs?: Prisma.ActivityLogsUncheckedUpdateManyWithoutInstituteNestedInput
-}
-
-export type InstituteCreateWithoutConversationsInput = {
-  id?: string
-  created_at?: Date | string
-  name: string
-  verified?: boolean
-  contactEmail: string
-  contactNumber: string
-  role?: $Enums.InstituteRoles
-  affiliatedUniversity?: string | null
-  yearEstablished?: number | null
-  ownership?: string | null
-  headline?: string | null
-  about?: string | null
-  password: string
-  bedsCount: number
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  staffCount: number
-  telephone: string
-  type: string
-  city?: string | null
-  country?: string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewCreateNestedManyWithoutInstituteInput
-  Job?: Prisma.JobCreateNestedManyWithoutInstituteInput
-  creditsHistories?: Prisma.CreditsHistoryCreateNestedManyWithoutInstituteInput
-  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionCreateNestedManyWithoutInstituteInput
-  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksCreateNestedManyWithoutInstituteInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutInstituteInput
-  activityLogs?: Prisma.ActivityLogsCreateNestedManyWithoutInstituteInput
-}
-
-export type InstituteUncheckedCreateWithoutConversationsInput = {
-  id?: string
-  created_at?: Date | string
-  name: string
-  verified?: boolean
-  contactEmail: string
-  contactNumber: string
-  role?: $Enums.InstituteRoles
-  affiliatedUniversity?: string | null
-  yearEstablished?: number | null
-  ownership?: string | null
-  headline?: string | null
-  about?: string | null
-  password: string
-  bedsCount: number
-  services?: Prisma.InstituteCreateservicesInput | string[]
-  staffCount: number
-  telephone: string
-  type: string
-  city?: string | null
-  country?: string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
-  instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
-  instituteViews?: Prisma.InstituteViewUncheckedCreateNestedManyWithoutInstituteInput
-  Job?: Prisma.JobUncheckedCreateNestedManyWithoutInstituteInput
-  creditsHistories?: Prisma.CreditsHistoryUncheckedCreateNestedManyWithoutInstituteInput
-  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUncheckedCreateNestedManyWithoutInstituteInput
-  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUncheckedCreateNestedManyWithoutInstituteInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutInstituteInput
-  activityLogs?: Prisma.ActivityLogsUncheckedCreateNestedManyWithoutInstituteInput
-}
-
-export type InstituteCreateOrConnectWithoutConversationsInput = {
-  where: Prisma.InstituteWhereUniqueInput
-  create: Prisma.XOR<Prisma.InstituteCreateWithoutConversationsInput, Prisma.InstituteUncheckedCreateWithoutConversationsInput>
-}
-
-export type InstituteUpsertWithoutConversationsInput = {
-  update: Prisma.XOR<Prisma.InstituteUpdateWithoutConversationsInput, Prisma.InstituteUncheckedUpdateWithoutConversationsInput>
-  create: Prisma.XOR<Prisma.InstituteCreateWithoutConversationsInput, Prisma.InstituteUncheckedCreateWithoutConversationsInput>
-  where?: Prisma.InstituteWhereInput
-}
-
-export type InstituteUpdateToOneWithWhereWithoutConversationsInput = {
-  where?: Prisma.InstituteWhereInput
-  data: Prisma.XOR<Prisma.InstituteUpdateWithoutConversationsInput, Prisma.InstituteUncheckedUpdateWithoutConversationsInput>
-}
-
-export type InstituteUpdateWithoutConversationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
-  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
-  instituteViews?: Prisma.InstituteViewUpdateManyWithoutInstituteNestedInput
-  Job?: Prisma.JobUpdateManyWithoutInstituteNestedInput
-  creditsHistories?: Prisma.CreditsHistoryUpdateManyWithoutInstituteNestedInput
-  instituteVerificationRejections?: Prisma.InstituteVerificationRejectionUpdateManyWithoutInstituteNestedInput
-  instituteSocialMediaLinks?: Prisma.InstituteSocialMediaLinksUpdateManyWithoutInstituteNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutInstituteNestedInput
-  activityLogs?: Prisma.ActivityLogsUpdateManyWithoutInstituteNestedInput
-}
-
-export type InstituteUncheckedUpdateWithoutConversationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  contactNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumInstituteRolesFieldUpdateOperationsInput | $Enums.InstituteRoles
-  affiliatedUniversity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  yearEstablished?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  ownership?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  bedsCount?: Prisma.IntFieldUpdateOperationsInput | number
-  services?: Prisma.InstituteUpdateservicesInput | string[]
-  staffCount?: Prisma.IntFieldUpdateOperationsInput | number
-  telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
-  instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
   instituteViews?: Prisma.InstituteViewUncheckedUpdateManyWithoutInstituteNestedInput
   Job?: Prisma.JobUncheckedUpdateManyWithoutInstituteNestedInput
   creditsHistories?: Prisma.CreditsHistoryUncheckedUpdateManyWithoutInstituteNestedInput
@@ -2166,7 +1969,6 @@ export type InstituteCreateWithoutActivityLogsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -2199,7 +2001,6 @@ export type InstituteUncheckedCreateWithoutActivityLogsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -2248,7 +2049,6 @@ export type InstituteUpdateWithoutActivityLogsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -2281,7 +2081,6 @@ export type InstituteUncheckedUpdateWithoutActivityLogsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -2314,7 +2113,6 @@ export type InstituteCreateWithoutInstituteSocialMediaLinksInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -2347,7 +2145,6 @@ export type InstituteUncheckedCreateWithoutInstituteSocialMediaLinksInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -2396,7 +2193,6 @@ export type InstituteUpdateWithoutInstituteSocialMediaLinksInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -2429,7 +2225,6 @@ export type InstituteUncheckedUpdateWithoutInstituteSocialMediaLinksInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -2462,7 +2257,6 @@ export type InstituteCreateWithoutTransactionsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsCreateNestedOneWithoutInstituteInput
@@ -2495,7 +2289,6 @@ export type InstituteUncheckedCreateWithoutTransactionsInput = {
   type: string
   city?: string | null
   country?: string | null
-  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedCreateNestedManyWithoutInstituteInput
   instituteImages?: Prisma.InstituteImagesUncheckedCreateNestedManyWithoutInstituteInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedCreateNestedOneWithoutInstituteInput
@@ -2544,7 +2337,6 @@ export type InstituteUpdateWithoutTransactionsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUpdateOneWithoutInstituteNestedInput
@@ -2577,7 +2369,6 @@ export type InstituteUncheckedUpdateWithoutTransactionsInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
   instituteCreditsWallets?: Prisma.InstituteCreditsUncheckedUpdateManyWithoutInstituteNestedInput
   instituteImages?: Prisma.InstituteImagesUncheckedUpdateManyWithoutInstituteNestedInput
   instituteVerifications?: Prisma.InstituteVerificationsUncheckedUpdateOneWithoutInstituteNestedInput
@@ -2595,7 +2386,6 @@ export type InstituteUncheckedUpdateWithoutTransactionsInput = {
  */
 
 export type InstituteCountOutputType = {
-  conversations: number
   instituteCreditsWallets: number
   instituteImages: number
   instituteViews: number
@@ -2608,7 +2398,6 @@ export type InstituteCountOutputType = {
 }
 
 export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  conversations?: boolean | InstituteCountOutputTypeCountConversationsArgs
   instituteCreditsWallets?: boolean | InstituteCountOutputTypeCountInstituteCreditsWalletsArgs
   instituteImages?: boolean | InstituteCountOutputTypeCountInstituteImagesArgs
   instituteViews?: boolean | InstituteCountOutputTypeCountInstituteViewsArgs
@@ -2628,13 +2417,6 @@ export type InstituteCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
    * Select specific fields to fetch from the InstituteCountOutputType
    */
   select?: Prisma.InstituteCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * InstituteCountOutputType without action
- */
-export type InstituteCountOutputTypeCountConversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ConversationWhereInput
 }
 
 /**
@@ -2722,7 +2504,6 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   type?: boolean
   city?: boolean
   country?: boolean
-  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
   instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
@@ -2807,7 +2588,6 @@ export type InstituteSelectScalar = {
 
 export type InstituteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "name" | "verified" | "contactEmail" | "contactNumber" | "role" | "affiliatedUniversity" | "yearEstablished" | "ownership" | "headline" | "about" | "password" | "bedsCount" | "services" | "staffCount" | "telephone" | "type" | "city" | "country", ExtArgs["result"]["institute"]>
 export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  conversations?: boolean | Prisma.Institute$conversationsArgs<ExtArgs>
   instituteCreditsWallets?: boolean | Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>
   instituteImages?: boolean | Prisma.Institute$instituteImagesArgs<ExtArgs>
   instituteVerifications?: boolean | Prisma.Institute$instituteVerificationsArgs<ExtArgs>
@@ -2826,7 +2606,6 @@ export type InstituteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Institute"
   objects: {
-    conversations: Prisma.$ConversationPayload<ExtArgs>[]
     instituteCreditsWallets: Prisma.$InstituteCreditsPayload<ExtArgs>[]
     instituteImages: Prisma.$InstituteImagesPayload<ExtArgs>[]
     instituteVerifications: Prisma.$InstituteVerificationsPayload<ExtArgs> | null
@@ -3253,7 +3032,6 @@ readonly fields: InstituteFieldRefs;
  */
 export interface Prisma__InstituteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  conversations<T extends Prisma.Institute$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteCreditsWallets<T extends Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteCreditsWalletsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteCreditsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteImages<T extends Prisma.Institute$instituteImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteVerifications<T extends Prisma.Institute$instituteVerificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$instituteVerificationsArgs<ExtArgs>>): Prisma.Prisma__InstituteVerificationsClient<runtime.Types.Result.GetResult<Prisma.$InstituteVerificationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -3698,30 +3476,6 @@ export type InstituteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many Institutes to delete.
    */
   limit?: number
-}
-
-/**
- * Institute.conversations
- */
-export type Institute$conversationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Conversation
-   */
-  select?: Prisma.ConversationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Conversation
-   */
-  omit?: Prisma.ConversationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ConversationInclude<ExtArgs> | null
-  where?: Prisma.ConversationWhereInput
-  orderBy?: Prisma.ConversationOrderByWithRelationInput | Prisma.ConversationOrderByWithRelationInput[]
-  cursor?: Prisma.ConversationWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ConversationScalarFieldEnum | Prisma.ConversationScalarFieldEnum[]
 }
 
 /**
