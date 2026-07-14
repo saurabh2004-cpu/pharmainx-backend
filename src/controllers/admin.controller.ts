@@ -65,7 +65,8 @@ export const login = async (req: Request, res: Response) => {
             })
             .json({
                 message: "Admin logged in successfully",
-                user: admin
+                user: admin,
+                token
             });
     } catch (error) {
         res.status(500).json({ message: "Internal server error" });

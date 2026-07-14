@@ -10,7 +10,7 @@ export interface AuthRequest extends Request {
 
 export const authenticateToken = (req: AuthRequest, res: Response, next: NextFunction) => {
     const authHeader = req.cookies.accessToken || req.cookies.adminAccessToken || req.headers.authorization?.split(' ')[1];
-    const token = authHeader;
+    const token = authHeader; 
 
     console.log("acctoken", token);
 
