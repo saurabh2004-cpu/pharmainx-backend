@@ -23,6 +23,7 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:latest .
 
+
       - name: Push Docker Image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/pharmainc-backend:latest
